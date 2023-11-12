@@ -10,11 +10,21 @@ const LoginForm = () => {
     email: "",
     password: "",
   });
-  const handleInput = (e) => {
+  const handleInput = (e  ) => {
     const name = e.target.name;
     const value = e.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+
+  const togglePassword = (e) =>{
+    e.preventDefault();
+    if(passwordType==="password")
+    {
+     setPasswordType("text")
+     return;
+    }
+    setPasswordType("password")
+  }
 
   // LOGIN
   const signIn = (e) => {
@@ -39,11 +49,15 @@ const LoginForm = () => {
         console.log(error);
       });
   };
-
+  const [passwordType, setPasswordType] = useState("password");
   return (
     // FORM LOGIN
-    <form onSubmit={signIn} className="flex flex-col w-[80%] gap-5 -mt-12">
-      <div className="text-[25px] font-bold text-black -mb-3">Log In</div>
+    <form onSubmit={signIn} className="flex flex-col w-[80%] xl:w-[60%] gap-5 -mt-12">
+      <div className="hidden text-[25px] font-bold text-white xl:flex xl:flex-col -mb-3">
+        <h1 className="text-[50px] font-semibold">Halo!</h1>
+        <p className="text-[18px] font-normal -mt-2 mb-6">Silahkan masuk ke dalam akun anda.</p>
+      </div>
+      <div className="text-[25px] font-bold text-black xl:hidden -mb-3">Log In</div>
       {/* INPUT FIELD */}
       <div className="input input-bordered flex items-center rounded-[15px] border-black">
         <svg
@@ -73,7 +87,7 @@ const LoginForm = () => {
           onChange={handleInput}
           placeholder="Username"
           type="text"
-          className="ml-2 w-[200px]"
+          className="ml-2 w-[200px] xl:w-[240px]"
         />
       </div>
 
@@ -102,10 +116,10 @@ const LoginForm = () => {
             value={inputs.password}
             onChange={handleInput}
             placeholder="Password"
-            type="text"
-            className="ml-2 w-[200px]"
+            type={passwordType}
+            className="ml-2 w-[200px] xl:w-[240px]"
           />
-          <button className="">
+          <button onClick={togglePassword}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="22"
@@ -128,15 +142,13 @@ const LoginForm = () => {
           </button>
         </div>
       </div>
-      <p className="font-light self-center justify-center cursor-pointer hover:underline ">
+      <p className="font-light self-center justify-center cursor-pointer hover:underline xl:text-white">
         Lupa Password?
       </p>
       {/* SUBMIT BUTTON */}
-      <button type="submit" className="btn text-white font-medium text-[20px] bg-[#FF5757] rounded-[26px] w-[175px] self-center normal-case">
+      <button type="submit" className="btn xl:border-black text-white xl:text-[#FF5757] font-medium xl:font-semibold text-[20px] xl:text-[22px] bg-[#FF5757] xl:bg-white rounded-[26px] w-[175px] self-center normal-case">
         Log In
       </button>
-
-
     </form>
   );
 };
