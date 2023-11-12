@@ -4,9 +4,6 @@ import Header from "./component/Header";
 const DashboardScreen = () => {
   return (
     <div>
-      <div className="">
-        <Header />
-      </div>
       <div className="flex flex-col items-center">
         <div className="text-sm mt-10">
           <div className="ml-2 w-[220px]">
