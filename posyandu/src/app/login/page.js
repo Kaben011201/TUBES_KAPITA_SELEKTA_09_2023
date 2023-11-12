@@ -18,7 +18,7 @@ const Login = () => {
           <img
             width={135}
             height={135}
-            src="/LOGOPUTIH.png"
+            src="login/LOGOPUTIH.png"
             alt=""
           />
           <p className="text-[20px] text-white font-semibold tracking-wide">
