@@ -42,38 +42,101 @@ const LoginForm = () => {
 
   return (
     // FORM LOGIN
-    <form onSubmit={signIn} className="flex flex-col w-[80%] gap-5">
-      <div className="text-3xl font-bold">Login Akun</div>
-
+    <form onSubmit={signIn} className="flex flex-col w-[80%] gap-5 -mt-12">
+      <div className="text-[25px] font-bold text-black -mb-3">Log In</div>
       {/* INPUT FIELD */}
-      <input
-        name="email"
-        value={inputs.email}
-        onChange={handleInput}
-        placeholder="Email / Username"
-        type="text"
-        className="input input-bordered"
-      />
-      <div className="input input-bordered flex items-center justify-between">
+      <div className="input input-bordered flex items-center rounded-[15px] border-black">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+        >
+          <path
+            d="M18.0835 18.743C17.6657 17.5735 16.7451 16.5401 15.4643 15.8031C14.1836 15.066 12.6144 14.6665 11.0001 14.6665C9.38577 14.6665 7.81656 15.066 6.53583 15.8031C5.25511 16.5401 4.33444 17.5735 3.91663 18.743"
+            stroke="#222222"
+            stroke-linecap="round"
+          />
+          <ellipse
+            cx="10.9999"
+            cy="7.33317"
+            rx="3.66667"
+            ry="3.66667"
+            stroke="#222222"
+            stroke-linecap="round"
+          />
+        </svg>
         <input
-          name="password"
-          value={inputs.password}
+          name="email"
+          value={inputs.email}
           onChange={handleInput}
-          placeholder="Password"
+          placeholder="Username"
           type="text"
+          className="ml-2 w-[200px]"
         />
-
-        <input type="checkbox" className="checkbox" />
       </div>
 
-      {/* SUBMIT BUTTON */}
-      <button type="submit" className="btn bg-slate-700 text-white">
-        Login
-      </button>
-
-      <p className="self-center justify-center cursor-pointer text-blue-700 hover:underline ">
+      <div className="input input-bordered flex items-center rounded-[15px] border-black">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="flex-shrink-0"
+        >
+          <path
+            d="M4.125 12.7418C4.125 10.834 4.125 9.88007 4.71079 9.29428C5.29657 8.7085 6.23938 8.7085 8.125 8.7085H13.875C15.7606 8.7085 16.7034 8.7085 17.2892 9.29428C17.875 9.88007 17.875 10.834 17.875 12.7418V12.7418C17.875 15.6036 17.875 17.0345 16.9963 17.9131C16.1176 18.7918 14.7034 18.7918 11.875 18.7918H10.125C7.29657 18.7918 5.88236 18.7918 5.00368 17.9131C4.125 17.0345 4.125 15.6036 4.125 12.7418V12.7418Z"
+            stroke="#222222"
+          />
+          <path
+            d="M15.125 8.7085V7.3335C15.125 5.05532 13.2782 3.2085 11 3.2085V3.2085C8.72183 3.2085 6.875 5.05532 6.875 7.3335V8.7085"
+            stroke="#222222"
+            stroke-linecap="round"
+          />
+        </svg>
+        <div className="flex items-center justify-around">
+          <input
+            name="password"
+            value={inputs.password}
+            onChange={handleInput}
+            placeholder="Password"
+            type="text"
+            className="ml-2 w-[200px]"
+          />
+          <button className="">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <circle
+                cx="7.99992"
+                cy="8.00016"
+                r="2.16667"
+                stroke="#222222"
+                className="flex-shrink-0"
+              />
+              <path
+                d="M14 8C14 8 13.3333 2.66667 8 2.66667C2.66667 2.66667 2 8 2 8"
+                stroke="#222222"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p className="font-light self-center justify-center cursor-pointer hover:underline ">
         Lupa Password?
       </p>
+      {/* SUBMIT BUTTON */}
+      <button type="submit" className="btn text-white font-medium text-[20px] bg-[#FF5757] rounded-[26px] w-[175px] self-center normal-case">
+        Log In
+      </button>
+
+
     </form>
   );
 };
