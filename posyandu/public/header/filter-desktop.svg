@@ -1,0 +1,35 @@
+<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="38" height="38" fill="#4A4A4A"/>
+<g id="Hi-Fi Dashboard" clip-path="url(#clip0_0_1)">
+<rect width="1280" height="832" transform="translate(-1179 -16)" fill="white"/>
+<g id="Rectangle 23" filter="url(#filter0_d_0_1)">
+<rect x="-1179" y="-16" width="1280" height="76" fill="white"/>
+</g>
+<g id="Setting_vert">
+<path id="Vector 7" d="M9.5 19L9.5 7.91667" stroke="#545454" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector 8" d="M19 12.6665L19 7.9165" stroke="#545454" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector 15" d="M9.5 30.0835L9.5 25.3335" stroke="#545454" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector 12" d="M28.5 30.0835L28.5 26.9168" stroke="#545454" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector 13" d="M19 30.0835L19 19.0002" stroke="#545454" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector 10" d="M15.8333 12.6665L22.1666 12.6665" stroke="#545454" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector 14" d="M6.33325 25.3335H12.6666" stroke="#545454" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector 11" d="M25.3333 26.9165H31.6666" stroke="#545454" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector 9" d="M28.5 20.5835L28.5 7.91683" stroke="#545454" stroke-width="2" stroke-linecap="round"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_0_1" x="-1183" y="-16" width="1288" height="84" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+</filter>
+<clipPath id="clip0_0_1">
+<rect width="1280" height="832" fill="white" transform="translate(-1179 -16)"/>
+</clipPath>
+</defs>
+</svg>

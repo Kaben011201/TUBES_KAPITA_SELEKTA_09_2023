@@ -4,5 +4,5 @@
 
 
 .dashboard-content{
-  @apply flex flex-col items-center justify-center w-[55px] h-[55px] bg-[#FFF4F4] shadow-md shadow-neutral-400 text-[9px] font-semibold
+  @apply flex flex-col items-center justify-center w-[55px] h-[55px] xl:w-[100px] xl:h-[100px] bg-[#FFF4F4] shadow-md shadow-neutral-400 text-[9px] xl:text-[15px] xl:font-bold font-semibold cursor-pointer
 }
