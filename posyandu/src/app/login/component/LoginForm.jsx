@@ -66,6 +66,7 @@ const LoginForm = () => {
           height="22"
           viewBox="0 0 22 22"
           fill="none"
+          className="flex-shrink-0"
         >
           <path
             d="M18.0835 18.743C17.6657 17.5735 16.7451 16.5401 15.4643 15.8031C14.1836 15.066 12.6144 14.6665 11.0001 14.6665C9.38577 14.6665 7.81656 15.066 6.53583 15.8031C5.25511 16.5401 4.33444 17.5735 3.91663 18.743"
@@ -87,12 +88,14 @@ const LoginForm = () => {
           onChange={handleInput}
           placeholder="Username"
           type="text"
-          className="ml-2 w-[200px] xl:w-[240px]"
+          className="ml-2 max-w-full w-full"
         />
       </div>
 
       <div className="input input-bordered flex items-center rounded-[15px] border-black">
-        <svg
+        <div className="w-full flex justify-between items-center">   
+          <div className="flex">
+            <svg
           width="22"
           height="22"
           viewBox="0 0 22 22"
@@ -110,16 +113,15 @@ const LoginForm = () => {
             stroke-linecap="round"
           />
         </svg>
-        <div className="flex items-center justify-around">
-          <input
+        <input
             name="password"
             value={inputs.password}
             onChange={handleInput}
             placeholder="Password"
             type={passwordType}
-            className="ml-2 w-[200px] xl:w-[240px]"
-          />
-          <button onClick={togglePassword}>
+            className="ml-2 max-w-full w-full"
+          /></div>     
+          <button onClick={togglePassword} className="-ml-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="22"
@@ -141,6 +143,7 @@ const LoginForm = () => {
             </svg>
           </button>
         </div>
+
       </div>
       <p className="font-light self-center justify-center cursor-pointer hover:underline xl:text-white">
         Lupa Password?
