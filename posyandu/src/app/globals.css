@@ -8,5 +8,5 @@
 }
 
 .sidebar-items{
-  @apply flex items-center font-black xl:font-bold xl:text-[20px]
+  @apply flex items-center font-black text-[10px] xl:font-bold xl:text-[20px] 
 }
