@@ -15,6 +15,7 @@ const DashboardScreen = () => {
           <img className="w-auto hidden xl:block" src="dashboard/graph-desktop.svg"></img>
         </div>
 
+        
         <div className="flex justify-between mt-9 w-[275px] xl:w-[500px] mb-[100px]">
         <div className="dashboard-content">
           <img className="w-[35px] xl:w-[60px] xl:hidden" src="dashboard/bumil.svg"></img>
