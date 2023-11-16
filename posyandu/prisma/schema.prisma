@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model Posyandu {
+  id    Int     @unique @default(sequence())
+  nama  String
+  Admin Admin[]
+}
+
+model Admin {
+  id         Int       @unique @default(sequence())
+  email      String    @unique
+  password   String
+  posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
+  posyanduId Int?
+}
+
+model Lansia {
+  id Int @unique @default(sequence())
+}
+
+model IbuHamil {
+  id Int @unique @default(sequence())
+}
+
+model Balita {
+  id Int @unique @default(sequence())
+}
+
+model Bayi {
+  id Int @unique @default(sequence())
+}
