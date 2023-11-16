@@ -104,7 +104,7 @@ const Header = () => {
           className="mr-1 hidden xl:block"
           src="/header/logo-desktop.svg"
         ></img>
-        <p className=" text-white font-semibold xl:text-neutral-700 text-[10px] xl:text-[16px]">
+        <p className=" text-white font-semibold xl:text-neutral-700 text-[12px] xl:text-[16px]">
           Posyandu Mawar I
         </p>
       </div>
