@@ -93,7 +93,7 @@ const BalitaScreen = () => {
         </div>
 
         <div className="flex gap-2 items-center">
-          <label className="w-[23%] text-end font-medium leading-[1.2]" htmlFor="">TB (kg)<span className="text-red-500 absolute mt-[-6px]">*</span></label>
+          <label className="w-[23%] text-end font-medium leading-[1.2]" htmlFor="">TB (cm)<span className="text-red-500 absolute mt-[-6px]">*</span></label>
           <input className="w-[77%] h-9 border-[1.5px] border-[#D5D8DE] rounded-sm pl-2" type="text" name="TB" id="TB" required/>
         </div>
 
