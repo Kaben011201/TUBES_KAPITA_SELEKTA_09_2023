@@ -1,9 +1,12 @@
 "use client";
 import React, { useState } from "react";
+import Sidebar from "./sidebar";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const Header = () => {
+  const router = useRouter();
+  
   return (
     <div className="flex flex-row bg-[#FF5757] xl:bg-white h-12 xl:h-[80px] justify-between items-center px-4 shadow-md shadow-neutral-400 relative">
       <div className="flex items-center xl:ml-[20px]">
@@ -28,17 +31,16 @@ const Header = () => {
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="relative flex flex-col items-center menu p-4 w-[50vw] xl:w-[20vw] min-h-full bg-white text-base-content shadow shadow-neutral-400">
+            <div className="menu items-center relative p-2 w-[45vw] xl:w-[20vw] min-h-full bg-white text-base-content shadow shadow-neutral-400 [&>div>li]:cursor-pointer">
               {/* Sidebar content here */}
-
               <img
-                className="w-[100px] xl:w-[200px]"
+                className="w-[70px] xl:w-[160px]"
                 src="/header/logo-desktop.svg"
               ></img>
-              <div className="ml-[-30px] mt-[15px]]">
-                <li>
-                  <div className="sidebar-items">
-                    <div className="flex">
+              <div className="flex leading-[25px] flex-col items-center ml-[-55px] mt-[25px]">
+                <div className="sidebar-items">
+                  <details className="dropdown">
+                    <summary className="flex items-center justify-center">
                       <img
                         className="xl:w-[30px]"
                         src="/header/drop-closed.svg"
@@ -47,14 +49,55 @@ const Header = () => {
                         className="xl:w-[30px]"
                         src="/header/input.svg"
                       ></img>
-                    </div>
-                    <p>Input Data</p>
-                  </div>
-                </li>
+                      <p className="ml-1">Input Data</p>
+                    </summary>
+                    <ul className="flex flex-col flex-wrap items-center text-start ml-[40px] [&>li]:mt-[0px]">
+                      <li>
+                        <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
+                          <img
+                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
+                            src="/header/catatan.svg"
+                          ></img>
+                          <p className="ml-1 w-[50px]">Ibu Hamil</p>
+                        </div>
+                      </li>
 
-                <li>
-                  <div className="sidebar-items">
-                    <div className="flex">
+                      <li>
+                        <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
+                          <img
+                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
+                            src="/header/catatan.svg"
+                          ></img>
+                          <p className="ml-1 w-[50px]">Bayi</p>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
+                          <img
+                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
+                            src="/header/catatan.svg"
+                          ></img>
+                          <p className="ml-1 w-[50px]">Balita</p>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
+                          <img
+                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
+                            src="/header/catatan.svg"
+                          ></img>
+                          <p className="ml-1 w-[50px]">Lansia</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </div>
+
+                <div className="sidebar-items mt-[8px] my-[6px]">
+                  <details className="dropdown">
+                    <summary className="flex items-center justify-center">
                       <img
                         className="xl:w-[30px]"
                         src="/header/drop-closed.svg"
@@ -63,42 +106,72 @@ const Header = () => {
                         className="xl:w-[30px]"
                         src="/header/lihat.svg"
                       ></img>
-                    </div>
-                    <p>Lihat Data</p>
-                  </div>
-                </li>
+                      <p className="ml-1">Lihat Data</p>
+                    </summary>
+                    <ul className="flex flex-col flex-wrap items-center text-start ml-[40px] [&>li]:mt-[0px]">
+                      <li>
+                        <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
+                          <img
+                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
+                            src="/header/catatan.svg"
+                          ></img>
+                          <p className="ml-1 w-[50px]">Ibu Hamil</p>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
+                          <img
+                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
+                            src="/header/catatan.svg"
+                          ></img>
+                          <p className="ml-1 w-[50px]">Bayi</p>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
+                          <img
+                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
+                            src="/header/catatan.svg"
+                          ></img>
+                          <p className="ml-1 w-[50px]">Balita</p>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
+                          <img
+                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
+                            src="/header/catatan.svg"
+                          ></img>
+                          <p className="ml-1 w-[50px]">Lansia</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </div>
 
                 <li>
-                  <div className="sidebar-items">
+                  <div className="sidebar-items p-[4px] py-[2px]">
                     <div className="flex">
                       <img
                         className="ml-[15px] xl:ml-[30px] xl:w-[30px]"
                         src="/header/catatan.svg"
                       ></img>
                     </div>
-                    <p>Kegiatan</p>
+                    <p className="ml-1">Kegiatan</p>
                   </div>
                 </li>
-                <details className="dropdown">
-                  <summary className="m-1 btn">open or close</summary>
-                  <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                    <li>
-                      <a>Item 1</a>
-                    </li>
-                    <li>
-                      <a>Item 2</a>
-                    </li>
-                  </ul>
-                </details>
               </div>
               <img
                 className="absolute bottom-10 xl:w-[250px]"
                 src="/header/logout.svg"
               ></img>
-            </ul>
+            </div>
           </div>
         </div>
-        {/* <img src="header/hamburger.svg"></img> */}
+
         <img className="mr-1 xl:hidden" src="/header/logo.svg"></img>
         <img
           className="mr-1 hidden xl:block"
