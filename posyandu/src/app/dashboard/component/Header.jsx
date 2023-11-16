@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import Sidebar from "./sidebar";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const Header = () => {
   const router = useRouter();
-  
+
   return (
     <div className="flex flex-row bg-[#FF5757] xl:bg-white h-12 xl:h-[80px] justify-between items-center px-4 shadow-md shadow-neutral-400 relative">
       <div className="flex items-center xl:ml-[20px]">
