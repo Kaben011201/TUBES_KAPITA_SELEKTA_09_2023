@@ -12,8 +12,8 @@ module.exports = {
     },
     extend: {
       gridTemplateColumns: {
-        '2': '35px 1fr',
-        '3': "30px 35px 1fr"
+        '2': '30px 1fr',
+        '2-laptop': '60px 1fr'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
