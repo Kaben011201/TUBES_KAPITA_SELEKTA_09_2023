@@ -6,8 +6,7 @@ const BalitaScreen = () => {
       <div className="text-sm breadcrumbs font-bold p-0">
         <ul className="text-[12px]">
           <li><a href="">Input Data</a></li> 
-          <li><a href="">Anak</a></li> 
-          <li>Balita</li>
+          <li>Balita</li> 
         </ul>
       </div>
       {/* belum buat required untuk radio button */}
@@ -27,7 +26,7 @@ const BalitaScreen = () => {
 
         <div className="flex gap-2 items-center">
           <label className="w-[23%] text-end font-medium leading-[1.2]" htmlFor="">Tanggal Lahir <span className="text-red-500 absolute mt-[-18px]">*</span></label>
-          <input className="w-[77%] h-9 border-[1.5px] border-[#D5D8DE] rounded-sm pl-2" type="date" name="ttl" id="ttl" required/>
+          <input className="w-[77%] h-9 border-[1.5px] border-[#D5D8DE] rounded-sm px-2" type="date" name="ttl" id="ttl" required/>
         </div>
 
         <div className="flex gap-6 items-center">
