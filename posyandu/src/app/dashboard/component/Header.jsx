@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-
 const Header = () => {
   const router = useRouter();
 
@@ -33,13 +34,14 @@ const Header = () => {
             <div className="menu items-center leading-[50px] relative p-2 w-[45vw] xl:w-[20vw] min-h-full bg-white text-base-content shadow-md shadow-neutral-600 [&>div>li]:cursor-pointer">
               {/* Sidebar content here */}
               <img
-                onClick={()=>{router.push("/dashboard")}}
+                onClick={() => {
+                  router.push("/dashboard");
+                }}
                 className="mt-[20px] w-[80px] xl:w-[160px] cursor-pointer"
                 src="/header/logo-desktop.svg"
               ></img>
               <div className="flex leading-[25px] flex-col items-center ml-[-55px] mt-[25px] xl:leading-[45px]">
                 <div className="sidebar-items">
-
                   <details className="dropdown">
                     <summary className="flex items-center justify-center cursor-pointer">
                       <img
@@ -54,17 +56,29 @@ const Header = () => {
                     </summary>
 
                     <ul className="flex flex-col flex-wrap items-center text-start ml-[40px] xl:ml-[70px] [&>li]:mt-[0px]">
-                      <li className="cursor-pointer" onClick={()=>{router.push("/dashboard/input/ibuhamil");}}>
+                      <li
+                        className="cursor-pointer"
+                        onClick={() => {
+                          router.push("/dashboard/input/ibuhamil");
+                        }}
+                      >
                         <div className="grid grid-cols-2 xl:grid-cols-2-laptop items-center p-[4px] py-[2px]">
                           <img
                             className="sidebar-img"
                             src="/header/bumil-sidebar.svg"
                           ></img>
-                          <p className="ml-1 w-[50px] xl:w-[100px]">Ibu Hamil</p>
+                          <p className="ml-1 w-[50px] xl:w-[100px]">
+                            Ibu Hamil
+                          </p>
                         </div>
                       </li>
 
-                      <li className="cursor-pointer" onClick={()=>{router.push("/dashboard/input/bayi");}}>
+                      <li
+                        className="cursor-pointer"
+                        onClick={() => {
+                          router.push("/dashboard/input/bayi");
+                        }}
+                      >
                         <div className="grid grid-cols-2 xl:grid-cols-2-laptop items-center p-[4px] py-[2px]">
                           <img
                             className="sidebar-img"
@@ -74,7 +88,12 @@ const Header = () => {
                         </div>
                       </li>
 
-                      <li className="cursor-pointer" onClick={()=>{router.push("/dashboard/input/balita");}}>
+                      <li
+                        className="cursor-pointer"
+                        onClick={() => {
+                          router.push("/dashboard/input/balita");
+                        }}
+                      >
                         <div className="grid grid-cols-2 xl:grid-cols-2-laptop items-center p-[4px] py-[2px]">
                           <img
                             className="sidebar-img"
@@ -84,7 +103,12 @@ const Header = () => {
                         </div>
                       </li>
 
-                      <li className="cursor-pointer" onClick={()=>{router.push("/dashboard/input/lansia");}}>
+                      <li
+                        className="cursor-pointer"
+                        onClick={() => {
+                          router.push("/dashboard/input/lansia");
+                        }}
+                      >
                         <div className="grid grid-cols-2 xl:grid-cols-2-laptop items-center p-[4px] py-[2px]">
                           <img
                             className="sidebar-img"
@@ -111,17 +135,29 @@ const Header = () => {
                       <p className="ml-1 xl:ml-2">Lihat Data</p>
                     </summary>
                     <ul className="flex flex-col flex-wrap items-center text-start ml-[40px] xl:ml-[70px] [&>li]:mt-[0px]">
-                      <li className="cursor-pointer" onClick={()=>{router.push("/dashboard/data/ibuhamil");}}>
+                      <li
+                        className="cursor-pointer"
+                        onClick={() => {
+                          router.push("/dashboard/data/ibuhamil");
+                        }}
+                      >
                         <div className="grid grid-cols-2 xl:grid-cols-2-laptop items-center p-[4px] py-[2px]">
                           <img
                             className="sidebar-img"
                             src="/header/bumil-sidebar.svg"
                           ></img>
-                          <p className="ml-1 w-[50px] xl:w-[100px]">Ibu Hamil</p>
+                          <p className="ml-1 w-[50px] xl:w-[100px]">
+                            Ibu Hamil
+                          </p>
                         </div>
                       </li>
 
-                      <li className="cursor-pointer" onClick={()=>{router.push("/dashboard/data/bayi");}}>
+                      <li
+                        className="cursor-pointer"
+                        onClick={() => {
+                          router.push("/dashboard/data/bayi");
+                        }}
+                      >
                         <div className="grid grid-cols-2 xl:grid-cols-2-laptop items-center p-[4px] py-[2px]">
                           <img
                             className="sidebar-img"
@@ -131,7 +167,12 @@ const Header = () => {
                         </div>
                       </li>
 
-                      <li className="cursor-pointer" onClick={()=>{router.push("/dashboard/data/balita");}}>
+                      <li
+                        className="cursor-pointer"
+                        onClick={() => {
+                          router.push("/dashboard/data/balita");
+                        }}
+                      >
                         <div className="grid grid-cols-2 xl:grid-cols-2-laptop items-center p-[4px] py-[2px]">
                           <img
                             className="sidebar-img"
@@ -141,7 +182,12 @@ const Header = () => {
                         </div>
                       </li>
 
-                      <li className="cursor-pointer" onClick={()=>{router.push("/dashboard/data/lansia");}}>
+                      <li
+                        className="cursor-pointer"
+                        onClick={() => {
+                          router.push("/dashboard/data/lansia");
+                        }}
+                      >
                         <div className="grid grid-cols-2 xl:grid-cols-2-laptop items-center p-[4px] py-[2px]">
                           <img
                             className="sidebar-img"
@@ -168,7 +214,10 @@ const Header = () => {
               </div>
               <img
                 className="absolute bottom-10 xl:w-[250px] cursor-pointer"
-                src="/header/logout.svg" onClick={()=>{router.push("/login")}}
+                src="/header/logout.svg"
+                onClick={() => {
+                  router.push("/login");
+                }}
               ></img>
             </div>
           </div>
@@ -179,7 +228,10 @@ const Header = () => {
           className="mr-1 hidden xl:block"
           src="/header/logo-desktop.svg"
         ></img>
-        <p onClick={()=>router.push("/dashboard")} className=" text-white font-semibold xl:text-neutral-700 text-[12px] xl:text-[16px] cursor-pointer">
+        <p
+          onClick={() => router.push("/dashboard")}
+          className=" text-white font-semibold xl:text-neutral-700 text-[12px] xl:text-[16px] cursor-pointer"
+        >
           Posyandu Mawar I
         </p>
       </div>
@@ -202,14 +254,29 @@ const Header = () => {
           className="mx-2 hidden xl:block cursor-pointer"
           src="/header/filter-desktop.svg"
         ></img>
-        <img
-          className="xl:hidden cursor-pointer"
-          src="/header/profile.svg"
-        ></img>
-        <img
-          className="hidden xl:block cursor-pointer"
-          src="/header/profile-desktop.svg"
-        ></img>
+        <div className="dropdown dropdown-end">
+          <label tabIndex={0}>
+            <img
+              className="xl:hidden cursor-pointer"
+              src="/header/profile.svg"
+            ></img>
+            <img
+              className="hidden xl:block cursor-pointer"
+              src="/header/profile-desktop.svg"
+            ></img>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          > 
+            <li>
+              <a>Setting</a>
+            </li>
+            <li onClick={()=>{router.push("/login")}}>
+              <a>Logout</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
