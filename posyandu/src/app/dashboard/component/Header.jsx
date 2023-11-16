@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import Sidebar from "./sidebar";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const Header = () => {
   const router = useRouter();
-  
+
   return (
     <div className="flex flex-row bg-[#FF5757] xl:bg-white h-12 xl:h-[80px] justify-between items-center px-4 shadow-md shadow-neutral-400 relative">
       <div className="flex items-center xl:ml-[20px]">
@@ -25,13 +24,13 @@ const Header = () => {
               ></img>
             </label>
           </div>
-          <div className="drawer-side">
+          <div className="drawer-side z-[100]">
             <label
               htmlFor="my-drawer"
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <div className="menu items-center relative p-2 w-[45vw] xl:w-[20vw] min-h-full bg-white text-base-content shadow shadow-neutral-400 [&>div>li]:cursor-pointer">
+            <div className="menu items-center relative p-2 w-[45vw] xl:w-[20vw] min-h-full bg-white text-base-content shadow shadow-neutral-400 [&>div>li]:cursor-pointer z-[50]">
               {/* Sidebar content here */}
               <img
                 className="w-[70px] xl:w-[160px]"
@@ -52,41 +51,41 @@ const Header = () => {
                       <p className="ml-1">Input Data</p>
                     </summary>
                     <ul className="flex flex-col flex-wrap items-center text-start ml-[40px] [&>li]:mt-[0px]">
-                      <li>
+                      <li onClick={()=>{router.push("/dashboard/input/ibuhamil");}}>
                         <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
                           <img
-                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
-                            src="/header/catatan.svg"
+                            className="ml-[15px] w-[20px] xl:ml-[30px] xl:w-[30px]"
+                            src="/header/bumil-sidebar.svg"
                           ></img>
                           <p className="ml-1 w-[50px]">Ibu Hamil</p>
                         </div>
                       </li>
 
-                      <li>
+                      <li onClick={()=>{router.push("/dashboard/input/bayi");}}>
                         <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
                           <img
-                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
-                            src="/header/catatan.svg"
+                            className="ml-[15px] w-[20px] xl:ml-[30px] xl:w-[30px]"
+                            src="/header/bayi-sidebar.svg"
                           ></img>
                           <p className="ml-1 w-[50px]">Bayi</p>
                         </div>
                       </li>
 
-                      <li>
+                      <li onClick={()=>{router.push("/dashboard/input/balita");}}>
                         <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
                           <img
-                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
-                            src="/header/catatan.svg"
+                            className="ml-[15px] w-[20px] xl:ml-[30px] xl:w-[30px]"
+                            src="/header/balita-sidebar.svg"
                           ></img>
                           <p className="ml-1 w-[50px]">Balita</p>
                         </div>
                       </li>
 
-                      <li>
+                      <li onClick={()=>{router.push("/dashboard/input/lansia");}}>
                         <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
                           <img
-                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
-                            src="/header/catatan.svg"
+                            className="ml-[15px] w-[20px] xl:ml-[30px] xl:w-[30px]"
+                            src="/header/lansia-sidebar.svg"
                           ></img>
                           <p className="ml-1 w-[50px]">Lansia</p>
                         </div>
@@ -109,41 +108,41 @@ const Header = () => {
                       <p className="ml-1">Lihat Data</p>
                     </summary>
                     <ul className="flex flex-col flex-wrap items-center text-start ml-[40px] [&>li]:mt-[0px]">
-                      <li>
+                      <li onClick={()=>{router.push("/dashboard/data/ibuhamil");}}>
                         <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
                           <img
-                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
-                            src="/header/catatan.svg"
+                            className="ml-[15px] w-[20px]  xl:ml-[30px] xl:w-[30px]"
+                            src="/header/bumil-sidebar.svg"
                           ></img>
                           <p className="ml-1 w-[50px]">Ibu Hamil</p>
                         </div>
                       </li>
 
-                      <li>
+                      <li onClick={()=>{router.push("/dashboard/data/bayi");}}>
                         <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
                           <img
-                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
-                            src="/header/catatan.svg"
+                            className="ml-[15px] w-[20px] xl:ml-[30px] xl:w-[30px]"
+                            src="/header/bayi-sidebar.svg"
                           ></img>
                           <p className="ml-1 w-[50px]">Bayi</p>
                         </div>
                       </li>
 
-                      <li>
+                      <li onClick={()=>{router.push("/dashboard/data/balita");}}>
                         <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
                           <img
-                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
-                            src="/header/catatan.svg"
+                            className="ml-[15px] w-[20px] xl:ml-[30px] xl:w-[30px]"
+                            src="/header/balita-sidebar.svg"
                           ></img>
                           <p className="ml-1 w-[50px]">Balita</p>
                         </div>
                       </li>
 
-                      <li>
+                      <li onClick={()=>{router.push("/dashboard/data/lansia");}}>
                         <div className="grid grid-cols-2 items-center p-[4px] py-[2px]">
                           <img
-                            className="ml-[15px]  xl:ml-[30px] xl:w-[30px]"
-                            src="/header/catatan.svg"
+                            className="ml-[15px] w-[20px] xl:ml-[30px] xl:w-[30px]"
+                            src="/header/lansia-sidebar.svg"
                           ></img>
                           <p className="ml-1 w-[50px]">Lansia</p>
                         </div>
@@ -166,7 +165,7 @@ const Header = () => {
               </div>
               <img
                 className="absolute bottom-10 xl:w-[250px]"
-                src="/header/logout.svg"
+                src="/header/logout.svg" onClick={()=>{router.push("/login")}}
               ></img>
             </div>
           </div>
@@ -177,7 +176,7 @@ const Header = () => {
           className="mr-1 hidden xl:block"
           src="/header/logo-desktop.svg"
         ></img>
-        <p className=" text-white font-semibold xl:text-neutral-700 text-[12px] xl:text-[16px]">
+        <p onClick={()=>router.push("/dashboard")} className=" text-white font-semibold xl:text-neutral-700 text-[12px] xl:text-[16px]">
           Posyandu Mawar I
         </p>
       </div>
