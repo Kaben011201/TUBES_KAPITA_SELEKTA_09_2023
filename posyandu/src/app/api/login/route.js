@@ -11,7 +11,8 @@ const signToken = async (admin) => {
     .sign(secret);
 };
 const validatePassword = async (password1, password2) => {
-  return bcrypt.compareSync(password1, password2);
+  const validate = bcrypt.compareSync(password1, password2);
+  return validate;
 };
 
 export async function POST(req) {
@@ -26,16 +27,22 @@ export async function POST(req) {
     });
 
     if (admin) {
-      if (validatePassword(password, admin.password)) {
+      const validate = await validatePassword(password, admin.password);
+      if (validate) {
         token = await signToken(admin);
+        return Response.json({
+          status: 200,
+          token,
+          message: "Berhasil Login!",
+        });
       } else {
-        return Response.json({ message: "Password Salah!" });
+        return Response.json({ status: 400, message: "Password Salah!" });
       }
+    } else {
+      return Response.json({ status: 400, message: "Admin tidak ditemukan!" });
     }
-
-    return Response.json({ token, message: "Berhasil Login!" });
   } catch (error) {
     console.log(error);
-    return Response.json({ message: "Something went wrong!" });
+    return Response.json({ status: 400, message: "Something went wrong!" });
   }
 }

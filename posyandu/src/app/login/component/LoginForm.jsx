@@ -10,21 +10,20 @@ const LoginForm = () => {
     email: "",
     password: "",
   });
-  const handleInput = (e  ) => {
+  const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const togglePassword = (e) =>{
+  const togglePassword = (e) => {
     e.preventDefault();
-    if(passwordType==="password")
-    {
-     setPasswordType("text")
-     return;
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
     }
-    setPasswordType("password")
-  }
+    setPasswordType("password");
+  };
 
   // LOGIN
   const signIn = (e) => {
@@ -38,10 +37,10 @@ const LoginForm = () => {
     axios
       .post("http://localhost:3000/api/login", data)
       .then(function (response) {
-        alert(response.data.message);
-
-        if (response.data.message != "Data Tidak Lengkap!") {
+        if (response.data.status != 400) {
           router.push("/dashboard");
+        } else {
+          alert(response.data.message);
         }
       })
       .catch(function (error) {
@@ -52,12 +51,19 @@ const LoginForm = () => {
   const [passwordType, setPasswordType] = useState("password");
   return (
     // FORM LOGIN
-    <form onSubmit={signIn} className="flex flex-col w-[80%] xl:w-[60%] gap-5 -mt-12">
+    <form
+      onSubmit={signIn}
+      className="flex flex-col w-[80%] xl:w-[60%] gap-5 -mt-12"
+    >
       <div className="hidden text-[25px] font-bold text-white xl:flex xl:flex-col -mb-3">
         <h1 className="text-[50px] font-semibold">Halo!</h1>
-        <p className="text-[18px] font-normal -mt-2 mb-6">Silahkan masuk ke dalam akun anda.</p>
+        <p className="text-[18px] font-normal -mt-2 mb-6">
+          Silahkan masuk ke dalam akun anda.
+        </p>
       </div>
-      <div className="text-[25px] font-bold text-black xl:hidden -mb-3">Log In</div>
+      <div className="text-[25px] font-bold text-black xl:hidden -mb-3">
+        Log In
+      </div>
       {/* INPUT FIELD */}
       <div className="input input-bordered flex items-center rounded-[15px] border-black">
         <svg
@@ -93,34 +99,35 @@ const LoginForm = () => {
       </div>
 
       <div className="input input-bordered flex items-center rounded-[15px] border-black">
-        <div className="w-full flex justify-between items-center">   
+        <div className="w-full flex justify-between items-center">
           <div className="flex">
             <svg
-          width="22"
-          height="22"
-          viewBox="0 0 22 22"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="flex-shrink-0"
-        >
-          <path
-            d="M4.125 12.7418C4.125 10.834 4.125 9.88007 4.71079 9.29428C5.29657 8.7085 6.23938 8.7085 8.125 8.7085H13.875C15.7606 8.7085 16.7034 8.7085 17.2892 9.29428C17.875 9.88007 17.875 10.834 17.875 12.7418V12.7418C17.875 15.6036 17.875 17.0345 16.9963 17.9131C16.1176 18.7918 14.7034 18.7918 11.875 18.7918H10.125C7.29657 18.7918 5.88236 18.7918 5.00368 17.9131C4.125 17.0345 4.125 15.6036 4.125 12.7418V12.7418Z"
-            stroke="#222222"
-          />
-          <path
-            d="M15.125 8.7085V7.3335C15.125 5.05532 13.2782 3.2085 11 3.2085V3.2085C8.72183 3.2085 6.875 5.05532 6.875 7.3335V8.7085"
-            stroke="#222222"
-            stroke-linecap="round"
-          />
-        </svg>
-        <input
-            name="password"
-            value={inputs.password}
-            onChange={handleInput}
-            placeholder="Password"
-            type={passwordType}
-            className="ml-2 max-w-full w-full"
-          /></div>     
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-shrink-0"
+            >
+              <path
+                d="M4.125 12.7418C4.125 10.834 4.125 9.88007 4.71079 9.29428C5.29657 8.7085 6.23938 8.7085 8.125 8.7085H13.875C15.7606 8.7085 16.7034 8.7085 17.2892 9.29428C17.875 9.88007 17.875 10.834 17.875 12.7418V12.7418C17.875 15.6036 17.875 17.0345 16.9963 17.9131C16.1176 18.7918 14.7034 18.7918 11.875 18.7918H10.125C7.29657 18.7918 5.88236 18.7918 5.00368 17.9131C4.125 17.0345 4.125 15.6036 4.125 12.7418V12.7418Z"
+                stroke="#222222"
+              />
+              <path
+                d="M15.125 8.7085V7.3335C15.125 5.05532 13.2782 3.2085 11 3.2085V3.2085C8.72183 3.2085 6.875 5.05532 6.875 7.3335V8.7085"
+                stroke="#222222"
+                stroke-linecap="round"
+              />
+            </svg>
+            <input
+              name="password"
+              value={inputs.password}
+              onChange={handleInput}
+              placeholder="Password"
+              type={passwordType}
+              className="ml-2 max-w-full w-full"
+            />
+          </div>
           <button onClick={togglePassword} className="-ml-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -143,13 +150,15 @@ const LoginForm = () => {
             </svg>
           </button>
         </div>
-
       </div>
       <p className="font-light self-center justify-center cursor-pointer hover:underline xl:text-white">
         Lupa Password?
       </p>
       {/* SUBMIT BUTTON */}
-      <button type="submit" className="btn xl:border-black text-white xl:text-[#FF5757] font-medium xl:font-semibold text-[20px] xl:text-[22px] bg-[#FF5757] xl:bg-white rounded-[26px] w-[175px] self-center normal-case">
+      <button
+        type="submit"
+        className="btn xl:border-black text-white xl:text-[#FF5757] font-medium xl:font-semibold text-[20px] xl:text-[22px] bg-[#FF5757] xl:bg-white rounded-[26px] w-[175px] self-center normal-case"
+      >
         Log In
       </button>
     </form>
