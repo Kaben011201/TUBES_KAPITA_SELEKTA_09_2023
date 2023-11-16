@@ -1,15 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import axiosConfig from "../../../utils/axios";
 
 const LoginForm = () => {
   const router = useRouter();
-
+  const [passwordType, setPasswordType] = useState("password");
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
+
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -34,7 +35,7 @@ const LoginForm = () => {
       password: inputs.password,
     };
 
-    axios
+    axiosConfig
       .post("http://localhost:3000/api/login", data)
       .then(function (response) {
         if (response.data.status != 400) {
@@ -48,7 +49,7 @@ const LoginForm = () => {
         console.log(error);
       });
   };
-  const [passwordType, setPasswordType] = useState("password");
+
   return (
     // FORM LOGIN
     <form
