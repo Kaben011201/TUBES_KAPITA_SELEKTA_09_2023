@@ -2,16 +2,16 @@ import React from "react";
 import DummyTable from "./component/DummyTable";
 
 export const metadata = {
-  title: "Data Balita",
-  description: "Data Balita",
+  title: "Data Ibu Hamil",
+  description: "Data Ibu Hamil",
 };
 
-const DataBalita = () => {
+const DataIbuHamil = () => {
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[38px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <p></p>
-        <h3 className="ml-10">Data Balita</h3>
+        <h3 className="ml-10">Data Ibu Hamil</h3>
         <button className="mr-2 bg-white border-black border-[1px] flex items-center justify-between px-4 xl:px6 xl:py-1 rounded-3xl shadow-md normal-case">
           <p className="font-semibold text-xs">Bulan</p>
           <svg
@@ -88,4 +88,4 @@ const DataBalita = () => {
   );
 };
 
-export default DataBalita;
+export default DataIbuHamil;

@@ -23,6 +23,6 @@ tr th {
   @apply bg-[#FFAEB2] !important;
 }
 
-.sidebar-items{
-  @apply flex items-center font-black text-[10px] xl:font-bold xl:text-[20px] 
+.sidebar-items {
+  @apply flex items-center font-black text-[10px] xl:font-bold xl:text-[20px];
 }
