@@ -8,7 +8,7 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-row bg-[#FF5757] xl:bg-white h-12 xl:h-[80px] justify-between items-center px-4 shadow-md shadow-neutral-400 relative">
+    <div className="flex flex-row bg-[#FF5757] xl:bg-white h-12 xl:h-[80px] justify-between items-center px-4 shadow-md shadow-neutral-400 fixed w-full max-w-full z-50">
       <div className="flex items-center xl:ml-[20px]">
         <div className="drawer w-fit">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -134,7 +134,7 @@ const Header = () => {
                       ></img>
                       <p className="ml-1 xl:ml-2">Lihat Data</p>
                     </summary>
-                    <ul className="flex flex-col flex-wrap items-center text-start ml-[40px] xl:ml-[70px] [&>li]:mt-[0px]">
+                    <ul className="flex flex-col flex-wrap text-start ml-[40px] xl:ml-[70px] [&>li]:mt-[0px]">
                       <li
                         className="cursor-pointer"
                         onClick={() => {
