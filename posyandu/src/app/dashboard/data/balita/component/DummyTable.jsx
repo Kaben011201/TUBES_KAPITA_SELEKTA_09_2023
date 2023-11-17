@@ -1,5 +1,5 @@
 import React from "react";
-import Aksi from "../../component/aksi";
+import Aksi from "../../../component/Aksi";
 
 const DummyTable = () => {
   return (
