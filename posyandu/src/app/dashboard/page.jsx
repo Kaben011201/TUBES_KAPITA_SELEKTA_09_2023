@@ -9,42 +9,42 @@ import CanvasJSReact from '@canvasjs/react-charts';
 const { CanvasJSChart } = CanvasJSReact;
 
 const DashboardScreen = () => {
-  // const [options] = useState({
-  //   animationEnabled: true,
-  //   exportEnabled: true,
-  //   theme: "light2",
-  //   title: {
-  //     text: "Ibu Hamil",
-  //     fontColor: "#FFBBBB",
-  //   },
-  //   axisY: {
-  //     includeZero: true,
-  //     labelFontColor: "#FFBBBB"
-  //   },
-  //   data: [
-  //     {
-  //       type: "column",
-  //       xValueFormatString: "MMM YYYY",
-  //       indexLabelFontColor: "#5A5757",
-  //       indexLabelPlacement: "outside",
-  //       dataPoints: [
-  //         { label: 'Jan', y: 71 },
-  //         { label: 'Feb', y: 55 },
-  //         { label: 'Mar', y: 50 },
-  //         { label: 'Apr', y: 65 },
-  //         { label: 'Mei', y: 71 },
-  //         { label: 'Jun', y: 68 },
-  //         { label: 'Jul', y: 92, index: "Highest" },
-  //         { label: 'Ags', y: 54 },
-  //         { label: 'Sep', y: 60 },
-  //         { label: 'Okt', y: 21 },
-  //         { label: 'Nov', y: 49 },
-  //         { label: 'Des', y: 36 },
-  //       ],
-  //       color: "#FFBBBB",
-  //     },
-  //   ],
-  // });
+  const [options] = useState({
+    animationEnabled: true,
+    exportEnabled: true,
+    theme: "light2",
+    title: {
+      text: "Ibu Hamil",
+      fontColor: "#FFBBBB",
+    },
+    axisY: {
+      includeZero: true,
+      labelFontColor: "#FFBBBB"
+    },
+    data: [
+      {
+        type: "column",
+        xValueFormatString: "MMM YYYY",
+        indexLabelFontColor: "#5A5757",
+        indexLabelPlacement: "outside",
+        dataPoints: [
+          { label: 'Jan', y: 70 },
+          { label: 'Feb', y: 55 },
+          { label: 'Mar', y: 50 },
+          { label: 'Apr', y: 65 },
+          { label: 'Mei', y: 71 },
+          { label: 'Jun', y: 68 },
+          { label: 'Jul', y: 92, index: "Highest" },
+          { label: 'Ags', y: 54 },
+          { label: 'Sep', y: 60 },
+          { label: 'Okt', y: 21 },
+          { label: 'Nov', y: 49 },
+          { label: 'Des', y: 36 },
+        ],
+        color: "#FFBBBB",
+      },
+    ],
+  });
 
   return (
     <div>
@@ -57,11 +57,11 @@ const DashboardScreen = () => {
             </p>
           </div>
 
-          <img className="xl:hidden" src="dashboard/graph.svg"></img>
-          <img className="hidden xl:block" src="dashboard/graph-desktop.svg"></img>
-          {/* <div>
+          {/* <img className="xl:hidden" src="dashboard/graph.svg"></img>
+          <img className="hidden xl:block" src="dashboard/graph-desktop.svg"></img> */}
+          <div>
             <CanvasJSChart options={options} />
-          </div> */}
+          </div>
         </div>
 
         <div className="flex justify-between mt-9 w-[275px] xl:w-[500px] xl:mb-[80px]">
