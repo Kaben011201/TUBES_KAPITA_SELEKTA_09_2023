@@ -150,8 +150,8 @@ const BalitaScreen = () => {
           <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm pl-2" type="text" name="keterangan" id="keterangan" />
         </div>
 
-        <button type="submit" className="bg-[#FF5757;] w-[100px] h-[35px] self-end mt-3 rounded-[20px] text-white font-semibold text-sans text-[16px] pr-1 flex items-center justify-center">
-          <img className="w-[22px] mb-1" src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg" alt="saveform" />Simpan
+        <button type="submit" className="bg-[#FF5757;] w-[100px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[16px] xl:text-xl pr-1 xl:pr-6 flex items-center justify-center gap-4">
+          <img className="w-[22px] xl:w-[35px] mb-1" src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg" alt="saveform" />Simpan
         </button>
       </form>
     </div>
