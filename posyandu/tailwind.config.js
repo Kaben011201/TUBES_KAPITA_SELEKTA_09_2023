@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         '2': '30px 1fr',
+        'dua':'1fr 1fr',
         '2-laptop': '60px 1fr'
       },
       backgroundImage: {
