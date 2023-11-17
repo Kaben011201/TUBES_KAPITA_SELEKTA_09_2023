@@ -2,7 +2,8 @@ import React from "react";
 
 const BayiScreen = () => {
   return (
-    <div className="bg-[#F2F1EF] m-[7px] rounded-[5px] xl:rounded-[20px] p-[7px] xl:w-[80%] xl:mx-auto xl:my-10 xl:px-[57px] xl:py-[25px]">
+    <main className="flex">
+      <div className="bg-[#F2F1EF] m-[7px] mt-[56px] rounded-[5px] xl:rounded-[20px] p-[7px] xl:w-[80%] xl:mx-auto xl:my-10 xl:px-[57px] xl:mt-[125px] xl:py-[25px]">
       <div className="text-sm breadcrumbs font-bold p-0">
         <ul className="text-[12px] xl:text-xl">
           <li><a href="">Input Data</a></li> 
@@ -218,7 +219,8 @@ const BayiScreen = () => {
           <img className="w-[22px] xl:w-[35px] mb-1" src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg" alt="saveform" />Simpan
         </button>
       </form>
-    </div>
+      </div>
+    </main>
   );
 };
 
