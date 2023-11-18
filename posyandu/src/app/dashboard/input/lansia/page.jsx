@@ -32,7 +32,7 @@ const LansiaScreen = () => {
           <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2 px-2" type="date" name="ttl" id="ttl" value={"1960-03-06"} required/>
         </div>
 
-        <div className="flex gap-6 items-center xl:my-4">
+        <div className="flex gap-6 items-center my-4">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Jenis Kelamin<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
           <div className="flex flex-row gap-10 xl:gap-32">
             <div className="flex gap-2">

@@ -30,7 +30,7 @@ const BalitaScreen = () => {
           <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="date" name="ttl" id="ttl" value={"2023-10-2"} required/>
         </div>
 
-        <div className="flex gap-6 items-center xl:my-4">
+        <div className="flex gap-6 items-center my-4">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Jenis Kelamin<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
           <div className="flex flex-row gap-10 xl:gap-32">
             <div className="flex gap-3">
@@ -74,7 +74,7 @@ const BalitaScreen = () => {
           <textarea className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none" name="alamat" id="alamat" rows="3" value={"Cina"} required></textarea>
         </div>
 
-        <div className="flex gap-6 items-center xl:my-4">
+        <div className="flex gap-6 items-center my-4">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Punya Buku KIA?<span className="text-red-500 absolute mt-[-18px] xl:mt-[-8px]">*</span></label>
           <div className="flex flex-row gap-16 xl:gap-32">
             <div className="flex gap-3">
@@ -108,7 +108,7 @@ const BalitaScreen = () => {
           <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="Lila" id="Lila" value={8} required/>
         </div>
 
-        <div className="flex gap-6 items-center xl:my-4">
+        <div className="flex gap-6 items-center my-4">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Vitamin<span className="text-red-500 absolute mt-[-6px]">*</span></label>
           <div className="flex flex-row gap-16 xl:gap-32">
             <div className="flex gap-3">
@@ -122,7 +122,7 @@ const BalitaScreen = () => {
           </div>
         </div>
 
-        <div className="flex gap-6 items-center xl:my-4">
+        <div className="flex gap-6 items-center my-4">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Imunisasi<span className="text-red-500 absolute mt-[-6px] xl:mt-[-8px]">*</span></label>
           <div className="flex flex-row gap-12 xl:gap-32">
             <div className="flex gap-3">
