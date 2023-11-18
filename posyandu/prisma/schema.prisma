@@ -25,7 +25,17 @@ model Admin {
 }
 
 model Lansia {
-  id Int @unique @default(sequence())
+  id     Int    @unique @default(sequence())
+  nama   String
+  nik    String
+  kk     String
+  ttl    String
+  umur   Int
+  alamat String
+  bb     Int
+  tb     Int
+  tensi  String
+  bpjs   String
 }
 
 model IbuHamil {
