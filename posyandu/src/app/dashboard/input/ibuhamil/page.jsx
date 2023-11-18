@@ -7,7 +7,7 @@ const IbuScreen = () => {
       <div className="text-sm breadcrumbs font-bold p-0">
         <ul className="text-[12px] xl:text-xl">
           <li><a href="">Input Data</a></li> 
-          <li>Ibu</li> 
+          <li>Ibu Hamil</li> 
         </ul>
       </div>
 
