@@ -1,0 +1,11 @@
+baseURL: http://localhost:3000/api
+
+LANSIA
+- GET ALL LANSIA       : baseURL/lansia (GET METHOD)
+- CREATE LANSIA        : baseURL/lansia (POST METHOD)
+- GET LANSIA BY ID     : baseURL/lansia/:id (GET METHOD)
+- DELETE LANSIA BY ID  : baseURL/lansia/:id (DELETE METHOD)
+- UPDATE LANSIA BY ID  : baseURL/lansia/:id (PATCH METHOD)
+
+RIWAYAT
+- GET RIWAYAT LANSIA BY NIK : baseURL/riwayat/lansia/:nik
