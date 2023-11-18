@@ -1,10 +1,7 @@
 const Bulan = () => {
   return (
-    <select className="select select-bordered select-xs xl:select-sm mb-4 max-w-xs">
-      <option disabled selected>
-        Bulan
-      </option>
-      <option>Januari</option>
+    <select className="select select-bordered select-xs xl:select-sm mb-4 max-w-xs mt-[15px] mr-[10px]">
+      <option selected>Januari</option>
       <option>Febuari</option>
       <option>Maret</option>
       <option>April</option>

@@ -12,44 +12,7 @@ const DataBalita = () => {
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <p></p>
         <h3 className="ml-10">Data Balita</h3>
-        <button className="mr-2 bg-white border-black border-[1px] flex items-center justify-between px-4 xl:px6 xl:py-1 rounded-3xl shadow-md normal-case">
-          <p className="font-semibold text-xs">Bulan</p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="20"
-            viewBox="0 0 12 15"
-            fill="none"
-          >
-            <ellipse
-              cx="6"
-              cy="7.5"
-              rx="0.5"
-              ry="0.625"
-              stroke="#545454"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <ellipse
-              cx="3"
-              cy="7.5"
-              rx="0.5"
-              ry="0.625"
-              stroke="#545454"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <ellipse
-              cx="9"
-              cy="7.5"
-              rx="0.5"
-              ry="0.625"
-              stroke="#545454"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </button>
+        <Bulan />
       </div>
       <div className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3">
         <DummyTable />

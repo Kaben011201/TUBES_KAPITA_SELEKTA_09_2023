@@ -13,20 +13,7 @@ const DataBayi = () => {
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <p></p>
         <h3 className="ml-10">Data Bayi</h3>
-        <select className="select select-bordered select-xs xl:select-sm mb-4 max-w-xs mt-[15px] mr-[10px]">
-          <option selected>Januari</option>
-          <option>Febuari</option>
-          <option>Maret</option>
-          <option>April</option>
-          <option>Mei</option>
-          <option>Juni</option>
-          <option>Juli</option>
-          <option>Agustus</option>
-          <option>September</option>
-          <option>Oktober</option>
-          <option>November</option>
-          <option>Desember</option>
-        </select>
+        <Bulan />
       </div>
       <div className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3">
         <DummyTable />
