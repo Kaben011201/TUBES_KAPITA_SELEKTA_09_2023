@@ -7,5 +7,13 @@ LANSIA
 - DELETE LANSIA BY ID  : baseURL/lansia/:id (DELETE METHOD)
 - UPDATE LANSIA BY ID  : baseURL/lansia/:id (PATCH METHOD)
 
+IBU HAMIL
+- GET ALL BUMIL       : baseURL/bumil (GET METHOD)
+- CREATE BUMIL        : baseURL/bumil (POST METHOD)
+- GET BUMIL BY ID     : baseURL/bumil/:id (GET METHOD)
+- DELETE BUMIL BY ID  : baseURL/bumil/:id (DELETE METHOD)
+- UPDATE BUMIL BY ID  : baseURL/bumil/:id (PATCH METHOD)
+
 RIWAYAT
 - GET RIWAYAT LANSIA BY NIK : baseURL/riwayat/lansia/:nik
+- GET RIWAYAT BUMIL BY NIK  : baseURL/riwayat/bumil/:nik

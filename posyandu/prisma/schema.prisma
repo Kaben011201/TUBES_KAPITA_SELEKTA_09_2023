@@ -11,9 +11,11 @@ datasource db {
 }
 
 model Posyandu {
-  id    Int     @unique @default(sequence())
-  nama  String
-  Admin Admin[]
+  id     Int      @unique @default(sequence())
+  nama   String
+  Admin  Admin[]
+  Lansia Lansia[]
+  Bumil  Bumil[]
 }
 
 model Admin {
@@ -25,25 +27,53 @@ model Admin {
 }
 
 model Lansia {
-  id     Int    @unique @default(sequence())
-  nama   String
-  nik    String
-  kk     String
-  ttl    String
-  umur   Int
-  alamat String
-  bb     Int
-  tb     Int
-  tensi  String
-  bpjs   String
+  id           Int      @unique @default(sequence())
+  nama         String
+  nik          String
+  kk           String
+  jenisKelamin String
+  tanggalLahir DateTime @db.Date
+  tempatLahir  String
+  umur         Int
+  alamat       String
+  alamatKK     String
+  bb           Float
+  tb           Float
+  tensi        String
+  bpjs         String
+
+  Posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
+  posyanduId Int?
 }
 
-model IbuHamil {
-  id Int @unique @default(sequence())
-}
+model Bumil {
+  id                Int      @unique @default(sequence())
+  nama              String
+  nik               String
+  kk                String
+  tanggalLahir      DateTime @db.Date
+  tempatLahir       String
+  umur              Int
+  alamat            String
+  alamatKK          String
+  bb                Float
+  tb                Float
+  usiaHamil         Float
+  lingkarLengan     Float
+  bpjs              String
+  g                 Int
+  p                 Int
+  a                 Int
+  hpht              DateTime @db.Date
+  tp                DateTime @db.Date
+  hb                String
+  namaSuami         String
+  nikSuami          String
+  tanggalLahirSuami DateTime @db.Date
+  tempatLahirSuami  DateTime @db.Date
 
-model Balita {
-  id Int @unique @default(sequence())
+  Posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
+  posyanduId Int?
 }
 
 model Bayi {
