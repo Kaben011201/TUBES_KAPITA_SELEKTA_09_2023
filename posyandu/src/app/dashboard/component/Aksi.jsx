@@ -7,17 +7,15 @@ import axios from "axios";
 
 const Aksi = (props) => {
   const router = useRouter();
-  const dummy = props.data.lansia;
-  const [selectedNik, setSelectedNik] = useState(null);
-  const openInfoModal = (nik) => {
-    setSelectedNik(nik);
-    document.getElementById(`modal_info_${props.name}`).showModal();
-  };
-  console.log(selectedNik);
+
   return (
     <td className="whitespace-nowrap">
       {/* History */}
-      <button onClick={() => openInfoModal(props.nik)}>
+      <button
+        onClick={() =>
+          document.getElementById(`modal_info_${props.name}`).showModal()
+        }
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22.5"
@@ -322,10 +320,7 @@ const Aksi = (props) => {
         <div className="modal-box xl:max-w-7xl">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <button
-              onClick={() => setSelectedNik(null)}
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
@@ -343,25 +338,20 @@ const Aksi = (props) => {
               <th>TB</th>
               <th>Tensi Darah</th>
               <th>No. BPJS</th>
-              <th>Aksi</th>
             </tr>
-            {dummy
-              .filter((pasien) => pasien.nik === selectedNik)
-              .map((data, index) => (
-                <tr key={index + 1}>
-                  <td>{index + 1}</td>
-                  <td>{data.nama}</td>
-                  <td>{data.nik}</td>
-                  <td>{data.kk}</td>
-                  <td>{data.ttl}</td>
-                  <td>{data.umur}</td>
-                  <td>{data.alamat}</td>
-                  <td>{data.bb}</td>
-                  <td>{data.tb}</td>
-                  <td>{data.tensi}</td>
-                  <td>{data.bpjs}</td>
-                </tr>
-              ))}
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
           </table>
         </div>
       </dialog>
@@ -905,24 +895,59 @@ const Aksi = (props) => {
               />
             </div>
 
-              <div className="flex gap-6 items-center xl:my-4">
-                <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Jenis Kelamin<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
-                <div className="flex flex-row gap-5 xl:gap-32">
-                  <div className="flex gap-3">
-                    <input className="accent-pink-500" type="radio" name="jenkel" id="laki2" checked required/>
-                    <label className="overflow-hidden" htmlFor="">Laki-laki</label>
-                  </div>
-                  <div className="flex gap-3">
-                    <input className="accent-pink-500" type="radio" name="jenkel" id="perempuan" />
-                    <label htmlFor="">Perempuan</label>
-                  </div>
+            <div className="flex gap-6 items-center xl:my-4">
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Jenis Kelamin
+                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                  *
+                </span>
+              </label>
+              <div className="flex flex-row gap-5 xl:gap-32">
+                <div className="flex gap-3">
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="jenkel"
+                    id="laki2"
+                    checked
+                    required
+                  />
+                  <label className="overflow-hidden" htmlFor="">
+                    Laki-laki
+                  </label>
+                </div>
+                <div className="flex gap-3">
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="jenkel"
+                    id="perempuan"
+                  />
+                  <label htmlFor="">Perempuan</label>
                 </div>
               </div>
-              
-              <div className="flex gap-3 xl:gap-4 items-center">
-                <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Nama Ibu <span className="text-red-500 absolute mt-[-6px]">*</span></label>
-                <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="namaIbu" id="namaIbu" value={"Maria"} required/>
-              </div>
+            </div>
+
+            <div className="flex gap-3 xl:gap-4 items-center">
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Nama Ibu{" "}
+                <span className="text-red-500 absolute mt-[-6px]">*</span>
+              </label>
+              <input
+                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                type="text"
+                name="namaIbu"
+                id="namaIbu"
+                value={"Maria"}
+                required
+              />
+            </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
               <label
@@ -1016,19 +1041,39 @@ const Aksi = (props) => {
               ></textarea>
             </div>
 
-              <div className="flex gap-6 items-center xl:my-4">
-                <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Punya Buku KIA?<span className="text-red-500 absolute mt-[-18px] xl:mt-[-8px]">*</span></label>
-                <div className="flex flex-row gap-16 xl:gap-32">
-                  <div className="flex gap-3">
-                    <input className="accent-pink-500" type="radio" name="bukuKIA" id="iya" checked required/>
-                    <label htmlFor="">Iya</label>
-                  </div>
-                  <div className="flex gap-3">
-                    <input className="accent-pink-500" type="radio" name="bukuKIA" id="tidak" />
-                    <label htmlFor="">Tidak</label>
-                  </div>
+            <div className="flex gap-6 items-center xl:my-4">
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Punya Buku KIA?
+                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-8px]">
+                  *
+                </span>
+              </label>
+              <div className="flex flex-row gap-16 xl:gap-32">
+                <div className="flex gap-3">
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="bukuKIA"
+                    id="iya"
+                    checked
+                    required
+                  />
+                  <label htmlFor="">Iya</label>
+                </div>
+                <div className="flex gap-3">
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="bukuKIA"
+                    id="tidak"
+                  />
+                  <label htmlFor="">Tidak</label>
                 </div>
               </div>
+            </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
               <label
@@ -1106,33 +1151,71 @@ const Aksi = (props) => {
               />
             </div>
 
-              <div className="flex gap-6 items-center xl:my-4">
-                <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Vitamin<span className="text-red-500 absolute mt-[-6px]">*</span></label>
-                <div className="flex flex-row gap-16 xl:gap-32">
-                  <div className="flex gap-3">
-                    <input className="accent-pink-500" type="radio" name="vitamin" id="iya1" checked required/>
-                    <label htmlFor="">Iya</label>
-                  </div>
-                  <div className="flex gap-3">
-                    <input className="accent-pink-500" type="radio" name="vitamin" id="tidak1" />
-                    <label htmlFor="">Tidak</label>
-                  </div>
+            <div className="flex gap-6 items-center xl:my-4">
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Vitamin
+                <span className="text-red-500 absolute mt-[-6px]">*</span>
+              </label>
+              <div className="flex flex-row gap-16 xl:gap-32">
+                <div className="flex gap-3">
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="vitamin"
+                    id="iya1"
+                    checked
+                    required
+                  />
+                  <label htmlFor="">Iya</label>
+                </div>
+                <div className="flex gap-3">
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="vitamin"
+                    id="tidak1"
+                  />
+                  <label htmlFor="">Tidak</label>
                 </div>
               </div>
+            </div>
 
-              <div className="flex gap-6 items-center xl:my-4">
-                <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Imunisasi<span className="text-red-500 absolute mt-[-6px] xl:mt-[-8px]">*</span></label>
-                <div className="flex flex-row gap-5 xl:gap-32">
-                  <div className="flex gap-3">
-                    <input className="accent-pink-500" type="radio" name="imunisasi" id="DPT" checked required/>
-                    <label htmlFor="">DPT-HB-Hib</label>
-                  </div>
-                  <div className="flex gap-3">
-                    <input className="accent-pink-500" type="radio" name="imunisasi" id="campak" />
-                    <label htmlFor="">Campak</label>
-                  </div>
+            <div className="flex gap-6 items-center xl:my-4">
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Imunisasi
+                <span className="text-red-500 absolute mt-[-6px] xl:mt-[-8px]">
+                  *
+                </span>
+              </label>
+              <div className="flex flex-row gap-5 xl:gap-32">
+                <div className="flex gap-3">
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="imunisasi"
+                    id="DPT"
+                    checked
+                    required
+                  />
+                  <label htmlFor="">DPT-HB-Hib</label>
+                </div>
+                <div className="flex gap-3">
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="imunisasi"
+                    id="campak"
+                  />
+                  <label htmlFor="">Campak</label>
                 </div>
               </div>
+            </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
               <label
@@ -1303,7 +1386,15 @@ const Aksi = (props) => {
             </div>
 
             <div className="flex gap-6 items-center xl:my-4">
-              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Jenis Kelamin<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Jenis Kelamin
+                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                  *
+                </span>
+              </label>
               <div className="flex flex-row gap-5 xl:gap-32">
                 <div className="flex gap-3">
                   <input
@@ -1439,7 +1530,15 @@ const Aksi = (props) => {
             </div>
 
             <div className="flex gap-6 items-center xl:my-4">
-              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Punya Buku KIA?<span className="text-red-500 absolute mt-[-18px] xl:mt-[-7px]">*</span></label>
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Punya Buku KIA?
+                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-7px]">
+                  *
+                </span>
+              </label>
               <div className="flex flex-row gap-16 xl:gap-32">
                 <div className="flex gap-3">
                   <input
@@ -1561,7 +1660,12 @@ const Aksi = (props) => {
             </div>
 
             <div className="flex gap-6 items-center xl:my-4">
-              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Vitamin (2 Bulan)</label>
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Vitamin (2 Bulan)
+              </label>
               <div className="flex flex-row gap-16 xl:gap-32">
                 <div className="flex gap-3">
                   <input
@@ -1635,7 +1739,12 @@ const Aksi = (props) => {
             </div>
 
             <div className="flex gap-6 items-center mt-1 xl:my-4">
-              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Vitamin A</label>
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Vitamin A
+              </label>
               <div className="flex flex-row gap-16 xl:gap-32">
                 <div className="flex gap-3">
                   <input
@@ -1660,34 +1769,79 @@ const Aksi = (props) => {
             </div>
 
             <div className="flex gap-4 xl:gap-6 mt-1 xl:my-4">
-              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Imunisasi<span className="text-red-500 absolute mt-[-6px] xl:mt-[-9px]">*</span></label>
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Imunisasi
+                <span className="text-red-500 absolute mt-[-6px] xl:mt-[-9px]">
+                  *
+                </span>
+              </label>
               <div className="grid w-[77%] xl:w-[65%] grid-flow-row xl:grid-cols-3 gap-2 text-[11px] xl:text-base font-medium">
                 <div className="flex gap-1">
-                  <input className="accent-pink-500" type="radio" name="imunisasi" id="imun1" checked required/>
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="imunisasi"
+                    id="imun1"
+                    checked
+                    required
+                  />
                   <label htmlFor="">HB 0-7 Hari</label>
                 </div>
                 <div className="flex gap-1">
-                  <input className="accent-pink-500" type="radio" name="imunisasi" id="imun2"/>
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="imunisasi"
+                    id="imun2"
+                  />
                   <label htmlFor="">DXG/Polio 1</label>
                 </div>
                 <div className="flex gap-1">
-                  <input className="accent-pink-500" type="radio" name="imunisasi" id="imun3" />
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="imunisasi"
+                    id="imun3"
+                  />
                   <label htmlFor="">DPT-HB-Hib 1/Polio 2</label>
                 </div>
                 <div className="flex gap-1">
-                  <input className="accent-pink-500" type="radio" name="imunisasi" id="imun4" />
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="imunisasi"
+                    id="imun4"
+                  />
                   <label htmlFor="">DPT-HB-Hib 2/Polio 3</label>
                 </div>
                 <div className="flex gap-1">
-                  <input className="accent-pink-500" type="radio" name="imunisasi" id="imun5"/>
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="imunisasi"
+                    id="imun5"
+                  />
                   <label htmlFor="">DPT-HB-Hib 3/Polio 4</label>
                 </div>
                 <div className="flex gap-1">
-                  <input className="accent-pink-500" type="radio" name="imunisasi" id="imun6" />
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="imunisasi"
+                    id="imun6"
+                  />
                   <label htmlFor="">IPV</label>
                 </div>
                 <div className="flex gap-1">
-                  <input className="accent-pink-500" type="radio" name="imunisasi" id="imun7" />
+                  <input
+                    className="accent-pink-500"
+                    type="radio"
+                    name="imunisasi"
+                    id="imun7"
+                  />
                   <label htmlFor="">Campak</label>
                 </div>
               </div>
@@ -1809,6 +1963,22 @@ const Aksi = (props) => {
 
             <div className="flex gap-3 xl:gap-4 items-center">
               <label
+                className="w-[23%] xl:w-[18%] text-end font-medium"
+                htmlFor=""
+              >
+                No KK
+              </label>
+              <input
+                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                type="text"
+                name="nokk"
+                id="nokk"
+                value={"11111111"}
+              />
+            </div>
+
+            <div className="flex gap-3 xl:gap-4 items-center">
+              <label
                 className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                 htmlFor=""
               >
@@ -1848,7 +2018,15 @@ const Aksi = (props) => {
             </div>
 
             <div className="flex gap-6 items-center xl:my-4">
-              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Jenis Kelamin<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
+              <label
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                htmlFor=""
+              >
+                Jenis Kelamin
+                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                  *
+                </span>
+              </label>
               <div className="flex flex-row gap-6 xl:gap-32">
                 <div className="flex gap-2">
                   <input
@@ -1987,14 +2165,14 @@ const Aksi = (props) => {
 
             <button
               type="submit"
-              className="bg-[#FF5757;] w-[100px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[16px] xl:text-xl pr-1 xl:pr-6 flex items-center justify-center gap-1 xl:gap-4"
+              className="bg-[#FF5757;] w-[150px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[12px] xl:text-sm pr-1 flex items-center justify-center gap-1"
             >
               <img
-                className="w-[22px] xl:w-[35px] mb-1"
+                className="w-[20px] xl:w-[35px] mb-1"
                 src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg"
                 alt="saveform"
               />
-              Simpan
+              Simpan Perubahan
             </button>
           </form>
         </div>

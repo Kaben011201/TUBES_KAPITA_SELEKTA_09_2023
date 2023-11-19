@@ -1,5 +1,6 @@
 import React from "react";
 import DummyTable from "./component/DummyTable";
+import Bulan from "../../component/Bulan";
 
 export const metadata = {
   title: "Data Lansia",
