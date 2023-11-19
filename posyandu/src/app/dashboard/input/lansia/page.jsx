@@ -70,7 +70,7 @@ const LansiaScreen = () => {
         </div>
 
         <form
-          onSubmit={addLansia}
+          action=""
           className="flex flex-col gap-[7px] text-[12px] xl:text-base my-2 xl:mt-6"
         >
           <div className="flex gap-3 xl:gap-4 items-center">
@@ -78,15 +78,16 @@ const LansiaScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium"
               htmlFor=""
             >
-              No. Urut{" "}
+              Tanggal Kunjungan
               <span className="text-red-500 absolute mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-              type="number"
-              name="urut"
-              id="urut"
-              value={2}
+              type="date"
+              name="kunjung"
+              id="kunjung"
+              value={""}
+              onChange={handleInput}
               required
             />
           </div>
@@ -103,7 +104,8 @@ const LansiaScreen = () => {
               type="text"
               name="nik"
               id="nik"
-              value={"123433"}
+              value={inputs.nik}
+              onChange={handleInput}
             />
           </div>
 
@@ -119,7 +121,8 @@ const LansiaScreen = () => {
               type="text"
               name="nokk"
               id="nokk"
-              value={"11111111"}
+              value={inputs.nokk}
+              onChange={handleInput}
             />
           </div>
 
@@ -138,7 +141,8 @@ const LansiaScreen = () => {
               type="text"
               name="nama"
               id="nama"
-              value={"Jamal"}
+              value={inputs.nama}
+              onChange={handleInput}
               required
             />
           </div>
@@ -158,7 +162,8 @@ const LansiaScreen = () => {
               type="date"
               name="ttl"
               id="ttl"
-              value={"1960-03-06"}
+              value={inputs.ttl}
+              onChange={handleInput}
               required
             />
           </div>
@@ -180,7 +185,9 @@ const LansiaScreen = () => {
                   type="radio"
                   name="jenkel"
                   id="pria"
-                  checked
+                  checked={(inputs.jenkel = "L")}
+                  value={inputs.jenkel}
+                  onChange={handleInput}
                   required
                 />
                 <label htmlFor="">Laki-laki</label>
@@ -191,6 +198,9 @@ const LansiaScreen = () => {
                   type="radio"
                   name="jenkel"
                   id="wanita"
+                  checked={(inputs.jenkel = "P")}
+                  value={inputs.jenkel}
+                  onChange={handleInput}
                 />
                 <label htmlFor="">Perempuan</label>
               </div>
@@ -209,7 +219,8 @@ const LansiaScreen = () => {
               name="alamat"
               id="alamat"
               rows="3"
-              value={"Di kamar janda"}
+              value={inputs.alamat}
+              onChange={handleInput}
               required
             ></textarea>
           </div>
@@ -226,10 +237,11 @@ const LansiaScreen = () => {
             </label>
             <textarea
               className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
-              name="alamat"
-              id="alamat"
+              name="alamatKK"
+              id="alamatKK"
               rows="3"
-              value={"Di kamar mandi"}
+              value={inputs.alamatKK}
+              onChange={handleInput}
               required
             ></textarea>
           </div>
@@ -246,7 +258,8 @@ const LansiaScreen = () => {
               type="number"
               name="BB"
               id="BB"
-              value={60}
+              value={inputs.BB}
+              onChange={handleInput}
               required
             />
           </div>
@@ -263,7 +276,47 @@ const LansiaScreen = () => {
               type="number"
               name="TB"
               id="TB"
-              value={170}
+              value={inputs.TB}
+              onChange={handleInput}
+              required
+            />
+          </div>
+
+          <div className="flex gap-3 xl:gap-4 items-center">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              Tensi Darah (mmHg)
+              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                *
+              </span>
+            </label>
+            <input
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              type="number"
+              name="tensi"
+              id="tensi"
+              value={inputs.tensi}
+              onChange={handleInput}
+              required
+            />
+          </div>
+
+          <div className="flex gap-3 xl:gap-4 items-center">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              No. BPJS<span className="text-red-500 absolute mt-[-6px]">*</span>
+            </label>
+            <input
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              type="text"
+              name="BPJS"
+              id="BPJS"
+              value={inputs.BPJS}
+              onChange={handleInput}
               required
             />
           </div>
