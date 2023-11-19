@@ -1963,6 +1963,22 @@ const Aksi = (props) => {
 
             <div className="flex gap-3 xl:gap-4 items-center">
               <label
+                className="w-[23%] xl:w-[18%] text-end font-medium"
+                htmlFor=""
+              >
+                No KK
+              </label>
+              <input
+                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                type="text"
+                name="nokk"
+                id="nokk"
+                value={"11111111"}
+              />
+            </div>
+
+            <div className="flex gap-3 xl:gap-4 items-center">
+              <label
                 className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                 htmlFor=""
               >
@@ -2149,14 +2165,14 @@ const Aksi = (props) => {
 
             <button
               type="submit"
-              className="bg-[#FF5757;] w-[100px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[16px] xl:text-xl pr-1 xl:pr-6 flex items-center justify-center gap-1 xl:gap-4"
+              className="bg-[#FF5757;] w-[150px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[12px] xl:text-sm pr-1 flex items-center justify-center gap-1"
             >
               <img
-                className="w-[22px] xl:w-[35px] mb-1"
+                className="w-[20px] xl:w-[35px] mb-1"
                 src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg"
                 alt="saveform"
               />
-              Simpan
+              Simpan Perubahan
             </button>
           </form>
         </div>

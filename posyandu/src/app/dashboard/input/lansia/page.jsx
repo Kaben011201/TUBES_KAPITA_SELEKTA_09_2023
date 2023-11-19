@@ -23,6 +23,11 @@ const LansiaScreen = () => {
         </div>
 
         <div className="flex gap-3 xl:gap-4 items-center">
+          <label className="w-[23%] xl:w-[18%] text-end font-medium" htmlFor="">No KK</label>
+          <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="nokk" id="nokk" value={'11111111'} />
+        </div>
+
+        <div className="flex gap-3 xl:gap-4 items-center">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Nama Lengkap <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
           <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="nama" id="nama" value={"Jamal"} required/>
         </div>
