@@ -13,8 +13,8 @@ const BalitaScreen = () => {
       
       <form action="" className="flex flex-col gap-[7px] text-[12px] xl:text-base my-2 xl:mt-6">
         <div className="flex gap-3 xl:gap-4 items-center">
-          <label className="w-[23%] xl:w-[18%] text-end font-medium" htmlFor="">No. Urut <span className="text-red-500 absolute mt-[-6px]">*</span></label>
-          <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="urut" id="urut" value={1} required/>
+          <label className="w-[23%] xl:w-[18%] text-end font-medium" htmlFor="">Tanggal Kunjungan<span className="text-red-500 absolute mt-[-6px]">*</span></label>
+          <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="date" name="kunjung" id="kunjung" value={""} required/>
         </div>
         <div className="flex gap-3 xl:gap-4 items-center">
           <label className="w-[23%] xl:w-[18%] text-end font-medium" htmlFor="">NIK</label>
@@ -71,7 +71,7 @@ const BalitaScreen = () => {
 
         <div className="flex gap-3 xl:gap-4 items-center">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Alamat Domisili KK<span className="text-red-500 absolute mt-[-20px] xl:mt-[-9px]">*</span></label>
-          <textarea className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none" name="alamat" id="alamat" rows="3" value={"Cina"} required></textarea>
+          <textarea className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none" name="alamatKK" id="alamatKK" rows="3" value={"Cina"} required></textarea>
         </div>
 
         <div className="flex gap-6 items-center my-4">
