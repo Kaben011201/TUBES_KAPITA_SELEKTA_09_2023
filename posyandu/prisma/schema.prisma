@@ -33,7 +33,6 @@ model Lansia {
   kk           String
   jenisKelamin String
   tanggalLahir DateTime @db.Date
-  tempatLahir  String
   umur         Int
   alamat       String
   alamatKK     String
@@ -52,7 +51,6 @@ model Bumil {
   nik               String
   kk                String
   tanggalLahir      DateTime @db.Date
-  tempatLahir       String
   umur              Int
   alamat            String
   alamatKK          String
