@@ -7,17 +7,15 @@ import axios from "axios";
 
 const Aksi = (props) => {
   const router = useRouter();
-  const dummy = props.data.lansia;
-  const [selectedNik, setSelectedNik] = useState(null);
-  const openInfoModal = (nik) => {
-    setSelectedNik(nik);
-    document.getElementById(`modal_info_${props.name}`).showModal();
-  };
-  console.log(selectedNik);
+
   return (
     <td className="whitespace-nowrap">
       {/* History */}
-      <button onClick={() => openInfoModal(props.nik)}>
+      <button
+        onClick={() =>
+          document.getElementById(`modal_info_${props.name}`).showModal()
+        }
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22.5"
@@ -322,10 +320,7 @@ const Aksi = (props) => {
         <div className="modal-box xl:max-w-7xl">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <button
-              onClick={() => setSelectedNik(null)}
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
@@ -343,25 +338,20 @@ const Aksi = (props) => {
               <th>TB</th>
               <th>Tensi Darah</th>
               <th>No. BPJS</th>
-              <th>Aksi</th>
             </tr>
-            {dummy
-              .filter((pasien) => pasien.nik === selectedNik)
-              .map((data, index) => (
-                <tr key={index + 1}>
-                  <td>{index + 1}</td>
-                  <td>{data.nama}</td>
-                  <td>{data.nik}</td>
-                  <td>{data.kk}</td>
-                  <td>{data.ttl}</td>
-                  <td>{data.umur}</td>
-                  <td>{data.alamat}</td>
-                  <td>{data.bb}</td>
-                  <td>{data.tb}</td>
-                  <td>{data.tensi}</td>
-                  <td>{data.bpjs}</td>
-                </tr>
-              ))}
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
           </table>
         </div>
       </dialog>
@@ -376,450 +366,135 @@ const Aksi = (props) => {
               ✕
             </button>
           </form>
-          <form
-            action=""
-            className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
-          >
+          <form action="" className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal">
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium"
-                htmlFor=""
-              >
-                No. Urut{" "}
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="number"
-                name="urut"
-                id="urut"
-                value={1}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium" htmlFor="">No. Urut <span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="urut" id="urut" value={1} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium"
-                htmlFor=""
-              >
-                No KK
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="text"
-                name="nokk"
-                id="nokk"
-                value={"11111111"}
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium" htmlFor="">No KK</label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="nokk" id="nokk" value={'11111111'} />
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2] "
-                htmlFor=""
-              >
-                Nama Ibu Hamil
-                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
-                  *
-                </span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="text"
-                name="namaIbu"
-                id="namaIbu"
-                value={"Asunta"}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2] " htmlFor="">Nama Ibu Hamil<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="namaIbu" id="namaIbu" value={'Asunta'} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium"
-                htmlFor=""
-              >
-                NIK Ibu Hamil
-                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
-                  *
-                </span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="text"
-                name="nik"
-                id="nik"
-                value={"12345"}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium" htmlFor="">NIK Ibu Hamil<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="nik" id="nik" value={'12345'} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2] text-[11px] xl:text-base"
-                htmlFor=""
-              >
-                Tanggal Lahir Ibu Hamil
-                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
-                  *
-                </span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm px-2"
-                type="date"
-                name="ttlIbu"
-                id="ttlIbu"
-                value={"2003-12-01"}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2] text-[11px] xl:text-base" htmlFor="">Tanggal Lahir Ibu Hamil<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm px-2" type="date" name="ttlIbu" id="ttlIbu" value={"2003-12-01"} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                Umur Ibu Hamil
-                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
-                  *
-                </span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="number"
-                name="umurIbu"
-                id="umurIbu"
-                value={20}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Umur Ibu Hamil<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="umurIbu" id="umurIbu" value={20} required/>
+            </div>
+            
+            <div className="flex gap-3 xl:gap-4 items-center">
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Nama Suami <span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="namaSuami" id="namaSuami" value={"Agus santoso"} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                Nama Suami{" "}
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="text"
-                name="namaSuami"
-                id="namaSuami"
-                value={"Agus santoso"}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">NIK Suami <span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="nikSuami" id="nikSuami" value={54321} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                NIK Suami{" "}
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="text"
-                name="nikSuami"
-                id="nikSuami"
-                value={54321}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Tanggal Lahir Suami<span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm px-2" type="date" name="ttlSuami" id="ttlSuami" value={"2023-12-12"} required/>
+            </div>
+            
+            <div className="flex gap-3 xl:gap-4 items-center">
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Alamat <span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <textarea className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none" name="alamat" id="alamat" rows="3" value={"Karimun Jawa"} required></textarea>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                Tanggal Lahir Suami
-                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
-                  *
-                </span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm px-2"
-                type="date"
-                name="ttlSuami"
-                id="ttlSuami"
-                value={"2023-12-12"}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Alamat Domisili KK<span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span></label>
+              <textarea className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none" name="alamat" id="alamat" rows="3" value={"Karimun cina"} required></textarea>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                Alamat{" "}
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <textarea
-                className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
-                name="alamat"
-                id="alamat"
-                rows="3"
-                value={"Karimun Jawa"}
-                required
-              ></textarea>
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">BB (kg)<span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="BB" id="BB" value={60} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                Alamat Domisili KK
-                <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
-                  *
-                </span>
-              </label>
-              <textarea
-                className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
-                name="alamat"
-                id="alamat"
-                rows="3"
-                value={"Karimun cina"}
-                required
-              ></textarea>
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">TB (cm)<span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="TB" id="TB" value={160} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                BB (kg)
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="number"
-                name="BB"
-                id="BB"
-                value={60}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-semibold leading-[1.2] text-[10px] xl:text-base xl:font-medium" htmlFor="">Usia Kehamilan (bulan)<span className="text-red-500 absolute mt-[-19px] xl:mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="usiaHamil" id="usiaHamil" value={5.5} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                TB (cm)
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="number"
-                name="TB"
-                id="TB"
-                value={160}
-                required
-              />
-            </div>
-
-            <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-semibold leading-[1.2] text-[10px] xl:text-base xl:font-medium"
-                htmlFor=""
-              >
-                Usia Kehamilan (bulan)
-                <span className="text-red-500 absolute mt-[-19px] xl:mt-[-6px]">
-                  *
-                </span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="number"
-                name="usiaHamil"
-                id="usiaHamil"
-                value={5.5}
-                required
-              />
-            </div>
-
-            <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                Lingkar Lengan (cm)
-                <span className="text-red-500 absolute mt-[-19px] xl:mt-[-6px]">
-                  *
-                </span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="number"
-                name="Lila"
-                id="Lila"
-                value={20}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Lingkar Lengan (cm)<span className="text-red-500 absolute mt-[-19px] xl:mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="Lila" id="Lila" value={20} required/>
             </div>
 
             <div className="flex gap-8 xl:gap-8">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                GPA <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <div className="w-[77%] xl:w-[82%] flex flex-col gap-[7px] text-medium xl:text-base xl:font-medium">
-                <div className="flex xl:gap-4 items-center">
-                  <label className="w-[15%] xl:w-[20%]" htmlFor="">
-                    G
-                  </label>
-                  <input
-                    className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                    type="number"
-                    name="G"
-                    id="G"
-                    value={2}
-                    required
-                  />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">GPA <span className="text-red-500 absolute mt-[-6px]">*</span></label>
+                <div className="w-[77%] xl:w-[82%] flex flex-col gap-[7px] text-medium xl:text-base xl:font-medium">
+                    <div className="flex xl:gap-4 items-center">
+                        <label className="w-[15%] xl:w-[20%]" htmlFor="">G</label>
+                        <input className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="G" id="G" value={2} required/>
+                    </div>
+
+                    <div className="flex xl:gap-4 items-center">
+                        <label className="w-[15%] xl:w-[20%]" htmlFor="">P</label>
+                        <input className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="P" id="P" value={1} required/>
+                    </div>
+
+                    <div className="flex xl:gap-4 items-center">
+                        <label className="w-[15%] xl:w-[20%]" htmlFor="">A</label>
+                        <input className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="A" id="A" value={0} required/>
+                    </div>
                 </div>
-
-                <div className="flex xl:gap-4 items-center">
-                  <label className="w-[15%] xl:w-[20%]" htmlFor="">
-                    P
-                  </label>
-                  <input
-                    className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                    type="number"
-                    name="P"
-                    id="P"
-                    value={1}
-                    required
-                  />
-                </div>
-
-                <div className="flex xl:gap-4 items-center">
-                  <label className="w-[15%] xl:w-[20%]" htmlFor="">
-                    A
-                  </label>
-                  <input
-                    className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                    type="number"
-                    name="A"
-                    id="A"
-                    value={0}
-                    required
-                  />
-                </div>
-              </div>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                HPHT<span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="date"
-                name="HPHT"
-                id="HPHT"
-                value={"2022-02-05"}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">HPHT<span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="date" name="HPHT" id="HPHT" value={"2022-02-05"} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                TP<span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="date"
-                name="TP"
-                id="TP"
-                value={"2022-11-05"}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">TP<span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="date" name="TP" id="TP" value={"2022-11-05"} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                HB (g/dL)
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="number"
-                name="HB"
-                id="HB"
-                value={434}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">HB (g/dL)<span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="number" name="HB" id="HB" value={434} required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                No. Hp/WA
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="tel"
-                name="noHp"
-                id="noHp"
-                value={"0821-3035-3114"}
-                pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}"
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">No. Hp/WA<span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="tel" name="noHp" id="noHp" value={"0821-3035-3114"} pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" required/>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-                htmlFor=""
-              >
-                No. BPJS
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="text"
-                name="BPJS"
-                id="BPJS"
-                value={"12345"}
-                required
-              />
+              <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">No. BPJS<span className="text-red-500 absolute mt-[-6px]">*</span></label>
+              <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="BPJS" id="BPJS" value={"12345"} required/>
             </div>
 
-            <button
-              type="submit"
-              className="bg-[#FF5757;] w-[150px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[12px] xl:text-sm pr-1 flex items-center justify-center gap-1"
-            >
-              <img
-                className="w-[20px] xl:w-[35px] mb-1"
-                src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg"
-                alt="saveform"
-              />
-              Simpan Perubahan
+            <button type="submit" className="bg-[#FF5757;] w-[150px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[12px] xl:text-sm pr-1 flex items-center justify-center gap-1">
+              <img className="w-[20px] xl:w-[35px] mb-1" src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg" alt="saveform" />Simpan Perubahan
             </button>
           </form>
         </div>
       </dialog>
 
+<<<<<<< HEAD
       {/* modal edit balita */}
       <dialog id="modal_edit_balita" className="modal">
         <div className="modal-box xl:max-w-7xl">
@@ -1999,6 +1674,8 @@ const Aksi = (props) => {
           </form>
         </div>
       </dialog>
+=======
+>>>>>>> parent of bd0b671 (commit dummytable unfinish)
     </td>
   );
 };
