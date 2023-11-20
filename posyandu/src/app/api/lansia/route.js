@@ -18,6 +18,10 @@ export async function GET() {
 export async function POST(req) {
   try {
     const data = await req.json();
+    data.umur = parseFloat(data.umur);
+    data.tb = parseFloat(data.tb);
+    data.bb = parseFloat(data.bb);
+
     const lansia = await prisma.lansia.create({ data });
 
     return Response.json({

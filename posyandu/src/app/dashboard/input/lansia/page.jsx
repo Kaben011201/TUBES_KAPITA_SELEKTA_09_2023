@@ -31,9 +31,9 @@ const LansiaScreen = () => {
     const data = {
       nama: inputs.nama,
       nik: inputs.nik,
-      nokk: inputs.nokk,
-      jenkel: inputs.jenkel,
-      ttl: inputs.ttl,
+      kk: inputs.kk,
+      jenisKelamin: inputs.jenisKelamin,
+      tanggalLahir: new Date(inputs.tanggalLahir),
       umur: inputs.umur,
       alamat: inputs.alamat,
       alamatKK: inputs.alamatKK,
@@ -51,11 +51,14 @@ const LansiaScreen = () => {
         } else {
           alert(response.data.message);
         }
+        console.log(response.data);
       })
       .catch(function (error) {
         alert(error.data.message);
         console.log(error);
       });
+
+    setInputs("");
   };
   return (
     <main className="flex">
@@ -118,9 +121,9 @@ const LansiaScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="text"
-              name="nokk"
-              id="nokk"
-              value={inputs.nokk}
+              name="kk"
+              id="kk"
+              value={inputs.kk}
               onChange={handleInput}
             />
           </div>
@@ -159,9 +162,9 @@ const LansiaScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2 px-2"
               type="date"
-              name="ttl"
-              id="ttl"
-              value={inputs.ttl}
+              name="tanggalLahir"
+              id="tanggalLahir"
+              value={inputs.tanggalLahir}
               onChange={handleInput}
               required
             />
@@ -199,10 +202,10 @@ const LansiaScreen = () => {
                 <input
                   className="accent-pink-500"
                   type="radio"
-                  name="jenkel"
+                  name="jenisKelamin"
                   id="pria"
-                  checked={(inputs.jenkel = "L")}
-                  value={inputs.jenkel}
+                  checked={(inputs.jenisKelamin = "L")}
+                  value={inputs.jenisKelamin}
                   onChange={handleInput}
                   required
                 />
