@@ -1,13 +1,64 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import axiosConfig from "../../../utils/axios";
 
 const Aksi = (props) => {
   const router = useRouter();
+  const [lansiaFilter, setLansiaFilter] = useState([]);
+  const getLansiaFilter = async () => {
+    try {
+      const response = await axiosConfig.get(
+        `http://localhost:3000/api/riwayat/lansia/${props.nik}`
+      );
 
+      if (response.data.status !== 400) {
+        console.log("Berhasil menampilkan riwayat pasien");
+      } else {
+        alert(response.data.message);
+      }
+
+      console.log(response.data);
+      setLansiaFilter(response.data.data);
+    } catch (error) {
+      if (error.response && error.response.data) {
+        // If there is a response from the server
+        alert(error.response.data.message);
+        console.log(error.response.data);
+      } else {
+        // If there is no response from the server
+        alert("An error occurred while fetching data");
+        console.error(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getLansiaFilter();
+  }, []);
+
+  const renderTableLansia = () => {
+    return lansiaFilter.map((lansia, index) => {
+      return (
+        <tr>
+          <td>{index + 1}</td>
+          <td>{lansia.nama}</td>
+          <td>{lansia.nik}</td>
+          <td>{lansia.kk}</td>
+          <td>{lansia.tanggalLahir}</td>
+          <td>{lansia.jenisKelamin}</td>
+          <td>{lansia.umur}</td>
+          <td>{lansia.alamat}</td>
+          <td>{lansia.bb}</td>
+          <td>{lansia.tb}</td>
+          <td>{lansia.tensi}</td>
+          <td>{lansia.bpjs}</td>
+        </tr>
+      );
+    });
+  };
   return (
     <td className="whitespace-nowrap">
       {/* History */}
@@ -332,6 +383,7 @@ const Aksi = (props) => {
               <th>NIK</th>
               <th>No. KK</th>
               <th>TTL</th>
+              <th>Jenis Kelamin</th>
               <th>Umur</th>
               <th>Alamat</th>
               <th>BB</th>
@@ -339,19 +391,7 @@ const Aksi = (props) => {
               <th>Tensi Darah</th>
               <th>No. BPJS</th>
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            {renderTableLansia()}
           </table>
         </div>
       </dialog>

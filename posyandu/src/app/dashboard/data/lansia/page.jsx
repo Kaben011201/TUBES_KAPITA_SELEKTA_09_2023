@@ -1,35 +1,56 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import Bulan from "../../component/Bulan";
-import DummyTable from "./component/DummyTable";
 import axiosConfig from "../../../../utils/axios";
+import Aksi from "../../component/Aksi";
 
 const DataLansia = () => {
-  
+  const [lansia, setLansia] = useState([]);
   const getLansia = async () => {
+    try {
+      const response = await axiosConfig.get(
+        "http://localhost:3000/api/lansia"
+      );
 
-    const [lansia, setLansia] = useState([]);
+      if (response.data.status !== 400) {
+        console.log("Berhasil menampilkan data");
+      } else {
+        alert(response.data.message);
+      }
 
-    axiosConfig
-      .get("http://localhost:3000/api/lansia", data)
-      .then(function (response) {
-        if (response.data.status != 400) {
-          alert("Wanghasil wangnambahkan wangta wangsia");
-        } else {
-          alert(response.data.message);
-        }
-        console.log(response.data);
-        setLansia(response.data.data)
-      })
-      .catch(function (error) {
-        alert(error.data.message);
-        console.log(error);
-      });
-    
-  }
+      console.log(response.data);
+      setLansia(response.data.data);
+    } catch (error) {
+      alert(error.data.message);
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    getLansia()
-  },[]);
+    getLansia();
+  }, []);
+
+  const renderTable = () => {
+    return lansia.map((lansia, index) => {
+      return (
+        <tr key={lansia.nik}>
+          <td>{index + 1}</td>
+          <td>{lansia.nama}</td>
+          <td>{lansia.nik}</td>
+          <td>{lansia.kk}</td>
+          <td>{lansia.tanggalLahir}</td>
+          <td>{lansia.jenisKelamin}</td>
+          <td>{lansia.umur}</td>
+          <td>{lansia.alamat}</td>
+          <td>{lansia.bb}</td>
+          <td>{lansia.tb}</td>
+          <td>{lansia.tensi}</td>
+          <td>{lansia.bpjs}</td>
+          <Aksi name="lansia" nik={lansia.nik} />
+        </tr>
+      );
+    });
+  };
 
   return (
     <main className="flex flex-col justify-center items-center">
@@ -39,7 +60,24 @@ const DataLansia = () => {
         <Bulan />
       </div>
       <div className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3">
-        <DummyTable />
+        <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
+          <tr>
+            <th>No.</th>
+            <th>Nama</th>
+            <th>NIK</th>
+            <th>No. KK</th>
+            <th>Tanggal Lahir</th>
+            <th>Jenis Kelamin</th>
+            <th>Umur</th>
+            <th>Alamat</th>
+            <th>BB</th>
+            <th>TB</th>
+            <th>Tensi Darah</th>
+            <th>No. BPJS</th>
+            <th>Aksi</th>
+          </tr>
+          {renderTable()}
+        </table>
       </div>
       <div className="mt-7 mb-10 w-[80%] flex items-center justify-end">
         <button className="btn bg-[#FEE] flex items-center justify-between px-7 rounded-3xl shadow-md normal-case">
