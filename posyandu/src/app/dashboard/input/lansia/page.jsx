@@ -58,7 +58,7 @@ const LansiaScreen = () => {
         console.log(error);
       });
 
-    setInputs("");
+    window.location.reload();
   };
   return (
     <main className="flex">
