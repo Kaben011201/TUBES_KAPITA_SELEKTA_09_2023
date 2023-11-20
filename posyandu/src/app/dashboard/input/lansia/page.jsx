@@ -11,7 +11,7 @@ const LansiaScreen = () => {
     tanggalLahir: "",
     umur: "",
     alamat: "",
-    alamaKK: "",
+    alamatKK: "",
     bb: "",
     tb: "",
     tensi: "",
@@ -32,15 +32,15 @@ const LansiaScreen = () => {
       nama: inputs.nama,
       nik: inputs.nik,
       nokk: inputs.nokk,
-      jenkel: jenkel,
+      jenkel: inputs.jenkel,
       ttl: inputs.ttl,
       umur: inputs.umur,
       alamat: inputs.alamat,
       alamatKK: inputs.alamatKK,
-      BB: inputs.BB,
-      TB: inputs.TB,
+      bb: inputs.bb,
+      tb: inputs.tb,
       tensi: inputs.tensi,
-      BPJS: inputs.BPJS,
+      bpjs: inputs.bpjs,
     };
 
     axiosConfig
@@ -70,7 +70,7 @@ const LansiaScreen = () => {
         </div>
 
         <form
-          action=""
+          onSubmit={addLansia}
           className="flex flex-col gap-[7px] text-[12px] xl:text-base my-2 xl:mt-6"
         >
           <div className="flex gap-3 xl:gap-4 items-center">
@@ -86,7 +86,6 @@ const LansiaScreen = () => {
               type="date"
               name="kunjung"
               id="kunjung"
-              value={""}
               onChange={handleInput}
               required
             />
@@ -131,7 +130,7 @@ const LansiaScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
-              Nama Lengkap{" "}
+              Nama Lengkap
               <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
                 *
               </span>
@@ -165,6 +164,23 @@ const LansiaScreen = () => {
               value={inputs.ttl}
               onChange={handleInput}
               required
+            />
+          </div>
+
+          <div className="flex gap-3 xl:gap-4 items-center">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium"
+              htmlFor=""
+            >
+              Umur
+            </label>
+            <input
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              type="number"
+              name="umur"
+              id="umur"
+              value={inputs.umur}
+              onChange={handleInput}
             />
           </div>
 
@@ -256,9 +272,9 @@ const LansiaScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="BB"
+              name="bb"
               id="BB"
-              value={inputs.BB}
+              value={inputs.bb}
               onChange={handleInput}
               required
             />
@@ -274,9 +290,9 @@ const LansiaScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="TB"
+              name="tb"
               id="TB"
-              value={inputs.TB}
+              value={inputs.tb}
               onChange={handleInput}
               required
             />
@@ -287,14 +303,14 @@ const LansiaScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
-              Tensi Darah (mmHg)
+              Tensi Darah (mm/Hg)
               <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
                 *
               </span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-              type="number"
+              type="text"
               name="tensi"
               id="tensi"
               value={inputs.tensi}
@@ -313,47 +329,10 @@ const LansiaScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="text"
-              name="BPJS"
+              name="bpjs"
               id="BPJS"
-              value={inputs.BPJS}
+              value={inputs.bpjs}
               onChange={handleInput}
-              required
-            />
-          </div>
-
-          <div className="flex gap-3 xl:gap-4 items-center">
-            <label
-              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-              htmlFor=""
-            >
-              Tensi Darah (mmHg)
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
-                *
-              </span>
-            </label>
-            <input
-              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-              type="number"
-              name="tensi"
-              id="tensi"
-              value={120}
-              required
-            />
-          </div>
-
-          <div className="flex gap-3 xl:gap-4 items-center">
-            <label
-              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-              htmlFor=""
-            >
-              No. BPJS<span className="text-red-500 absolute mt-[-6px]">*</span>
-            </label>
-            <input
-              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-              type="text"
-              name="BPJS"
-              id="BPJS"
-              value={"42425453"}
               required
             />
           </div>
