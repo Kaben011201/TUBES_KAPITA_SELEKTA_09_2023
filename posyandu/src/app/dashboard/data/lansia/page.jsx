@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Bulan from "../../component/Bulan";
 import DummyTable from "./component/DummyTable";
 import axiosConfig from "../../../../utils/axios";
 
 const DataLansia = () => {
-  // const data = {
-  //   email: inputs.email,
-  //   password: inputs.password,
-  // };
-  // axiosConfig
-  //   .get("http://localhost:3000/api/lansia", data)
-  //   .then(function (response) {
-  //     if (response.data.status != 400) {
-  //       alert("wang");
-  //     } else {
-  //       alert(response.data.message);
-  //     }
-  //   })
-  //   .catch(function (error) {
-  //     alert(error.data.message);
-  //     console.log(error);
-  //   });
+  
+  const getLansia = async () => {
+
+    const [lansia, setLansia] = useState([]);
+
+    axiosConfig
+      .get("http://localhost:3000/api/lansia", data)
+      .then(function (response) {
+        if (response.data.status != 400) {
+          alert("Wanghasil wangnambahkan wangta wangsia");
+        } else {
+          alert(response.data.message);
+        }
+        console.log(response.data);
+        setLansia(response.data.data)
+      })
+      .catch(function (error) {
+        alert(error.data.message);
+        console.log(error);
+      });
+    
+  }
+
+  useEffect(() => {
+    getLansia()
+  },[]);
+
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
