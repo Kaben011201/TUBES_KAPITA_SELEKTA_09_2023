@@ -195,35 +195,12 @@ const LansiaScreen = () => {
               Jenis Kelamin
               <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
                 *
-              </span>
+              </span> 
             </label>
-            <div className="flex flex-row gap-10 xl:gap-32">
-              <div className="flex gap-2">
-                <input
-                  className="accent-pink-500"
-                  type="radio"
-                  name="jenisKelamin"
-                  id="pria"
-                  checked={(inputs.jenisKelamin = "L")}
-                  value={inputs.jenisKelamin}
-                  onChange={handleInput}
-                  required
-                />
-                <label htmlFor="">Laki-laki</label>
-              </div>
-              <div className="flex gap-2">
-                <input
-                  className="accent-pink-500"
-                  type="radio"
-                  name="jenkel"
-                  id="wanita"
-                  checked={(inputs.jenkel = "P")}
-                  value={inputs.jenkel}
-                  onChange={handleInput}
-                />
-                <label htmlFor="">Perempuan</label>
-              </div>
-            </div>
+            <select defaultValue={"L"} value={inputs.jenisKelamin} name="jenisKelamin" onChange={handleInput}>
+              <option value="L">Laki-laki</option>
+              <option value="P">Perempuan</option>
+            </select>
           </div>
 
           <div className="flex gap-3 xl:gap-4 items-center">
