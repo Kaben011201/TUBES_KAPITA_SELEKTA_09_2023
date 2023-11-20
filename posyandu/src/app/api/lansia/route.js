@@ -18,8 +18,8 @@ export async function GET() {
 export async function POST(req) {
   try {
     const data = await req.json();
-    const lansia = await prisma.lansia.create({ data });
 
+    const lansia = await prisma.lansia.create({ data });
     return Response.json({
       status: 200,
       message: "Berhasil buat data!",
