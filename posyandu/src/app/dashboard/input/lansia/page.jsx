@@ -7,7 +7,7 @@ const LansiaScreen = () => {
     nama: "",
     nik: "",
     kk: "",
-    jenisKelamin: "",
+    jenisKelamin: "L",
     tanggalLahir: "",
     umur: "",
     alamat: "",
