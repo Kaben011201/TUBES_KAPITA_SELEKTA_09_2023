@@ -60,6 +60,7 @@ const LansiaScreen = () => {
 
     window.location.reload();
   };
+
   return (
     <main className="flex">
       <div className="bg-[#F2F1EF] w-full m-[7px] mt-[56px] rounded-[5px] xl:rounded-[20px] p-[7px] xl:w-[80%] xl:mx-auto xl:my-10 xl:px-[57px] xl:mt-[125px] xl:py-[25px]">
