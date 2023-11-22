@@ -36,6 +36,7 @@ const Header = () => {
               {/* Sidebar content here */}
               <img
                 onClick={() => {
+                  setisActive("");
                   router.push("/dashboard");
                 }}
                 className="mt-[20px] w-[80px] xl:w-[160px] cursor-pointer hover:opacity-80 transition ease-in-out"
@@ -255,7 +256,10 @@ const Header = () => {
           src="/header/logo-desktop.svg"
         ></img>
         <p
-          onClick={() => router.push("/dashboard")}
+          onClick={() => {
+            setisActive("");
+            router.push("/dashboard");
+          }}
           className=" text-white font-semibold xl:text-neutral-700 text-[12px] xl:text-[16px] cursor-pointer hover:underline transition ease-in-out "
         >
           Posyandu Mawar I
