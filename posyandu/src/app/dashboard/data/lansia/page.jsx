@@ -79,6 +79,36 @@ const DataLansia = () => {
     }
   };
 
+  const changeDateTable = (date) => {
+    date = new Date(date);
+
+    // Get the individual components
+    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+    let day = ("0" + date.getDate()).slice(-2);
+    let year = date.getFullYear().toString();
+
+    // Format into a string in "DD/MM/YY" format
+    let formattedDate = day + "/" + month + "/" + year;
+    console.log(formattedDate);
+
+    return formattedDate;
+  };
+
+  const changeDateEdit = (date) => {
+    date = new Date(date);
+
+    // Get the individual components
+    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+    let day = ("0" + date.getDate()).slice(-2);
+    let year = date.getFullYear().toString();
+
+    // Format into a string in "DD/MM/YY" format
+    let formattedDate = year + "-" + month + "-" + day;
+    console.log(formattedDate);
+
+    return formattedDate;
+  };
+
   const getLansiaEdit = async (lansia) => {
     try {
       const response = await axiosConfig.get(
@@ -90,7 +120,6 @@ const DataLansia = () => {
         alert(response.data.message);
       }
       setLansiaEdit(response.data.data);
-      lansiaEdit.tanggalLahir.toLocaleDateString();
       console.log(response.data);
     } catch (error) {
       if (error.response && error.response.data) {
@@ -140,22 +169,13 @@ const DataLansia = () => {
 
   const renderTable = () => {
     return lansia.map((lansia, index) => {
-      lansia.tanggalLahir = new Date(lansia.tanggalLahir);
-
-      // Get the individual components
-      let month = ("0" + (lansia.tanggalLahir.getMonth() + 1)).slice(-2);
-      let day = ("0" + lansia.tanggalLahir.getDate()).slice(-2);
-      let year = lansia.tanggalLahir.getFullYear().toString().slice(-2);
-
-      // Format into a string in "DD/MM/YY" format
-      let formattedDate = day + "/" + month + "/" + year;
       return (
         <tr key={lansia.id}>
           <td>{index + 1}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
           <td>{lansia.kk}</td>
-          <td>{formattedDate}</td>
+          <td>{changeDateTable(lansia.tanggalLahir)}</td>
           <td>{lansia.jenisKelamin}</td>
           <td>{lansia.umur}</td>
           <td>{lansia.alamat}</td>
@@ -325,7 +345,7 @@ const DataLansia = () => {
                     type="date"
                     name="ttl"
                     id="ttl"
-                    value={lansiaEdit.tanggalLahir}
+                    value={changeDateEdit(lansiaEdit.tanggalLahir)}
                     required
                   />
                 </div>
