@@ -4,15 +4,15 @@ import Bulan from "../../component/Bulan";
 import axiosConfig from "../../../../utils/axios";
 
 const DataLansia = () => {
-  const [lansia, setLansia] = useState([]); 
+  const [lansia, setLansia] = useState([]);
   const [lansiaFilter, setLansiaFilter] = useState([]);
+  const [lansiaEdit, setLansiaEdit] = useState([]);
 
   const getLansia = async () => {
     try {
       const response = await axiosConfig.get(
         "http://localhost:3000/api/lansia"
       );
-
       if (response.data.status !== 400) {
         console.log("Berhasil menampilkan data");
       } else {
@@ -53,6 +53,90 @@ const DataLansia = () => {
     }
   };
 
+  const delLansiaHapus = async (lansia) => {
+    try {
+      const response = await axiosConfig.delete(
+        `http://localhost:3000/api/lansia/${lansia.id}`
+      );
+      if (response.data.status !== 400) {
+        console.log("Berhasil mengambil id pasien");
+        window.location.reload();
+      } else {
+        alert(response.data.message);
+      }
+      console.log(response.data);
+    } catch (error) {
+      if (error.response && error.response.data) {
+        // If there is a response from the server
+        alert(error.response.data.message);
+        console.log(error.response.data);
+      } else {
+        // If there is no response from the server
+        alert("An error occurred while fetching data");
+        console.error(error);
+      }
+    }
+  };
+
+  const getLansiaEdit = async (lansia) => {
+    try {
+      const response = await axiosConfig.get(
+        `http://localhost:3000/api/lansia/${lansia.id}`
+      );
+      if (response.data.status !== 400) {
+        console.log("Berhasil mengambil id pasien");
+      } else {
+        alert(response.data.message);
+      }
+      setLansiaEdit(response.data.data);
+      lansiaEdit.tanggalLahir.toLocaleDateString();
+      console.log(response.data);
+    } catch (error) {
+      if (error.response && error.response.data) {
+        // If there is a response from the server
+        alert(error.response.data.message);
+        console.log(error.response.data);
+      } else {
+        // If there is no response from the server
+        alert("An error occurred while fetching data");
+        console.error(error);
+      }
+    }
+  };
+
+  const patchLansiaEdit = async (lansia) => {
+    try {
+      const response = await axiosConfig.patch(
+        `http://localhost:3000/api/lansia/${lansia.id}`
+      );
+      if (response.data.status !== 400) {
+        console.log("Berhasil mengambil id pasien");
+      } else {
+        alert(response.data.message);
+      }
+      console.log(response.data);
+    } catch (error) {
+      if (error.response && error.response.data) {
+        // If there is a response from the server
+        alert(error.response.data.message);
+        console.log(error.response.data);
+      } else {
+        // If there is no response from the server
+        alert("An error occurred while fetching data");
+        console.error(error);
+      }
+    }
+  };
+
+  const PrintData = () => {
+    //console.log('print');
+    let printContents = document.getElementById("printablediv").innerHTML;
+    let originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  };
+
   const renderTable = () => {
     return lansia.map((lansia, index) => {
       return (
@@ -69,7 +153,7 @@ const DataLansia = () => {
           <td>{lansia.tb}</td>
           <td>{lansia.tensi}</td>
           <td>{lansia.bpjs}</td>
-          <td>
+          <td className="whitespace-nowrap">
             <button
               onClick={async () => {
                 await getLansiaFilter(lansia);
@@ -89,9 +173,313 @@ const DataLansia = () => {
                 />
               </svg>
             </button>
+            <button
+              onClick={async () => {
+                await getLansiaEdit(lansia);
+                document.getElementById(`modal_edit_lansia`).showModal();
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22.5"
+                height="22.5"
+                viewBox="0 0 15 15"
+                fill="none"
+              >
+                <path
+                  d="M2 10.9125V12.8125C2 12.9875 2.14667 13.125 2.33333 13.125H4.36C4.44667 13.125 4.53333 13.0938 4.59333 13.0313L11.8733 6.2125L9.37333 3.86875L2.1 10.6875C2.03333 10.75 2 10.825 2 10.9125ZM13.8067 4.4C13.8685 4.34218 13.9175 4.2735 13.951 4.19789C13.9844 4.12228 14.0016 4.04123 14.0016 3.95938C14.0016 3.87752 13.9844 3.79647 13.951 3.72086C13.9175 3.64525 13.8685 3.57657 13.8067 3.51875L12.2467 2.05625C12.185 1.99831 12.1117 1.95234 12.0311 1.92098C11.9504 1.88962 11.864 1.87347 11.7767 1.87347C11.6894 1.87347 11.6029 1.88962 11.5223 1.92098C11.4416 1.95234 11.3683 1.99831 11.3067 2.05625L10.0867 3.2L12.5867 5.54375L13.8067 4.4Z"
+                  fill="#545454"
+                />
+              </svg>
+            </button>
+            {/* Hapus data */}
+            <button
+              onClick={() =>
+                document.getElementById(`modal_hapus_lansia`).showModal()
+              }
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22.5"
+                height="22.5"
+                viewBox="0 0 15 15"
+                fill="none"
+              >
+                <path
+                  d="M11.875 2.5H9.6875L9.0625 1.875H5.9375L5.3125 2.5H3.125V3.75H11.875M3.75 11.875C3.75 12.2065 3.8817 12.5245 4.11612 12.7589C4.35054 12.9933 4.66848 13.125 5 13.125H10C10.3315 13.125 10.6495 12.9933 10.8839 12.7589C11.1183 12.5245 11.25 12.2065 11.25 11.875V4.375H3.75V11.875Z"
+                  fill="#545454"
+                />
+              </svg>
+            </button>
           </td>
           {/* 
           <Aksi name="lansia" nik={lansia.nik} /> */}
+          {/* modal info lansia*/}
+          <dialog id="modal_hapus_lansia" className="modal">
+            <div className="modal-box xl:max-w-xl">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              <h3 className="font-bold text-lg mb-4">Hapus Data</h3>
+              <p>Apakah anda yakin ingin menghapus data pasien ini?</p>
+              <button
+                className="btn btn-error mt-4 px-20"
+                onClick={async () => {
+                  await delLansiaHapus(lansia);
+                }}
+              >
+                Ya
+              </button>
+            </div>
+          </dialog>
+          {/* modal edit lansia*/}
+          <dialog id="modal_edit_lansia" className="modal">
+            <div className="modal-box xl:max-w-7xl">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              <form
+                action=""
+                className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
+              >
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium"
+                    htmlFor=""
+                  >
+                    NIK
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="nik"
+                    id="nik"
+                    value={lansiaEdit.nik}
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium"
+                    htmlFor=""
+                  >
+                    No KK
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="nokk"
+                    id="nokk"
+                    value={lansiaEdit.kk}
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Nama Lengkap{" "}
+                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="nama"
+                    id="nama"
+                    value={lansiaEdit.nama}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Tanggal Lahir{" "}
+                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2 px-2"
+                    type="date"
+                    name="ttl"
+                    id="ttl"
+                    value={lansiaEdit.tanggalLahir}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-6 items-center xl:my-4">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Jenis Kelamin
+                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <div className="flex flex-row gap-6 xl:gap-32">
+                    <div className="flex gap-2">
+                      <input
+                        className="accent-pink-500"
+                        type="radio"
+                        name="jenkel"
+                        id="pria"
+                        checked
+                        required
+                      />
+                      <label htmlFor="">Laki-laki</label>
+                    </div>
+                    <div className="flex gap-2">
+                      <input
+                        className="accent-pink-500"
+                        type="radio"
+                        name="jenkel"
+                        id="wanita"
+                      />
+                      <label htmlFor="">Perempuan</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Alamat{" "}
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <textarea
+                    className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
+                    name="alamat"
+                    id="alamat"
+                    rows="3"
+                    value={lansiaEdit.alamat}
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Alamat Domisili KK
+                    <span className="text-red-500 absolute mt-[-35px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <textarea
+                    className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
+                    name="alamat"
+                    id="alamat"
+                    rows="3"
+                    value={lansiaEdit.alamatKK}
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    BB (kg)
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="BB"
+                    id="BB"
+                    value={lansiaEdit.bb}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    TB (cm)
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="TB"
+                    id="TB"
+                    value={lansiaEdit.tb}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Tensi Darah (mmHg)
+                    <span className="text-red-500 absolute mt-[-35px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="tensi"
+                    id="tensi"
+                    value={lansiaEdit.tensi}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    No. BPJS
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="BPJS"
+                    id="BPJS"
+                    value={lansiaEdit.bpjs}
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-[#FF5757;] w-[150px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[12px] xl:text-sm pr-1 flex items-center justify-center gap-1"
+                >
+                  <img
+                    className="w-[20px] xl:w-[35px] mb-1"
+                    src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg"
+                    alt="saveform"
+                  />
+                  Simpan Perubahan
+                </button>
+              </form>
+            </div>
+          </dialog>
         </tr>
       );
     });
@@ -128,7 +516,10 @@ const DataLansia = () => {
         <h3 className="ml-10">Data Lansia</h3>
         <Bulan />
       </div>
-      <div className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3">
+      <div
+        id="printablediv"
+        className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
+      >
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
@@ -152,7 +543,12 @@ const DataLansia = () => {
       </div>
 
       <div className="mt-7 mb-10 w-[80%] flex items-center justify-end">
-        <button className="btn bg-[#FEE] flex items-center justify-between px-7 rounded-3xl shadow-md normal-case">
+        <button
+          onClick={() => {
+            PrintData();
+          }}
+          className="btn bg-[#FEE] flex items-center justify-between px-7 rounded-3xl shadow-md normal-case"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="22"
