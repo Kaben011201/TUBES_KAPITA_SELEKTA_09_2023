@@ -17,14 +17,14 @@ td {
 }
 
 tr:nth-child(even) td {
-  @apply bg-[#F2F1EF];
+  @apply bg-[#FFAEB2];
 }
 tr:nth-child(even) td {
-  @apply bg-[#E0E0E0] bg-opacity-50;
+  @apply bg-[#FFAEB2] bg-opacity-50;
 }
 
 tr th {
-  @apply bg-[#FFFFFF] !important;
+  @apply bg-[#FFAEB2] !important;
 }
 
 .sidebar-items {
