@@ -4,7 +4,7 @@ import Bulan from "../../component/Bulan";
 import axiosConfig from "../../../../utils/axios";
 
 const DataLansia = () => {
-  const [lansia, setLansia] = useState([]);
+  const [lansia, setLansia] = useState([]); 
   const [lansiaFilter, setLansiaFilter] = useState([]);
 
   const getLansia = async () => {
@@ -22,7 +22,7 @@ const DataLansia = () => {
       console.log(response.data);
       setLansia(response.data.data);
     } catch (error) {
-      alert(error.data.message);
+      // alert(error.data.message);
       console.log(error);
     }
   };
@@ -61,7 +61,7 @@ const DataLansia = () => {
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
           <td>{lansia.kk}</td>
-          <td>{lansia.tanggalLahir}</td>
+          <td>{new Date(lansia.tanggalLahir).toLocaleDateString()}</td>
           <td>{lansia.jenisKelamin}</td>
           <td>{lansia.umur}</td>
           <td>{lansia.alamat}</td>

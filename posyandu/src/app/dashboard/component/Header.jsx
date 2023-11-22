@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 const Header = () => {
+  const [isActive, setisActive] = useState();
   const router = useRouter();
 
   return (
@@ -20,7 +21,7 @@ const Header = () => {
                 src="/header/hamburger.svg"
               ></img>
               <img
-                className="hidden xl:block cursor-pointer"
+                className="hidden xl:block cursor-pointer hover:opacity-80"
                 src="/header/hamburger-desktop.svg"
               ></img>
             </label>
@@ -35,15 +36,16 @@ const Header = () => {
               {/* Sidebar content here */}
               <img
                 onClick={() => {
+                  setisActive("");
                   router.push("/dashboard");
                 }}
-                className="mt-[20px] w-[80px] xl:w-[160px] cursor-pointer"
+                className="mt-[20px] w-[80px] xl:w-[160px] cursor-pointer hover:opacity-80 transition ease-in-out"
                 src="/header/logo-desktop.svg"
               ></img>
               <div className="flex leading-[25px] flex-col items-center ml-[-55px] mt-[25px] xl:leading-[45px]">
                 <div className="sidebar-items">
                   <details className="dropdown">
-                    <summary className="flex items-center justify-center cursor-pointer">
+                    <summary className="flex items-center justify-center cursor-pointer rounded-md pr-1 hover:bg-slate-100 transition duration-300 ease-in-out">
                       <img
                         className="xl:w-[35px]"
                         src="/header/drop-closed.svg"
@@ -57,8 +59,12 @@ const Header = () => {
 
                     <ul className="flex flex-col flex-wrap items-center text-start ml-[40px] xl:ml-[70px] [&>li]:mt-[0px]">
                       <li
-                        className="cursor-pointer"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "input-ibuhamil" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("input-ibuhamil");
+                          console.log(isActive);
                           router.push("/dashboard/input/ibuhamil");
                         }}
                       >
@@ -74,8 +80,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "input-bayi" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("input-bayi");
                           router.push("/dashboard/input/bayi");
                         }}
                       >
@@ -89,8 +98,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "input-balita" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("input-balita");
                           router.push("/dashboard/input/balita");
                         }}
                       >
@@ -104,8 +116,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "input-lansia" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("input-lansia");
                           router.push("/dashboard/input/lansia");
                         }}
                       >
@@ -123,7 +138,7 @@ const Header = () => {
 
                 <div className="sidebar-items mt-[8px] my-[6px]">
                   <details className="dropdown">
-                    <summary className="flex items-center xl:grid-cols-2-laptop justify-center cursor-pointer">
+                    <summary className="flex items-center xl:grid-cols-2-laptop justify-center cursor-pointer rounded-md pr-1 hover:bg-slate-100 transition duration-300 ease-in-out">
                       <img
                         className="xl:w-[35px]"
                         src="/header/drop-closed.svg"
@@ -136,14 +151,17 @@ const Header = () => {
                     </summary>
                     <ul className="flex flex-col flex-wrap text-start ml-[40px] xl:ml-[70px] [&>li]:mt-[0px]">
                       <li
-                        className="cursor-pointer"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "lihat-ibuhamil" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("lihat-ibuhamil");
                           router.push("/dashboard/data/ibuhamil");
                         }}
                       >
                         <div className="grid grid-cols-2 xl:grid-cols-2-laptop items-center p-[4px] py-[2px]">
                           <img
-                            className="sidebar-img"
+                            className="sidebar-img "
                             src="/header/bumil-sidebar.svg"
                           ></img>
                           <p className="ml-1 w-[50px] xl:w-[100px]">
@@ -153,8 +171,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "lihat-bayi" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("lihat-bayi");
                           router.push("/dashboard/data/bayi");
                         }}
                       >
@@ -168,8 +189,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "lihat-balita" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("lihat-balita");
                           router.push("/dashboard/data/balita");
                         }}
                       >
@@ -183,8 +207,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "lihat-lansia" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("lihat-lansia");
                           router.push("/dashboard/data/lansia");
                         }}
                       >
@@ -213,7 +240,7 @@ const Header = () => {
                 </li>
               </div>
               <img
-                className="absolute bottom-10 xl:w-[250px] cursor-pointer"
+                className="absolute bottom-10 xl:w-[250px] cursor-pointer hover:opacity-80 transition ease-in-out"
                 src="/header/logout.svg"
                 onClick={() => {
                   router.push("/login");
@@ -229,8 +256,11 @@ const Header = () => {
           src="/header/logo-desktop.svg"
         ></img>
         <p
-          onClick={() => router.push("/dashboard")}
-          className=" text-white font-semibold xl:text-neutral-700 text-[12px] xl:text-[16px] cursor-pointer"
+          onClick={() => {
+            setisActive("");
+            router.push("/dashboard");
+          }}
+          className=" text-white font-semibold xl:text-neutral-700 text-[12px] xl:text-[16px] cursor-pointer hover:underline transition ease-in-out "
         >
           Posyandu Mawar I
         </p>
@@ -261,18 +291,26 @@ const Header = () => {
               src="/header/profile.svg"
             ></img>
             <img
-              className="hidden xl:block cursor-pointer"
+              className="hidden xl:block cursor-pointer hover:scale-110 transition ease-in-out"
               src="/header/profile-desktop.svg"
             ></img>
           </label>
           <ul
             tabIndex={0}
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          > 
-            <li onClick={()=>{router.push("/dashboard/setting")}}>
+          >
+            <li
+              onClick={() => {
+                router.push("/dashboard/setting");
+              }}
+            >
               <a>Settings</a>
             </li>
-            <li onClick={()=>{router.push("/login")}}>
+            <li
+              onClick={() => {
+                router.push("/login");
+              }}
+            >
               <a>Logout</a>
             </li>
           </ul>
