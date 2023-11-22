@@ -4,7 +4,7 @@ import Bulan from "../../component/Bulan";
 import axiosConfig from "../../../../utils/axios";
 
 const DataLansia = () => {
-  const [lansia, setLansia] = useState([]);
+  const [lansia, setLansia] = useState([]); 
   const [lansiaFilter, setLansiaFilter] = useState([]);
 
   const getLansia = async () => {
@@ -22,7 +22,7 @@ const DataLansia = () => {
       console.log(response.data);
       setLansia(response.data.data);
     } catch (error) {
-      alert(error.data.message);
+      // alert(error.data.message);
       console.log(error);
     }
   };
