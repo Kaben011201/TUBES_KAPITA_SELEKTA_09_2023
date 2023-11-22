@@ -79,11 +79,11 @@ const LansiaScreen = () => {
         >
           <div className="flex gap-3 xl:gap-4 items-center">
             <label
-              className="w-[23%] xl:w-[18%] text-end font-medium"
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
               Tanggal Kunjungan
-              <span className="text-red-500 absolute mt-[-6px]">*</span>
+              <span className="text-red-500 absolute mt-[-20px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
