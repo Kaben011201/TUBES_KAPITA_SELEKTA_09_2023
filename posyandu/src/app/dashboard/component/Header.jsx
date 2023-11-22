@@ -21,7 +21,7 @@ const Header = () => {
                 src="/header/hamburger.svg"
               ></img>
               <img
-                className="hidden xl:block cursor-pointer hover:opacity-80"
+                className="hidden xl:block cursor-pointer hover:opacity-60 transition ease-in-out"
                 src="/header/hamburger-desktop.svg"
               ></img>
             </label>

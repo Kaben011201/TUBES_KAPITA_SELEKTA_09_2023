@@ -75,11 +75,11 @@ const ActivityScreen = () => {
                 </table>
             </div>
             <div className="flex w-fit h-[17px] mt-4 xl:mt-8 xl:mb-7 mx-auto gap-[7px] xl:gap-[10px] text-xs xl:text-base font-medium items-center">
-                <p className="text-[#9E9E9E]">Sebelumnya</p>
+                <p className="">Sebelumnya</p>
                 <button className="bg-[#E0E0E0] py-[4px] xl:py-[6px] px-[12px] xl:px-[16px] self-center rounded-[5px] font-semibold">1</button>
                 <button className="bg-[#E0E0E0] py-[4px] xl:py-[6px] px-[12px] xl:px-[16px] self-center rounded-[5px] font-semibold">2</button>
                 <button className="bg-[#E0E0E0] py-[4px] xl:py-[6px] px-[12px] xl:px-[16px] self-center rounded-[5px] font-semibold">3</button>
-                <p className="text-[#9E9E9E]">Selanjutnya</p>
+                <p className="">Selanjutnya</p>
             </div>
         </section> 
     </main>

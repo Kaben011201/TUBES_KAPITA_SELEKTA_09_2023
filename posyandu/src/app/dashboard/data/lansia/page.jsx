@@ -26,6 +26,7 @@ const DataLansia = () => {
       console.log(error);
     }
   };
+
   const getLansiaFilter = async (lansia) => {
     try {
       const response = await axiosConfig.get(
@@ -139,13 +140,22 @@ const DataLansia = () => {
 
   const renderTable = () => {
     return lansia.map((lansia, index) => {
+      lansia.tanggalLahir = new Date(lansia.tanggalLahir);
+
+      // Get the individual components
+      let month = ("0" + (lansia.tanggalLahir.getMonth() + 1)).slice(-2);
+      let day = ("0" + lansia.tanggalLahir.getDate()).slice(-2);
+      let year = lansia.tanggalLahir.getFullYear().toString().slice(-2);
+
+      // Format into a string in "DD/MM/YY" format
+      let formattedDate = day + "/" + month + "/" + year;
       return (
         <tr key={lansia.id}>
           <td>{index + 1}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
           <td>{lansia.kk}</td>
-          <td>{new Date(lansia.tanggalLahir).toLocaleDateString()}</td>
+          <td>{formattedDate}</td>
           <td>{lansia.jenisKelamin}</td>
           <td>{lansia.umur}</td>
           <td>{lansia.alamat}</td>

@@ -19,33 +19,15 @@ th {
   @apply border-[1px] border-black border-collapse;
 }
 
-td {
-  @apply border-r-[1px] border-l-[1px] border-black border-collapse;
+tr:nth-child(even) td {
+  @apply bg-[#FFAEB2];
 }
-
-tr {
-  @apply border-b-8 border-t-[6px] border-white border-collapse;
-}
-tr:first-child {
-  @apply border-[1px] border-black border-collapse;
-}
-tr:nth-child(2) {
-  @apply border-[1px] border-black border-collapse;
-}
-tr:last-child {
-  @apply border-t-white border-b-[1px] border-black border-collapse;
+tr:nth-child(even) td {
+  @apply bg-[#FFAEB2] bg-opacity-50;
 }
 
 tr th {
   @apply bg-[#FFAEB2] !important;
-}
-
-tr:nth-child(odd) td {
-  @apply bg-[#FFCDCD];
-}
-
-tr:nth-child(even) td {
-  @apply bg-[#f8dfde];
 }
 
 .sidebar-items {
