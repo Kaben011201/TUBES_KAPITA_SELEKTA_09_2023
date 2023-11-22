@@ -61,7 +61,7 @@ const DataLansia = () => {
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
           <td>{lansia.kk}</td>
-          <td>{lansia.tanggalLahir}</td>
+          <td>{new Date(lansia.tanggalLahir).toLocaleDateString()}</td>
           <td>{lansia.jenisKelamin}</td>
           <td>{lansia.umur}</td>
           <td>{lansia.alamat}</td>
