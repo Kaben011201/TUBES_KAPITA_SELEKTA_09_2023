@@ -32,5 +32,5 @@ tr th {
 }
 
 .sidebar-content{
-  @apply border-l-2 border-slate-300 rounded-sm
+  @apply border-l-2 rounded-sm
 }

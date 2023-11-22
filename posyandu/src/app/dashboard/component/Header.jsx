@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 const Header = () => {
+  const [isActive, setisActive] = useState();
   const router = useRouter();
 
   return (
@@ -15,12 +16,12 @@ const Header = () => {
           <div className="drawer-content">
             {/* Page content here */}
             <label htmlFor="my-drawer">
-              <img 
+              <img
                 className="xl:hidden cursor-pointer"
                 src="/header/hamburger.svg"
               ></img>
               <img
-                className="hidden xl:block cursor-pointer hover:opacity-80" 
+                className="hidden xl:block cursor-pointer hover:opacity-80"
                 src="/header/hamburger-desktop.svg"
               ></img>
             </label>
@@ -57,8 +58,12 @@ const Header = () => {
 
                     <ul className="flex flex-col flex-wrap items-center text-start ml-[40px] xl:ml-[70px] [&>li]:mt-[0px]">
                       <li
-                        className="cursor-pointer sidebar-content"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "input-ibuhamil" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("input-ibuhamil");
+                          console.log(isActive);
                           router.push("/dashboard/input/ibuhamil");
                         }}
                       >
@@ -74,8 +79,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer sidebar-content"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "input-bayi" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("input-bayi");
                           router.push("/dashboard/input/bayi");
                         }}
                       >
@@ -89,8 +97,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer sidebar-content"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "input-balita" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("input-balita");
                           router.push("/dashboard/input/balita");
                         }}
                       >
@@ -104,8 +115,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer sidebar-content"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "input-lansia" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("input-lansia");
                           router.push("/dashboard/input/lansia");
                         }}
                       >
@@ -136,8 +150,11 @@ const Header = () => {
                     </summary>
                     <ul className="flex flex-col flex-wrap text-start ml-[40px] xl:ml-[70px] [&>li]:mt-[0px]">
                       <li
-                        className="cursor-pointer sidebar-content"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "lihat-ibuhamil" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("lihat-ibuhamil");
                           router.push("/dashboard/data/ibuhamil");
                         }}
                       >
@@ -153,8 +170,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer sidebar-content"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "lihat-bayi" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("lihat-bayi");
                           router.push("/dashboard/data/bayi");
                         }}
                       >
@@ -168,8 +188,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer sidebar-content"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "lihat-balita" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("lihat-balita");
                           router.push("/dashboard/data/balita");
                         }}
                       >
@@ -183,8 +206,11 @@ const Header = () => {
                       </li>
 
                       <li
-                        className="cursor-pointer sidebar-content"
+                        className={`cursor-pointer sidebar-content ${
+                          isActive === "lihat-lansia" && "border-black"
+                        }`}
                         onClick={() => {
+                          setisActive("lihat-lansia");
                           router.push("/dashboard/data/lansia");
                         }}
                       >
@@ -268,11 +294,19 @@ const Header = () => {
           <ul
             tabIndex={0}
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          > 
-            <li onClick={()=>{router.push("/dashboard/setting")}}>
+          >
+            <li
+              onClick={() => {
+                router.push("/dashboard/setting");
+              }}
+            >
               <a>Settings</a>
             </li>
-            <li onClick={()=>{router.push("/login")}}>
+            <li
+              onClick={() => {
+                router.push("/login");
+              }}
+            >
               <a>Logout</a>
             </li>
           </ul>
