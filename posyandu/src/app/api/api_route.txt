@@ -14,6 +14,14 @@ IBU HAMIL
 - DELETE BUMIL BY ID  : baseURL/bumil/:id (DELETE METHOD)
 - UPDATE BUMIL BY ID  : baseURL/bumil/:id (PATCH METHOD)
 
+BAYI
+- GET ALL BAYI       : baseURL/bayi (GET METHOD)
+- CREATE BAYI        : baseURL/bayi (POST METHOD)
+- GET BAYI BY ID     : baseURL/bayi/:id (GET METHOD)
+- DELETE BAYI BY ID  : baseURL/bayi/:id (DELETE METHOD)
+- UPDATE BAYI BY ID  : baseURL/bayi/:id (PATCH METHOD)
+
 RIWAYAT
 - GET RIWAYAT LANSIA BY NIK : baseURL/riwayat/lansia/:nik
 - GET RIWAYAT BUMIL BY NIK  : baseURL/riwayat/bumil/:nik
+- GET RIWAYAT BAYI BY NIK   : baseURL/riwayat/bayi/:nik

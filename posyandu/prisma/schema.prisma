@@ -75,5 +75,32 @@ model Bumil {
 }
 
 model Bayi {
-  id Int @unique @default(sequence())
+  id               Int      @unique @default(sequence())
+  nama             String
+  nik              String
+  jenisKelamin     String
+  tanggalLahir     DateTime @db.Date
+  ayah             String
+  nikAyah          String
+  ibu              String
+  nikIbu           String
+  noHp             String
+  alamat           String
+  alamatKK         String
+  kia              Boolean
+  bb               Float
+  tb               Float
+  lk               Float
+  ll               Float
+  vit              Boolean?
+  neo1             String?
+  neo2             String?
+  neo3             String?
+  vitA             Boolean
+  imunisasi        String
+  pelayananPra     String?
+  tanggalMeninggal DateTime @db.Date
+  penyebab         String
+  keterangan       String
+  type             String
 }
