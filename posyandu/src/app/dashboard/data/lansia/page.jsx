@@ -6,7 +6,27 @@ import axiosConfig from "../../../../utils/axios";
 const DataLansia = () => {
   const [lansia, setLansia] = useState([]);
   const [lansiaFilter, setLansiaFilter] = useState([]);
-  const [lansiaEdit, setLansiaEdit] = useState([]);
+
+  const [edits, setEdits] = useState({
+    nama: "",
+    nik: "",
+    kk: "",
+    jenisKelamin: "L",
+    tanggalLahir: "",
+    umur: "",
+    alamat: "",
+    alamatKK: "",
+    bb: "",
+    tb: "",
+    tensi: "",
+    bpjs: "",
+  });
+
+  const handleEdits = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setEdits((values) => ({ ...values, [name]: value }));
+  };
 
   const getLansia = async () => {
     try {
@@ -89,7 +109,6 @@ const DataLansia = () => {
 
     // Format into a string in "DD/MM/YY" format
     let formattedDate = day + "/" + month + "/" + year;
-    console.log(formattedDate);
 
     return formattedDate;
   };
@@ -104,7 +123,6 @@ const DataLansia = () => {
 
     // Format into a string in "DD/MM/YY" format
     let formattedDate = year + "-" + month + "-" + day;
-    console.log(formattedDate);
 
     return formattedDate;
   };
@@ -119,7 +137,7 @@ const DataLansia = () => {
       } else {
         alert(response.data.message);
       }
-      setLansiaEdit(response.data.data);
+      setEdits(response.data.data);
       console.log(response.data);
     } catch (error) {
       if (error.response && error.response.data) {
@@ -134,28 +152,40 @@ const DataLansia = () => {
     }
   };
 
-  const patchLansiaEdit = async (lansia) => {
-    try {
-      const response = await axiosConfig.patch(
-        `http://localhost:3000/api/lansia/${lansia.id}`
-      );
-      if (response.data.status !== 400) {
-        console.log("Berhasil mengambil id pasien");
-      } else {
-        alert(response.data.message);
-      }
-      console.log(response.data);
-    } catch (error) {
-      if (error.response && error.response.data) {
-        // If there is a response from the server
-        alert(error.response.data.message);
-        console.log(error.response.data);
-      } else {
-        // If there is no response from the server
-        alert("An error occurred while fetching data");
-        console.error(error);
-      }
-    }
+  const patchLansiaEdit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      nama: edits.nama,
+      nik: edits.nik,
+      kk: edits.kk,
+      jenisKelamin: edits.jenisKelamin,
+      tanggalLahir: new Date(edits.tanggalLahir),
+      umur: parseInt(edits.umur),
+      alamat: edits.alamat,
+      alamatKK: edits.alamatKK,
+      bb: parseFloat(edits.bb),
+      tb: parseFloat(edits.tb),
+      tensi: edits.tensi,
+      bpjs: edits.bpjs,
+    };
+
+    axiosConfig
+      .patch(`http://localhost:3000/api/lansia/${edits.id}`, data)
+      .then(function (response) {
+        if (response.data.status != 400) {
+          alert("konghasil kongupdate kongta");
+        } else {
+          alert(response.data.message);
+        }
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        alert(error.data.message);
+        console.log(error);
+      });
+
+    window.location.reload();
   };
 
   const PrintData = () => {
@@ -206,6 +236,8 @@ const DataLansia = () => {
             <button
               onClick={async () => {
                 await getLansiaEdit(lansia);
+                console.log(edits);
+
                 document.getElementById(`modal_edit_lansia`).showModal();
               }}
             >
@@ -275,7 +307,7 @@ const DataLansia = () => {
                 </button>
               </form>
               <form
-                action=""
+                onSubmit={patchLansiaEdit}
                 className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
               >
                 <div className="flex gap-3 xl:gap-4 items-center">
@@ -290,7 +322,8 @@ const DataLansia = () => {
                     type="text"
                     name="nik"
                     id="nik"
-                    value={lansiaEdit.nik}
+                    value={edits.nik}
+                    onChange={handleEdits}
                   />
                 </div>
 
@@ -304,9 +337,10 @@ const DataLansia = () => {
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                     type="text"
-                    name="nokk"
-                    id="nokk"
-                    value={lansiaEdit.kk}
+                    name="kk"
+                    id="kk"
+                    value={edits.kk}
+                    onChange={handleEdits}
                   />
                 </div>
 
@@ -325,7 +359,8 @@ const DataLansia = () => {
                     type="text"
                     name="nama"
                     id="nama"
-                    value={lansiaEdit.nama}
+                    value={edits.nama}
+                    onChange={handleEdits}
                     required
                   />
                 </div>
@@ -343,14 +378,15 @@ const DataLansia = () => {
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2 px-2"
                     type="date"
-                    name="ttl"
-                    id="ttl"
-                    value={changeDateEdit(lansiaEdit.tanggalLahir)}
+                    name="tanggalLahir"
+                    id="tanggalLahir"
+                    value={changeDateEdit(edits.tanggalLahir)}
+                    onChange={handleEdits}
                     required
                   />
                 </div>
 
-                <div className="flex gap-6 items-center xl:my-4">
+                <div className="flex gap-6 items-center my-4">
                   <label
                     className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                     htmlFor=""
@@ -360,28 +396,15 @@ const DataLansia = () => {
                       *
                     </span>
                   </label>
-                  <div className="flex flex-row gap-6 xl:gap-32">
-                    <div className="flex gap-2">
-                      <input
-                        className="accent-pink-500"
-                        type="radio"
-                        name="jenkel"
-                        id="pria"
-                        checked
-                        required
-                      />
-                      <label htmlFor="">Laki-laki</label>
-                    </div>
-                    <div className="flex gap-2">
-                      <input
-                        className="accent-pink-500"
-                        type="radio"
-                        name="jenkel"
-                        id="wanita"
-                      />
-                      <label htmlFor="">Perempuan</label>
-                    </div>
-                  </div>
+                  <select
+                    defaultValue={"edits.jenisKelamin"}
+                    value={edits.jenisKelamin}
+                    name="jenisKelamin"
+                    onChange={handleEdits}
+                  >
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
                 </div>
 
                 <div className="flex gap-3 xl:gap-4 items-center">
@@ -397,7 +420,8 @@ const DataLansia = () => {
                     name="alamat"
                     id="alamat"
                     rows="3"
-                    value={lansiaEdit.alamat}
+                    value={edits.alamat}
+                    onChange={handleEdits}
                     required
                   ></textarea>
                 </div>
@@ -414,10 +438,11 @@ const DataLansia = () => {
                   </label>
                   <textarea
                     className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
-                    name="alamat"
-                    id="alamat"
+                    name="alamatKK"
+                    id="alamatKK"
                     rows="3"
-                    value={lansiaEdit.alamatKK}
+                    value={edits.alamatKK}
+                    onChange={handleEdits}
                     required
                   ></textarea>
                 </div>
@@ -433,9 +458,10 @@ const DataLansia = () => {
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                     type="number"
-                    name="BB"
-                    id="BB"
-                    value={lansiaEdit.bb}
+                    name="bb"
+                    id="bb"
+                    value={edits.bb}
+                    onChange={handleEdits}
                     required
                   />
                 </div>
@@ -451,9 +477,10 @@ const DataLansia = () => {
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                     type="number"
-                    name="TB"
-                    id="TB"
-                    value={lansiaEdit.tb}
+                    name="tb"
+                    id="tb"
+                    value={edits.tb}
+                    onChange={handleEdits}
                     required
                   />
                 </div>
@@ -473,7 +500,8 @@ const DataLansia = () => {
                     type="text"
                     name="tensi"
                     id="tensi"
-                    value={lansiaEdit.tensi}
+                    value={edits.tensi}
+                    onChange={handleEdits}
                     required
                   />
                 </div>
@@ -489,9 +517,10 @@ const DataLansia = () => {
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                     type="text"
-                    name="BPJS"
-                    id="BPJS"
-                    value={lansiaEdit.bpjs}
+                    name="bpjs"
+                    id="bpjs"
+                    value={edits.bpjs}
+                    onChange={handleEdits}
                     required
                   />
                 </div>
