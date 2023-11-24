@@ -11,7 +11,6 @@ const DataIbuHamil = () => {
     nama: "",
     nik: "",
     kk: "",
-    jenisKelamin: "L",
     tanggalLahir: "",
     umur: "",
     alamat: "",
@@ -29,7 +28,7 @@ const DataIbuHamil = () => {
     namaSuami: "",
     nikSuami: "",
     tanggalLahirSuami: "",
-    noHP: "",
+    noHp: "",
     bpjs: "",
   });
   const handleEdits = (e) => {
@@ -58,7 +57,7 @@ const DataIbuHamil = () => {
   const getBumilFilter = async (bumil) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/riwayat/bumil/${bumil.nik}`
+        `http://localhost:3000/api/riwayat/ibu-hamil/${bumil.nik}`
       );
 
       if (response.data.status !== 400) {
@@ -146,7 +145,6 @@ const DataIbuHamil = () => {
         alert(response.data.message);
       }
       setEdits(response.data.data);
-      console.log(response.data);
     } catch (error) {
       if (error.response && error.response.data) {
         // If there is a response from the server
@@ -164,28 +162,28 @@ const DataIbuHamil = () => {
     e.preventDefault();
 
     const data = {
-      nama: inputs.nama,
-      nik: inputs.nik,
-      kk: inputs.kk,
-      tanggalLahir: new Date(inputs.tanggalLahir),
-      umur: parseInt(inputs.umur),
-      alamat: inputs.alamat,
-      alamatKK: inputs.alamatKK,
-      bb: parseFloat(inputs.bb),
-      tb: parseFloat(inputs.tb),
-      usiaHamil: parseFloat(inputs.usiaHamil),
-      lingkarLengan: parseFloat(inputs.lingkarLengan),
-      g: inputs.g,
-      p: inputs.p,
-      a: inputs.a,
-      hpht: new Date(inputs.hpht),
-      tp: new Date(inputs.tp),
-      hb: inputs.hb,
-      namaSuami: inputs.namaSuami,
-      nikSuami: inputs.nikSuami,
-      tanggalLahirSuami: new Date(inputs.tanggalLahirSuami),
-      noHP: inputs.noHP,
-      bpjs: inputs.bpjs,
+      nama: edits.nama,
+      nik: edits.nik,
+      kk: edits.kk,
+      tanggalLahir: new Date(edits.tanggalLahir),
+      umur: parseInt(edits.umur),
+      alamat: edits.alamat,
+      alamatKK: edits.alamatKK,
+      bb: parseFloat(edits.bb),
+      tb: parseFloat(edits.tb),
+      usiaHamil: parseFloat(edits.usiaHamil),
+      lingkarLengan: parseFloat(edits.lingkarLengan),
+      g: parseInt(edits.g),
+      p: parseInt(edits.p),
+      a: parseInt(edits.a),
+      hpht: new Date(edits.hpht),
+      tp: new Date(edits.tp),
+      hb: edits.hb,
+      namaSuami: edits.namaSuami,
+      nikSuami: edits.nikSuami,
+      tanggalLahirSuami: new Date(edits.tanggalLahirSuami),
+      noHp: edits.noHp,
+      bpjs: edits.bpjs,
     };
 
     axiosConfig
@@ -227,19 +225,19 @@ const DataIbuHamil = () => {
           <td>{bumil.umur}</td>
           <td>{bumil.namaSuami}</td>
           <td>{bumil.nikSuami}</td>
-          <td>{bumil.tanggalLahirSuami}</td>
+          <td>{changeDateTable(bumil.tanggalLahirSuami)}</td>
           <td>{bumil.alamat}</td>
           <td>{bumil.alamatKK}</td>
           <td>{bumil.bb}</td>
           <td>{bumil.tb}</td>
           <td>{bumil.usiaHamil}</td>
           <td>{bumil.lingkarLengan}</td>
-          <td>{`G:${bumil.g}P:${bumil.p}A:${bumil.a}`}</td>
+          <td>{`G:${bumil.g} P:${bumil.p} A:${bumil.a}`}</td>
           <td>{changeDateTable(bumil.hpht)}</td>
           <td>{changeDateTable(bumil.tp)}</td>
           <td>{bumil.hb}</td>
           <td>{bumil.bpjs}</td>
-          <td>{bumil.noHP}</td>
+          <td>{bumil.noHp}</td>
           <td className="whitespace-nowrap">
             <button
               onClick={async () => {
@@ -325,14 +323,14 @@ const DataIbuHamil = () => {
           {/* modal edit bumil*/}
           <dialog id="modal_edit_bumil" className="modal">
             <div className="modal-box xl:max-w-7xl">
-              <form onSubmit={patchBumilEdit} method="dialog">
+              <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                   ✕
                 </button>
               </form>
               <form
-                action=""
+                onSubmit={patchBumilEdit}
                 className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
               >
                 <div className="flex gap-3 xl:gap-4 items-center">
@@ -410,7 +408,7 @@ const DataIbuHamil = () => {
                     name="tanggalLahir"
                     id="tanggalLahir"
                     onChange={handleEdits}
-                    value={edits.tanggalLahir}
+                    value={changeDateEdit(edits.tanggalLahir)}
                     required
                   />
                 </div>
@@ -469,7 +467,7 @@ const DataIbuHamil = () => {
                     name="nikSuami"
                     id="nikSuami"
                     onChange={handleEdits}
-                    value={input.nikSuami}
+                    value={edits.nikSuami}
                     required
                   />
                 </div>
@@ -490,7 +488,7 @@ const DataIbuHamil = () => {
                     name="tanggalLahirSuami"
                     id="tanggalLahirSuami"
                     onChange={handleEdits}
-                    value={edits.tanggalLahirSuami}
+                    value={changeDateEdit(edits.tanggalLahirSuami)}
                     required
                   />
                 </div>
@@ -685,7 +683,7 @@ const DataIbuHamil = () => {
                     name="hpht"
                     id="hpht"
                     onChange={handleEdits}
-                    value={edits.hpht}
+                    value={changeDateEdit(edits.hpht)}
                     required
                   />
                 </div>
@@ -703,7 +701,7 @@ const DataIbuHamil = () => {
                     name="tp"
                     id="tp"
                     onChange={handleEdits}
-                    value={edits.tp}
+                    value={changeDateEdit(edits.tp)}
                     required
                   />
                 </div>
@@ -737,12 +735,11 @@ const DataIbuHamil = () => {
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                    type="tel"
-                    name="noHP"
-                    id="noHP"
+                    type="text"
+                    name="noHp"
+                    id="noHp"
                     onChange={handleEdits}
-                    value={edits.noHP}
-                    pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}"
+                    value={edits.noHp}
                     required
                   />
                 </div>
@@ -792,23 +789,23 @@ const DataIbuHamil = () => {
           <td>{bumil.nama}</td>
           <td>{bumil.nik}</td>
           <td>{bumil.kk}</td>
-          <td>{changeDateEdit(bumil.tanggalLahir)}</td>
+          <td>{changeDateTable(bumil.tanggalLahir)}</td>
           <td>{bumil.umur}</td>
           <td>{bumil.namaSuami}</td>
           <td>{bumil.nikSuami}</td>
-          <td>{bumil.tanggalLahirSuami}</td>
+          <td>{changeDateTable(bumil.tanggalLahirSuami)}</td>
           <td>{bumil.alamat}</td>
           <td>{bumil.alamatKK}</td>
           <td>{bumil.bb}</td>
           <td>{bumil.tb}</td>
           <td>{bumil.usiaHamil}</td>
           <td>{bumil.lingkarLengan}</td>
-          <td>{`G:${bumil.g}P:${bumil.p}A:${bumil.a}`}</td>
-          <td>{changeDateEdit(bumil.hpht)}</td>
-          <td>{changeDateEdit(bumil.tp)}</td>
+          <td>{`G:${bumil.g} P:${bumil.p} A:${bumil.a}`}</td>
+          <td>{changeDateTable(bumil.hpht)}</td>
+          <td>{changeDateTable(bumil.tp)}</td>
           <td>{bumil.hb}</td>
           <td>{bumil.bpjs}</td>
-          <td>{bumil.noHP}</td>
+          <td>{bumil.noHp}</td>
         </tr>
       );
     });
@@ -825,7 +822,10 @@ const DataIbuHamil = () => {
         <h3 className="ml-10">Data Ibu Hamil</h3>
         <Bulan />
       </div>
-      <div className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3">
+      <div
+        id="printablediv"
+        className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
+      >
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
@@ -833,7 +833,7 @@ const DataIbuHamil = () => {
               <th rowSpan={2}>Nama</th>
               <th rowSpan={2}>NIK</th>
               <th rowSpan={2}>No. KK</th>
-              <th rowSpan={2}>TTL</th>
+              <th rowSpan={2}>Tanggal Lahir</th>
               <th rowSpan={2}>Umur</th>
               <th colSpan={3}>Data Suami</th>
               <th rowSpan={2}>Alamat</th>
@@ -862,7 +862,7 @@ const DataIbuHamil = () => {
             <tr>
               <th>Nama</th>
               <th>NIK</th>
-              <th>TTL</th>
+              <th>Tanggal Lahir</th>
             </tr>
             {renderTable()}
           </tbody>
@@ -922,7 +922,7 @@ const DataIbuHamil = () => {
                 <th rowSpan={2}>Nama</th>
                 <th rowSpan={2}>NIK</th>
                 <th rowSpan={2}>No. KK</th>
-                <th rowSpan={2}>TTL</th>
+                <th rowSpan={2}>Tanggal Lahir</th>
                 <th rowSpan={2}>Umur</th>
                 <th colSpan={3}>Data Suami</th>
                 <th rowSpan={2}>Alamat</th>
@@ -951,7 +951,7 @@ const DataIbuHamil = () => {
               <tr>
                 <th>Nama</th>
                 <th>NIK</th>
-                <th>TTL</th>
+                <th>Tanggal Lahir</th>
               </tr>
               {renderTableRiwayat()}
             </tbody>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import axiosConfig from "../../../../utils/axios";
 
 const IbuScreen = () => {
@@ -7,7 +7,6 @@ const IbuScreen = () => {
     nama: "",
     nik: "",
     kk: "",
-    jenisKelamin: "L",
     tanggalLahir: "",
     umur: "",
     alamat: "",
@@ -25,7 +24,7 @@ const IbuScreen = () => {
     namaSuami: "",
     nikSuami: "",
     tanggalLahirSuami: "",
-    noHP: "",
+    noHp: "",
     bpjs: "",
   });
 
@@ -51,21 +50,21 @@ const IbuScreen = () => {
       tb: parseFloat(inputs.tb),
       usiaHamil: parseFloat(inputs.usiaHamil),
       lingkarLengan: parseFloat(inputs.lingkarLengan),
-      g: inputs.g,
-      p: inputs.p,
-      a: inputs.a,
+      g: parseInt(inputs.g),
+      p: parseInt(inputs.p),
+      a: parseInt(inputs.a),
       hpht: new Date(inputs.hpht),
       tp: new Date(inputs.tp),
       hb: inputs.hb,
       namaSuami: inputs.namaSuami,
       nikSuami: inputs.nikSuami,
       tanggalLahirSuami: new Date(inputs.tanggalLahirSuami),
-      noHP: inputs.noHP,
+      noHp: inputs.noHp,
       bpjs: inputs.bpjs,
     };
 
     axiosConfig
-      .post("http://localhost:3000/api/ibuhamil", data)
+      .post("http://localhost:3000/api/bumil", data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Wanghasil wangnambahkan wangta wangsia");
@@ -78,7 +77,6 @@ const IbuScreen = () => {
         alert(error.data.message);
         console.log(error);
       });
-
     window.location.reload();
   };
 
@@ -111,7 +109,6 @@ const IbuScreen = () => {
               type="number"
               name="urut"
               id="urut"
-              onChange={handleInput}
               value={1}
               required
             />
@@ -251,7 +248,7 @@ const IbuScreen = () => {
               name="nikSuami"
               id="nikSuami"
               onChange={handleInput}
-              value={input.nikSuami}
+              value={inputs.nikSuami}
               required
             />
           </div>
@@ -514,12 +511,11 @@ const IbuScreen = () => {
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-              type="tel"
-              name="noHP"
-              id="noHP"
+              type="text"
+              name="noHp"
+              id="noHp"
               onChange={handleInput}
-              value={inputs.noHP}
-              pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}"
+              value={inputs.noHp}
               required
             />
           </div>
