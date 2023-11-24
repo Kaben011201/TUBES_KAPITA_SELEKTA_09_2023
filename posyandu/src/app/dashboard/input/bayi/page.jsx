@@ -16,17 +16,17 @@ const BayiScreen = () => {
     noHp: "",
     alamat: "",
     alamatKK: "",
-    kia: "iya",
+    kia: "Iya",
     bb5: "",
     bb: "",
     tb: "",
     lk: "",
     ll: "",
-    vit: "iya",
+    vit: "Iya",
     neo1: "",
     neo2: "",
     neo3: "",
-    vitA: "iya",
+    vitA: "Iya",
     imunisasi: "Tidak Ada",
     tanggalMeninggal: "",
     penyebab: "",
@@ -57,6 +57,7 @@ const BayiScreen = () => {
       alamat: inputs.alamat,
       alamatKK: inputs.alamatKK,
       kia: inputs.kia,
+      bb5: parseFloat(inputs.bb5),
       bb: parseFloat(inputs.bb),
       tb: parseFloat(inputs.tb),
       lk: parseFloat(inputs.lk),
@@ -282,6 +283,25 @@ const BayiScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
+              No Handphone{" "}
+              <span className="text-red-500 absolute mt-[-6px]">*</span>
+            </label>
+            <input
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              type="text"
+              name="noHp"
+              id="noHp"
+              value={inputs.noHp}
+              onChange={handleInput}
+              required
+            />
+          </div>
+
+          <div className="flex gap-3 xl:gap-4 items-center">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
               Alamat <span className="text-red-500 absolute mt-[-6px]">*</span>
             </label>
             <textarea
@@ -327,12 +347,12 @@ const BayiScreen = () => {
               </span>
             </label>
             <select
-              defaultValue={"iya"}
+              defaultValue={"Iya"}
               value={inputs.kia}
               name="kia"
               onChange={handleInput}
             >
-              <option value="iya">Iya</option>
+              <option value="Iya">Iya</option>
               <option value="tidak">Tidak</option>
             </select>
           </div>
@@ -447,12 +467,12 @@ const BayiScreen = () => {
               </span>
             </label>
             <select
-              defaultValue={"iya"}
+              defaultValue={"Iya"}
               value={inputs.vit}
               name="vit"
               onChange={handleInput}
             >
-              <option value="iya">Iya</option>
+              <option value="Iya">Iya</option>
               <option value="tidak">Tidak</option>
             </select>
           </div>
@@ -520,12 +540,12 @@ const BayiScreen = () => {
               </span>
             </label>
             <select
-              defaultValue={"iya"}
+              defaultValue={"Iya"}
               value={inputs.vitA}
               name="vitA"
               onChange={handleInput}
             >
-              <option value="iya">Iya</option>
+              <option value="Iya">Iya</option>
               <option value="tidak">Tidak</option>
             </select>
           </div>

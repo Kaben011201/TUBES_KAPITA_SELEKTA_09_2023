@@ -3,7 +3,7 @@ import prisma from "@/utils/prisma";
 export async function GET(req) {
   try {
     const id = parseInt(req.url.split("/bayi/")[1]);
-    const bayi = await prisma.bumil.findUnique({
+    const bayi = await prisma.bayi.findUnique({
       where: {
         id: id,
       },
