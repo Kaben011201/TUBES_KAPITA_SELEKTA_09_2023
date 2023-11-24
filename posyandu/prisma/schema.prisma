@@ -68,18 +68,18 @@ model Bumil {
   namaSuami         String
   nikSuami          String
   tanggalLahirSuami DateTime @db.Date
-  tempatLahirSuami  DateTime @db.Date
+  noHp              String
 
   Posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
   posyanduId Int?
 }
 
 model Bayi {
-  id               Int      @unique @default(sequence())
+  id               Int       @unique @default(sequence())
   nama             String
   nik              String
   jenisKelamin     String
-  tanggalLahir     DateTime @db.Date
+  tanggalLahir     DateTime  @db.Date
   ayah             String
   nikAyah          String
   ibu              String
@@ -87,20 +87,21 @@ model Bayi {
   noHp             String
   alamat           String
   alamatKK         String
-  kia              Boolean
+  kia              String
   bb               Float
+  bb5              Float
   tb               Float
   lk               Float
   ll               Float
-  vit              Boolean?
+  vit              String?
   neo1             String?
   neo2             String?
   neo3             String?
-  vitA             Boolean
+  vitA             String
   imunisasi        String
   pelayananPra     String?
-  tanggalMeninggal DateTime @db.Date
-  penyebab         String
-  keterangan       String
+  tanggalMeninggal DateTime? @db.Date
+  penyebab         String?
+  keterangan       String?
   type             String
 }
