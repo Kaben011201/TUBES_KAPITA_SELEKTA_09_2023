@@ -20,17 +20,17 @@ const DataBayi = () => {
     noHp: "",
     alamat: "",
     alamatKK: "",
-    kia: "iya",
+    kia: "Iya",
     bb5: "",
     bb: "",
     tb: "",
     lk: "",
     ll: "",
-    vit: "iya",
+    vit: "Iya",
     neo1: "",
     neo2: "",
     neo3: "",
-    vitA: "iya",
+    vitA: "Iya",
     imunisasi: "Tidak Ada",
     tanggalMeninggal: "",
     penyebab: "",
@@ -53,7 +53,7 @@ const DataBayi = () => {
       }
 
       console.log(response.data);
-      setLansia(response.data.data);
+      setBayi(response.data.data);
     } catch (error) {
       // alert(error.data.message);
       console.log(error);
@@ -522,6 +522,25 @@ const DataBayi = () => {
                 </div>
 
                 <div className="flex gap-3 xl:gap-4 items-center">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              No Handphone{" "}
+              <span className="text-red-500 absolute mt-[-6px]">*</span>
+            </label>
+            <input
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              type="text"
+              name="noHp"
+              id="noHp"
+              value={edits.noHp}
+              onChange={handleEdits}
+              required
+            />
+          </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
                   <label
                     className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                     htmlFor=""
@@ -572,13 +591,13 @@ const DataBayi = () => {
                     </span>
                   </label>
                   <select
-                    defaultValue={"iya"}
+                    defaultValue={"Iya"}
                     value={edits.kia}
                     name="kia"
                     onChange={handleEdits}
                   >
-                    <option value="iya">Iya</option>
-                    <option value="tidak">Tidak</option>
+                    <option value="Iya">Iya</option>
+                    <option value="Tidak">Tidak</option>
                   </select>
                 </div>
 
@@ -694,13 +713,13 @@ const DataBayi = () => {
                     </span>
                   </label>
                   <select
-                    defaultValue={"iya"}
+                    defaultValue={"Iya"}
                     value={edits.vit}
                     name="vit"
                     onChange={handleEdits}
                   >
-                    <option value="iya">Iya</option>
-                    <option value="tidak">Tidak</option>
+                    <option value="Iya">Iya</option>
+                    <option value="Tidak">Tidak</option>
                   </select>
                 </div>
 
@@ -767,13 +786,13 @@ const DataBayi = () => {
                     </span>
                   </label>
                   <select
-                    defaultValue={"iya"}
+                    defaultValue={"Iya"}
                     value={edits.vitA}
                     name="vitA"
                     onChange={handleEdits}
                   >
-                    <option value="iya">Iya</option>
-                    <option value="tidak">Tidak</option>
+                    <option value="Iya">Iya</option>
+                    <option value="Tidak">Tidak</option>
                   </select>
                 </div>
 
