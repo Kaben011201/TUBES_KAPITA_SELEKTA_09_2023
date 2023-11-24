@@ -209,6 +209,7 @@ const DataLansia = () => {
           <td>{lansia.jenisKelamin}</td>
           <td>{lansia.umur}</td>
           <td>{lansia.alamat}</td>
+          <td>{lansia.alamatKK}</td>
           <td>{lansia.bb}</td>
           <td>{lansia.tb}</td>
           <td>{lansia.tensi}</td>
@@ -236,8 +237,6 @@ const DataLansia = () => {
             <button
               onClick={async () => {
                 await getLansiaEdit(lansia);
-                console.log(edits);
-
                 document.getElementById(`modal_edit_lansia`).showModal();
               }}
             >
@@ -555,6 +554,7 @@ const DataLansia = () => {
           <td>{lansia.jenisKelamin}</td>
           <td>{lansia.umur}</td>
           <td>{lansia.alamat}</td>
+          <td>{lansia.alamatKK}</td>
           <td>{lansia.bb}</td>
           <td>{lansia.tb}</td>
           <td>{lansia.tensi}</td>
@@ -590,6 +590,7 @@ const DataLansia = () => {
               <th>Jenis Kelamin</th>
               <th>Umur</th>
               <th>Alamat</th>
+              <th>Alamat KK</th>
               <th>BB</th>
               <th>TB</th>
               <th>Tensi Darah</th>
@@ -659,6 +660,7 @@ const DataLansia = () => {
                 <th>Jenis Kelamin</th>
                 <th>Umur</th>
                 <th>Alamat</th>
+                <th>AlamatKK</th>
                 <th>BB</th>
                 <th>TB</th>
                 <th>Tensi Darah</th>
@@ -667,21 +669,6 @@ const DataLansia = () => {
               {renderTableRiwayat()}
             </tbody>
           </table>
-        </div>
-      </dialog>
-
-      <dialog id="modal_edit_lansia" className="modal">
-        <div className="modal-box xl:max-w-7xl">
-          <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-              ✕
-            </button>
-          </form>
-          <h3 className="font-bold text-lg mb-4">Hapus data pasien</h3>
-          <p>Apakah anda yakin ingin menghapus data pasien ini?</p>
-          <button className="btn btn-error">Ya</button>
-          <button className="btn btn-neutral">Tidak</button>
         </div>
       </dialog>
     </main>

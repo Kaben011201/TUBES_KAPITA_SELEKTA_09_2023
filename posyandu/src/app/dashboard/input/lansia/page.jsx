@@ -196,9 +196,14 @@ const LansiaScreen = () => {
               Jenis Kelamin
               <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
                 *
-              </span> 
+              </span>
             </label>
-            <select defaultValue={"L"} value={inputs.jenisKelamin} name="jenisKelamin" onChange={handleInput}>
+            <select
+              defaultValue={"L"}
+              value={inputs.jenisKelamin}
+              name="jenisKelamin"
+              onChange={handleInput}
+            >
               <option value="L">Laki-laki</option>
               <option value="P">Perempuan</option>
             </select>

@@ -1,6 +1,87 @@
+"use client";
 import React from "react";
+import axiosConfig from "../../../../utils/axios";
 
 const IbuScreen = () => {
+  const [inputs, setInputs] = useState({
+    nama: "",
+    nik: "",
+    kk: "",
+    jenisKelamin: "L",
+    tanggalLahir: "",
+    umur: "",
+    alamat: "",
+    alamatKK: "",
+    bb: "",
+    tb: "",
+    usiaHamil: "",
+    lingkarLengan: "",
+    g: "",
+    p: "",
+    a: "",
+    hpht: "",
+    tp: "",
+    hb: "",
+    namaSuami: "",
+    nikSuami: "",
+    tanggalLahirSuami: "",
+    noHP: "",
+    bpjs: "",
+  });
+
+  const handleInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+
+  // LOGIN
+  const addIbuhamil = (e) => {
+    e.preventDefault();
+
+    const data = {
+      nama: inputs.nama,
+      nik: inputs.nik,
+      kk: inputs.kk,
+      tanggalLahir: new Date(inputs.tanggalLahir),
+      umur: parseInt(inputs.umur),
+      alamat: inputs.alamat,
+      alamatKK: inputs.alamatKK,
+      bb: parseFloat(inputs.bb),
+      tb: parseFloat(inputs.tb),
+      usiaHamil: parseFloat(inputs.usiaHamil),
+      lingkarLengan: parseFloat(inputs.lingkarLengan),
+      g: inputs.g,
+      p: inputs.p,
+      a: inputs.a,
+      hpht: new Date(inputs.hpht),
+      tp: new Date(inputs.tp),
+      hb: inputs.hb,
+      namaSuami: inputs.namaSuami,
+      nikSuami: inputs.nikSuami,
+      tanggalLahirSuami: new Date(inputs.tanggalLahirSuami),
+      noHP: inputs.noHP,
+      bpjs: inputs.bpjs,
+    };
+
+    axiosConfig
+      .post("http://localhost:3000/api/ibuhamil", data)
+      .then(function (response) {
+        if (response.data.status != 400) {
+          alert("Wanghasil wangnambahkan wangta wangsia");
+        } else {
+          alert(response.data.message);
+        }
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        alert(error.data.message);
+        console.log(error);
+      });
+
+    window.location.reload();
+  };
+
   return (
     <main className="flex justify-center">
       <div className="bg-[#F2F1EF] m-[7px] mt-[56px] w-full rounded-[5px] xl:rounded-[20px] p-[7px] xl:w-[80%] xl:mx-auto xl:my-10 xl:px-[57px] xl:mt-[125px] xl:py-[25px]">
@@ -14,7 +95,7 @@ const IbuScreen = () => {
         </div>
 
         <form
-          action=""
+          onSubmit={addIbuhamil}
           className="flex flex-col gap-[7px] text-[12px] xl:text-base my-2 xl:mt-6"
         >
           <div className="flex gap-3 xl:gap-4 items-center">
@@ -30,6 +111,7 @@ const IbuScreen = () => {
               type="number"
               name="urut"
               id="urut"
+              onChange={handleInput}
               value={1}
               required
             />
@@ -45,9 +127,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="text"
-              name="nokk"
-              id="nokk"
-              value={"11111111"}
+              name="kk"
+              id="kk"
+              onChange={handleInput}
+              value={inputs.kk}
             />
           </div>
 
@@ -64,9 +147,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="text"
-              name="namaIbu"
-              id="namaIbu"
-              value={"Asunta"}
+              name="nama"
+              id="nama"
+              onChange={handleInput}
+              value={inputs.nama}
               required
             />
           </div>
@@ -86,7 +170,8 @@ const IbuScreen = () => {
               type="text"
               name="nik"
               id="nik"
-              value={"12345"}
+              onChange={handleInput}
+              value={inputs.nik}
               required
             />
           </div>
@@ -104,9 +189,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm px-2"
               type="date"
-              name="ttlIbu"
-              id="ttlIbu"
-              value={"2003-12-01"}
+              name="tanggalLahir"
+              id="tanggalLahir"
+              onChange={handleInput}
+              value={inputs.tanggalLahir}
               required
             />
           </div>
@@ -124,9 +210,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="umurIbu"
-              id="umurIbu"
-              value={20}
+              name="umur"
+              id="umur"
+              onChange={handleInput}
+              value={inputs.umur}
               required
             />
           </div>
@@ -144,7 +231,8 @@ const IbuScreen = () => {
               type="text"
               name="namaSuami"
               id="namaSuami"
-              value={"Agus santoso"}
+              onChange={handleInput}
+              value={inputs.namaSuami}
               required
             />
           </div>
@@ -162,7 +250,8 @@ const IbuScreen = () => {
               type="text"
               name="nikSuami"
               id="nikSuami"
-              value={54321}
+              onChange={handleInput}
+              value={input.nikSuami}
               required
             />
           </div>
@@ -180,9 +269,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm px-2"
               type="date"
-              name="ttlSuami"
-              id="ttlSuami"
-              value={"2023-12-12"}
+              name="tanggalLahirSuami"
+              id="tanggalLahirSuami"
+              onChange={handleInput}
+              value={inputs.tanggalLahirSuami}
               required
             />
           </div>
@@ -199,7 +289,8 @@ const IbuScreen = () => {
               name="alamat"
               id="alamat"
               rows="3"
-              value={"Karimun Jawa"}
+              onChange={handleInput}
+              value={inputs.alamat}
               required
             ></textarea>
           </div>
@@ -216,10 +307,11 @@ const IbuScreen = () => {
             </label>
             <textarea
               className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
-              name="alamat"
-              id="alamat"
+              name="alamatKK"
+              id="alamatKK"
               rows="3"
-              value={"Karimun cina"}
+              onChange={handleInput}
+              value={inputs.alamatKK}
               required
             ></textarea>
           </div>
@@ -234,9 +326,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="BB"
-              id="BB"
-              value={60}
+              name="bb"
+              id="bb"
+              onChange={handleInput}
+              value={inputs.bb}
               required
             />
           </div>
@@ -251,9 +344,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="TB"
-              id="TB"
-              value={160}
+              name="tb"
+              id="tb"
+              onChange={handleInput}
+              value={inputs.tb}
               required
             />
           </div>
@@ -273,7 +367,8 @@ const IbuScreen = () => {
               type="number"
               name="usiaHamil"
               id="usiaHamil"
-              value={5.5}
+              onChange={handleInput}
+              value={inputs.usiaHamil}
               required
             />
           </div>
@@ -291,9 +386,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="Lila"
-              id="Lila"
-              value={20}
+              name="lingkarLengan"
+              id="lingkarLengan"
+              onChange={handleInput}
+              value={inputs.lingkarLengan}
               required
             />
           </div>
@@ -313,9 +409,10 @@ const IbuScreen = () => {
                 <input
                   className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                   type="number"
-                  name="G"
-                  id="G"
-                  value={2}
+                  name="g"
+                  id="g"
+                  onChange={handleInput}
+                  value={inputs.g}
                   required
                 />
               </div>
@@ -327,9 +424,10 @@ const IbuScreen = () => {
                 <input
                   className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                   type="number"
-                  name="P"
-                  id="P"
-                  value={1}
+                  name="p"
+                  id="p"
+                  onChange={handleInput}
+                  value={inputs.p}
                   required
                 />
               </div>
@@ -341,9 +439,10 @@ const IbuScreen = () => {
                 <input
                   className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                   type="number"
-                  name="A"
-                  id="A"
-                  value={0}
+                  name="a"
+                  id="a"
+                  onChange={handleInput}
+                  value={inputs.a}
                   required
                 />
               </div>
@@ -360,9 +459,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="date"
-              name="HPHT"
-              id="HPHT"
-              value={"2022-02-05"}
+              name="hpht"
+              id="hpht"
+              onChange={handleInput}
+              value={inputs.hpht}
               required
             />
           </div>
@@ -377,9 +477,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="date"
-              name="TP"
-              id="TP"
-              value={"2022-11-05"}
+              name="tp"
+              id="tp"
+              onChange={handleInput}
+              value={inputs.tp}
               required
             />
           </div>
@@ -395,9 +496,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="HB"
-              id="HB"
-              value={434}
+              name="hb"
+              id="hb"
+              onChange={handleInput}
+              value={inputs.hb}
               required
             />
           </div>
@@ -413,9 +515,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="tel"
-              name="noHp"
-              id="noHp"
-              value={"0821-3035-3114"}
+              name="noHP"
+              id="noHP"
+              onChange={handleInput}
+              value={inputs.noHP}
               pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}"
               required
             />
@@ -431,9 +534,10 @@ const IbuScreen = () => {
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="text"
-              name="BPJS"
-              id="BPJS"
-              value={"12345"}
+              name="bpjs"
+              id="bpjs"
+              onChange={handleInput}
+              value={inputs.bpjs}
               required
             />
           </div>
