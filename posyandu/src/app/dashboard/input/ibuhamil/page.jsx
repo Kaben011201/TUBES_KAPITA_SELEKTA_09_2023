@@ -67,7 +67,7 @@ const IbuScreen = () => {
       .post("http://localhost:3000/api/bumil", data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("Wanghasil wangnambahkan wangta wangsia");
+          alert("Berhasil menambahkan data wamil");
         } else {
           alert(response.data.message);
         }
