@@ -1,8 +1,26 @@
 import prisma from "@/utils/prisma";
 
-export async function GET() {
+export async function GET(req) {
+  let where = {};
+
+  const { searchParams } = new URL(req.url);
+  const month = parseInt(searchParams.get("month")) || 0;
+
+  // IF THERE IS FILTER BY MONTH
+  if (month != 0) {
+    const year = new Date().getFullYear();
+    where.kunjung = {
+      startsWith: `${year}-${month}`,
+    };
+  }
+
   try {
-    const bumil = await prisma.bumil.findMany();
+    const bumil = await prisma.bumil.findMany({
+      where,
+      orderBy: {
+        kunjung: "asc",
+      },
+    });
 
     return Response.json({
       status: 200,
@@ -23,7 +41,10 @@ export async function POST(req) {
     return Response.json({
       status: 200,
       message: "Berhasil buat data!",
-      data: bumil,
+      data: {
+        ...bumil,
+        kunjung: new Date().toISOString().split("T")[0],
+      },
     });
   } catch (error) {
     console.log(error);

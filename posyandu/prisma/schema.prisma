@@ -43,6 +43,7 @@ model Lansia {
 
   Posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
   posyanduId Int?
+  kunjung    String
 }
 
 model Bumil {
@@ -72,6 +73,7 @@ model Bumil {
 
   Posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
   posyanduId Int?
+  kunjung    String
 }
 
 model Bayi {
@@ -104,4 +106,5 @@ model Bayi {
   penyebab         String?
   keterangan       String?
   type             String
+  kunjung          String
 }
