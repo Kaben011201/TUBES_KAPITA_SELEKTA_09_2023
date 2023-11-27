@@ -49,18 +49,17 @@ const LansiaScreen = () => {
       .post("http://localhost:3000/api/lansia", data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("Wanghasil wangnambahkan wangta wangsia");
+          alert("Berhasil menambahkan data lansia!");
         } else {
           alert(response.data.message);
         }
-        console.log(response.data);
       })
       .catch(function (error) {
         alert(error.data.message);
         console.log(error);
       });
-      
-      window.location.reload();
+
+    window.location.reload();
   };
 
   return (
@@ -331,17 +330,14 @@ const LansiaScreen = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="bg-[#FF5757;] w-[100px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[16px] xl:text-xl pr-1 xl:pr-6 flex items-center justify-center gap-1 xl:gap-4"
-          >
-            <img
-              className="w-[22px] xl:w-[35px] mb-1"
-              src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg"
-              alt="saveform"
-            />
-            Simpan
-          </button>
+          <button type="submit" name="tambah" id="tambah" className="bg-[#FF5757;] w-[110px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[10px] xl:rounded-[15px] text-white font-semibold text-sans text-[14px] xl:text-xl p-2 xl:p-5 flex items-center gap-1 xl:gap-3">
+          <svg className="xl:w-[21px] xl:h-[21px]" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="6.75" fill="white"/>
+              <path d="M9 11.25L9 6.75" stroke="#222222" stroke-width="1.2" stroke-linecap="square"/>
+              <path d="M11.25 9L6.75 9" stroke="#222222" stroke-width="1.2" stroke-linecap="square"/>
+          </svg>
+          Tambahkan
+        </button>
         </form>
       </div>
     </main>

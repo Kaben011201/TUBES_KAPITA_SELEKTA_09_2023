@@ -7,7 +7,9 @@ import axiosConfig from "../../../utils/axios";
 
 const Aksi = (props) => {
   const router = useRouter();
+  
   const [lansiaFilter, setLansiaFilter] = useState([]);
+  
   const getLansiaFilter = async () => {
     try {
       const response = await axiosConfig.get(
@@ -59,6 +61,8 @@ const Aksi = (props) => {
       );
     });
   };
+
+
   return (
     <td className="whitespace-nowrap">
       {/* History */}
@@ -864,21 +868,16 @@ const Aksi = (props) => {
             className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
           >
             <div className="flex gap-3 xl:gap-4 items-center">
-              <label
-                className="w-[23%] xl:w-[18%] text-end font-medium"
-                htmlFor=""
-              >
-                No. Urut{" "}
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
-              </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="number"
-                name="urut"
-                id="urut"
-                value={1}
-                required
-              />
+              <label 
+                className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" 
+                htmlFor="">Tanggal Kunjungan<span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span></label>
+              <input 
+                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" 
+                type="date" 
+                name="kunjung" 
+                id="kunjung" 
+                value={inputs.kunjung} 
+                onChange={handleInput} required/>
             </div>
             <div className="flex gap-3 xl:gap-4 items-center">
               <label
@@ -892,7 +891,8 @@ const Aksi = (props) => {
                 type="text"
                 name="nik"
                 id="nik"
-                value={"333333333333"}
+                value={inputs.nik} 
+                onChange={handleInput}
               />
             </div>
             <div className="flex gap-3 xl:gap-4 items-center">
@@ -928,14 +928,15 @@ const Aksi = (props) => {
               <input
                 className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                 type="date"
-                name="ttl"
-                id="ttl"
-                value={"2023-10-2"}
+                name="tanggalLahir"
+                id="tanggalLahir"
+                value={inputs.tanggalLahir} 
+                onChange={handleInput}
                 required
               />
             </div>
 
-            <div className="flex gap-6 items-center xl:my-4">
+            <div className="flex gap-6 items-center my-4">
               <label
                 className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                 htmlFor=""
@@ -945,30 +946,15 @@ const Aksi = (props) => {
                   *
                 </span>
               </label>
-              <div className="flex flex-row gap-5 xl:gap-32">
-                <div className="flex gap-3">
-                  <input
-                    className="accent-pink-500"
-                    type="radio"
-                    name="jenkel"
-                    id="laki2"
-                    checked
-                    required
-                  />
-                  <label className="overflow-hidden" htmlFor="">
-                    Laki-laki
-                  </label>
-                </div>
-                <div className="flex gap-3">
-                  <input
-                    className="accent-pink-500"
-                    type="radio"
-                    name="jenkel"
-                    id="perempuan"
-                  />
-                  <label htmlFor="">Perempuan</label>
-                </div>
-              </div>
+              <select
+                defaultValue={"L"}
+                value={inputs.jenisKelamin}
+                name="jenisKelamin"
+                onChange={handleInput}
+              >
+                <option value="L">Laki-laki</option>
+                <option value="P">Perempuan</option>
+              </select>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
@@ -982,8 +968,8 @@ const Aksi = (props) => {
               <input
                 className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                 type="text"
-                name="namaIbu"
-                id="namaIbu"
+                name="ibu"
+                id="ibu"
                 value={"Maria"}
                 required
               />
@@ -1018,8 +1004,8 @@ const Aksi = (props) => {
               <input
                 className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                 type="text"
-                name="namaAyah"
-                id="namaAyah"
+                name="ayah"
+                id="ayah"
                 value={"Anton"}
                 required
               />
@@ -1036,8 +1022,8 @@ const Aksi = (props) => {
               <input
                 className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                 type="text"
-                name="namaAyah"
-                id="namaAyah"
+                name="nikAyah"
+                id="nikAyah"
                 value={"22222222"}
                 required
               />
@@ -1081,38 +1067,25 @@ const Aksi = (props) => {
               ></textarea>
             </div>
 
-            <div className="flex gap-6 items-center xl:my-4">
+            <div className="flex gap-6 items-center my-4">
               <label
                 className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                 htmlFor=""
               >
                 Punya Buku KIA?
-                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-8px]">
+                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
                   *
                 </span>
               </label>
-              <div className="flex flex-row gap-16 xl:gap-32">
-                <div className="flex gap-3">
-                  <input
-                    className="accent-pink-500"
-                    type="radio"
-                    name="bukuKIA"
-                    id="iya"
-                    checked
-                    required
-                  />
-                  <label htmlFor="">Iya</label>
-                </div>
-                <div className="flex gap-3">
-                  <input
-                    className="accent-pink-500"
-                    type="radio"
-                    name="bukuKIA"
-                    id="tidak"
-                  />
-                  <label htmlFor="">Tidak</label>
-                </div>
-              </div>
+              <select
+                defaultValue={"Iya"}
+                value={inputs.kia}
+                name="kia"
+                onChange={handleInput}
+              >
+                <option value="Iya">Iya</option>
+                <option value="tidak">Tidak</option>
+              </select>
             </div>
 
             <div className="flex gap-3 xl:gap-4 items-center">
@@ -1126,8 +1099,8 @@ const Aksi = (props) => {
               <input
                 className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                 type="number"
-                name="BB"
-                id="BB"
+                name="bb"
+                id="bb"
                 value={20}
                 required
               />
@@ -1144,8 +1117,8 @@ const Aksi = (props) => {
               <input
                 className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                 type="number"
-                name="TB"
-                id="TB"
+                name="tb"
+                id="tb"
                 value={100}
                 required
               />
@@ -1164,8 +1137,8 @@ const Aksi = (props) => {
               <input
                 className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                 type="number"
-                name="Lika"
-                id="Lika"
+                name="lk"
+                id="lk"
                 value={20}
                 required
               />
@@ -1184,93 +1157,120 @@ const Aksi = (props) => {
               <input
                 className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                 type="number"
-                name="Lila"
-                id="Lila"
+                name="ll"
+                id="ll"
                 value={8}
                 required
               />
             </div>
 
-            <div className="flex gap-6 items-center xl:my-4">
+            <div className="flex gap-6 items-center my-4">
               <label
                 className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                 htmlFor=""
               >
                 Vitamin
-                <span className="text-red-500 absolute mt-[-6px]">*</span>
+                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                  *
+                </span>
               </label>
-              <div className="flex flex-row gap-16 xl:gap-32">
-                <div className="flex gap-3">
-                  <input
-                    className="accent-pink-500"
-                    type="radio"
-                    name="vitamin"
-                    id="iya1"
-                    checked
-                    required
-                  />
-                  <label htmlFor="">Iya</label>
-                </div>
-                <div className="flex gap-3">
-                  <input
-                    className="accent-pink-500"
-                    type="radio"
-                    name="vitamin"
-                    id="tidak1"
-                  />
-                  <label htmlFor="">Tidak</label>
-                </div>
-              </div>
+              <select
+                defaultValue={"Iya"}
+                value={inputs.vit}
+                name="vit"
+                onChange={handleInput}
+              >
+                <option value="Iya">Iya</option>
+                <option value="tidak">Tidak</option>
+              </select>
             </div>
 
-            <div className="flex gap-6 items-center xl:my-4">
+            <div className="flex gap-6 items-center my-4">
               <label
                 className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                 htmlFor=""
               >
                 Imunisasi
-                <span className="text-red-500 absolute mt-[-6px] xl:mt-[-8px]">
+                <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
                   *
                 </span>
               </label>
-              <div className="flex flex-row gap-5 xl:gap-32">
-                <div className="flex gap-3">
-                  <input
-                    className="accent-pink-500"
-                    type="radio"
-                    name="imunisasi"
-                    id="DPT"
-                    checked
-                    required
-                  />
-                  <label htmlFor="">DPT-HB-Hib</label>
-                </div>
-                <div className="flex gap-3">
-                  <input
-                    className="accent-pink-500"
-                    type="radio"
-                    name="imunisasi"
-                    id="campak"
-                  />
-                  <label htmlFor="">Campak</label>
-                </div>
-              </div>
+              <select
+                defaultValue={"Tidak Ada"}
+                value={inputs.imunisasi}
+                name="imunisasi"
+                onChange={handleInput}
+              >
+                <option value="Tidak Ada">Tidak Ada</option>
+                <option value="DPT-HB-HIB">DPT-HB-HIB</option>
+                <option value="Campak">Campak</option>
+              </select>
             </div>
 
-            <div className="flex gap-3 xl:gap-4 items-center">
+            <div className="flex gap-5 xl:gap-8">
               <label
                 className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                 htmlFor=""
               >
                 Pelayanan Anak Pra Sekolah
               </label>
-              <input
-                className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                type="text"
-                name="praSek"
-                id="praSek"
-                value={"-"}
-              />
+              <div className="w-[77%] xl:w-[82%] flex flex-col gap-[7px] text-[11px] xl:text-base xl:font-medium font-semibold">
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label className="w-[35%] xl:w-[20%]" htmlFor="">
+                    1. 66 Bulan
+                  </label>
+                  <input
+                    className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="bulan66"
+                    id="bulan66"
+                    value={inputs.bulan66}
+                    onChange={handleInput}
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label className="w-[35%] xl:w-[20%]" htmlFor="">
+                    2. 78 Bulan
+                  </label>
+                  <input
+                    className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="bulan78"
+                    id="bulan78"
+                    value={inputs.bulan78}
+                    onChange={handleInput}
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label className="w-[35%] xl:w-[20%]" htmlFor="">
+                    3. 88 Bulan
+                  </label>
+                  <input
+                    className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="bulan88"
+                    id="bulan88"
+                    value={inputs.bulan88}
+                    onChange={handleInput}
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label className="w-[35%] xl:w-[20%]" htmlFor="">
+                    4. Tanggal
+                  </label>
+                  <input
+                    className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="date"
+                    name="tanggalPra"
+                    id="tanggalPra"
+                    value={inputs.tanggalPra}
+                    onChange={handleInput}
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="flex gap-5 xl:gap-20">
@@ -1288,8 +1288,8 @@ const Aksi = (props) => {
                   <input
                     className="w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2 font-medium"
                     type="date"
-                    name="tanggal"
-                    id="tanggal"
+                    name="tanggalMeninggal"
+                    id="tanggalMeninggal"
                     value={""}
                   />
                 </div>

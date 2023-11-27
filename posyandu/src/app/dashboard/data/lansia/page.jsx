@@ -35,12 +35,9 @@ const DataLansia = () => {
         "http://localhost:3000/api/lansia"
       );
       if (response.data.status !== 400) {
-        console.log("Berhasil menampilkan data");
       } else {
         alert(response.data.message);
       }
-
-      console.log(response.data);
       setLansia(response.data.data);
     } catch (error) {
       // alert(error.data.message);
@@ -55,12 +52,9 @@ const DataLansia = () => {
       );
 
       if (response.data.status !== 400) {
-        console.log("Berhasil menampilkan riwayat pasien");
       } else {
         alert(response.data.message);
       }
-
-      console.log(response.data);
       setLansiaFilter(response.data.data);
     } catch (error) {
       if (error.response && error.response.data) {
@@ -81,12 +75,10 @@ const DataLansia = () => {
         `http://localhost:3000/api/lansia/${lansia.id}`
       );
       if (response.data.status !== 400) {
-        console.log("Berhasil mengambil id pasien");
         window.location.reload();
       } else {
         alert(response.data.message);
       }
-      console.log(response.data);
     } catch (error) {
       if (error.response && error.response.data) {
         // If there is a response from the server
@@ -134,12 +126,10 @@ const DataLansia = () => {
         `http://localhost:3000/api/lansia/${lansia.id}`
       );
       if (response.data.status !== 400) {
-        console.log("Berhasil mengambil id pasien");
       } else {
         alert(response.data.message);
       }
       setEdits(response.data.data);
-      console.log(response.data);
     } catch (error) {
       if (error.response && error.response.data) {
         // If there is a response from the server
@@ -176,11 +166,10 @@ const DataLansia = () => {
       .patch(`http://localhost:3000/api/lansia/${edits.id}`, data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("konghasil kongupdate kongta");
+          alert("Berhasil mengedit data lansia!");
         } else {
           alert(response.data.message);
         }
-        console.log(response.data);
       })
       .catch(function (error) {
         alert(error.data.message);

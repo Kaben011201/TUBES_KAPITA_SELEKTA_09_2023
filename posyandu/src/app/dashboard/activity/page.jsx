@@ -12,10 +12,10 @@ const ActivityScreen = () => {
                 <div className="flex items-center gap-2 xl:gap-5">
                     <p className="font-medium">Tampilkan</p>
                     <select className="bg-[#E0E0E0] rounded-[5px] h-[23px] xl:h-[35px] font-semibold" name="jumlah" id="jumlah">
-                        <option className="mx-auto">20</option>
-                        <option className="text-center">10</option>
-                        <option className="text-center">8</option>
-                        <option className="text-center">5</option>
+                        <option>20</option>
+                        <option>10</option>
+                        <option>8</option>
+                        <option>5</option>
                     </select>
                     <div className="xl:flex item-center mr-[6px] hidden">
                         <img className="xl:hidden" src="/header/search.svg"></img>
@@ -30,7 +30,7 @@ const ActivityScreen = () => {
                 </div>
                 <button onClick={() => {
                   router.push("./activity/input");
-                }} name="inputKegiatan" id="inputKegiatan" className="bg-[#FF5757;] w-fit xl:h-[50px] h-[25px] rounded-[5px] xl:rounded-[15px] text-white font-semibold text-sans xl:text-base p-2 xl:p-5 flex items-center gap-1 xl:gap-3 justify-self-end">
+                }} id="inputKegiatan" className="bg-[#FF5757;] w-fit xl:h-[50px] h-[25px] rounded-[5px] xl:rounded-[15px] text-white font-semibold text-sans xl:text-base p-2 xl:p-5 flex items-center gap-1 xl:gap-3 justify-self-end">
                     + Input Data Kegiatan
                 </button>
             </div>

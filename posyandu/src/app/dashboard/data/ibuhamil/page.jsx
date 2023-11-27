@@ -42,12 +42,9 @@ const DataIbuHamil = () => {
     try {
       const response = await axiosConfig.get("http://localhost:3000/api/bumil");
       if (response.data.status !== 400) {
-        console.log("Berhasil menampilkan data");
       } else {
         alert(response.data.message);
       }
-
-      console.log(response.data);
       setBumil(response.data.data);
     } catch (error) {
       // alert(error.data.message);
@@ -62,12 +59,9 @@ const DataIbuHamil = () => {
       );
 
       if (response.data.status !== 400) {
-        console.log("Berhasil menampilkan riwayat pasien");
       } else {
         alert(response.data.message);
       }
-
-      console.log(response.data);
       setBumilFilter(response.data.data);
     } catch (error) {
       if (error.response && error.response.data) {
@@ -88,12 +82,10 @@ const DataIbuHamil = () => {
         `http://localhost:3000/api/bumil/${bumil.id}`
       );
       if (response.data.status !== 400) {
-        console.log("Berhasil mengambil id pasien");
         window.location.reload();
       } else {
         alert(response.data.message);
       }
-      console.log(response.data);
     } catch (error) {
       if (error.response && error.response.data) {
         // If there is a response from the server
@@ -141,7 +133,6 @@ const DataIbuHamil = () => {
         `http://localhost:3000/api/bumil/${bumil.id}`
       );
       if (response.data.status !== 400) {
-        console.log("Berhasil mengambil id pasien");
       } else {
         alert(response.data.message);
       }
@@ -192,11 +183,10 @@ const DataIbuHamil = () => {
       .patch(`http://localhost:3000/api/bumil/${edits.id}`, data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("konghasil kongupdate kongta");
+          alert("Berhasil mengedit data bumil!");
         } else {
           alert(response.data.message);
         }
-        console.log(response.data);
       })
       .catch(function (error) {
         alert(error.data.message);

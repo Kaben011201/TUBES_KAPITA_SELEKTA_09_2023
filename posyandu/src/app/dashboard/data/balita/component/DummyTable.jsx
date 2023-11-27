@@ -29,6 +29,7 @@ const DummyTable = () => {
         <th colSpan={2}>Imunisasi Lanjut</th>
         <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
         <th colSpan={2}>Meninggal</th>
+        <th rowSpan={2}>Keterangan</th>
         <th rowSpan={2}>Aksi</th>
       </tr>
       <tr>
@@ -37,13 +38,11 @@ const DummyTable = () => {
         <th>Nama Ayah</th>
         <th>NIK</th>
         <th>No.HP</th>
-        <th>DPT-HB-HIB</th>
-        <th>Campak</th>
         <th>66 Bulan</th>
         <th>78 Bulan</th>
         <th>84 Bulan</th>
-        <th>Tanggal</th>
-        <th>Tanggal</th>
+        <th>Tanggal Pra Sekolah</th>
+        <th>Tanggal Meninggal</th>
         <th>Sebab</th>
       </tr>
       <tr>
