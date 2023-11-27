@@ -4,6 +4,7 @@ import axiosConfig from "../../../../utils/axios";
 
 const IbuScreen = () => {
   const [inputs, setInputs] = useState({
+    kunjung: "",
     nama: "",
     nik: "",
     kk: "",
@@ -39,6 +40,7 @@ const IbuScreen = () => {
     e.preventDefault();
 
     const data = {
+      kunjung: new Date(inputs.kunjung),
       nama: inputs.nama,
       nik: inputs.nik,
       kk: inputs.kk,
@@ -101,15 +103,16 @@ const IbuScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
-              No. Urut{" "}
+              Tanggal Kunjungan{" "}
               <span className="text-red-500 absolute mt-[-20px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-              type="number"
-              name="urut"
-              id="urut"
-              value={1}
+              type="date"
+              name="kunjung"
+              id="kunjung"
+              value={inputs.kunjung}
+              onChange={handleInput}
               required
             />
           </div>

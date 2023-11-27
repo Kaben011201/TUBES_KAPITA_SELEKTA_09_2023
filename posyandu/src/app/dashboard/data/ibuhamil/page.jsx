@@ -8,6 +8,7 @@ const DataIbuHamil = () => {
   const [bumilFilter, setBumilFilter] = useState([]);
 
   const [edits, setEdits] = useState({
+    kunjung: "",
     nama: "",
     nik: "",
     kk: "",
@@ -162,6 +163,7 @@ const DataIbuHamil = () => {
     e.preventDefault();
 
     const data = {
+      kunjung: new Date(edits.kunjung),
       nama: edits.nama,
       nik: edits.nik,
       kk: edits.kk,
@@ -217,7 +219,7 @@ const DataIbuHamil = () => {
     return bumil.map((bumil, index) => {
       return (
         <tr key={bumil.id}>
-          <td>{index + 1}</td>
+          <td>{changeDateTable(bumil.kunjung)}</td>
           <td>{bumil.nama}</td>
           <td>{bumil.nik}</td>
           <td>{bumil.kk}</td>
@@ -333,6 +335,24 @@ const DataIbuHamil = () => {
                 onSubmit={patchBumilEdit}
                 className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
               >
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Tanggal Kunjungan{" "}
+                    <span className="text-red-500 absolute mt-[-20px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="date"
+                    name="kunjung"
+                    id="kunjung"
+                    value={changeDateEdit(edits.kunjung)}
+                    onChange={handleEdits}
+                    required
+                  />
+                </div>
                 <div className="flex gap-3 xl:gap-4 items-center">
                   <label
                     className="w-[23%] xl:w-[18%] text-end font-medium"
@@ -785,7 +805,7 @@ const DataIbuHamil = () => {
     return bumilFilter.map((bumil, index) => {
       return (
         <tr key={bumil.id}>
-          <td>{index + 1}</td>
+          <td>{changeDateTable(bumil.kunjung)}</td>
           <td>{bumil.nama}</td>
           <td>{bumil.nik}</td>
           <td>{bumil.kk}</td>
@@ -829,7 +849,7 @@ const DataIbuHamil = () => {
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
-              <th rowSpan={2}>No.</th>
+              <th rowSpan={2}>Tanggal Kunjungan</th>
               <th rowSpan={2}>Nama</th>
               <th rowSpan={2}>NIK</th>
               <th rowSpan={2}>No. KK</th>
