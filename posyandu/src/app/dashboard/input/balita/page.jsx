@@ -101,7 +101,7 @@ const BalitaScreen = () => {
         </div>
 
         <form
-          action=""
+          onSubmit={addBalita}
           className="flex flex-col gap-[7px] text-[12px] xl:text-base my-2 xl:mt-6"
         >
           <div className="flex gap-3 xl:gap-4 items-center">
