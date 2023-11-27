@@ -26,7 +26,7 @@ const BalitaScreen = () => {
     imunisasi: "Tidak Ada",
     bulan66: "",
     bulan78: "",
-    bulan84: "",
+    bulan88: "",
     tanggalPra: "",
     tanggalMeninggal: "",
     penyebab: "",
@@ -46,6 +46,7 @@ const BalitaScreen = () => {
 
     const data = {
       type: "balita", //kunjung belum ada di database
+      kunjung: new Date(inputs.kunjung),
       nama: inputs.nama,
       nik: inputs.nik,
       jenisKelamin: inputs.jenisKelamin,
@@ -65,7 +66,7 @@ const BalitaScreen = () => {
       vit: inputs.vit,
       bulan66: inputs.bulan66, //semua bulan ini belum ada di database
       bulan78: inputs.bulan78,
-      bulan88: inputs.bulan84,
+      bulan88: inputs.bulan88,
       tanggalPra: new Date(inputs.tanggalPra), //ini juga belum ada di database
       imunisasi: inputs.imunisasi,
       tanggalMeninggal: new Date(inputs.tanggalMeninggal),
@@ -259,6 +260,25 @@ const BalitaScreen = () => {
               name="nikAyah"
               id="nikAyah"
               value={inputs.nikAyah}
+              onChange={handleInput}
+              required
+            />
+          </div>
+
+          <div className="flex gap-3 xl:gap-4 items-center">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              No Handphone{" "}
+              <span className="text-red-500 absolute mt-[-6px]">*</span>
+            </label>
+            <input
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              type="text"
+              name="noHp"
+              id="noHp"
+              value={inputs.noHp}
               onChange={handleInput}
               required
             />
@@ -490,7 +510,7 @@ const BalitaScreen = () => {
                 type="text"
                 name="bulan88"
                 id="bulan88"
-                value={inputs.bulan84}
+                value={inputs.bulan88}
                 onChange={handleInput}
               />
             </div>
