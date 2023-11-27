@@ -28,7 +28,7 @@ model Admin {
 
 model Lansia {
   id           Int      @unique @default(sequence())
-  kunjung      DateTime @db.Date
+  kunjung      String
   nama         String
   nik          String
   kk           String
@@ -48,7 +48,7 @@ model Lansia {
 
 model Bumil {
   id                Int      @unique @default(sequence())
-  kunjung           DateTime @db.Date
+  kunjung           String
   nama              String
   nik               String
   kk                String
@@ -78,7 +78,7 @@ model Bumil {
 
 model Bayi {
   id               Int       @unique @default(sequence())
-  kunjung          DateTime  @db.Date
+  kunjung          String
   nama             String
   nik              String
   jenisKelamin     String

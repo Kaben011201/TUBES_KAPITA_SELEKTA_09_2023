@@ -214,7 +214,7 @@ const DataBayi = () => {
   };
 
   const renderTable = () => {
-    return bayi.map((bayi, index) => {
+    return bayi.map((bayi) => {
       return (
         <tr key={bayi.id}>
           <td>{changeDateTable(bayi.kunjung)}</td>
@@ -889,9 +889,9 @@ const DataBayi = () => {
     });
   };
   const renderTableRiwayat = () => {
-    return bayiFilter.map((bayi, index) => {
+    return bayiFilter.map((bayi) => {
       return (
-        <tr key={index}>
+        <tr key={bayi.id}>
           <td>{changeDateTable(bayi.kunjung)}</td>
           <td>{bayi.nama}</td>
           <td>{bayi.nik}</td>
@@ -922,16 +922,18 @@ const DataBayi = () => {
     });
   };
 
+  const [bulan,setBulan]= useState(0);
+
   useEffect(() => {
     getBayi();
-  }, []);
+  }, [bulan]);
 
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <p></p>
         <h3 className="ml-10">Data Bayi</h3>
-        <Bulan />
+        <Bulan setBulan={setBulan} />
       </div>
       <div
         id="printablediv"
