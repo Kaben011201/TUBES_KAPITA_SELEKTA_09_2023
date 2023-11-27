@@ -65,7 +65,7 @@ const BalitaScreen = () => {
       vit: inputs.vit,
       bulan66: inputs.bulan66, //semua bulan ini belum ada di database
       bulan78: inputs.bulan78,
-      bulan88: inputs.bulan88,
+      bulan88: inputs.bulan84,
       tanggalPra: new Date(inputs.tanggalPra), //ini juga belum ada di database
       imunisasi: inputs.imunisasi,
       tanggalMeninggal: new Date(inputs.tanggalMeninggal),
