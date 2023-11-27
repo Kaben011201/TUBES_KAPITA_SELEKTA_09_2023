@@ -32,7 +32,7 @@ const DataLansia = () => {
   const getLansia = async () => {
     try {
       const response = await axiosConfig.get(
-        "http://localhost:3000/api/lansia"
+        "http://localhost:3000/api/lansia", { params: { month:bulan } }
       );
       if (response.data.status !== 400) {
       } else {
@@ -147,7 +147,7 @@ const DataLansia = () => {
     e.preventDefault();
 
     const data = {
-      kunjung: new Date(edits.kunjung),
+      kunjung: edits.kunjung,
       nama: edits.nama,
       nik: edits.nik,
       kk: edits.kk,
@@ -192,7 +192,7 @@ const DataLansia = () => {
     return lansia.map((lansia) => {
       return (
         <tr key={lansia.id}>
-          <td>{changeDateTable(lansia.kunjung)}</td>
+          <td>{lansia.kunjung}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
           <td>{lansia.kk}</td>
@@ -554,7 +554,7 @@ const DataLansia = () => {
     return lansiaFilter.map((lansia) => {
       return (
         <tr key={lansia.id}>
-          <td>{changeDateTable(lansia.kunjung)}</td>
+          <td>{lansia.kunjung}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
           <td>{lansia.kk}</td>
@@ -572,16 +572,18 @@ const DataLansia = () => {
     });
   };
 
+  const [bulan,setBulan]= useState(0);
+
   useEffect(() => {
     getLansia();
-  }, []);
+  }, [bulan]);
 
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <p></p>
         <h3 className="ml-10">Data Lansia</h3>
-        <Bulan />
+        <Bulan setBulan={setBulan} />
       </div>
       <div
         id="printablediv"

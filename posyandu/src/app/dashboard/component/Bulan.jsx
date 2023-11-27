@@ -1,6 +1,6 @@
-const Bulan = () => {
+const Bulan = (props) => {
   return (
-    <select className="select select-bordered select-xs xl:select-sm mb-4 max-w-xs mt-[15px] mr-[10px]">
+    <select onChange={(e) => props.setBulan(e.target.value)} className="select select-bordered select-xs xl:select-sm mb-4 max-w-xs mt-[15px] mr-[10px]">
       <option selected value={0}>-Pilih Bulan-</option>
       <option value={1} >Januari</option>
       <option value={2}>Febuari</option>
