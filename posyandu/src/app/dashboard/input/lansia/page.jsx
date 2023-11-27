@@ -4,6 +4,7 @@ import axiosConfig from "../../../../utils/axios";
 
 const LansiaScreen = () => {
   const [inputs, setInputs] = useState({
+    kunjung: "",
     nama: "",
     nik: "",
     kk: "",
@@ -29,6 +30,7 @@ const LansiaScreen = () => {
     e.preventDefault();
 
     const data = {
+      kunjung: new Date(inputs.kunjung),
       nama: inputs.nama,
       nik: inputs.nik,
       kk: inputs.kk,
@@ -57,8 +59,6 @@ const LansiaScreen = () => {
         alert(error.data.message);
         console.log(error);
       });
-
-    window.location.reload();
   };
 
   return (
@@ -82,14 +82,17 @@ const LansiaScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
-              Tanggal Kunjungan
-              <span className="text-red-500 absolute mt-[-20px]">*</span>
+              Tanggal Kunjungan{" "}
+              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                *
+              </span>
             </label>
             <input
-              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2 px-2"
               type="date"
               name="kunjung"
               id="kunjung"
+              value={inputs.kunjung}
               onChange={handleInput}
               required
             />
@@ -101,6 +104,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               NIK
+              <span className="text-red-500 absolute mt-[-20px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -118,6 +122,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               No KK
+              <span className="text-red-500 absolute mt-[-20px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -177,6 +182,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               Umur
+              <span className="text-red-500 absolute mt-[-20px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"

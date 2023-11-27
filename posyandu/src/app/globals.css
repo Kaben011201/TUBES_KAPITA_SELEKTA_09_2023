@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .dashboard-content {
-  @apply flex flex-col items-center justify-center w-[55px] h-[55px] xl:w-[100px] xl:h-[100px] bg-[#FFF4F4] shadow-md shadow-neutral-400 text-[9px] xl:text-[15px] xl:font-bold font-semibold cursor-pointer;
+  @apply flex flex-col items-center justify-center w-[55px] h-[55px] xl:w-[100px] xl:h-[100px] bg-[#FFF4F4] shadow-md shadow-neutral-400 text-[9px] xl:text-[15px] xl:font-bold font-semibold cursor-pointer hover:bg-[#f8e4e4] active:translate-y-2 transition ease-in-out;
 }
 
 .sidebar-img {
@@ -32,6 +32,10 @@ tr th {
 
 .sidebar-items {
   @apply flex items-center font-black text-[10px] xl:font-bold xl:text-[20px];
+}
+
+.sidebar-content{
+  @apply border-l-2 transition-all ease-in-out
 }
 
 :root {

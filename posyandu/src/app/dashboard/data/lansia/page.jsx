@@ -8,6 +8,7 @@ const DataLansia = () => {
   const [lansiaFilter, setLansiaFilter] = useState([]);
 
   const [edits, setEdits] = useState({
+    kunjung: "",
     nama: "",
     nik: "",
     kk: "",
@@ -156,6 +157,7 @@ const DataLansia = () => {
     e.preventDefault();
 
     const data = {
+      kunjung: new Date(edits.kunjung),
       nama: edits.nama,
       nik: edits.nik,
       kk: edits.kk,
@@ -201,7 +203,7 @@ const DataLansia = () => {
     return lansia.map((lansia, index) => {
       return (
         <tr key={lansia.id}>
-          <td>{index + 1}</td>
+          <td>{changeDateTable(lansia.kunjung)}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
           <td>{lansia.kk}</td>
@@ -309,6 +311,23 @@ const DataLansia = () => {
                 onSubmit={patchLansiaEdit}
                 className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
               >
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium"
+                    htmlFor=""
+                  >
+                    Tanggal Kunjungan
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="date"
+                    name="kunjung"
+                    id="kunjung"
+                    value={changeDateEdit(edits.kunjung)}
+                    onChange={handleEdits}
+                  />
+                </div>
+
                 <div className="flex gap-3 xl:gap-4 items-center">
                   <label
                     className="w-[23%] xl:w-[18%] text-end font-medium"
@@ -546,11 +565,11 @@ const DataLansia = () => {
     return lansiaFilter.map((lansia, index) => {
       return (
         <tr key={index}>
-          <td>{index + 1}</td>
+          <td>{changeDateTable(lansia.kunjung)}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
           <td>{lansia.kk}</td>
-          <td>{lansia.tanggalLahir}</td>
+          <td>{changeDateTable(lansia.tanggalLahir)}</td>
           <td>{lansia.jenisKelamin}</td>
           <td>{lansia.umur}</td>
           <td>{lansia.alamat}</td>
@@ -582,7 +601,7 @@ const DataLansia = () => {
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
-              <th>No.</th>
+              <th>Tanggal Kunjungan</th>
               <th>Nama</th>
               <th>NIK</th>
               <th>No. KK</th>
@@ -652,7 +671,7 @@ const DataLansia = () => {
           <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
             <tbody>
               <tr>
-                <th>No.</th>
+                <th>Tanggal Kunjungan</th>
                 <th>Nama</th>
                 <th>NIK</th>
                 <th>No. KK</th>
