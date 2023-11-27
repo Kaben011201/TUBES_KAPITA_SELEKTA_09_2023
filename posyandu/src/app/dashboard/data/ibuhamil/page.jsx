@@ -40,7 +40,10 @@ const DataIbuHamil = () => {
 
   const getBumil = async () => {
     try {
-      const response = await axiosConfig.get("http://localhost:3000/api/bumil");
+      const response = await axiosConfig.get(
+        "http://localhost:3000/api/bumil",
+        { params: { month: bulan } }
+      );
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
@@ -154,7 +157,7 @@ const DataIbuHamil = () => {
     e.preventDefault();
 
     const data = {
-      kunjung: new Date(edits.kunjung),
+      kunjung: edits.kunjung,
       nama: edits.nama,
       nik: edits.nik,
       kk: edits.kk,
@@ -209,7 +212,7 @@ const DataIbuHamil = () => {
     return bumil.map((bumil) => {
       return (
         <tr key={bumil.id}>
-          <td>{changeDateTable(bumil.kunjung)}</td>
+          <td>{bumil.kunjung}</td>
           <td>{bumil.nama}</td>
           <td>{bumil.nik}</td>
           <td>{bumil.kk}</td>
@@ -338,7 +341,7 @@ const DataIbuHamil = () => {
                     type="date"
                     name="kunjung"
                     id="kunjung"
-                    value={changeDateEdit(edits.kunjung)}
+                    value={edits.kunjung}
                     onChange={handleEdits}
                     required
                   />
@@ -795,7 +798,7 @@ const DataIbuHamil = () => {
     return bumilFilter.map((bumil) => {
       return (
         <tr key={bumil.id}>
-          <td>{changeDateTable(bumil.kunjung)}</td>
+          <td>{bumil.kunjung}</td>
           <td>{bumil.nama}</td>
           <td>{bumil.nik}</td>
           <td>{bumil.kk}</td>
@@ -821,16 +824,18 @@ const DataIbuHamil = () => {
     });
   };
 
+  const [bulan, setBulan] = useState(0);
+
   useEffect(() => {
     getBumil();
-  }, []);
+  }, [bulan]);
 
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <p></p>
         <h3 className="ml-10">Data Ibu Hamil</h3>
-        <Bulan />
+        <Bulan setBulan={setBulan} />
       </div>
       <div
         id="printablediv"

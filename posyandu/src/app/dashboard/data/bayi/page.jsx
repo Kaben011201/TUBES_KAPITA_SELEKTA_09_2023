@@ -45,7 +45,9 @@ const DataBayi = () => {
 
   const getBayi = async () => {
     try {
-      const response = await axiosConfig.get("http://localhost:3000/api/bayi");
+      const response = await axiosConfig.get("http://localhost:3000/api/bayi", {
+        params: { month: bulan },
+      });
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
@@ -159,7 +161,7 @@ const DataBayi = () => {
     e.preventDefault();
 
     const data = {
-      kunjung: new Date(edits.kunjung),
+      kunjung: edits.kunjung,
       nama: edits.nama,
       nik: edits.nik,
       jenisKelamin: edits.jenisKelamin,
@@ -217,7 +219,7 @@ const DataBayi = () => {
     return bayi.map((bayi) => {
       return (
         <tr key={bayi.id}>
-          <td>{changeDateTable(bayi.kunjung)}</td>
+          <td>{bayi.kunjung}</td>
           <td>{bayi.nama}</td>
           <td>{bayi.nik}</td>
           <td>{changeDateTable(bayi.tanggalLahir)}</td>
@@ -348,7 +350,7 @@ const DataBayi = () => {
                     type="date"
                     name="kunjung"
                     id="kunjung"
-                    value={changeDateEdit(edits.kunjung)}
+                    value={edits.kunjung}
                     onChange={handleEdits}
                     required
                   />
@@ -892,7 +894,7 @@ const DataBayi = () => {
     return bayiFilter.map((bayi) => {
       return (
         <tr key={bayi.id}>
-          <td>{changeDateTable(bayi.kunjung)}</td>
+          <td>{bayi.kunjung}</td>
           <td>{bayi.nama}</td>
           <td>{bayi.nik}</td>
           <td>{changeDateTable(bayi.tanggalLahir)}</td>
@@ -922,7 +924,7 @@ const DataBayi = () => {
     });
   };
 
-  const [bulan,setBulan]= useState(0);
+  const [bulan, setBulan] = useState(0);
 
   useEffect(() => {
     getBayi();

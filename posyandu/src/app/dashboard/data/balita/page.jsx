@@ -27,10 +27,10 @@ const DataBalita = () => {
     ll: "",
     vit: "Iya",
     imunisasi: "Tidak Ada",
-    bulan66 : "",
-    bulan78 : "",
-    bulan88 : "",
-    tanggalPra : "",
+    bulan66: "",
+    bulan78: "",
+    bulan88: "",
+    tanggalPra: "",
     tanggalMeninggal: "",
     penyebab: "",
     keterangan: "",
@@ -185,10 +185,10 @@ const DataBalita = () => {
       lk: parseFloat(edits.lk),
       ll: parseFloat(edits.ll),
       vit: edits.vit,
-      bulan66 : edits.bulan66,
-      bulan78 : edits.bulan78,
-      bulan88 : edits.bulan88,
-      tanggalPra : edits.tanggalPra,
+      bulan66: edits.bulan66,
+      bulan78: edits.bulan78,
+      bulan88: edits.bulan88,
+      tanggalPra: edits.tanggalPra,
       imunisasi: edits.imunisasi,
       tanggalMeninggal: new Date(edits.tanggalMeninggal),
       penyebab: edits.penyebab,
@@ -247,7 +247,7 @@ const DataBalita = () => {
           <td>{balita.bulan66}</td>
           <td>{balita.bulan78}</td>
           <td>{balita.bulan88}</td>
-          <td>{changeDateTable(balita.tanggalPra)}</td>            
+          <td>{changeDateTable(balita.tanggalPra)}</td>
           <td>{changeDateTable(balita.tanggalMeninggal)}</td>
           <td>{balita.penyebab}</td>
           <td>{balita.keterangan}</td>
@@ -258,7 +258,7 @@ const DataBalita = () => {
                 await getBalitaFilter(balita);
                 document.getElementById(`modal_info_balita`).showModal();
               }}
-              >
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="22.5"
@@ -353,16 +353,24 @@ const DataBalita = () => {
                 className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
               >
                 <div className="flex gap-3 xl:gap-4 items-center">
-                  <label 
-                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" 
-                    htmlFor="">Tanggal Kunjungan<span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span></label>
-                  <input 
-                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" 
-                    type="date" 
-                    name="kunjung" 
-                    id="kunjung" 
-                    value={edits.kunjung} 
-                    onChange={handleEdits} required/>
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Tanggal Kunjungan
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="date"
+                    name="kunjung"
+                    id="kunjung"
+                    value={edits.kunjung}
+                    onChange={handleEdits}
+                    required
+                  />
                 </div>
                 <div className="flex gap-3 xl:gap-4 items-center">
                   <label
@@ -376,7 +384,7 @@ const DataBalita = () => {
                     type="text"
                     name="nik"
                     id="nik"
-                    value={edits.nik} 
+                    value={edits.nik}
                     onChange={handleEdits}
                   />
                 </div>
@@ -395,7 +403,7 @@ const DataBalita = () => {
                     type="text"
                     name="nama"
                     id="nama"
-                    value={edits.nama} 
+                    value={edits.nama}
                     onChange={handleEdits}
                     required
                   />
@@ -456,7 +464,7 @@ const DataBalita = () => {
                     type="text"
                     name="ibu"
                     id="ibu"
-                    value={edits.ibu} 
+                    value={edits.ibu}
                     onChange={handleEdits}
                     required
                   />
@@ -475,7 +483,7 @@ const DataBalita = () => {
                     type="text"
                     name="nikIbu"
                     id="nikIbu"
-                    value={edits.nikIbu} 
+                    value={edits.nikIbu}
                     onChange={handleEdits}
                     required
                   />
@@ -494,7 +502,7 @@ const DataBalita = () => {
                     type="text"
                     name="ayah"
                     id="ayah"
-                    value={edits.ayah} 
+                    value={edits.ayah}
                     onChange={handleEdits}
                     required
                   />
@@ -513,7 +521,7 @@ const DataBalita = () => {
                     type="text"
                     name="nikAyah"
                     id="nikAyah"
-                    value={edits.nikAyah} 
+                    value={edits.nikAyah}
                     onChange={handleEdits}
                     required
                   />
@@ -532,7 +540,7 @@ const DataBalita = () => {
                     name="alamat"
                     id="alamat"
                     rows="3"
-                    value={edits.alamat} 
+                    value={edits.alamat}
                     onChange={handleEdits}
                     required
                   ></textarea>
@@ -553,7 +561,7 @@ const DataBalita = () => {
                     name="alamatKK"
                     id="alamatKK"
                     rows="3"
-                    value={edits.alamatKK} 
+                    value={edits.alamatKK}
                     onChange={handleEdits}
                     required
                   ></textarea>
@@ -593,7 +601,7 @@ const DataBalita = () => {
                     type="number"
                     name="bb"
                     id="bb"
-                    value={edits.bb} 
+                    value={edits.bb}
                     onChange={handleEdits}
                     required
                   />
@@ -612,7 +620,7 @@ const DataBalita = () => {
                     type="number"
                     name="tb"
                     id="tb"
-                    value={edits.tb} 
+                    value={edits.tb}
                     onChange={handleEdits}
                     required
                   />
@@ -633,7 +641,7 @@ const DataBalita = () => {
                     type="number"
                     name="lk"
                     id="lk"
-                    value={edits.lk} 
+                    value={edits.lk}
                     onChange={handleEdits}
                     required
                   />
@@ -654,7 +662,7 @@ const DataBalita = () => {
                     type="number"
                     name="ll"
                     id="ll"
-                    value={edits.ll} 
+                    value={edits.ll}
                     onChange={handleEdits}
                     required
                   />
@@ -786,7 +794,7 @@ const DataBalita = () => {
                         type="date"
                         name="tanggalMeninggal"
                         id="tanggalMeninggal"
-                        value={changeDateEdit(edits.tanggalMeninggal)} 
+                        value={changeDateEdit(edits.tanggalMeninggal)}
                         onChange={handleEdits}
                       />
                     </div>
@@ -800,7 +808,7 @@ const DataBalita = () => {
                         type="text"
                         name="penyebab"
                         id="penyebab"
-                        value={edits.penyebab} 
+                        value={edits.penyebab}
                         onChange={handleEdits}
                       />
                     </div>
@@ -819,7 +827,7 @@ const DataBalita = () => {
                     type="text"
                     name="keterangan"
                     id="keterangan"
-                    value={edits.keterangan} 
+                    value={edits.keterangan}
                     onChange={handleEdits}
                   />
                 </div>
@@ -842,7 +850,7 @@ const DataBalita = () => {
       );
     });
   };
-  
+
   const renderTableRiwayat = () => {
     return balitaFilter.map((balita, index) => {
       return (
@@ -868,9 +876,9 @@ const DataBalita = () => {
           <td>{balita.bulan66}</td>
           <td>{balita.bulan78}</td>
           <td>{balita.bulan88}</td>
-          <td>{changeDateTable(balita.tanggalPra)}</td>          
+          <td>{changeDateTable(balita.tanggalPra)}</td>
           <td>{changeDateTable(balita.tanggalMeninggal)}</td>
-          <td>{balita.penyebab}</td> 
+          <td>{balita.penyebab}</td>
           <td>{balita.keterangan}</td>
         </tr>
       );
@@ -934,7 +942,7 @@ const DataBalita = () => {
               <th>Tanggal Pra Sekolah</th>
               <th>Tanggal Meninggal</th>
               <th>Sebab</th>
-            </tr> 
+            </tr>
             {renderTable()}
           </tbody>
         </table>
@@ -988,51 +996,51 @@ const DataBalita = () => {
           <h3 className="font-bold text-lg mb-4">Riwayat Data Pasien:</h3>
 
           <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
-          <tbody>
-            <tr>
-              <th rowSpan={2}>No.</th>
-              <th rowSpan={2}>Nama</th>
-              <th rowSpan={2}>NIK</th>
-              <th rowSpan={2}>TTL</th>
-              <th rowSpan={2}>L/P</th>
-              <th colSpan={5}>Data Orang Tua</th>
-              <th rowSpan={2}>Alamat</th>
-              <th rowSpan={2}>
-                <p>K</p>
-                <p>I</p>
-                <p>A</p>
-              </th>
-              <th rowSpan={2}>BB</th>
-              <th rowSpan={2}>TB</th>
-              <th rowSpan={2}>LK</th>
-              <th rowSpan={2}>LL</th>
-              <th rowSpan={2}>
-                <p>V</p>
-                <p>I</p>
-                <p>T</p>
-              </th>
-              <th colSpan={2}>Imunisasi Lanjut</th>
-              <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
-              <th colSpan={2}>Meninggal</th>
-              <th rowSpan={2}>Keterangan</th>
-              <th rowSpan={2}>Aksi</th>
-            </tr>
-            <tr>
-              <th>Nama Ibu</th>
-              <th>NIK</th>
-              <th>Nama Ayah</th>
-              <th>NIK</th>
-              <th>No.HP</th>
-              <th>66 Bulan</th>
-              <th>78 Bulan</th>
-              <th>84 Bulan</th>
-              <th>Tanggal Pra Sekolah</th>
-              <th>Tanggal Meninggal</th>
-              <th>Sebab</th>
-            </tr> 
-            {renderTableRiwayat()}
-          </tbody>
-        </table>
+            <tbody>
+              <tr>
+                <th rowSpan={2}>No.</th>
+                <th rowSpan={2}>Nama</th>
+                <th rowSpan={2}>NIK</th>
+                <th rowSpan={2}>TTL</th>
+                <th rowSpan={2}>L/P</th>
+                <th colSpan={5}>Data Orang Tua</th>
+                <th rowSpan={2}>Alamat</th>
+                <th rowSpan={2}>
+                  <p>K</p>
+                  <p>I</p>
+                  <p>A</p>
+                </th>
+                <th rowSpan={2}>BB</th>
+                <th rowSpan={2}>TB</th>
+                <th rowSpan={2}>LK</th>
+                <th rowSpan={2}>LL</th>
+                <th rowSpan={2}>
+                  <p>V</p>
+                  <p>I</p>
+                  <p>T</p>
+                </th>
+                <th rowSpan={2}>Imunisasi Lanjut</th>
+                <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
+                <th colSpan={2}>Meninggal</th>
+                <th rowSpan={2}>Keterangan</th>
+                <th rowSpan={2}>Aksi</th>
+              </tr>
+              <tr>
+                <th>Nama Ibu</th>
+                <th>NIK</th>
+                <th>Nama Ayah</th>
+                <th>NIK</th>
+                <th>No.HP</th>
+                <th>66 Bulan</th>
+                <th>78 Bulan</th>
+                <th>84 Bulan</th>
+                <th>Tanggal Pra Sekolah</th>
+                <th>Tanggal Meninggal</th>
+                <th>Sebab</th>
+              </tr>
+              {renderTableRiwayat()}
+            </tbody>
+          </table>
         </div>
       </dialog>
     </main>

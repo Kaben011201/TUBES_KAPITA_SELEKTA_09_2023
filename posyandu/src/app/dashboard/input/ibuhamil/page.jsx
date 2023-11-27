@@ -40,7 +40,7 @@ const IbuScreen = () => {
     e.preventDefault();
 
     const data = {
-      kunjung: new Date(inputs.kunjung),
+      kunjung: inputs.kunjung,
       nama: inputs.nama,
       nik: inputs.nik,
       kk: inputs.kk,
@@ -540,14 +540,36 @@ const IbuScreen = () => {
             />
           </div>
 
-          <button type="submit" name="tambah" id="tambah" className="bg-[#FF5757;] w-[110px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[10px] xl:rounded-[15px] text-white font-semibold text-sans text-[14px] xl:text-xl p-2 xl:p-5 flex items-center gap-1 xl:gap-3">
-          <svg className="xl:w-[21px] xl:h-[21px]" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 18 18" fill="none">
-              <circle cx="9" cy="9" r="6.75" fill="white"/>
-              <path d="M9 11.25L9 6.75" stroke="#222222" stroke-width="1.2" stroke-linecap="square"/>
-              <path d="M11.25 9L6.75 9" stroke="#222222" stroke-width="1.2" stroke-linecap="square"/>
-          </svg>
-          Tambahkan
-        </button>
+          <button
+            type="submit"
+            name="tambah"
+            id="tambah"
+            className="bg-[#FF5757;] w-[110px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[10px] xl:rounded-[15px] text-white font-semibold text-sans text-[14px] xl:text-xl p-2 xl:p-5 flex items-center gap-1 xl:gap-3"
+          >
+            <svg
+              className="xl:w-[21px] xl:h-[21px]"
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 18 18"
+              fill="none"
+            >
+              <circle cx="9" cy="9" r="6.75" fill="white" />
+              <path
+                d="M9 11.25L9 6.75"
+                stroke="#222222"
+                stroke-width="1.2"
+                stroke-linecap="square"
+              />
+              <path
+                d="M11.25 9L6.75 9"
+                stroke="#222222"
+                stroke-width="1.2"
+                stroke-linecap="square"
+              />
+            </svg>
+            Tambahkan
+          </button>
         </form>
       </div>
     </main>

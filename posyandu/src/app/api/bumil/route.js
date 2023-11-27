@@ -4,10 +4,13 @@ export async function GET(req) {
   let where = {};
 
   const { searchParams } = new URL(req.url);
-  const month = parseInt(searchParams.get("month")) || 0;
+  let month = parseInt(searchParams.get("month")) || 0;
 
   // IF THERE IS FILTER BY MONTH
   if (month != 0) {
+    if (month < 10) {
+      month = `0${month}`;
+    }
     const year = new Date().getFullYear();
     where.kunjung = {
       startsWith: `${year}-${month}`,

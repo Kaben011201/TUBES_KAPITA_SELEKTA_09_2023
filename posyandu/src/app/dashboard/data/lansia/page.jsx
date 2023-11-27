@@ -32,7 +32,8 @@ const DataLansia = () => {
   const getLansia = async () => {
     try {
       const response = await axiosConfig.get(
-        "http://localhost:3000/api/lansia", { params: { month:bulan } }
+        "http://localhost:3000/api/lansia",
+        { params: { month: bulan } }
       );
       if (response.data.status !== 400) {
       } else {
@@ -312,7 +313,7 @@ const DataLansia = () => {
                     type="date"
                     name="kunjung"
                     id="kunjung"
-                    value={changeDateEdit(edits.kunjung)}
+                    value={edits.kunjung}
                     onChange={handleEdits}
                   />
                 </div>
@@ -572,7 +573,7 @@ const DataLansia = () => {
     });
   };
 
-  const [bulan,setBulan]= useState(0);
+  const [bulan, setBulan] = useState(0);
 
   useEffect(() => {
     getLansia();
