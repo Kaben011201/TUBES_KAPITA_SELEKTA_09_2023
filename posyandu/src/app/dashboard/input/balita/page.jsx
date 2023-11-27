@@ -137,7 +137,7 @@ const BalitaScreen = () => {
               <option value="L">Laki-laki</option>
               <option value="P">Perempuan</option>
             </select>
-          </div>
+        </div>
         
         <div className="flex gap-3 xl:gap-4 items-center">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Nama Ibu <span className="text-red-500 absolute mt-[-6px]">*</span></label>
@@ -188,7 +188,7 @@ const BalitaScreen = () => {
               <option value="Iya">Iya</option>
               <option value="tidak">Tidak</option>
             </select>
-          </div>
+        </div>
 
         <div className="flex gap-3 xl:gap-4 items-center">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">BB (kg)<span className="text-red-500 absolute mt-[-6px]">*</span></label>
@@ -229,9 +229,9 @@ const BalitaScreen = () => {
               <option value="Iya">Iya</option>
               <option value="tidak">Tidak</option>
             </select>
-          </div>
+        </div>
 
-          <div className="flex gap-6 items-center my-4">
+        <div className="flex gap-6 items-center my-4">
             <label
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
@@ -251,72 +251,73 @@ const BalitaScreen = () => {
               <option value="DPT-HB-HIB">DPT-HB-HIB</option>
               <option value="Campak">Campak</option>
             </select>
-          </div>
+        </div>
 
-          <div className="flex gap-5 xl:gap-8">
-            <label
-              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-              htmlFor=""
-            >
-              Pelayanan Anak Pra Sekolah
-            </label>
-            <div className="w-[77%] xl:w-[82%] flex flex-col gap-[7px] text-[11px] xl:text-base xl:font-medium font-semibold">
-              <div className="flex gap-3 xl:gap-4 items-center">
-                <label className="w-[35%] xl:w-[20%]" htmlFor="">
-                  1. 66 Bulan
-                </label>
-                <input
-                  className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                  type="text"
-                  name="bulan66"
-                  id="bulan66"
-                  value={inputs.bulan66}
-                  onChange={handleInput}
-                />
-              </div>
+        <div className="flex gap-5 xl:gap-8">
+          <label
+            className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+            htmlFor=""
+          >
+            Pelayanan Anak Pra Sekolah
+          </label>
+          <div className="w-[77%] xl:w-[82%] flex flex-col gap-[7px] text-[11px] xl:text-base xl:font-medium font-semibold">
+            <div className="flex gap-3 xl:gap-4 items-center">
+              <label className="w-[35%] xl:w-[20%]" htmlFor="">
+                1. 66 Bulan
+              </label>
+              <input
+                className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                type="text"
+                name="bulan66"
+                id="bulan66"
+                value={inputs.bulan66}
+                onChange={handleInput}
+              />
+            </div>
 
-              <div className="flex gap-3 xl:gap-4 items-center">
-                <label className="w-[35%] xl:w-[20%]" htmlFor="">
-                  2. 78 Bulan
-                </label>
-                <input
-                  className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                  type="text"
-                  name="bulan78"
-                  id="bulan78"
-                  value={inputs.bulan78}
-                  onChange={handleInput}
-                />
-              </div>
+            <div className="flex gap-3 xl:gap-4 items-center">
+              <label className="w-[35%] xl:w-[20%]" htmlFor="">
+                2. 78 Bulan
+              </label>
+              <input
+                className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                type="text"
+                name="bulan78"
+                id="bulan78"
+                value={inputs.bulan78}
+                onChange={handleInput}
+              />
+            </div>
 
-              <div className="flex gap-3 xl:gap-4 items-center">
-                <label className="w-[35%] xl:w-[20%]" htmlFor="">
-                  3. 88 Bulan
-                </label>
-                <input
-                  className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                  type="text"
-                  name="bulan88"
-                  id="bulan88"
-                  value={inputs.bulan88}
-                  onChange={handleInput}
-                />
-              </div>
-              <div className="flex gap-3 xl:gap-4 items-center">
-                <label className="w-[35%] xl:w-[20%]" htmlFor="">
-                  4. Tanggal
-                </label>
-                <input
-                  className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-                  type="date"
-                  name="tanggalPra"
-                  id="tanggalPra"
-                  value={inputs.tanggalPra}
-                  onChange={handleInput}
-                />
-              </div>
+            <div className="flex gap-3 xl:gap-4 items-center">
+              <label className="w-[35%] xl:w-[20%]" htmlFor="">
+                3. 84 Bulan
+              </label>
+              <input
+                className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                type="text"
+                name="bulan88"
+                id="bulan88"
+                value={inputs.bulan84}
+                onChange={handleInput}
+              />
+            </div>
+
+            <div className="flex gap-3 xl:gap-4 items-center">
+              <label className="w-[35%] xl:w-[20%]" htmlFor="">
+                4. Tanggal
+              </label>
+              <input
+                className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                type="date"
+                name="tanggalPra"
+                id="tanggalPra"
+                value={inputs.tanggalPra}
+                onChange={handleInput}
+              />
             </div>
           </div>
+        </div>
 
         <div className="flex gap-5 xl:gap-20 my-3">
           <label className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]" htmlFor="">Meninggal</label>
@@ -338,8 +339,13 @@ const BalitaScreen = () => {
           <input className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" type="text" name="keterangan" id="keterangan" value={inputs.keterangan} onChange={handleInput} />
         </div>
 
-        <button type="submit" className="bg-[#FF5757;] w-[100px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[16px] xl:text-xl pr-1 xl:pr-6 flex items-center justify-center gap-1 xl:gap-4">
-          <img className="w-[22px] xl:w-[35px] mb-1" src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg" alt="saveform" />Simpan
+        <button type="submit" name="tambah" id="tambah" className="bg-[#FF5757;] w-[110px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[10px] xl:rounded-[15px] text-white font-semibold text-sans text-[14px] xl:text-xl p-2 xl:p-5 flex items-center gap-1 xl:gap-3">
+          <svg className="xl:w-[21px] xl:h-[21px]" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="6.75" fill="white"/>
+              <path d="M9 11.25L9 6.75" stroke="#222222" stroke-width="1.2" stroke-linecap="square"/>
+              <path d="M11.25 9L6.75 9" stroke="#222222" stroke-width="1.2" stroke-linecap="square"/>
+          </svg>
+          Tambahkan
         </button>
       </form>
       </div>

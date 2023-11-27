@@ -227,7 +227,13 @@ const Header = () => {
                   </details>
                 </div>
 
-                <li>
+                <li className={`cursor-pointer sidebar-content ${
+                          isActive === "" && "border-black"
+                        }`}
+                        onClick={() => {
+                          setisActive("");
+                          router.push("/dashboard/activity");
+                        }}>
                   <div className="sidebar-items p-[4px] py-[2px]">
                     <div className="flex">
                       <img

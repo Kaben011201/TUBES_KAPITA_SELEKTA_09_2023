@@ -1,9 +1,13 @@
+"use client";
 import React from "react";
+//import Activity from "../component/Activity";
+import { useRouter } from "next/navigation";
 
 const InputScreen = () => {
+    const router = useRouter();
   return (
-    <main className="flex">
-        <div className="bg-[#F2F1EF] w-full m-[15px] mt-[64px] rounded-[5px] xl:rounded-[20px] p-[15px] xl:w-[80%] xl:mx-auto xl:my-10 xl:px-[57px] xl:mt-[125px] xl:py-[25px]">
+    <main className="flex flex-col xl:w-[80%] xl:mx-auto">
+        <div className="bg-[#F2F1EF] m-[15px] mt-[64px] rounded-[5px] xl:rounded-[20px] p-[15px] xl:my-10 xl:px-[57px] xl:mt-[125px] xl:py-[25px]">
             <div className="text-xs xl:text-xl font-semibold p-3 text-center">
                 <p>Input Data Kegiatan</p>
             </div>
@@ -26,8 +30,16 @@ const InputScreen = () => {
                 </svg>
                 Tambahkan
                 </button>
-            </form>
+            </form>            
         </div>
+        <button onClick={() => {
+                  router.push("./");
+                }} id="back" className="bg-[#FF5757;] w-[110px] xl:w-[180px] xl:h-[50px] h-[35px] m-[15px] mt-3 rounded-[10px] xl:rounded-[15px] text-white font-semibold text-sans text-[14px] xl:text-xl p-2 xl:p-5 flex items-center justify-center pr-5 xl:pr-7 gap-1">
+            <svg className="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 4L6 8L10 12" stroke="white" stroke-width="2"/>
+            </svg>
+            Kembali
+        </button>
     </main>
   )
 }
