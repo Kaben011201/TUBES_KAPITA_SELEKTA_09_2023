@@ -69,11 +69,10 @@ const IbuScreen = () => {
       .post("http://localhost:3000/api/bumil", data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("Berhasil menambahkan data wamil");
+          alert("Berhasil menambahkan data bumil!");
         } else {
           alert(response.data.message);
         }
-        console.log(response.data);
       })
       .catch(function (error) {
         alert(error.data.message);

@@ -47,12 +47,9 @@ const DataBayi = () => {
     try {
       const response = await axiosConfig.get("http://localhost:3000/api/bayi");
       if (response.data.status !== 400) {
-        console.log("Berhasil menampilkan data");
       } else {
         alert(response.data.message);
       }
-
-      console.log(response.data);
       setBayi(response.data.data);
     } catch (error) {
       // alert(error.data.message);
@@ -67,12 +64,9 @@ const DataBayi = () => {
       );
 
       if (response.data.status !== 400) {
-        console.log("Berhasil menampilkan riwayat pasien");
       } else {
         alert(response.data.message);
       }
-
-      console.log(response.data);
       setBayiFilter(response.data.data);
     } catch (error) {
       if (error.response && error.response.data) {
@@ -93,12 +87,10 @@ const DataBayi = () => {
         `http://localhost:3000/api/bayi/${bayi.id}`
       );
       if (response.data.status !== 400) {
-        console.log("Berhasil mengambil id pasien");
         window.location.reload();
       } else {
         alert(response.data.message);
       }
-      console.log(response.data);
     } catch (error) {
       if (error.response && error.response.data) {
         // If there is a response from the server
@@ -146,12 +138,10 @@ const DataBayi = () => {
         `http://localhost:3000/api/bayi/${bayi.id}`
       );
       if (response.data.status !== 400) {
-        console.log("Berhasil mengambil id pasien");
       } else {
         alert(response.data.message);
       }
       setEdits(response.data.data);
-      console.log(response.data);
     } catch (error) {
       if (error.response && error.response.data) {
         // If there is a response from the server
@@ -201,11 +191,10 @@ const DataBayi = () => {
       .patch(`http://localhost:3000/api/bayi/${edits.id}`, data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("konghasil kongupdate kongta");
+          alert("Berhasil mengedit data bayi!");
         } else {
           alert(response.data.message);
         }
-        console.log(response.data);
       })
       .catch(function (error) {
         alert(error.data.message);
@@ -276,8 +265,6 @@ const DataBayi = () => {
             <button
               onClick={async () => {
                 await getBayiEdit(bayi);
-                console.log(edits);
-
                 document.getElementById(`modal_edit_bayi`).showModal();
               }}
             >
@@ -523,23 +510,23 @@ const DataBayi = () => {
                 </div>
 
                 <div className="flex gap-3 xl:gap-4 items-center">
-            <label
-              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
-              htmlFor=""
-            >
-              No Handphone{" "}
-              <span className="text-red-500 absolute mt-[-6px]">*</span>
-            </label>
-            <input
-              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
-              type="text"
-              name="noHp"
-              id="noHp"
-              value={edits.noHp}
-              onChange={handleEdits}
-              required
-            />
-          </div>
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    No Handphone{" "}
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="noHp"
+                    id="noHp"
+                    value={edits.noHp}
+                    onChange={handleEdits}
+                    required
+                  />
+                </div>
 
                 <div className="flex gap-3 xl:gap-4 items-center">
                   <label

@@ -49,18 +49,17 @@ const LansiaScreen = () => {
       .post("http://localhost:3000/api/lansia", data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("Wanghasil wangnambahkan wangta wangsia");
+          alert("Berhasil menambahkan data lansia!");
         } else {
           alert(response.data.message);
         }
-        console.log(response.data);
       })
       .catch(function (error) {
         alert(error.data.message);
         console.log(error);
       });
-      
-      window.location.reload();
+
+    window.location.reload();
   };
 
   return (
