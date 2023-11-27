@@ -168,6 +168,7 @@ const DataBalita = () => {
     e.preventDefault();
 
     const data = {
+      kunjung: edits.kunjung,
       nama: edits.nama,
       nik: edits.nik,
       jenisKelamin: edits.jenisKelamin,
@@ -223,10 +224,10 @@ const DataBalita = () => {
   };
 
   const renderTable = () => {
-    return balita.map((balita, index) => {
+    return balita.map((balita) => {
       return (
         <tr key={balita.id}>
-          <td>{index + 1}</td>
+          <td>{balita.kunjung}</td>
           <td>{balita.nama}</td>
           <td>{balita.nik}</td>
           <td>{changeDateTable(balita.tanggalLahir)}</td>
@@ -903,7 +904,7 @@ const DataBalita = () => {
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
-              <th rowSpan={2}>No.</th>
+              <th rowSpan={2}>Tanggal Kunjungan</th>
               <th rowSpan={2}>Nama</th>
               <th rowSpan={2}>NIK</th>
               <th rowSpan={2}>TTL</th>
