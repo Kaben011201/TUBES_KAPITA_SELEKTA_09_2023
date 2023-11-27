@@ -29,7 +29,7 @@ const DataBalita = () => {
     imunisasi: "Tidak Ada",
     bulan66 : "",
     bulan78 : "",
-    bulan84 : "",
+    bulan88 : "",
     tanggalPra : "",
     tanggalMeninggal: "",
     penyebab: "",
@@ -62,7 +62,7 @@ const DataBalita = () => {
   const getBalitaFilter = async (balita) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/riwayat/bayi/${bayi.nik}`
+        `http://localhost:3000/api/riwayat/bayi/${balita.nik}`
       );
 
       if (response.data.status !== 400) {
@@ -187,7 +187,7 @@ const DataBalita = () => {
       vit: edits.vit,
       bulan66 : edits.bulan66,
       bulan78 : edits.bulan78,
-      bulan84 : edits.bulan84,
+      bulan88 : edits.bulan88,
       tanggalPra : edits.tanggalPra,
       imunisasi: edits.imunisasi,
       tanggalMeninggal: new Date(edits.tanggalMeninggal),
@@ -246,7 +246,7 @@ const DataBalita = () => {
           <td>{balita.imunisasi}</td>
           <td>{balita.bulan66}</td>
           <td>{balita.bulan78}</td>
-          <td>{balita.bulan84}</td>
+          <td>{balita.bulan88}</td>
           <td>{changeDateTable(balita.tanggalPra)}</td>            
           <td>{changeDateTable(balita.tanggalMeninggal)}</td>
           <td>{balita.penyebab}</td>
@@ -299,7 +299,7 @@ const DataBalita = () => {
             {/* Hapus data */}
             <button
               onClick={() =>
-                document.getElementById(`modal_hapus_bayi`).showModal()
+                document.getElementById(`modal_hapus_balita`).showModal()
               }
             >
               <svg
@@ -317,8 +317,8 @@ const DataBalita = () => {
             </button>
           </td>
 
-          {/* modal hapus bayi*/}
-          <dialog id="modal_hapus_bayi" className="modal">
+          {/* modal hapus balita*/}
+          <dialog id="modal_hapus_balita" className="modal">
             <div className="modal-box xl:max-w-xl">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
@@ -331,7 +331,7 @@ const DataBalita = () => {
               <button
                 className="btn btn-error mt-4 px-20"
                 onClick={async () => {
-                  await delBayiHapus(bayi);
+                  await delBalitaHapus(balita);
                 }}
               >
                 Ya
@@ -339,7 +339,7 @@ const DataBalita = () => {
             </div>
           </dialog>
 
-          {/* modal edit bayi*/}
+          {/* modal edit balita*/}
           <dialog id="modal_edit_balita" className="modal">
             <div className="modal-box xl:max-w-7xl">
               <form method="dialog">
@@ -416,7 +416,7 @@ const DataBalita = () => {
                     type="date"
                     name="tanggalLahir"
                     id="tanggalLahir"
-                    value={edits.tanggalLahir} 
+                    value={changeDateEdit(edits.kunjung)}
                     onChange={handleEdits}
                     required
                   />
@@ -741,14 +741,14 @@ const DataBalita = () => {
 
                     <div className="flex gap-3 xl:gap-4 items-center">
                       <label className="w-[35%] xl:w-[20%]" htmlFor="">
-                        3. 88 Bulan
+                        3. 84 Bulan
                       </label>
                       <input
                         className="w-[65%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
                         type="text"
                         name="bulan88"
                         id="bulan88"
-                        value={edits.bulan88}
+                        value={changeDateEdit(edits.bulan88)}
                         onChange={handleEdits}
                       />
                     </div>
@@ -762,7 +762,7 @@ const DataBalita = () => {
                         type="date"
                         name="tanggalPra"
                         id="tanggalPra"
-                        value={edits.tanggalPra}
+                        value={changeDateEdit(edits.tanggalPra)}
                         onChange={handleEdits}
                       />
                     </div>
@@ -786,7 +786,7 @@ const DataBalita = () => {
                         type="date"
                         name="tanggalMeninggal"
                         id="tanggalMeninggal"
-                        value={edits.tanggalMeninggal} 
+                        value={changeDateEdit(edits.tanggalMeninggal)} 
                         onChange={handleEdits}
                       />
                     </div>
@@ -842,6 +842,7 @@ const DataBalita = () => {
       );
     });
   };
+  
   const renderTableRiwayat = () => {
     return balitaFilter.map((balita, index) => {
       return (
@@ -866,7 +867,7 @@ const DataBalita = () => {
           <td>{balita.imunisasi}</td>
           <td>{balita.bulan66}</td>
           <td>{balita.bulan78}</td>
-          <td>{balita.bulan84}</td>
+          <td>{balita.bulan88}</td>
           <td>{changeDateTable(balita.tanggalPra)}</td>          
           <td>{changeDateTable(balita.tanggalMeninggal)}</td>
           <td>{balita.penyebab}</td> 
@@ -884,7 +885,7 @@ const DataBalita = () => {
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <p></p>
-        <h3 className="ml-10">Data Bayi</h3>
+        <h3 className="ml-10">Data Balita</h3>
         <Bulan />
       </div>
       <div
