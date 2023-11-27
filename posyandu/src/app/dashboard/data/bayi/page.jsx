@@ -169,6 +169,7 @@ const DataBayi = () => {
     e.preventDefault();
 
     const data = {
+      kunjung: new Date(edits.kunjung),
       nama: edits.nama,
       nik: edits.nik,
       jenisKelamin: edits.jenisKelamin,
@@ -227,7 +228,7 @@ const DataBayi = () => {
     return bayi.map((bayi, index) => {
       return (
         <tr key={bayi.id}>
-          <td>{index + 1}</td>
+          <td>{changeDateTable(bayi.kunjung)}</td>
           <td>{bayi.nama}</td>
           <td>{bayi.nik}</td>
           <td>{changeDateTable(bayi.tanggalLahir)}</td>
@@ -360,7 +361,7 @@ const DataBayi = () => {
                     type="date"
                     name="kunjung"
                     id="kunjung"
-                    value={edits.kunjung}
+                    value={changeDateEdit(edits.kunjung)}
                     onChange={handleEdits}
                     required
                   />
@@ -904,7 +905,7 @@ const DataBayi = () => {
     return bayiFilter.map((bayi, index) => {
       return (
         <tr key={index}>
-          <td>{index + 1}</td>
+          <td>{changeDateTable(bayi.kunjung)}</td>
           <td>{bayi.nama}</td>
           <td>{bayi.nik}</td>
           <td>{changeDateTable(bayi.tanggalLahir)}</td>
@@ -952,7 +953,7 @@ const DataBayi = () => {
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
-              <th rowSpan={2}>No.</th>
+              <th rowSpan={2}>Tanggal Kunjungan</th>
               <th rowSpan={2}>Nama</th>
               <th rowSpan={2}>NIK</th>
               <th rowSpan={2}>Tanggal Lahir</th>
@@ -1046,7 +1047,7 @@ const DataBayi = () => {
           <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
             <tbody>
               <tr>
-                <th rowSpan={2}>No.</th>
+                <th rowSpan={2}>Tanggal Kunjungan</th>
                 <th rowSpan={2}>Nama</th>
                 <th rowSpan={2}>NIK</th>
                 <th rowSpan={2}>Tanggal Lahir</th>

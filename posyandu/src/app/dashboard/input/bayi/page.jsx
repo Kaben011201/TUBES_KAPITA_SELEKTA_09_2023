@@ -45,6 +45,7 @@ const BayiScreen = () => {
 
     const data = {
       type: "bayi",
+      kunjung: new Date(inputs.kunjung),
       nama: inputs.nama,
       nik: inputs.nik,
       jenisKelamin: inputs.jenisKelamin,
@@ -87,6 +88,7 @@ const BayiScreen = () => {
         alert(error.data.message);
         console.log(error);
       });
+      window.location.reload();
   };
 
   return (

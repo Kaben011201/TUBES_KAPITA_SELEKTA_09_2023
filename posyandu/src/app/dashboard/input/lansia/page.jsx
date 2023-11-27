@@ -59,6 +59,8 @@ const LansiaScreen = () => {
         alert(error.data.message);
         console.log(error);
       });
+      
+      window.location.reload();
   };
 
   return (
