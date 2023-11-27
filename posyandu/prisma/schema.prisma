@@ -28,6 +28,7 @@ model Admin {
 
 model Lansia {
   id           Int      @unique @default(sequence())
+  kunjung      DateTime @db.Date
   nama         String
   nik          String
   kk           String
@@ -47,6 +48,7 @@ model Lansia {
 
 model Bumil {
   id                Int      @unique @default(sequence())
+  kunjung           DateTime @db.Date
   nama              String
   nik               String
   kk                String
@@ -76,6 +78,7 @@ model Bumil {
 
 model Bayi {
   id               Int       @unique @default(sequence())
+  kunjung          DateTime  @db.Date
   nama             String
   nik              String
   jenisKelamin     String
@@ -97,6 +100,10 @@ model Bayi {
   neo1             String?
   neo2             String?
   neo3             String?
+  tanggalPra       DateTime? @db.Date
+  bulan66          String?
+  bulan78          String?
+  bulan88          String?
   vitA             String
   imunisasi        String
   pelayananPra     String?

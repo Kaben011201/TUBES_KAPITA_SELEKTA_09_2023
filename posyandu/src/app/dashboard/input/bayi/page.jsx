@@ -45,6 +45,7 @@ const BayiScreen = () => {
 
     const data = {
       type: "bayi",
+      kunjung: new Date(inputs.kunjung),
       nama: inputs.nama,
       nik: inputs.nik,
       jenisKelamin: inputs.jenisKelamin,
@@ -77,16 +78,16 @@ const BayiScreen = () => {
       .post("http://localhost:3000/api/bayi", data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("Wanghasil wangnambahkan wangta wangyi");
+          alert("Berhasil menambahkan data bayi!");
         } else {
           alert(response.data.message);
         }
-        console.log(response.data);
       })
       .catch(function (error) {
         alert(error.data.message);
         console.log(error);
       });
+    window.location.reload();
   };
 
   return (
