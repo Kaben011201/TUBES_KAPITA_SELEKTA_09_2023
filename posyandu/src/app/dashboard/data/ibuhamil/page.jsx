@@ -216,7 +216,7 @@ const DataIbuHamil = () => {
   };
 
   const renderTable = () => {
-    return bumil.map((bumil, index) => {
+    return bumil.map((bumil) => {
       return (
         <tr key={bumil.id}>
           <td>{changeDateTable(bumil.kunjung)}</td>
@@ -802,7 +802,7 @@ const DataIbuHamil = () => {
     });
   };
   const renderTableRiwayat = () => {
-    return bumilFilter.map((bumil, index) => {
+    return bumilFilter.map((bumil) => {
       return (
         <tr key={bumil.id}>
           <td>{changeDateTable(bumil.kunjung)}</td>

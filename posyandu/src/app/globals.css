@@ -10,32 +10,29 @@
   @apply ml-[15px] w-[20px] xl:ml-[30px] xl:w-[35px];
 }
 
-tbody {
-  @apply outline outline-black outline-1;
-}
-
 table,
 th {
   @apply border-[1px] border-black border-collapse;
-}
-
-tr:nth-child(even) td {
-  @apply bg-[#FFAEB2];
-}
-tr:nth-child(even) td {
-  @apply bg-[#FFAEB2] bg-opacity-50;
 }
 
 tr th {
   @apply bg-[#FFAEB2] !important;
 }
 
+tr:nth-child(odd) td {
+  @apply bg-white !important;
+}
+
+tr:nth-child(even) td {
+  @apply bg-[#FFAEB2] bg-opacity-50;
+}
+
 .sidebar-items {
   @apply flex items-center font-black text-[10px] xl:font-bold xl:text-[20px];
 }
 
-.sidebar-content{
-  @apply border-l-2 transition-all ease-in-out
+.sidebar-content {
+  @apply border-l-2 transition-all ease-in-out;
 }
 
 :root {

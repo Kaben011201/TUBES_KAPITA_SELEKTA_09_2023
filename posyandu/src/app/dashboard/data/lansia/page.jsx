@@ -200,7 +200,7 @@ const DataLansia = () => {
   };
 
   const renderTable = () => {
-    return lansia.map((lansia, index) => {
+    return lansia.map((lansia) => {
       return (
         <tr key={lansia.id}>
           <td>{changeDateTable(lansia.kunjung)}</td>
@@ -562,9 +562,9 @@ const DataLansia = () => {
     });
   };
   const renderTableRiwayat = () => {
-    return lansiaFilter.map((lansia, index) => {
+    return lansiaFilter.map((lansia) => {
       return (
-        <tr key={index}>
+        <tr key={lansia.id}>
           <td>{changeDateTable(lansia.kunjung)}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
