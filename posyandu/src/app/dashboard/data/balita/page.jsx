@@ -916,7 +916,7 @@ const DataBalita = () => {
                 <p>I</p>
                 <p>T</p>
               </th>
-              <th colSpan={2}>Imunisasi Lanjut</th>
+              <th rowSpan={2}>Imunisasi Lanjut</th>
               <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
               <th colSpan={2}>Meninggal</th>
               <th rowSpan={2}>Keterangan</th>
