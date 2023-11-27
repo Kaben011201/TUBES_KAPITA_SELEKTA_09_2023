@@ -92,7 +92,7 @@ model Bayi {
   alamatKK         String
   kia              String
   bb               Float
-  bb5              Float
+  bb5              Float?
   tb               Float
   lk               Float
   ll               Float
