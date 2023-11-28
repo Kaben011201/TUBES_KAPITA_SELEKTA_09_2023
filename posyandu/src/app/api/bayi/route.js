@@ -5,6 +5,7 @@ export async function GET(req) {
 
   const { searchParams } = new URL(req.url);
   let month = parseInt(searchParams.get("month")) || 0;
+  const bayiType = parseInt(searchParams.get("type"));
 
   // IF THERE IS FILTER BY MONTH
   if (month != 0) {
@@ -16,10 +17,11 @@ export async function GET(req) {
       startsWith: `${year}-${month}`,
     };
   }
+  where.type = bayiType;
 
   try {
     const bayi = await prisma.bayi.findMany({
-      where,
+      where: {},
       orderBy: {
         kunjung: "asc",
       },
