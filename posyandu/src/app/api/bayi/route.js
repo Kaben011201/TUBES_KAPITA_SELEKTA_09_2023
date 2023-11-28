@@ -21,7 +21,7 @@ export async function GET(req) {
 
   try {
     const bayi = await prisma.bayi.findMany({
-      where: {},
+      where,
       orderBy: {
         kunjung: "asc",
       },
