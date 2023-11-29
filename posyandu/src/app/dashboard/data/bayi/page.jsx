@@ -46,7 +46,7 @@ const DataBayi = () => {
   const getBayi = async () => {
     try {
       const response = await axiosConfig.get("http://localhost:3000/api/bayi", {
-        params: { month: bulan },
+        params: { month: bulan,type: "bayi" },
       });
       if (response.data.status !== 400) {
       } else {
@@ -219,7 +219,7 @@ const DataBayi = () => {
     return bayi.map((bayi) => {
       return (
         <tr key={bayi.id}>
-          <td>{bayi.kunjung}</td>
+          <td>{changeDateTable(bayi.kunjung)}</td>
           <td>{bayi.nama}</td>
           <td>{bayi.nik}</td>
           <td>{changeDateTable(bayi.tanggalLahir)}</td>
@@ -894,7 +894,7 @@ const DataBayi = () => {
     return bayiFilter.map((bayi) => {
       return (
         <tr key={bayi.id}>
-          <td>{bayi.kunjung}</td>
+          <td>{changeDateTable(bayi.kunjung)}</td>
           <td>{bayi.nama}</td>
           <td>{bayi.nik}</td>
           <td>{changeDateTable(bayi.tanggalLahir)}</td>
@@ -928,6 +928,7 @@ const DataBayi = () => {
 
   useEffect(() => {
     getBayi();
+    console.log(bulan);
   }, [bulan]);
 
   return (

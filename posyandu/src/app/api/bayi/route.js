@@ -5,7 +5,7 @@ export async function GET(req) {
 
   const { searchParams } = new URL(req.url);
   let month = parseInt(searchParams.get("month")) || 0;
-  const bayiType = parseInt(searchParams.get("type"));
+  const bayiType = searchParams.get("type");
 
   // IF THERE IS FILTER BY MONTH
   if (month != 0) {

@@ -44,14 +44,13 @@ const DataBalita = () => {
 
   const getBalita = async () => {
     try {
-      const response = await axiosConfig.get("http://localhost:3000/api/bayi");
+      const response = await axiosConfig.get("http://localhost:3000/api/bayi", {
+        params: { month: bulan,type: "balita" },
+      });
       if (response.data.status !== 400) {
-        console.log("Berhasil menampilkan data");
       } else {
         alert(response.data.message);
       }
-
-      console.log(response.data);
       setBalita(response.data.data);
     } catch (error) {
       // alert(error.data.message);
@@ -227,7 +226,7 @@ const DataBalita = () => {
     return balita.map((balita) => {
       return (
         <tr key={balita.id}>
-          <td>{balita.kunjung}</td>
+          <td>{changeDateTable(balita.kunjung)}</td>
           <td>{balita.nama}</td>
           <td>{balita.nik}</td>
           <td>{changeDateTable(balita.tanggalLahir)}</td>
@@ -856,7 +855,7 @@ const DataBalita = () => {
     return balitaFilter.map((balita, index) => {
       return (
         <tr key={index}>
-          <td>{index + 1}</td>
+          <td>{changeDateTable(balita.kunjung)}</td>
           <td>{balita.nama}</td>
           <td>{balita.nik}</td>
           <td>{changeDateTable(balita.tanggalLahir)}</td>
@@ -886,16 +885,18 @@ const DataBalita = () => {
     });
   };
 
+  const [bulan, setBulan] = useState(0);
+
   useEffect(() => {
     getBalita();
-  }, []);
+  }, [bulan]);
 
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <p></p>
         <h3 className="ml-10">Data Balita</h3>
-        <Bulan />
+        <Bulan setBulan={setBulan} />
       </div>
       <div
         id="printablediv"
