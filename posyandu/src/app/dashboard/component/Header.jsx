@@ -39,7 +39,7 @@ const Header = () => {
                   setisActive("");
                   router.push("/dashboard");
                 }}
-                className="mt-[20px] w-[80px] xl:w-[160px] cursor-pointer hover:opacity-80 transition ease-in-out"
+                className="mt-[20px] w-[80px] xl:w-[160px] cursor-pointer hover:opacity-80 transition ease-in-out active:translate-y-1"
                 src="/header/logo-desktop.svg"
               ></img>
               <div className="flex leading-[25px] flex-col items-center ml-[-55px] mt-[25px] xl:leading-[45px]">
@@ -228,10 +228,10 @@ const Header = () => {
                 </div>
 
                 <li className={`cursor-pointer sidebar-content ${
-                          isActive === "" && "border-black"
+                          isActive === "kegiatan" && "border-black"
                         }`}
                         onClick={() => {
-                          setisActive("");
+                          setisActive("kegiatan");
                           router.push("/dashboard/activity");
                         }}>
                   <div className="sidebar-items p-[4px] py-[2px]">
