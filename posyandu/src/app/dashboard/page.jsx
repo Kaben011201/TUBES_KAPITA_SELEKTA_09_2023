@@ -1,15 +1,251 @@
 "use client";
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import axiosConfig from "../../utils/axios";
 import CanvasJSReact from "@canvasjs/react-charts";
 
 const { CanvasJSChart } = CanvasJSReact;
 
 const DashboardScreen = () => {
-  const [options] = useState({
+  const [kategori, setKategori] = useState("bumil");
+  const [tahun, setTahun] = useState(0);
+  const [dataTahun, setdataTahun] = useState({
+    january: 0,
+    february: 0,
+    march: 0,
+    april: 0,
+    may: 0,
+    june: 0,
+    july: 0,
+    august: 0,
+    september: 0,
+    october: 0,
+    november: 0,
+    december: 0,
+  });
+  const handleChange = (e) => {
+    setTahun(e.target.value);
+    if (kategori === "bumil") {
+      getBumilGrafik();
+    } else if (kategori === "bayi") {
+      getBayiGrafik();
+    } else if (kategori === "balita") {
+      getBalitaGrafik();
+    } else if (kategori === "lansia") {
+      getLansiaGrafik();
+    }
+  };
+  const getBumilGrafik = async () => {
+    try {
+      const response = await axiosConfig.get(
+        "http://localhost:3000/api/grafik/bumil",
+        { params: { year: tahun } }
+      );
+      if (response.data.status !== 400) {
+      } else {
+        alert(response.data.message);
+      }
+      setdataTahun(response.data.data);
+      setOptions({
+        animationEnabled: true,
+        exportEnabled: true,
+        theme: "light2",
+        title: {
+          text: "Ibu Hamil",
+          fontColor: "#FFBBBB",
+        },
+        axisY: {
+          includeZero: true,
+          labelFontColor: "#FFBBBB",
+        },
+        data: [
+          {
+            type: "column",
+            xValueFormatString: "MMM YYYY",
+            indexLabelFontColor: "#5A5757",
+            indexLabelPlacement: "outside",
+            dataPoints: [
+              { label: "Jan", y: dataTahun.january },
+              { label: "Feb", y: dataTahun.february },
+              { label: "Mar", y: dataTahun.march },
+              { label: "Apr", y: dataTahun.april },
+              { label: "Mei", y: dataTahun.may },
+              { label: "Jun", y: dataTahun.june },
+              { label: "Jul", y: dataTahun.july },
+              { label: "Ags", y: dataTahun.august },
+              { label: "Sep", y: dataTahun.september },
+              { label: "Okt", y: dataTahun.october },
+              { label: "Nov", y: dataTahun.november },
+              { label: "Des", y: dataTahun.december },
+            ],
+            color: "#FFBBBB",
+          },
+        ],
+      });
+    } catch (error) {
+      // alert(error.data.message);
+      console.log(error);
+    }
+  };
+  const getLansiaGrafik = async () => {
+    try {
+      const response = await axiosConfig.get(
+        "http://localhost:3000/api/grafik/lansia",
+        { params: { year: tahun } }
+      );
+      if (response.data.status !== 400) {
+      } else {
+        alert(response.data.message);
+      }
+      setdataTahun(response.data.data);
+      setOptions({
+        animationEnabled: true,
+        exportEnabled: true,
+        theme: "light2",
+        title: {
+          text: "Lansia",
+          fontColor: "#FFBBBB",
+        },
+        axisY: {
+          includeZero: true,
+          labelFontColor: "#FFBBBB",
+        },
+        data: [
+          {
+            type: "column",
+            xValueFormatString: "MMM YYYY",
+            indexLabelFontColor: "#5A5757",
+            indexLabelPlacement: "outside",
+            dataPoints: [
+              { label: "Jan", y: dataTahun.january },
+              { label: "Feb", y: dataTahun.february },
+              { label: "Mar", y: dataTahun.march },
+              { label: "Apr", y: dataTahun.april },
+              { label: "Mei", y: dataTahun.may },
+              { label: "Jun", y: dataTahun.june },
+              { label: "Jul", y: dataTahun.july },
+              { label: "Ags", y: dataTahun.august },
+              { label: "Sep", y: dataTahun.september },
+              { label: "Okt", y: dataTahun.october },
+              { label: "Nov", y: dataTahun.november },
+              { label: "Des", y: dataTahun.december },
+            ],
+            color: "#FFBBBB",
+          },
+        ],
+      });
+    } catch (error) {
+      // alert(error.data.message);
+      console.log(error);
+    }
+  };
+  const getBayiGrafik = async () => {
+    try {
+      const response = await axiosConfig.get(
+        "http://localhost:3000/api/grafik/bayi",
+        { params: { year: tahun, type: "bayi" } }
+      );
+      if (response.data.status !== 400) {
+      } else {
+        alert(response.data.message);
+      }
+      setdataTahun(response.data.data);
+      setOptions({
+        animationEnabled: true,
+        exportEnabled: true,
+        theme: "light2",
+        title: {
+          text: "Bayi",
+          fontColor: "#FFBBBB",
+        },
+        axisY: {
+          includeZero: true,
+          labelFontColor: "#FFBBBB",
+        },
+        data: [
+          {
+            type: "column",
+            xValueFormatString: "MMM YYYY",
+            indexLabelFontColor: "#5A5757",
+            indexLabelPlacement: "outside",
+            dataPoints: [
+              { label: "Jan", y: dataTahun.january },
+              { label: "Feb", y: dataTahun.february },
+              { label: "Mar", y: dataTahun.march },
+              { label: "Apr", y: dataTahun.april },
+              { label: "Mei", y: dataTahun.may },
+              { label: "Jun", y: dataTahun.june },
+              { label: "Jul", y: dataTahun.july },
+              { label: "Ags", y: dataTahun.august },
+              { label: "Sep", y: dataTahun.september },
+              { label: "Okt", y: dataTahun.october },
+              { label: "Nov", y: dataTahun.november },
+              { label: "Des", y: dataTahun.december },
+            ],
+            color: "#FFBBBB",
+          },
+        ],
+      });
+    } catch (error) {
+      // alert(error.data.message);
+      console.log(error);
+    }
+  };
+  const getBalitaGrafik = async () => {
+    try {
+      const response = await axiosConfig.get(
+        "http://localhost:3000/api/grafik/bayi",
+        { params: { year: tahun, type: "balita" } }
+      );
+      if (response.data.status !== 400) {
+      } else {
+        alert(response.data.message);
+      }
+      setdataTahun(response.data.data);
+      setOptions({
+        animationEnabled: true,
+        exportEnabled: true,
+        theme: "light2",
+        title: {
+          text: "Balita",
+          fontColor: "#FFBBBB",
+        },
+        axisY: {
+          includeZero: true,
+          labelFontColor: "#FFBBBB",
+        },
+        data: [
+          {
+            type: "column",
+            xValueFormatString: "MMM YYYY",
+            indexLabelFontColor: "#5A5757",
+            indexLabelPlacement: "outside",
+            dataPoints: [
+              { label: "Jan", y: dataTahun.january },
+              { label: "Feb", y: dataTahun.february },
+              { label: "Mar", y: dataTahun.march },
+              { label: "Apr", y: dataTahun.april },
+              { label: "Mei", y: dataTahun.may },
+              { label: "Jun", y: dataTahun.june },
+              { label: "Jul", y: dataTahun.july },
+              { label: "Ags", y: dataTahun.august },
+              { label: "Sep", y: dataTahun.september },
+              { label: "Okt", y: dataTahun.october },
+              { label: "Nov", y: dataTahun.november },
+              { label: "Des", y: dataTahun.december },
+            ],
+            color: "#FFBBBB",
+          },
+        ],
+      });
+    } catch (error) {
+      // alert(error.data.message);
+      console.log(error);
+    }
+  };
+  const [options, setOptions] = useState({
     animationEnabled: true,
     exportEnabled: true,
     theme: "light2",
@@ -28,18 +264,18 @@ const DashboardScreen = () => {
         indexLabelFontColor: "#5A5757",
         indexLabelPlacement: "outside",
         dataPoints: [
-          { label: "Jan", y: 70 },
-          { label: "Feb", y: 55 },
-          { label: "Mar", y: 50 },
-          { label: "Apr", y: 65 },
-          { label: "Mei", y: 71 },
-          { label: "Jun", y: 68 },
-          { label: "Jul", y: 92, index: "Highest" },
-          { label: "Ags", y: 54 },
-          { label: "Sep", y: 60 },
-          { label: "Okt", y: 21 },
-          { label: "Nov", y: 49 },
-          { label: "Des", y: 36 },
+          { label: "Jan", y: dataTahun.january },
+          { label: "Feb", y: dataTahun.february },
+          { label: "Mar", y: dataTahun.march },
+          { label: "Apr", y: dataTahun.april },
+          { label: "Mei", y: dataTahun.may },
+          { label: "Jun", y: dataTahun.june },
+          { label: "Jul", y: dataTahun.july },
+          { label: "Ags", y: dataTahun.august },
+          { label: "Sep", y: dataTahun.september },
+          { label: "Okt", y: dataTahun.october },
+          { label: "Nov", y: dataTahun.november },
+          { label: "Des", y: dataTahun.december },
         ],
         color: "#FFBBBB",
       },
@@ -60,17 +296,28 @@ const DashboardScreen = () => {
           {/* <img className="xl:hidden" src="dashboard/graph.svg"></img>
           <img className="hidden xl:block" src="dashboard/graph-desktop.svg"></img> */}
           <div>
-            <select className="select select-bordered select-xs xl:select-sm mb-4 w-full max-w-xs">
-              <option>2024</option>
-              <option selected>2023</option>
-              <option>2022</option>
+            <select
+              onChange={handleChange}
+              className="select select-bordered select-xs xl:select-sm mb-4 w-full max-w-xs"
+            >
+              <option value={2024}>2024</option>
+              <option value={2023} selected>
+                2023
+              </option>
+              <option value={2022}>2022</option>
             </select>
             <CanvasJSChart options={options} />
           </div>
         </div>
 
         <div className="flex justify-between mt-9 w-[275px] xl:w-[500px] xl:mb-[80px]">
-          <div className="dashboard-content">
+          <button
+            onClick={async () => {
+              await getBumilGrafik();
+              setKategori("bumil");
+            }}
+            className="dashboard-content"
+          >
             <img
               className="w-[35px] xl:w-[60px] xl:hidden"
               src="dashboard/bumil.svg"
@@ -80,8 +327,14 @@ const DashboardScreen = () => {
               src="dashboard/bumil-desktop.svg"
             ></img>
             <p>Ibu Hamil</p>
-          </div>
-          <div className="dashboard-content">
+          </button>
+          <button
+            onClick={async () => {
+              await getBayiGrafik();
+              setKategori("bayi");
+            }}
+            className="dashboard-content"
+          >
             <img
               className="w-[35px] xl:w-[60px] xl:hidden"
               src="dashboard/baduta.svg"
@@ -91,8 +344,14 @@ const DashboardScreen = () => {
               src="dashboard/baduta-desktop.svg"
             ></img>
             <p>Bayi</p>
-          </div>
-          <div className="dashboard-content">
+          </button>
+          <button
+            onClick={async () => {
+              await getBalitaGrafik();
+              setKategori("balita");
+            }}
+            className="dashboard-content"
+          >
             <img
               className="w-[35px] xl:w-[60px] xl:hidden"
               src="dashboard/balita.svg"
@@ -102,8 +361,14 @@ const DashboardScreen = () => {
               src="dashboard/balita-desktop.svg"
             ></img>
             <p>Balita</p>
-          </div>
-          <div className="dashboard-content">
+          </button>
+          <button
+            onClick={async () => {
+              await getLansiaGrafik();
+              setKategori("lansia");
+            }}
+            className="dashboard-content"
+          >
             <img
               className="w-[35px] xl:w-[60px] xl:hidden"
               src="dashboard/lansia.svg"
@@ -113,7 +378,7 @@ const DashboardScreen = () => {
               src="dashboard/lansia-desktop.svg"
             ></img>
             <p>Lansia</p>
-          </div>
+          </button>
         </div>
       </div>
     </div>
