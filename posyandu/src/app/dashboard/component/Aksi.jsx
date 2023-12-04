@@ -44,7 +44,7 @@ const Aksi = (props) => {
   const renderTableLansia = () => {
     return lansiaFilter.map((lansia, index) => {
       return (
-        <tr>
+        <tr key={lansia.id}>
           <td>{index + 1}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>

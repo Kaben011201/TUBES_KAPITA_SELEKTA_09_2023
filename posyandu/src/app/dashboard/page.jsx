@@ -4,9 +4,9 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axiosConfig from "../../utils/axios";
-import CanvasJSReact from "@canvasjs/react-charts";
 
-const { CanvasJSChart } = CanvasJSReact;
+// import CanvasJSReact from "@canvasjs/react-charts";
+// const { CanvasJSChart } = CanvasJSReact;
 
 const DashboardScreen = () => {
   const [kategori, setKategori] = useState("bumil");
@@ -306,7 +306,7 @@ const DashboardScreen = () => {
               </option>
               <option value={2022}>2022</option>
             </select>
-            <CanvasJSChart options={options} />
+            {/* <CanvasJSChart options={options} /> */}
           </div>
         </div>
 
