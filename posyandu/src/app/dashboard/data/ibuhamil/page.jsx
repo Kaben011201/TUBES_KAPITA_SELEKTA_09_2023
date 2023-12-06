@@ -212,7 +212,7 @@ const DataIbuHamil = () => {
     return bumil.map((bumil) => {
       return (
         <tr key={bumil.id}>
-          <td>{bumil.kunjung}</td>
+          <td>{changeDateTable(bumil.kunjung)}</td>
           <td>{bumil.nama}</td>
           <td>{bumil.nik}</td>
           <td>{bumil.kk}</td>
@@ -798,7 +798,7 @@ const DataIbuHamil = () => {
     return bumilFilter.map((bumil) => {
       return (
         <tr key={bumil.id}>
-          <td>{bumil.kunjung}</td>
+          <td>{changeDateTable(bumil.kunjung)}</td>
           <td>{bumil.nama}</td>
           <td>{bumil.nik}</td>
           <td>{bumil.kk}</td>

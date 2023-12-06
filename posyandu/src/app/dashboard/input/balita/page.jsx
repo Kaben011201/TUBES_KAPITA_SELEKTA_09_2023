@@ -5,6 +5,7 @@ import axiosConfig from "../../../../utils/axios";
 const BalitaScreen = () => {
   //input data
   const [inputs, setInputs] = useState({
+    hadir: "hadir",
     kunjung: "",
     nama: "",
     nik: "",
@@ -19,6 +20,7 @@ const BalitaScreen = () => {
     alamatKK: "",
     kia: "Iya",
     bb: "",
+    panjangLahir: "",
     tb: "",
     lk: "",
     ll: "",
@@ -46,6 +48,7 @@ const BalitaScreen = () => {
 
     const data = {
       type: "balita", //kunjung belum ada di database
+      hadir: inputs.hadir,
       kunjung: inputs.kunjung,
       nama: inputs.nama,
       nik: inputs.nik,
@@ -60,6 +63,7 @@ const BalitaScreen = () => {
       alamatKK: inputs.alamatKK,
       kia: inputs.kia,
       bb: parseFloat(inputs.bb),
+      panjangLahir: parseFloat(inputs.panjangLahir),
       tb: parseFloat(inputs.tb),
       lk: parseFloat(inputs.lk),
       ll: parseFloat(inputs.ll),
@@ -105,6 +109,27 @@ const BalitaScreen = () => {
           onSubmit={addBalita}
           className="flex flex-col gap-[7px] text-[12px] xl:text-base my-2 xl:mt-6"
         >
+          <div className="flex gap-6 items-center my-4">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              Kehadiran
+              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                *
+              </span>
+            </label>
+            <select
+              defaultValue={"hadir"}
+              value={inputs.hadir}
+              name="hadir"
+              onChange={handleInput}
+            >
+              <option value="hadir">Hadir</option>
+              <option value="tidak">Tidak</option>
+            </select>
+          </div>
+
           <div className="flex gap-3 xl:gap-4 items-center">
             <label
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
@@ -371,6 +396,24 @@ const BalitaScreen = () => {
               name="bb"
               id="bb"
               value={inputs.bb}
+              onChange={handleInput}
+              required
+            />
+          </div>
+
+          <div className="flex gap-3 xl:gap-4 items-center">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              Panjang Lahir (cm)<span className="text-red-500 absolute mt-[-6px]">*</span>
+            </label>
+            <input
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              type="number"
+              name="panjangLahir"
+              id="panjangLahir"
+              value={inputs.panjangLahir}
               onChange={handleInput}
               required
             />
