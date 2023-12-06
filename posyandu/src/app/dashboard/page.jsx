@@ -4,9 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axiosConfig from "../../utils/axios";
-
-// import CanvasJSReact from "@canvasjs/react-charts";
-// const { CanvasJSChart } = CanvasJSReact;
+import BarChart from "./component/Chart";
 
 const DashboardScreen = () => {
   const [kategori, setKategori] = useState("bumil");
@@ -49,38 +47,41 @@ const DashboardScreen = () => {
       }
       setdataTahun(response.data.data);
       setOptions({
-        animationEnabled: true,
-        exportEnabled: true,
-        theme: "light2",
-        title: {
-          text: "Ibu Hamil",
-          fontColor: "#FFBBBB",
-        },
-        axisY: {
-          includeZero: true,
-          labelFontColor: "#FFBBBB",
-        },
-        data: [
+        labels: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "Mei",
+          "Jun",
+          "Jul",
+          "Ags",
+          "Sep",
+          "Okt",
+          "Nov",
+          "Des",
+        ],
+
+        datasets: [
           {
-            type: "column",
-            xValueFormatString: "MMM YYYY",
-            indexLabelFontColor: "#5A5757",
-            indexLabelPlacement: "outside",
-            dataPoints: [
-              { label: "Jan", y: dataTahun.january },
-              { label: "Feb", y: dataTahun.february },
-              { label: "Mar", y: dataTahun.march },
-              { label: "Apr", y: dataTahun.april },
-              { label: "Mei", y: dataTahun.may },
-              { label: "Jun", y: dataTahun.june },
-              { label: "Jul", y: dataTahun.july },
-              { label: "Ags", y: dataTahun.august },
-              { label: "Sep", y: dataTahun.september },
-              { label: "Okt", y: dataTahun.october },
-              { label: "Nov", y: dataTahun.november },
-              { label: "Des", y: dataTahun.december },
+            label: "Ibu Hamil",
+            data: [
+              dataTahun.january,
+              dataTahun.february,
+              dataTahun.march,
+              dataTahun.april,
+              dataTahun.may,
+              dataTahun.june,
+              dataTahun.july,
+              dataTahun.august,
+              dataTahun.september,
+              dataTahun.october,
+              dataTahun.november,
+              dataTahun.december,
             ],
-            color: "#FFBBBB",
+            backgroundColor: ["rgba(255, 99, 132, 0.7)"],
+            borderColor: ["rgba(255, 99, 132, 1)"],
+            borderWidth: 1,
           },
         ],
       });
@@ -101,38 +102,41 @@ const DashboardScreen = () => {
       }
       setdataTahun(response.data.data);
       setOptions({
-        animationEnabled: true,
-        exportEnabled: true,
-        theme: "light2",
-        title: {
-          text: "Lansia",
-          fontColor: "#FFBBBB",
-        },
-        axisY: {
-          includeZero: true,
-          labelFontColor: "#FFBBBB",
-        },
-        data: [
+        labels: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "Mei",
+          "Jun",
+          "Jul",
+          "Ags",
+          "Sep",
+          "Okt",
+          "Nov",
+          "Des",
+        ],
+
+        datasets: [
           {
-            type: "column",
-            xValueFormatString: "MMM YYYY",
-            indexLabelFontColor: "#5A5757",
-            indexLabelPlacement: "outside",
-            dataPoints: [
-              { label: "Jan", y: dataTahun.january },
-              { label: "Feb", y: dataTahun.february },
-              { label: "Mar", y: dataTahun.march },
-              { label: "Apr", y: dataTahun.april },
-              { label: "Mei", y: dataTahun.may },
-              { label: "Jun", y: dataTahun.june },
-              { label: "Jul", y: dataTahun.july },
-              { label: "Ags", y: dataTahun.august },
-              { label: "Sep", y: dataTahun.september },
-              { label: "Okt", y: dataTahun.october },
-              { label: "Nov", y: dataTahun.november },
-              { label: "Des", y: dataTahun.december },
+            label: "Lansia",
+            data: [
+              dataTahun.january,
+              dataTahun.february,
+              dataTahun.march,
+              dataTahun.april,
+              dataTahun.may,
+              dataTahun.june,
+              dataTahun.july,
+              dataTahun.august,
+              dataTahun.september,
+              dataTahun.october,
+              dataTahun.november,
+              dataTahun.december,
             ],
-            color: "#FFBBBB",
+            backgroundColor: ["rgba(255, 99, 132, 0.7)"],
+            borderColor: ["rgba(255, 99, 132, 1)"],
+            borderWidth: 1,
           },
         ],
       });
@@ -153,38 +157,41 @@ const DashboardScreen = () => {
       }
       setdataTahun(response.data.data);
       setOptions({
-        animationEnabled: true,
-        exportEnabled: true,
-        theme: "light2",
-        title: {
-          text: "Bayi",
-          fontColor: "#FFBBBB",
-        },
-        axisY: {
-          includeZero: true,
-          labelFontColor: "#FFBBBB",
-        },
-        data: [
+        labels: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "Mei",
+          "Jun",
+          "Jul",
+          "Ags",
+          "Sep",
+          "Okt",
+          "Nov",
+          "Des",
+        ],
+
+        datasets: [
           {
-            type: "column",
-            xValueFormatString: "MMM YYYY",
-            indexLabelFontColor: "#5A5757",
-            indexLabelPlacement: "outside",
-            dataPoints: [
-              { label: "Jan", y: dataTahun.january },
-              { label: "Feb", y: dataTahun.february },
-              { label: "Mar", y: dataTahun.march },
-              { label: "Apr", y: dataTahun.april },
-              { label: "Mei", y: dataTahun.may },
-              { label: "Jun", y: dataTahun.june },
-              { label: "Jul", y: dataTahun.july },
-              { label: "Ags", y: dataTahun.august },
-              { label: "Sep", y: dataTahun.september },
-              { label: "Okt", y: dataTahun.october },
-              { label: "Nov", y: dataTahun.november },
-              { label: "Des", y: dataTahun.december },
+            label: "Bayi",
+            data: [
+              dataTahun.january,
+              dataTahun.february,
+              dataTahun.march,
+              dataTahun.april,
+              dataTahun.may,
+              dataTahun.june,
+              dataTahun.july,
+              dataTahun.august,
+              dataTahun.september,
+              dataTahun.october,
+              dataTahun.november,
+              dataTahun.december,
             ],
-            color: "#FFBBBB",
+            backgroundColor: ["rgba(255, 99, 132, 0.7)"],
+            borderColor: ["rgba(255, 99, 132, 1)"],
+            borderWidth: 1,
           },
         ],
       });
@@ -205,38 +212,41 @@ const DashboardScreen = () => {
       }
       setdataTahun(response.data.data);
       setOptions({
-        animationEnabled: true,
-        exportEnabled: true,
-        theme: "light2",
-        title: {
-          text: "Balita",
-          fontColor: "#FFBBBB",
-        },
-        axisY: {
-          includeZero: true,
-          labelFontColor: "#FFBBBB",
-        },
-        data: [
+        labels: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "Mei",
+          "Jun",
+          "Jul",
+          "Ags",
+          "Sep",
+          "Okt",
+          "Nov",
+          "Des",
+        ],
+
+        datasets: [
           {
-            type: "column",
-            xValueFormatString: "MMM YYYY",
-            indexLabelFontColor: "#5A5757",
-            indexLabelPlacement: "outside",
-            dataPoints: [
-              { label: "Jan", y: dataTahun.january },
-              { label: "Feb", y: dataTahun.february },
-              { label: "Mar", y: dataTahun.march },
-              { label: "Apr", y: dataTahun.april },
-              { label: "Mei", y: dataTahun.may },
-              { label: "Jun", y: dataTahun.june },
-              { label: "Jul", y: dataTahun.july },
-              { label: "Ags", y: dataTahun.august },
-              { label: "Sep", y: dataTahun.september },
-              { label: "Okt", y: dataTahun.october },
-              { label: "Nov", y: dataTahun.november },
-              { label: "Des", y: dataTahun.december },
+            label: "Balita",
+            data: [
+              dataTahun.january,
+              dataTahun.february,
+              dataTahun.march,
+              dataTahun.april,
+              dataTahun.may,
+              dataTahun.june,
+              dataTahun.july,
+              dataTahun.august,
+              dataTahun.september,
+              dataTahun.october,
+              dataTahun.november,
+              dataTahun.december,
             ],
-            color: "#FFBBBB",
+            backgroundColor: ["rgba(255, 99, 132, 0.7)"],
+            borderColor: ["rgba(255, 99, 132, 1)"],
+            borderWidth: 1,
           },
         ],
       });
@@ -246,41 +256,48 @@ const DashboardScreen = () => {
     }
   };
   const [options, setOptions] = useState({
-    animationEnabled: true,
-    exportEnabled: true,
-    theme: "light2",
-    title: {
-      text: "Ibu Hamil",
-      fontColor: "#FFBBBB",
-    },
-    axisY: {
-      includeZero: true,
-      labelFontColor: "#FFBBBB",
-    },
-    data: [
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "Mei",
+      "Jun",
+      "Jul",
+      "Ags",
+      "Sep",
+      "Okt",
+      "Nov",
+      "Des",
+    ],
+
+    datasets: [
       {
-        type: "column",
-        xValueFormatString: "MMM YYYY",
-        indexLabelFontColor: "#5A5757",
-        indexLabelPlacement: "outside",
-        dataPoints: [
-          { label: "Jan", y: dataTahun.january },
-          { label: "Feb", y: dataTahun.february },
-          { label: "Mar", y: dataTahun.march },
-          { label: "Apr", y: dataTahun.april },
-          { label: "Mei", y: dataTahun.may },
-          { label: "Jun", y: dataTahun.june },
-          { label: "Jul", y: dataTahun.july },
-          { label: "Ags", y: dataTahun.august },
-          { label: "Sep", y: dataTahun.september },
-          { label: "Okt", y: dataTahun.october },
-          { label: "Nov", y: dataTahun.november },
-          { label: "Des", y: dataTahun.december },
+        label: "Ibu Hamil",
+        data: [
+          dataTahun.january,
+          dataTahun.february,
+          dataTahun.march,
+          dataTahun.april,
+          dataTahun.may,
+          dataTahun.june,
+          dataTahun.july,
+          dataTahun.august,
+          dataTahun.september,
+          dataTahun.october,
+          dataTahun.november,
+          dataTahun.december,
         ],
-        color: "#FFBBBB",
+        backgroundColor: ["rgba(255, 99, 132, 0.7)"],
+        borderColor: ["rgba(255, 99, 132, 1)"],
+        borderWidth: 1,
       },
     ],
   });
+
+  // useEffect(() => {
+  //   getBumilGrafik();
+  // }, [tahun, kategori]);
 
   return (
     <div>
@@ -306,14 +323,14 @@ const DashboardScreen = () => {
               </option>
               <option value={2022}>2022</option>
             </select>
-            {/* <CanvasJSChart options={options} /> */}
+            <BarChart data={options} />
           </div>
         </div>
 
         <div className="flex justify-between mt-9 w-[275px] xl:w-[500px] xl:mb-[80px]">
           <button
-            onClick={async () => {
-              await getBumilGrafik();
+            onClick={() => {
+              getBumilGrafik();
               setKategori("bumil");
             }}
             className="dashboard-content"
@@ -329,8 +346,8 @@ const DashboardScreen = () => {
             <p>Ibu Hamil</p>
           </button>
           <button
-            onClick={async () => {
-              await getBayiGrafik();
+            onClick={() => {
+              getBayiGrafik();
               setKategori("bayi");
             }}
             className="dashboard-content"
@@ -346,8 +363,8 @@ const DashboardScreen = () => {
             <p>Bayi</p>
           </button>
           <button
-            onClick={async () => {
-              await getBalitaGrafik();
+            onClick={() => {
+              getBalitaGrafik();
               setKategori("balita");
             }}
             className="dashboard-content"
@@ -363,8 +380,8 @@ const DashboardScreen = () => {
             <p>Balita</p>
           </button>
           <button
-            onClick={async () => {
-              await getLansiaGrafik();
+            onClick={() => {
+              getLansiaGrafik();
               setKategori("lansia");
             }}
             className="dashboard-content"
