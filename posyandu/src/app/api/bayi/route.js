@@ -7,6 +7,9 @@ export async function GET(req) {
   let month = parseInt(searchParams.get("month")) || 0;
   const bayiType = searchParams.get("type");
 
+  const search = searchParams.get("query") || "";
+  where.nama = { contains: search };
+
   // IF THERE IS FILTER BY MONTH
   if (month != 0) {
     if (month < 10) {
