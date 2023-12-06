@@ -28,6 +28,7 @@ model Admin {
 
 model Lansia {
   id           Int      @unique @default(sequence())
+  hadir        String
   kunjung      String
   nama         String
   nik          String
@@ -41,6 +42,7 @@ model Lansia {
   tb           Float
   tensi        String
   bpjs         String
+  keterangan   String?
 
   Posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
   posyanduId Int?
@@ -48,6 +50,7 @@ model Lansia {
 
 model Bumil {
   id                Int      @unique @default(sequence())
+  hadir             String
   kunjung           String
   nama              String
   nik               String
@@ -71,6 +74,7 @@ model Bumil {
   nikSuami          String
   tanggalLahirSuami DateTime @db.Date
   noHp              String
+  keterangan       String?
 
   Posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
   posyanduId Int?
@@ -78,6 +82,7 @@ model Bumil {
 
 model Bayi {
   id               Int       @unique @default(sequence())
+  hadir            String
   kunjung          String
   nama             String
   nik              String
@@ -92,6 +97,7 @@ model Bayi {
   alamatKK         String
   kia              String
   bb               Float
+  panjangLahir     Float
   bb5              Float?
   tb               Float
   lk               Float
@@ -105,6 +111,7 @@ model Bayi {
   bulan78          String?
   bulan88          String?
   vitA             String?
+  obatCacing       String?
   imunisasi        String
   pelayananPra     String?
   tanggalMeninggal DateTime? @db.Date

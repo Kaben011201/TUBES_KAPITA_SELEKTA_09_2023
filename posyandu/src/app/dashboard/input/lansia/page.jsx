@@ -4,6 +4,7 @@ import axiosConfig from "../../../../utils/axios";
 
 const LansiaScreen = () => {
   const [inputs, setInputs] = useState({
+    hadir: "hadir",
     kunjung: "",
     nama: "",
     nik: "",
@@ -17,6 +18,7 @@ const LansiaScreen = () => {
     tb: "",
     tensi: "",
     bpjs: "",
+    keterangan: "",
   });
 
   const handleInput = (e) => {
@@ -30,6 +32,7 @@ const LansiaScreen = () => {
     e.preventDefault();
 
     const data = {
+      hadir:inputs.kunjung,
       kunjung: inputs.kunjung,
       nama: inputs.nama,
       nik: inputs.nik,
@@ -43,6 +46,7 @@ const LansiaScreen = () => {
       tb: parseFloat(inputs.tb),
       tensi: inputs.tensi,
       bpjs: inputs.bpjs,
+      keterangan: inputs.keterangan,
     };
 
     axiosConfig
@@ -78,6 +82,27 @@ const LansiaScreen = () => {
           onSubmit={addLansia}
           className="flex flex-col gap-[7px] text-[12px] xl:text-base my-2 xl:mt-6"
         >
+          <div className="flex gap-6 items-center my-4">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              Kehadiran
+              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                *
+              </span>
+            </label>
+            <select
+              defaultValue={"hadir"}
+              value={inputs.hadir}
+              name="hadir"
+              onChange={handleInput}
+            >
+              <option value="hadir">Hadir</option>
+              <option value="tidak">Tidak</option>
+            </select>
+          </div>
+
           <div className="flex gap-3 xl:gap-4 items-center">
             <label
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
@@ -327,6 +352,23 @@ const LansiaScreen = () => {
               value={inputs.bpjs}
               onChange={handleInput}
               required
+            />
+          </div>
+
+          <div className="flex gap-3 xl:gap-4 items-center">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              Keterangan
+            </label>
+            <input
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              type="text"
+              name="keterangan"
+              id="keterangan"
+              value={inputs.keterangan}
+              onChange={handleInput}
             />
           </div>
 
