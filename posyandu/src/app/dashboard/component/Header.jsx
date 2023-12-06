@@ -273,23 +273,7 @@ const Header = () => {
       </div>
 
       <div className="flex item-center mr-[6px]">
-        <img className="xl:hidden" src="/header/search.svg"></img>
-        <div className="hidden xl:flex items-center w-[260px] h-[35p] border-[2px] border-gray-400 rounded-[50px] shadow-md">
-          <img className="ml-[8px]" src="/header/search.svg"></img>
-          <input
-            className="focus:outline-none placeholder:text-center placeholder:text-neutral-600 placeholder:text-sm ml-[5px] w-[200px]"
-            placeholder="Pencarian"
-            type="text"
-          ></input>
-        </div>
-        <img
-          className="mx-2 xl:hidden cursor-pointer"
-          src="/header/filter.svg"
-        ></img>
-        <img
-          className="mx-2 hidden xl:block cursor-pointer"
-          src="/header/filter-desktop.svg"
-        ></img>
+        
         <div className="dropdown dropdown-end">
           <label tabIndex={0}>
             <img
