@@ -98,7 +98,7 @@ const BayiScreen = () => {
 
   return (
     <main className="flex">
-      <div className="bg-[#F2F1EF] m-[7px] mt-[56px] rounded-[5px] xl:rounded-[20px] p-[7px] xl:w-[80%] xl:mx-auto xl:my-10 xl:px-[57px] xl:mt-[125px] xl:py-[25px]">
+      <div className="bg-[#F2F1EF] m-[7px] mt-[56px] w-full rounded-[5px] xl:rounded-[20px] p-[7px] xl:w-[80%] xl:mx-auto xl:my-10 xl:px-[57px] xl:mt-[125px] xl:py-[25px]">
         <div className="text-sm breadcrumbs font-bold p-0">
           <ul className="text-[12px] xl:text-xl">
             <li>
