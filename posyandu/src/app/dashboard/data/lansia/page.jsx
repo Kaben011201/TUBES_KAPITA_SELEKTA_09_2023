@@ -19,6 +19,7 @@ const DataLansia = () => {
   };
 
   const [edits, setEdits] = useState({
+    hadir: "",
     kunjung: "",
     nama: "",
     nik: "",
@@ -32,6 +33,7 @@ const DataLansia = () => {
     tb: "",
     tensi: "",
     bpjs: "",
+    keterangan: ""
   });
 
   const handleEdits = (e) => {
@@ -159,6 +161,7 @@ const DataLansia = () => {
     e.preventDefault();
 
     const data = {
+      hadir: edits.hadir,
       kunjung: edits.kunjung,
       nama: edits.nama,
       nik: edits.nik,
@@ -172,6 +175,7 @@ const DataLansia = () => {
       tb: parseFloat(edits.tb),
       tensi: edits.tensi,
       bpjs: edits.bpjs,
+      keterangan: edits.keterangan
     };
 
     axiosConfig
@@ -312,6 +316,27 @@ const DataLansia = () => {
                 onSubmit={patchLansiaEdit}
                 className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
               >
+                <div className="flex gap-6 items-center my-4">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Kehadiran
+                    <span className="text-red-500 absolute mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <select
+                    defaultValue={"hadir"}
+                    value={edits.hadir}
+                    name="hadir"
+                    onChange={handleEdits}
+                  >
+                    <option value="hadir">Hadir</option>
+                    <option value="tidak">Tidak</option>
+                  </select>
+                </div>
+
                 <div className="flex gap-3 xl:gap-4 items-center">
                   <label
                     className="w-[23%] xl:w-[18%] text-end font-medium"
@@ -369,7 +394,7 @@ const DataLansia = () => {
                     htmlFor=""
                   >
                     Nama Lengkap{" "}
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -390,7 +415,7 @@ const DataLansia = () => {
                     htmlFor=""
                   >
                     Tanggal Lahir{" "}
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -411,7 +436,7 @@ const DataLansia = () => {
                     htmlFor=""
                   >
                     Jenis Kelamin
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -541,6 +566,23 @@ const DataLansia = () => {
                     value={edits.bpjs}
                     onChange={handleEdits}
                     required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Keterangan
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="keterangan"
+                    id="keterangan"
+                    value={edits.keterangan}
+                    onChange={handleEdits}
                   />
                 </div>
 
