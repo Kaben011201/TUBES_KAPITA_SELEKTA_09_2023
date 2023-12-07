@@ -593,7 +593,30 @@ const DataLansia = () => {
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
-        <img className="xl:hidden ml-3" src="/header/search.svg"></img>
+      <div className="xl:hidden dropdown dropdown-bottom">
+          <label tabIndex={0}>
+            <img className="ml-3" src="/header/search.svg"></img>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <form
+                onSubmit={handleSearch}
+              >
+                <input
+                  className="focus:outline-none placeholder:text-center placeholder:text-neutral-600 placeholder:text-sm ml-[5px] w-[200px]"
+                  placeholder="Pencarian"
+                  type="text"
+                  value={keyword}
+                  onChange={handleKeyword}
+                ></input>
+                <button type="submit"></button>
+              </form>
+            </li>
+          </ul>
+        </div>
 
         <form
           onSubmit={handleSearch}
