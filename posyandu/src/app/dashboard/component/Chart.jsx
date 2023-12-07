@@ -23,14 +23,14 @@ const BarChart = ({ data }) => {
             x: {
               title: {
                 display: true,
-                text: "X-axis Label",
+                text: "Bulan",
               },
             },
             y: {
               beginAtZero: true,
               title: {
                 display: true,
-                text: "Y-axis Label",
+                text: "Pengunjung",
               },
             },
           },
