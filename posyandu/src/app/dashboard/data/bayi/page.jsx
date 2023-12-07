@@ -866,7 +866,7 @@ const DataBayi = () => {
                     defaultValue={"Ya"}
                     value={edits.obatCacing}
                     name="obatCacing"
-                    onChange={handEdits}
+                    onChange={handleEdits}
                   >
                     <option value="Tidak">Tidak</option>
                     <option value="Ya">Ya</option>

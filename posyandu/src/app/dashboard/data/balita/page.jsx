@@ -622,7 +622,7 @@ const DataBalita = () => {
                     name="bb5"
                     id="bb5"
                     value={edits.bb5}
-                    onChange={handleInput}
+                    onChange={handleEdits}
                     required
                   />
                 </div>
@@ -803,7 +803,7 @@ const DataBalita = () => {
                     defaultValue={"Ya"}
                     value={edits.obatCacing}
                     name="obatCacing"
-                    onChange={handEdits}
+                    onChange={handleEdits}
                   >
                     <option value="Tidak">Tidak</option>
                     <option value="Ya">Ya</option>
