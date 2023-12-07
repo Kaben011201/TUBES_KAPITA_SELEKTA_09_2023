@@ -88,7 +88,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               Kehadiran
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-6px]">
                 *
               </span>
             </label>
@@ -109,7 +109,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               Tanggal Kunjungan{" "}
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -166,7 +166,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               Nama Lengkap
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -187,7 +187,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               Tanggal Lahir{" "}
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -226,7 +226,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               Jenis Kelamin
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -322,7 +322,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               Tensi Darah (mm/Hg)
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>

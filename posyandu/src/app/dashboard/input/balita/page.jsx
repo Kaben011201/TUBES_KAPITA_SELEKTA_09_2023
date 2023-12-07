@@ -26,6 +26,7 @@ const BalitaScreen = () => {
     ll: "",
     vit: "Iya",
     imunisasi: "Tidak Ada",
+    cacing: "Ya",
     bulan66: "",
     bulan78: "",
     bulan88: "",
@@ -73,6 +74,7 @@ const BalitaScreen = () => {
       bulan88: inputs.bulan88,
       tanggalPra: new Date(inputs.tanggalPra), //ini juga belum ada di database
       imunisasi: inputs.imunisasi,
+      cacing: inputs.cacing,
       tanggalMeninggal: new Date(inputs.tanggalMeninggal),
       penyebab: inputs.penyebab,
       keterangan: inputs.keterangan,
@@ -115,7 +117,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               Kehadiran
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-6px]">
                 *
               </span>
             </label>
@@ -172,7 +174,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               Nama Lengkap{" "}
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -193,7 +195,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               Tanggal Lahir{" "}
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -214,7 +216,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               Jenis Kelamin
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -310,7 +312,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               No Handphone{" "}
-              <span className="text-red-500 absolute mt-[-6px]">*</span>
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -368,7 +370,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               Punya Buku KIA?
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -406,7 +408,7 @@ const BalitaScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
-              Panjang Lahir (cm)<span className="text-red-500 absolute mt-[-6px]">*</span>
+              Panjang Lahir (cm)<span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -443,7 +445,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               Lingkar Kepala (cm)
-              <span className="text-red-500 absolute mt-[-19px] xl:mt-[-8px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-8px]">
                 *
               </span>
             </label>
@@ -464,7 +466,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               Lingkar Lengan (cm)
-              <span className="text-red-500 absolute mt-[-19px] xl:mt-[-8px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-8px]">
                 *
               </span>
             </label>
@@ -485,7 +487,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               Vitamin
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-6px]">
                 *
               </span>
             </label>
@@ -506,7 +508,7 @@ const BalitaScreen = () => {
               htmlFor=""
             >
               Imunisasi
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-6px]">
                 *
               </span>
             </label>
@@ -519,6 +521,27 @@ const BalitaScreen = () => {
               <option value="Tidak Ada">Tidak Ada</option>
               <option value="DPT-HB-HIB">DPT-HB-HIB</option>
               <option value="Campak">Campak</option>
+            </select>
+          </div>
+
+          <div className="flex gap-6 items-center my-4">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              Obat Cacing
+              <span className="text-red-500 absolute mt-[-6px]">
+                *
+              </span>
+            </label>
+            <select
+              defaultValue={"Ya"}
+              value={inputs.cacing}
+              name="cacing"
+              onChange={handleInput}
+            >
+              <option value="Tidak">Tidak</option>
+              <option value="Ya">Ya</option>
             </select>
           </div>
 

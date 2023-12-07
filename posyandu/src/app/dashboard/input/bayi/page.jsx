@@ -30,6 +30,7 @@ const BayiScreen = () => {
     neo3: "",
     vitA: "Iya",
     imunisasi: "Tidak Ada",
+    cacing: "Ya",
     tanggalMeninggal: "",
     penyebab: "",
     keterangan: "",
@@ -73,6 +74,7 @@ const BayiScreen = () => {
       neo3: inputs.neo3,
       vitA: inputs.vitA,
       imunisasi: inputs.imunisasi,
+      cacing: inputs.cacing,
       tanggalMeninggal: new Date(inputs.tanggalMeninggal),
       penyebab: inputs.penyebab,
       keterangan: inputs.keterangan,
@@ -116,7 +118,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Kehadiran
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-6px]">
                 *
               </span>
             </label>
@@ -137,7 +139,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Tanggal Kunjungan
-              <span className="text-red-500 absolute mt-[-20px]">*</span>
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -172,7 +174,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Nama Lengkap{" "}
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -193,7 +195,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Tanggal Lahir{" "}
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -214,7 +216,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Jenis Kelamin
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -310,7 +312,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               No Handphone{" "}
-              <span className="text-red-500 absolute mt-[-6px]">*</span>
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -368,7 +370,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Punya Buku KIA?
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -385,11 +387,11 @@ const BayiScreen = () => {
 
           <div className="flex gap-3 xl:gap-4 items-center">
             <label
-              className="w-[22%] xl:w-[18%] text-[10px] xl:text-base text-end font-semibold xl:font-medium leading-[1.2]"
+              className="w-[22%] xl:w-[18%] xl:text-base text-end font-medium leading-[1.2]"
               htmlFor=""
             >
               Berat Lahir s.d 5 jam (kg)
-              <span className="text-red-500 text-[12px] absolute mt-[-17px] xl:mt-[-6px]">
+              <span className="text-red-500 text-[12px] absolute mt-[-34px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -409,14 +411,14 @@ const BayiScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
-              BB (kg)<span className="text-red-500 absolute mt-[-6px]">*</span>
+              Panjang Lahir (cm)<span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="bb"
-              id="bb"
-              value={inputs.bb}
+              name="panjangLahir"
+              id="panjangLahir"
+              value={inputs.panjangLahir}
               onChange={handleInput}
               required
             />
@@ -427,14 +429,14 @@ const BayiScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
-              Panjang Lahir (cm)<span className="text-red-500 absolute mt-[-6px]">*</span>
+              BB (kg)<span className="text-red-500 absolute mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="panjangLahir"
-              id="panjangLahir"
-              value={inputs.panjangLahir}
+              name="bb"
+              id="bb"
+              value={inputs.bb}
               onChange={handleInput}
               required
             />
@@ -464,7 +466,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Lingkar Kepala (cm)
-              <span className="text-red-500 absolute mt-[-19px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -485,7 +487,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Lingkar Lengan (cm)
-              <span className="text-red-500 absolute mt-[-19px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -506,7 +508,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Vitamin (2 Bulan)
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                 *
               </span>
             </label>
@@ -579,7 +581,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Vitamin A
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-6px]">
                 *
               </span>
             </label>
@@ -600,7 +602,7 @@ const BayiScreen = () => {
               htmlFor=""
             >
               Imunisasi
-              <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+              <span className="text-red-500 absolute mt-[-6px]">
                 *
               </span>
             </label>
@@ -622,6 +624,27 @@ const BayiScreen = () => {
               <option value="Polio 4">Polio 4</option>
               <option value="IPV">IPV</option>
               <option value="Campak">Campak</option>
+            </select>
+          </div>
+
+          <div className="flex gap-6 items-center my-4">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              Obat Cacing
+              <span className="text-red-500 absolute mt-[-6px]">
+                *
+              </span>
+            </label>
+            <select
+              defaultValue={"Ya"}
+              value={inputs.cacing}
+              name="cacing"
+              onChange={handleInput}
+            >
+              <option value="Tidak">Tidak</option>
+              <option value="Ya">Ya</option>
             </select>
           </div>
 
