@@ -24,7 +24,7 @@ const SettingScreen = () => {
             <form action="" className="flex flex-col gap-5 text-[12px] xl:text-xl my-6">
                 <div className="flex flex-col gap-1">
                     <label className="font-medium" htmlFor="">Username</label>
-                    <input className="h-9 xl:h-14 border-[1.5px] border-[#D5D8DE] rounded-lg p-2" type="text" name="uname" id="uname" value={"Bendry Lakburlawal"} required/>
+                    <input className="h-9 xl:h-14 border-[1.5px] border-[#D5D8DE] rounded-lg p-2" type="text" name="uname" id="uname" value={"Botak"} required/>
                 </div>
                 <div className="flex flex-col gap-1">
                     <label className="font-medium" htmlFor="">Email</label>
