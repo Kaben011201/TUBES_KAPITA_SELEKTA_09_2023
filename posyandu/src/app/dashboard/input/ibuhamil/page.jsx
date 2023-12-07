@@ -28,7 +28,7 @@ const IbuScreen = () => {
     tanggalLahirSuami: "",
     noHp: "",
     bpjs: "",
-    keterangan:"",
+    keterangan: "",
   });
 
   const handleInput = (e) => {
@@ -42,6 +42,7 @@ const IbuScreen = () => {
     e.preventDefault();
 
     const data = {
+      hadir: inputs.hadir,
       kunjung: inputs.kunjung,
       nama: inputs.nama,
       nik: inputs.nik,
@@ -106,9 +107,7 @@ const IbuScreen = () => {
               htmlFor=""
             >
               Kehadiran
-              <span className="text-red-500 absolute mt-[-6px]">
-                *
-              </span>
+              <span className="text-red-500 absolute mt-[-6px]">*</span>
             </label>
             <select
               defaultValue={"hadir"}
@@ -127,7 +126,9 @@ const IbuScreen = () => {
               htmlFor=""
             >
               Tanggal Kunjungan{" "}
-              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span>
+              <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                *
+              </span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
