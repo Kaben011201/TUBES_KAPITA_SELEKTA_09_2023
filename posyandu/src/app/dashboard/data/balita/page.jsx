@@ -6,6 +6,17 @@ import axiosConfig from "../../../../utils/axios";
 const DataBalita = () => {
   const [balita, setBalita] = useState([]);
   const [balitaFilter, setBalitaFilter] = useState([]);
+  const [search, setSearch] = useState("");
+  const [keyword, setKeyword] = useState("");
+
+  const handleKeyword = (e) => {
+    setKeyword(e.target.value);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(keyword);
+  };
 
   const [edits, setEdits] = useState({
     kunjung: "",
@@ -45,7 +56,7 @@ const DataBalita = () => {
   const getBalita = async () => {
     try {
       const response = await axiosConfig.get("http://localhost:3000/api/bayi", {
-        params: { month: bulan,type: "balita" },
+        params: { month: bulan, type: "balita", query: search },
       });
       if (response.data.status !== 400) {
       } else {
@@ -889,12 +900,26 @@ const DataBalita = () => {
 
   useEffect(() => {
     getBalita();
-  }, [bulan]);
+  }, [bulan, search]);
 
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
-        <p></p>
+        <img className="xl:hidden ml-3" src="/header/search.svg"></img>
+        <form
+          onSubmit={handleSearch}
+          className="hidden xl:flex items-center w-[260px] border-[2px] border-gray-400 rounded-[50px] shadow-md ml-2 bg-white scale-90"
+        >
+          <img className="ml-[8px]" src="/header/search.svg"></img>
+          <input
+            className="focus:outline-none placeholder:text-center placeholder:text-neutral-600 placeholder:text-sm ml-[5px] w-[200px]"
+            placeholder="Pencarian"
+            type="text"
+            value={keyword}
+            onChange={handleKeyword}
+          ></input>
+          <button type="submit"></button>
+        </form>
         <h3 className="ml-10">Data Balita</h3>
         <Bulan setBulan={setBulan} />
       </div>
