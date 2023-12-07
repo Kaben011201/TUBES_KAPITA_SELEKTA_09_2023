@@ -26,7 +26,7 @@ const BalitaScreen = () => {
     ll: "",
     vit: "Iya",
     imunisasi: "Tidak Ada",
-    cacing: "Ya",
+    obatCacing: "Ya",
     bulan66: "",
     bulan78: "",
     bulan88: "",
@@ -74,7 +74,7 @@ const BalitaScreen = () => {
       bulan88: inputs.bulan88,
       tanggalPra: new Date(inputs.tanggalPra), //ini juga belum ada di database
       imunisasi: inputs.imunisasi,
-      cacing: inputs.cacing,
+      obatCacing: inputs.obatCacing,
       tanggalMeninggal: new Date(inputs.tanggalMeninggal),
       penyebab: inputs.penyebab,
       keterangan: inputs.keterangan,
@@ -536,8 +536,8 @@ const BalitaScreen = () => {
             </label>
             <select
               defaultValue={"Ya"}
-              value={inputs.cacing}
-              name="cacing"
+              value={inputs.obatCacing}
+              name="obatCacing"
               onChange={handleInput}
             >
               <option value="Tidak">Tidak</option>
