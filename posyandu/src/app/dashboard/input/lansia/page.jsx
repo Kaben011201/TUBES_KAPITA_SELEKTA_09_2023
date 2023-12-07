@@ -130,7 +130,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               NIK
-              <span className="text-red-500 absolute mt-[-20px]">*</span>
+              <span className="text-red-500 absolute mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -148,7 +148,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               No KK
-              <span className="text-red-500 absolute mt-[-20px]">*</span>
+              <span className="text-red-500 absolute mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -208,7 +208,7 @@ const LansiaScreen = () => {
               htmlFor=""
             >
               Umur
-              <span className="text-red-500 absolute mt-[-20px]">*</span>
+              <span className="text-red-500 absolute mt-[-6px]">*</span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
