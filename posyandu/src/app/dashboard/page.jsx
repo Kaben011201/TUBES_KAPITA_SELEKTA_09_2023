@@ -66,19 +66,18 @@ const DashboardScreen = () => {
           {
             label: "Ibu Hamil",
             data: [
-              // dataTahun.january,
-              // dataTahun.february,
-              // dataTahun.march,
-              // dataTahun.april,
-              // dataTahun.may,
-              // dataTahun.june,
-              // dataTahun.july,
-              // dataTahun.august,
-              // dataTahun.september,
-              // dataTahun.october,
-              // dataTahun.november,
-              // dataTahun.december,
-           
+              dataTahun.january,
+              dataTahun.february,
+              dataTahun.march,
+              dataTahun.april,
+              dataTahun.may,
+              dataTahun.june,
+              dataTahun.july,
+              dataTahun.august,
+              dataTahun.september,
+              dataTahun.october,
+              dataTahun.november,
+              dataTahun.december,
             ],
             backgroundColor: ["rgba(255, 99, 132, 0.7)"],
             borderColor: ["rgba(255, 99, 132, 1)"],
@@ -276,19 +275,18 @@ const DashboardScreen = () => {
       {
         label: "Ibu Hamil",
         data: [
-          // dataTahun.january,
-          // dataTahun.february,
-          // dataTahun.march,
-          // dataTahun.april,
-          // dataTahun.may,
-          // dataTahun.june,
-          // dataTahun.july,
-          // dataTahun.august,
-          // dataTahun.september,
-          // dataTahun.october,
-          // dataTahun.november,
-          // dataTahun.december,
-          30, 50, 20, 10, 34, 56, 78, 12, 12, 62, 36, 21,
+          dataTahun.january,
+          dataTahun.february,
+          dataTahun.march,
+          dataTahun.april,
+          dataTahun.may,
+          dataTahun.june,
+          dataTahun.july,
+          dataTahun.august,
+          dataTahun.september,
+          dataTahun.october,
+          dataTahun.november,
+          dataTahun.december,
         ],
         backgroundColor: ["rgba(255, 99, 132, 0.7)"],
         borderColor: ["rgba(255, 99, 132, 1)"],
@@ -297,9 +295,9 @@ const DashboardScreen = () => {
     ],
   });
 
-  // useEffect(() => {
-  //   getBumilGrafik();
-  // }, [tahun, kategori]);
+  useEffect(() => {
+    getBumilGrafik();
+  }, [tahun]);
 
   return (
     <div>
