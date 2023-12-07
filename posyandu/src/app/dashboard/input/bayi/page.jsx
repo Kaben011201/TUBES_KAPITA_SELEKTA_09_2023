@@ -30,7 +30,7 @@ const BayiScreen = () => {
     neo3: "",
     vitA: "Iya",
     imunisasi: "Tidak Ada",
-    cacing: "Ya",
+    obatCacing: "Ya",
     tanggalMeninggal: "",
     penyebab: "",
     keterangan: "",
@@ -74,7 +74,7 @@ const BayiScreen = () => {
       neo3: inputs.neo3,
       vitA: inputs.vitA,
       imunisasi: inputs.imunisasi,
-      cacing: inputs.cacing,
+      obatCacing: inputs.obatCacing,
       tanggalMeninggal: new Date(inputs.tanggalMeninggal),
       penyebab: inputs.penyebab,
       keterangan: inputs.keterangan,
@@ -93,7 +93,7 @@ const BayiScreen = () => {
         alert(error.data.message);
         console.log(error);
       });
-    window.location.reload();
+    
   };
 
   return (
@@ -639,8 +639,8 @@ const BayiScreen = () => {
             </label>
             <select
               defaultValue={"Ya"}
-              value={inputs.cacing}
-              name="cacing"
+              value={inputs.obatCacing}
+              name="obatCacing"
               onChange={handleInput}
             >
               <option value="Tidak">Tidak</option>
