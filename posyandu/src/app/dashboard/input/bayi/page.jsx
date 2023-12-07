@@ -93,7 +93,7 @@ const BayiScreen = () => {
         alert(error.data.message);
         console.log(error);
       });
-    
+    window.location.reload();
   };
 
   return (
