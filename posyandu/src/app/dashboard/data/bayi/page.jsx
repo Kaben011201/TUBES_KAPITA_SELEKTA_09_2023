@@ -19,6 +19,7 @@ const DataBayi = () => {
   };
 
   const [edits, setEdits] = useState({
+    hadir: "hadir",
     kunjung: "",
     nama: "",
     nik: "",
@@ -32,6 +33,7 @@ const DataBayi = () => {
     alamat: "",
     alamatKK: "",
     kia: "Iya",
+    panjangLahir:"",
     bb5: "",
     bb: "",
     tb: "",
@@ -43,6 +45,7 @@ const DataBayi = () => {
     neo3: "",
     vitA: "Iya",
     imunisasi: "Tidak Ada",
+    obatCacing: "Ya",
     tanggalMeninggal: "",
     penyebab: "",
     keterangan: "",
@@ -186,6 +189,8 @@ const DataBayi = () => {
       alamat: edits.alamat,
       alamatKK: edits.alamatKK,
       kia: edits.kia,
+      bb5: parseFloat(edits.bb5),
+      panjangLahir: parseFloat(edits.panjangLahir),
       bb: parseFloat(edits.bb),
       tb: parseFloat(edits.tb),
       lk: parseFloat(edits.lk),
@@ -390,7 +395,7 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Nama Lengkap{" "}
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -411,7 +416,7 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Tanggal Lahir{" "}
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -432,7 +437,7 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Jenis Kelamin
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -588,7 +593,7 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Punya Buku KIA?
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -605,11 +610,11 @@ const DataBayi = () => {
 
                 <div className="flex gap-3 xl:gap-4 items-center">
                   <label
-                    className="w-[22%] xl:w-[18%] text-[10px] xl:text-base text-end font-semibold xl:font-medium leading-[1.2]"
+                    className="w-[22%] xl:w-[18%] xl:text-base text-end font-medium leading-[1.2]"
                     htmlFor=""
                   >
                     Berat Lahir s.d 5 jam (kg)
-                    <span className="text-red-500 text-[12px] absolute mt-[-17px] xl:mt-[-6px]">
+                    <span className="text-red-500 text-[12px] absolute mt-[-34px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -619,6 +624,24 @@ const DataBayi = () => {
                     name="bb5"
                     id="bb5"
                     value={edits.bb5}
+                    onChange={handleEdits}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Panjang Lahir (cm)<span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="panjangLahir"
+                    id="panjangLahir"
+                    value={edits.panjangLahir}
                     onChange={handleEdits}
                     required
                   />
@@ -668,7 +691,7 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Lingkar Kepala (cm)
-                    <span className="text-red-500 absolute mt-[-19px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -689,7 +712,7 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Lingkar Lengan (cm)
-                    <span className="text-red-500 absolute mt-[-19px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -710,7 +733,7 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Vitamin (2 Bulan)
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -783,7 +806,7 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Vitamin A
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -804,7 +827,7 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Imunisasi
-                    <span className="text-red-500 absolute mt-[-18px] xl:mt-[-6px]">
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
                       *
                     </span>
                   </label>
@@ -826,6 +849,27 @@ const DataBayi = () => {
                     <option value="Polio 4">Polio 4</option>
                     <option value="IPV">IPV</option>
                     <option value="Campak">Campak</option>
+                  </select>
+                </div>
+
+                <div className="flex gap-6 items-center my-4">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Obat Cacing
+                    <span className="text-red-500 absolute mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <select
+                    defaultValue={"Ya"}
+                    value={edits.obatCacing}
+                    name="obatCacing"
+                    onChange={handEdits}
+                  >
+                    <option value="Tidak">Tidak</option>
+                    <option value="Ya">Ya</option>
                   </select>
                 </div>
 

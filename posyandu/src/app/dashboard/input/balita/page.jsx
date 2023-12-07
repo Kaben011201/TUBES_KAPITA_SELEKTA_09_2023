@@ -19,8 +19,9 @@ const BalitaScreen = () => {
     alamat: "",
     alamatKK: "",
     kia: "Iya",
-    bb: "",
+    bb5: "",
     panjangLahir: "",
+    bb: "",    
     tb: "",
     lk: "",
     ll: "",
@@ -63,8 +64,9 @@ const BalitaScreen = () => {
       alamat: inputs.alamat,
       alamatKK: inputs.alamatKK,
       kia: inputs.kia,
-      bb: parseFloat(inputs.bb),
+      bb5: parseFloat(inputs.bb5),
       panjangLahir: parseFloat(inputs.panjangLahir),
+      bb: parseFloat(inputs.bb),
       tb: parseFloat(inputs.tb),
       lk: parseFloat(inputs.lk),
       ll: parseFloat(inputs.ll),
@@ -93,6 +95,7 @@ const BalitaScreen = () => {
         alert(error.data.message);
         console.log(error);
       });
+      window.location.reload();
   };
 
   return (
@@ -387,17 +390,20 @@ const BalitaScreen = () => {
 
           <div className="flex gap-3 xl:gap-4 items-center">
             <label
-              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              className="w-[22%] xl:w-[18%] xl:text-base text-end font-medium leading-[1.2]"
               htmlFor=""
             >
-              BB (kg)<span className="text-red-500 absolute mt-[-6px]">*</span>
+              Berat Lahir s.d 5 jam (kg)
+              <span className="text-red-500 text-[12px] absolute mt-[-34px] xl:mt-[-6px]">
+                *
+              </span>
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
               type="number"
-              name="bb"
-              id="bb"
-              value={inputs.bb}
+              name="bb5"
+              id="bb5"
+              value={inputs.bb5}
               onChange={handleInput}
               required
             />
@@ -416,6 +422,24 @@ const BalitaScreen = () => {
               name="panjangLahir"
               id="panjangLahir"
               value={inputs.panjangLahir}
+              onChange={handleInput}
+              required
+            />
+          </div>
+
+          <div className="flex gap-3 xl:gap-4 items-center">
+            <label
+              className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+              htmlFor=""
+            >
+              BB (kg)<span className="text-red-500 absolute mt-[-6px]">*</span>
+            </label>
+            <input
+              className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+              type="number"
+              name="bb"
+              id="bb"
+              value={inputs.bb}
               onChange={handleInput}
               required
             />

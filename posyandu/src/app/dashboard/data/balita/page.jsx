@@ -19,6 +19,7 @@ const DataBalita = () => {
   };
 
   const [edits, setEdits] = useState({
+    hadir: "hadir",
     kunjung: "",
     nama: "",
     nik: "",
@@ -32,12 +33,15 @@ const DataBalita = () => {
     alamat: "",
     alamatKK: "",
     kia: "Iya",
+    panjangLahir:"",
+    bb5: "",
     bb: "",
     tb: "",
     lk: "",
     ll: "",
     vit: "Iya",
     imunisasi: "Tidak Ada",
+    obatCacing: "Ya",
     bulan66: "",
     bulan78: "",
     bulan88: "",
@@ -178,6 +182,7 @@ const DataBalita = () => {
     e.preventDefault();
 
     const data = {
+      hadir: edits.hadir,
       kunjung: edits.kunjung,
       nama: edits.nama,
       nik: edits.nik,
@@ -191,6 +196,8 @@ const DataBalita = () => {
       alamat: edits.alamat,
       alamatKK: edits.alamatKK,
       kia: edits.kia,
+      bb5: parseFloat(edits.bb5),
+      panjangLahir: parseFloat(edits.panjangLahir),
       bb: parseFloat(edits.bb),
       tb: parseFloat(edits.tb),
       lk: parseFloat(edits.lk),
@@ -363,6 +370,27 @@ const DataBalita = () => {
                 onSubmit={patchBalitaEdit}
                 className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
               >
+                <div className="flex gap-6 items-center my-4">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Kehadiran
+                    <span className="text-red-500 absolute mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <select
+                    defaultValue={"hadir"}
+                    value={edits.hadir}
+                    name="hadir"
+                    onChange={handleEdits}
+                  >
+                    <option value="hadir">Hadir</option>
+                    <option value="tidak">Tidak</option>
+                  </select>
+                </div>
+
                 <div className="flex gap-3 xl:gap-4 items-center">
                   <label
                     className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
@@ -578,6 +606,45 @@ const DataBalita = () => {
                   ></textarea>
                 </div>
 
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[22%] xl:w-[18%] xl:text-base text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Berat Lahir s.d 5 jam (kg)
+                    <span className="text-red-500 text-[12px] absolute mt-[-34px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="bb5"
+                    id="bb5"
+                    value={edits.bb5}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Panjang Lahir (cm)<span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="panjangLahir"
+                    id="panjangLahir"
+                    value={edits.panjangLahir}
+                    onChange={handleEdits}
+                    required
+                  />
+                </div>
+
                 <div className="flex gap-6 items-center my-4">
                   <label
                     className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
@@ -719,6 +786,27 @@ const DataBalita = () => {
                     <option value="Tidak Ada">Tidak Ada</option>
                     <option value="DPT-HB-HIB">DPT-HB-HIB</option>
                     <option value="Campak">Campak</option>
+                  </select>
+                </div>
+
+                <div className="flex gap-6 items-center my-4">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Obat Cacing
+                    <span className="text-red-500 absolute mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <select
+                    defaultValue={"Ya"}
+                    value={edits.obatCacing}
+                    name="obatCacing"
+                    onChange={handEdits}
+                  >
+                    <option value="Tidak">Tidak</option>
+                    <option value="Ya">Ya</option>
                   </select>
                 </div>
 
