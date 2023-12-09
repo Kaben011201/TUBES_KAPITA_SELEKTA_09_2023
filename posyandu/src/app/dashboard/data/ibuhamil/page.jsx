@@ -54,7 +54,7 @@ const DataIbuHamil = () => {
   const getBumil = async () => {
     try {
       const response = await axiosConfig.get(
-        "http://localhost:3000/api/bumil",
+        "api/bumil",
         { params: { month: bulan, query: search } }
       );
       if (response.data.status !== 400) {
@@ -71,7 +71,7 @@ const DataIbuHamil = () => {
   const getBumilFilter = async (bumil) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/riwayat/ibu-hamil/${bumil.nik}`
+        `api/riwayat/ibu-hamil/${bumil.nik}`
       );
 
       if (response.data.status !== 400) {
@@ -95,7 +95,7 @@ const DataIbuHamil = () => {
   const delBumilHapus = async (bumil) => {
     try {
       const response = await axiosConfig.delete(
-        `http://localhost:3000/api/bumil/${bumil.id}`
+        `api/bumil/${bumil.id}`
       );
       if (response.data.status !== 400) {
         window.location.reload();
@@ -146,7 +146,7 @@ const DataIbuHamil = () => {
   const getBumilEdit = async (bumil) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/bumil/${bumil.id}`
+        `api/bumil/${bumil.id}`
       );
       if (response.data.status !== 400) {
       } else {
@@ -198,7 +198,7 @@ const DataIbuHamil = () => {
     };
 
     axiosConfig
-      .patch(`http://localhost:3000/api/bumil/${edits.id}`, data)
+      .patch(`api/bumil/${edits.id}`, data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil mengedit data bumil!");

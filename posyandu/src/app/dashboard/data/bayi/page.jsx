@@ -152,7 +152,7 @@ const DataBayi = () => {
   const getBayiEdit = async (bayi) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/bayi/${bayi.id}`
+        `api/bayi/${bayi.id}`
       );
       if (response.data.status !== 400) {
       } else {
@@ -207,7 +207,7 @@ const DataBayi = () => {
     };
 
     axiosConfig
-      .patch(`http://localhost:3000/api/bayi/${edits.id}`, data)
+      .patch(`api/bayi/${edits.id}`, data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil mengedit data bayi!");

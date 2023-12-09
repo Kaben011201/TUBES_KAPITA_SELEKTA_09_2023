@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const instance = axios.create({
-  baseURL: "https://posyandu-mawar-1.vercel.app/",
+  baseURL: "https://posyandu-mawar-1.vercel.app",
   //   baseURL: "https://development-toko-gloria.vercel.app",
 });
 
