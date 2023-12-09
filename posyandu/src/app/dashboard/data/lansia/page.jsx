@@ -69,7 +69,7 @@ const DataLansia = () => {
   const getLansia = async () => {
     try {
       const response = await axiosConfig.get(
-        "http://localhost:3000/api/lansia",
+        "api/lansia",
         { params: { month: bulan, query: search } }
       );
       if (response.data.status !== 400) {
@@ -86,7 +86,7 @@ const DataLansia = () => {
   const getLansiaFilter = async (lansia) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/riwayat/lansia/${lansia.nik}`
+        `api/riwayat/lansia/${lansia.nik}`
       );
 
       if (response.data.status !== 400) {
@@ -110,7 +110,7 @@ const DataLansia = () => {
   const delLansiaHapus = async (lansia) => {
     try {
       const response = await axiosConfig.delete(
-        `http://localhost:3000/api/lansia/${lansia.id}`
+        `api/lansia/${lansia.id}`
       );
       if (response.data.status !== 400) {
         window.location.reload();
@@ -161,7 +161,7 @@ const DataLansia = () => {
   const getLansiaEdit = async (lansia) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/lansia/${lansia.id}`
+        `api/lansia/${lansia.id}`
       );
       if (response.data.status !== 400) {
       } else {
@@ -203,7 +203,7 @@ const DataLansia = () => {
     };
 
     axiosConfig
-      .patch(`http://localhost:3000/api/lansia/${edits.id}`, data)
+      .patch(`api/lansia/${edits.id}`, data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil mengedit data lansia!");

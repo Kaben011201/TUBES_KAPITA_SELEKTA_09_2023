@@ -3,7 +3,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+
 const Header = () => {
   const [isActive, setisActive] = useState();
   const router = useRouter();
@@ -227,7 +227,7 @@ const Header = () => {
                   </details>
                 </div>
 
-                {/* <li className={`cursor-pointer sidebar-content ${
+                <li className={`cursor-pointer sidebar-content ${
                           isActive === "kegiatan" && "border-black"
                         }`}
                         onClick={() => {
@@ -243,7 +243,7 @@ const Header = () => {
                     </div>
                     <p className="ml-1 xl:ml-2">Kegiatan</p>
                   </div>
-                </li> */}
+                </li>
               </div>
               <img
                 className="absolute bottom-10 xl:w-[250px] cursor-pointer hover:opacity-80 transition ease-in-out"

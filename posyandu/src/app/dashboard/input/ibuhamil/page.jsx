@@ -70,7 +70,7 @@ const IbuScreen = () => {
     };
 
     axiosConfig
-      .post("http://localhost:3000/api/bumil", data)
+      .post("api/bumil", data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil menambahkan data bumil!");

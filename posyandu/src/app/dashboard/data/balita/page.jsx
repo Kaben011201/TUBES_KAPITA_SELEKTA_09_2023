@@ -98,7 +98,7 @@ const DataBalita = () => {
 
   const getBalita = async () => {
     try {
-      const response = await axiosConfig.get("http://localhost:3000/api/bayi", {
+      const response = await axiosConfig.get("api/bayi", {
         params: { month: bulan, type: "balita", query: search },
       });
       if (response.data.status !== 400) {
@@ -115,7 +115,7 @@ const DataBalita = () => {
   const getBalitaFilter = async (balita) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/riwayat/bayi/${balita.nik}`
+        `api/riwayat/bayi/${balita.nik}`
       );
 
       if (response.data.status !== 400) {
@@ -142,7 +142,7 @@ const DataBalita = () => {
   const delBalitaHapus = async (balita) => {
     try {
       const response = await axiosConfig.delete(
-        `http://localhost:3000/api/bayi/${balita.id}`
+        `api/bayi/${balita.id}`
       );
       if (response.data.status !== 400) {
         console.log("Berhasil mengambil id pasien");
@@ -195,7 +195,7 @@ const DataBalita = () => {
   const getBalitaEdit = async (balita) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/bayi/${balita.id}`
+        `api/bayi/${balita.id}`
       );
       if (response.data.status !== 400) {
         console.log("Berhasil mengambil id pasien");
@@ -253,7 +253,7 @@ const DataBalita = () => {
     };
 
     axiosConfig
-      .patch(`http://localhost:3000/api/bayi/${edits.id}`, data)
+      .patch(`api/bayi/${edits.id}`, data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil mengedit data!");

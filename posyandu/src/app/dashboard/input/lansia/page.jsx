@@ -50,7 +50,7 @@ const LansiaScreen = () => {
     };
 
     axiosConfig
-      .post("http://localhost:3000/api/lansia", data)
+      .post("api/lansia", data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil menambahkan data lansia!");

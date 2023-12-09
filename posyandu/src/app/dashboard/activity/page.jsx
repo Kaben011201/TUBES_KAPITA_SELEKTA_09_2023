@@ -1,11 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import axiosConfig from "../../../utils/axios";
 
 const ActivityScreen = () => {
     const [activity, setActivity] = useState([]);
+    const router = useRouter();
+    const [search, setSearch] = useState("");
 
     const [edits, setEdits] = useState({
-        tglkegiatan: "",
+        tanggal: "",
         kegiatan:"",
     });
 
@@ -15,22 +19,22 @@ const ActivityScreen = () => {
         setEdits((values) => ({ ...values, [name]: value }));
       };
     
-    const getActivity = async () => {
-    try {
-        const response = await axiosConfig.get(
-        "http://localhost:3000/api/activity",
-        { params: { month: bulan } }
-        );
-        if (response.data.status !== 400) {
-        } else {
-        alert(response.data.message);
+      const getActivity = async () => {
+        try {
+          const response = await axiosConfig.get(
+            "api/activity",
+            
+          );
+          if (response.data.status !== 400) {
+          } else {
+            alert(response.data.message);
+          }
+          setActivity(response.data.data);
+        } catch (error) {
+          // alert(error.data.message);
+          console.log(error);
         }
-        setActivity(response.data.data);
-    } catch (error) {
-        // alert(error.data.message);
-        console.log(error);
-    }
-    };
+      };
     
     const delActivityHapus = async (activity) => {
         try {
@@ -69,19 +73,19 @@ const ActivityScreen = () => {
         return formattedDate;
     };
 
-    // const changeDateEdit = (date) => {
-    //     date = new Date(date);
-    
-    //     // Get the individual components
-    //     let month = ("0" + (date.getMonth() + 1)).slice(-2);
-    //     let day = ("0" + date.getDate()).slice(-2);
-    //     let year = date.getFullYear().toString();
-    
-    //     // Format into a string in "DD/MM/YY" format
-    //     let formattedDate = year + "-" + month + "-" + day;
-    
-    //     return formattedDate;
-    // };
+    const changeDateEdit = (date) => {
+      date = new Date(date);
+  
+      // Get the individual components
+      let month = ("0" + (date.getMonth() + 1)).slice(-2);
+      let day = ("0" + date.getDate()).slice(-2);
+      let year = date.getFullYear().toString();
+  
+      // Format into a string in "DD/MM/YY" format
+      let formattedDate = year + "-" + month + "-" + day;
+  
+      return formattedDate;
+    };
 
     const getActivityEdit = async (activity) => {
         try {
@@ -110,15 +114,15 @@ const ActivityScreen = () => {
         e.preventDefault();
     
         const data = {
-          tglkegiatan: edits.tglkegiatan,
+          tanggal: edits.tanggal,
           kegiatan: edits.kegiatan,
         };
     
         axiosConfig
-          .patch(`http://localhost:3000/api/kegiatan/${edits.id}`, data)
+          .patch(`http://localhost:3000/api/activity/${edits.id}`, data)
           .then(function (response) {
             if (response.data.status != 400) {
-              alert("Berhasil mengedit data lansia!");
+              alert("Berhasil mengedit data Activity!");
             } else {
               alert(response.data.message);
             }
@@ -131,112 +135,13 @@ const ActivityScreen = () => {
         window.location.reload();
     };
 
-    // Bagian percobaan
-    // Data Dummy
-    const dummy = [
-        {
-          id: 0,
-          tanggal: "22-12-2023",
-          kegiatan: "Melancong"
-        },
-        {
-            id: 1,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 2,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 3,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 4,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 5,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 6,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 7,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 8,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 9,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 10,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 11,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 12,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        },
-        {
-            id: 13,
-            tanggal: "22-12-2023",
-            kegiatan: "Melancong"
-        }
-    ];
-
-    // for pagination
-    const [currentPage, setCurrentPage] = useState(1);
-    const recordsPerPage = 5;
-    const lastIndex = currentPage * recordsPerPage;
-    const firstIndex = lastIndex - recordsPerPage;
-    const records = dummy.slice(firstIndex, lastIndex);
-    const npage = Math.ceil(dummy.length / recordsPerPage);
-    const numbers = [...Array(npage + 1).keys()].slice(1);
-
-    const prePage = () => {
-        if (currentPage !== 1) {
-            setCurrentPage(currentPage - 1);
-        }
-    };
-
-    const changeCPage = (id) => {
-        setCurrentPage(id);
-    };
-
-    const nextPage = () => {
-        if (currentPage !== npage) {
-            setCurrentPage(currentPage + 1);
-        }
-    };
 
     const renderTable = () => {
-        return records.map((activity) => {
+        return activity.map((activity) => {
           return (
             <tr key={activity.id}>
                 <td>{activity.id+1}</td>
-                <td>{activity.tanggal}</td>
+                <td>{changeDateTable(activity.tanggal)}</td>
                 <td>{activity.kegiatan}</td>
                 <td className="whitespace-nowrap border-0">
                 <button
@@ -278,9 +183,9 @@ const ActivityScreen = () => {
                                 <input 
                                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" 
                                     type="date" 
-                                    name="tglkegiatan" 
-                                    id="tglkegiatan"
-                                    value={activity.tanggal}
+                                    name="tanggal" 
+                                    id="tanggal"
+                                    value={changeDateEdit(edits.tanggal)  }
                                     onChange={handleEdits}
                                     required/>
                             </div>
@@ -291,7 +196,7 @@ const ActivityScreen = () => {
                                     type="text" 
                                     name="kegiatan" 
                                     id="kegiatan" 
-                                    value={activity.kegiatan}
+                                    value={edits.kegiatan}
                                     onChange={handleEdits}
                                     />
                             </div>
@@ -334,6 +239,10 @@ const ActivityScreen = () => {
         });
     };
 
+    useEffect(() => {
+      getActivity();
+    }, []);
+
     return (
         <main className="flex">
             <section className="mt-[56px] xl:mt-[100px] w-full xl:w-[85%] xl:mx-auto xl:border-2 xl:px-7 xl:py-5 xl:rounded-xl">
@@ -375,17 +284,6 @@ const ActivityScreen = () => {
                             {renderTable()}                        
                         </tbody>
                     </table>
-                </div>
-                <div className="pagination flex w-fit h-[17px] mt-4 xl:mt-8 xl:mb-7 mx-auto gap-[7px] xl:gap-[10px] text-xs xl:text-base font-medium items-center">
-                    <p className="active:bg-gray-300" onClick={prePage}>Sebelumnya</p>    
-                    {
-                        numbers.map((number, index) => (
-                            <button className={`${currentPage === number ? 'bg-[#FF5757] text-white' : 'bg-gray-300 text-black'} py-[4px] xl:py-[6px] px-[12px] xl:px-[16px] self-center rounded-[5px] font-semibold cursor-pointer`} key={index} onClick={() => changeCPage(number)}>
-                            {number}
-                            </button>
-                        ))
-                    }
-                    <p className="active:bg-gray-300" onClick={nextPage}>Sebelumnya</p>
                 </div>
             </section> 
         </main>

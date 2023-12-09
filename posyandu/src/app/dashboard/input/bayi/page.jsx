@@ -81,7 +81,7 @@ const BayiScreen = () => {
     };
 
     axiosConfig
-      .post("http://localhost:3000/api/bayi", data)
+      .post("api/bayi", data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil menambahkan data bayi!");

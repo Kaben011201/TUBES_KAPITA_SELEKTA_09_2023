@@ -98,7 +98,7 @@ const DataBayi = () => {
 
   const getBayi = async () => {
     try {
-      const response = await axiosConfig.get("http://localhost:3000/api/bayi", {
+      const response = await axiosConfig.get("api/bayi", {
         params: { month: bulan, type: "bayi", query: search },
       });
       if (response.data.status !== 400) {
@@ -116,7 +116,7 @@ const DataBayi = () => {
   const getBayiFilter = async (bayi) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/riwayat/bayi/${bayi.nik}`
+        `api/riwayat/bayi/${bayi.nik}`
       );
 
       if (response.data.status !== 400) {
@@ -140,7 +140,7 @@ const DataBayi = () => {
   const delBayiHapus = async (bayi) => {
     try {
       const response = await axiosConfig.delete(
-        `http://localhost:3000/api/bayi/${bayi.id}`
+        `api/bayi/${bayi.id}`
       );
       if (response.data.status !== 400) {
         window.location.reload();
@@ -191,7 +191,7 @@ const DataBayi = () => {
   const getBayiEdit = async (bayi) => {
     try {
       const response = await axiosConfig.get(
-        `http://localhost:3000/api/bayi/${bayi.id}`
+        `api/bayi/${bayi.id}`
       );
       if (response.data.status !== 400) {
       } else {
@@ -247,7 +247,7 @@ const DataBayi = () => {
     };
 
     axiosConfig
-      .patch(`http://localhost:3000/api/bayi/${edits.id}`, data)
+      .patch(`api/bayi/${edits.id}`, data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil mengedit data bayi!");
