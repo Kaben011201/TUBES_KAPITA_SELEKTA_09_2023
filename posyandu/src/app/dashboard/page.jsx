@@ -35,6 +35,7 @@ const DashboardScreen = () => {
       getLansiaGrafik();
     }
   };
+  
   const getBumilGrafik = async () => {
     try {
       const response = await axiosConfig.get(
@@ -46,6 +47,7 @@ const DashboardScreen = () => {
         alert(response.data.message);
       }
       setdataTahun(response.data.data);
+
       setOptions({
         labels: [
           "Jan",
@@ -85,6 +87,9 @@ const DashboardScreen = () => {
           },
         ],
       });
+
+      console.log(dataTahun);
+
     } catch (error) {
       // alert(error.data.message);
       console.log(error);
@@ -299,6 +304,7 @@ const DashboardScreen = () => {
     getBumilGrafik();
   }, [tahun]);
 
+  
   return (
     <div>
       <div className="flex flex-col items-center">

@@ -119,3 +119,9 @@ model Bayi {
   keterangan       String?
   type             String
 }
+
+model Activity {
+  id  Int @unique @default(sequence())
+  tanggal     DateTime  @db.Date
+  kegiatan    String
+}
