@@ -19,7 +19,7 @@ const DataIbuHamil = () => {
   };
 
   const [edits, setEdits] = useState({
-    hadir:"",
+    hadir: "",
     kunjung: "",
     nama: "",
     nik: "",
@@ -43,12 +43,47 @@ const DataIbuHamil = () => {
     tanggalLahirSuami: "",
     noHp: "",
     bpjs: "",
-    keterangan:""
+    keterangan: "",
   });
+
+  const [inputs, setInputs] = useState({
+    hadir: "",
+    kunjung: "",
+    nama: "",
+    nik: "",
+    kk: "",
+    tanggalLahir: "",
+    umur: "",
+    alamat: "",
+    alamatKK: "",
+    bb: "",
+    tb: "",
+    usiaHamil: "",
+    lingkarLengan: "",
+    g: "",
+    p: "",
+    a: "",
+    hpht: "",
+    tp: "",
+    hb: "",
+    namaSuami: "",
+    nikSuami: "",
+    tanggalLahirSuami: "",
+    noHp: "",
+    bpjs: "",
+    keterangan: "",
+  });
+
   const handleEdits = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setEdits((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleInputs = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
   };
 
   const getBumil = async () => {
@@ -194,11 +229,59 @@ const DataIbuHamil = () => {
       tanggalLahirSuami: new Date(edits.tanggalLahirSuami),
       noHp: edits.noHp,
       bpjs: edits.bpjs,
-      keterangan: edits.keterangan
+      keterangan: edits.keterangan,
     };
 
     axiosConfig
       .patch(`http://localhost:3000/api/bumil/${edits.id}`, data)
+      .then(function (response) {
+        if (response.data.status != 400) {
+          alert("Berhasil mengedit data bumil!");
+        } else {
+          alert(response.data.message);
+        }
+      })
+      .catch(function (error) {
+        alert(error.data.message);
+        console.log(error);
+      });
+
+    window.location.reload();
+  };
+
+  const tambahBumil = (e) => {
+    e.preventDefault();
+
+    const data = {
+      hadir: inputs.hadir,
+      kunjung: inputs.kunjung,
+      nama: edits.nama,
+      nik: edits.nik,
+      kk: edits.kk,
+      tanggalLahir: new Date(edits.tanggalLahir),
+      umur: parseInt(edits.umur),
+      alamat: edits.alamat,
+      alamatKK: edits.alamatKK,
+      bb: parseFloat(inputs.bb),
+      tb: parseFloat(inputs.tb),
+      usiaHamil: parseFloat(inputs.usiaHamil),
+      lingkarLengan: parseFloat(inputs.lingkarLengan),
+      g: parseInt(inputs.g),
+      p: parseInt(inputs.p),
+      a: parseInt(inputs.a),
+      hpht: new Date(inputs.hpht),
+      tp: new Date(inputs.tp),
+      hb: inputs.hb,
+      namaSuami: edits.namaSuami,
+      nikSuami: edits.nikSuami,
+      tanggalLahirSuami: new Date(edits.tanggalLahirSuami),
+      noHp: edits.noHp,
+      bpjs: edits.bpjs,
+      keterangan: inputs.keterangan,
+    };
+
+    axiosConfig
+      .post(`http://localhost:3000/api/bumil/`, data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil mengedit data bumil!");
@@ -268,6 +351,28 @@ const DataIbuHamil = () => {
                 />
               </svg>
             </button>
+            {/* Tambah data*/}
+            <button
+              onClick={async () => {
+                await getBumilEdit(bumil);
+                document.getElementById(`modal_tambah_bumil`).showModal();
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22.5"
+                height="22.5"
+                viewBox="0 0 15 15"
+                fill="none"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M3.5999 1.6001C3.28164 1.6001 2.97642 1.72653 2.75137 1.95157C2.52633 2.17661 2.3999 2.48184 2.3999 2.8001V13.2001C2.3999 13.5184 2.52633 13.8236 2.75137 14.0486C2.97642 14.2737 3.28164 14.4001 3.5999 14.4001H12.3999C12.7182 14.4001 13.0234 14.2737 13.2484 14.0486C13.4735 13.8236 13.5999 13.5184 13.5999 13.2001V6.0969C13.5996 5.77875 13.473 5.47373 13.2479 5.2489L9.9519 1.9513C9.84032 1.83979 9.70785 1.75137 9.56207 1.69111C9.41628 1.63085 9.26005 1.59992 9.1023 1.6001H3.5999ZM7.9999 6.4001C8.15903 6.4001 8.31164 6.46331 8.42417 6.57583C8.53669 6.68836 8.5999 6.84097 8.5999 7.0001V8.2001H9.7999C9.95903 8.2001 10.1116 8.26331 10.2242 8.37583C10.3367 8.48836 10.3999 8.64097 10.3999 8.8001C10.3999 8.95923 10.3367 9.11184 10.2242 9.22436C10.1116 9.33688 9.95903 9.4001 9.7999 9.4001H8.5999V10.6001C8.5999 10.7592 8.53669 10.9118 8.42417 11.0244C8.31164 11.1369 8.15903 11.2001 7.9999 11.2001C7.84077 11.2001 7.68816 11.1369 7.57564 11.0244C7.46312 10.9118 7.3999 10.7592 7.3999 10.6001V9.4001H6.1999C6.04077 9.4001 5.88816 9.33688 5.77564 9.22436C5.66312 9.11184 5.5999 8.95923 5.5999 8.8001C5.5999 8.64097 5.66312 8.48836 5.77564 8.37583C5.88816 8.26331 6.04077 8.2001 6.1999 8.2001H7.3999V7.0001C7.3999 6.84097 7.46312 6.68836 7.57564 6.57583C7.68816 6.46331 7.84077 6.4001 7.9999 6.4001Z"
+                  fill="#545454"
+                />
+              </svg>
+            </button>
             <button
               onClick={async () => {
                 await getBumilEdit(bumil);
@@ -330,6 +435,7 @@ const DataIbuHamil = () => {
               </button>
             </div>
           </dialog>
+
           {/* modal edit bumil*/}
           <dialog id="modal_edit_bumil" className="modal">
             <div className="modal-box xl:max-w-7xl">
@@ -349,9 +455,7 @@ const DataIbuHamil = () => {
                     htmlFor=""
                   >
                     Kehadiran
-                    <span className="text-red-500 absolute mt-[-6px]">
-                      *
-                    </span>
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <select
                     defaultValue={"hadir"}
@@ -843,6 +947,518 @@ const DataIbuHamil = () => {
               </form>
             </div>
           </dialog>
+
+          {/* modal tambah bumil*/}
+          <dialog id="modal_tambah_bumil" className="modal">
+            <div className="modal-box xl:max-w-7xl">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              <form
+                onSubmit={tambahBumil}
+                className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
+              >
+                <div className="flex gap-6 items-center my-4">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Kehadiran
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <select
+                    defaultValue={"hadir"}
+                    value={inputs.hadir}
+                    name="hadir"
+                    onChange={handleInputs}
+                  >
+                    <option value="hadir">Hadir</option>
+                    <option value="tidak">Tidak</option>
+                  </select>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Tanggal Kunjungan{" "}
+                    <span className="text-red-500 absolute mt-[-20px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="date"
+                    name="kunjung"
+                    id="kunjung"
+                    value={inputs.kunjung}
+                    onChange={handleInputs}
+                    required
+                  />
+                </div>
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium"
+                    htmlFor=""
+                  >
+                    No KK
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="kk"
+                    id="kk"
+                    onChange={handleEdits}
+                    value={edits.kk}
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2] "
+                    htmlFor=""
+                  >
+                    Nama Ibu Hamil
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="nama"
+                    id="nama"
+                    onChange={handleEdits}
+                    value={edits.nama}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium"
+                    htmlFor=""
+                  >
+                    NIK Ibu Hamil
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="nik"
+                    id="nik"
+                    onChange={handleEdits}
+                    value={edits.nik}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2] text-[11px] xl:text-base"
+                    htmlFor=""
+                  >
+                    Tanggal Lahir Ibu Hamil
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm px-2"
+                    type="date"
+                    name="tanggalLahir"
+                    id="tanggalLahir"
+                    onChange={handleEdits}
+                    value={changeDateEdit(edits.tanggalLahir)}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Umur Ibu Hamil
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="umur"
+                    id="umur"
+                    onChange={handleEdits}
+                    value={edits.umur}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Nama Suami{" "}
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="namaSuami"
+                    id="namaSuami"
+                    onChange={handleEdits}
+                    value={edits.namaSuami}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    NIK Suami{" "}
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="nikSuami"
+                    id="nikSuami"
+                    onChange={handleEdits}
+                    value={edits.nikSuami}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Tanggal Lahir Suami
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm px-2"
+                    type="date"
+                    name="tanggalLahirSuami"
+                    id="tanggalLahirSuami"
+                    onChange={handleEdits}
+                    value={changeDateEdit(edits.tanggalLahirSuami)}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Alamat{" "}
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <textarea
+                    className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
+                    name="alamat"
+                    id="alamat"
+                    rows="3"
+                    onChange={handleEdits}
+                    value={edits.alamat}
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Alamat Domisili KK
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <textarea
+                    className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
+                    name="alamatKK"
+                    id="alamatKK"
+                    rows="3"
+                    onChange={handleEdits}
+                    value={edits.alamatKK}
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    BB (kg)
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="bb"
+                    id="bb"
+                    onChange={handleInputs}
+                    value={inputs.bb}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    TB (cm)
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="tb"
+                    id="tb"
+                    onChange={handleInputs}
+                    value={inputs.tb}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-semibold leading-[1.2] text-[10px] xl:text-base xl:font-medium"
+                    htmlFor=""
+                  >
+                    Usia Kehamilan (bulan)
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="usiaHamil"
+                    id="usiaHamil"
+                    onChange={handleInputs}
+                    value={inputs.usiaHamil}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Lingkar Lengan (cm)
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="lingkarLengan"
+                    id="lingkarLengan"
+                    onChange={handleInputs}
+                    value={inputs.lingkarLengan}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-8 xl:gap-8">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    GPA{" "}
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <div className="w-[77%] xl:w-[82%] flex flex-col gap-[7px] text-medium xl:text-base xl:font-medium">
+                    <div className="flex xl:gap-4 items-center">
+                      <label className="w-[15%] xl:w-[20%]" htmlFor="">
+                        G
+                      </label>
+                      <input
+                        className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                        type="number"
+                        name="g"
+                        id="g"
+                        onChange={handleInputs}
+                        value={inputs.g}
+                        required
+                      />
+                    </div>
+
+                    <div className="flex xl:gap-4 items-center">
+                      <label className="w-[15%] xl:w-[20%]" htmlFor="">
+                        P
+                      </label>
+                      <input
+                        className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                        type="number"
+                        name="p"
+                        id="p"
+                        onChange={handleInputs}
+                        value={inputs.p}
+                        required
+                      />
+                    </div>
+
+                    <div className="flex xl:gap-4 items-center">
+                      <label className="w-[15%] xl:w-[20%]" htmlFor="">
+                        A
+                      </label>
+                      <input
+                        className="w-[85%] xl:w-[70%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                        type="number"
+                        name="a"
+                        id="a"
+                        onChange={handleInputs}
+                        value={inputs.a}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    HPHT
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="date"
+                    name="hpht"
+                    id="hpht"
+                    onChange={handleInputs}
+                    value={changeDateEdit(inputs.hpht)}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    TP<span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="date"
+                    name="tp"
+                    id="tp"
+                    onChange={handleInputs}
+                    value={changeDateEdit(inputs.tp)}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    HB (g/dL)
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="hb"
+                    id="hb"
+                    onChange={handleInputs}
+                    value={inputs.hb}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    No. Hp/WA
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="noHp"
+                    id="noHp"
+                    onChange={handleEdits}
+                    value={edits.noHp}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    No. BPJS
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="bpjs"
+                    id="bpjs"
+                    onChange={handleEdits}
+                    value={edits.bpjs}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Keterangan
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="keterangan"
+                    id="keterangan"
+                    value={inputs.keterangan}
+                    onChange={handleInputs}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-[#FF5757;] w-[150px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[12px] xl:text-sm pr-1 flex items-center justify-center gap-1"
+                >
+                  <img
+                    className="w-[20px] xl:w-[35px] mb-1"
+                    src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg"
+                    alt="saveform"
+                  />
+                  Tambah Data
+                </button>
+              </form>
+            </div>
+          </dialog>
         </tr>
       );
     });
@@ -886,7 +1502,7 @@ const DataIbuHamil = () => {
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
-      <div className="xl:hidden dropdown dropdown-bottom">
+        <div className="xl:hidden dropdown dropdown-bottom">
           <label tabIndex={0}>
             <img className="ml-3" src="/header/search.svg"></img>
           </label>
@@ -895,9 +1511,7 @@ const DataIbuHamil = () => {
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <form
-                onSubmit={handleSearch}
-              >
+              <form onSubmit={handleSearch}>
                 <input
                   className="focus:outline-none placeholder:text-center placeholder:text-neutral-600 placeholder:text-sm ml-[5px] w-[200px]"
                   placeholder="Pencarian"
@@ -1052,7 +1666,6 @@ const DataIbuHamil = () => {
                 <th rowSpan={2}>HB</th>
                 <th rowSpan={2}>No. BPJS</th>
                 <th rowSpan={2}>No. HP</th>
-                <th rowSpan={2}>Aksi</th>
               </tr>
               <tr>
                 <th>Nama</th>

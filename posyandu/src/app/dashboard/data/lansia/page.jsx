@@ -33,13 +33,37 @@ const DataLansia = () => {
     tb: "",
     tensi: "",
     bpjs: "",
-    keterangan: ""
+    keterangan: "",
+  });
+
+  const [inputs, setInputs] = useState({
+    hadir: "",
+    kunjung: "",
+    nama: "",
+    nik: "",
+    kk: "",
+    jenisKelamin: "L",
+    tanggalLahir: "",
+    umur: "",
+    alamat: "",
+    alamatKK: "",
+    bb: "",
+    tb: "",
+    tensi: "",
+    bpjs: "",
+    keterangan: "",
   });
 
   const handleEdits = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setEdits((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleInputs = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
   };
 
   const getLansia = async () => {
@@ -175,11 +199,49 @@ const DataLansia = () => {
       tb: parseFloat(edits.tb),
       tensi: edits.tensi,
       bpjs: edits.bpjs,
-      keterangan: edits.keterangan
+      keterangan: edits.keterangan,
     };
 
     axiosConfig
       .patch(`http://localhost:3000/api/lansia/${edits.id}`, data)
+      .then(function (response) {
+        if (response.data.status != 400) {
+          alert("Berhasil mengedit data lansia!");
+        } else {
+          alert(response.data.message);
+        }
+      })
+      .catch(function (error) {
+        alert(error.data.message);
+        console.log(error);
+      });
+
+    window.location.reload();
+  };
+
+  const tambahLansia = (e) => {
+    e.preventDefault();
+
+    const data = {
+      hadir: inputs.hadir,
+      kunjung: inputs.kunjung,
+      nama: edits.nama,
+      nik: edits.nik,
+      kk: edits.kk,
+      jenisKelamin: edits.jenisKelamin,
+      tanggalLahir: new Date(edits.tanggalLahir),
+      umur: parseInt(edits.umur),
+      alamat: edits.alamat,
+      alamatKK: edits.alamatKK,
+      bb: parseFloat(inputs.bb),
+      tb: parseFloat(inputs.tb),
+      tensi: inputs.tensi,
+      bpjs: edits.bpjs,
+      keterangan: inputs.keterangan,
+    };
+
+    axiosConfig
+      .post(`http://localhost:3000/api/lansia/`, data)
       .then(function (response) {
         if (response.data.status != 400) {
           alert("Berhasil mengedit data lansia!");
@@ -237,6 +299,28 @@ const DataLansia = () => {
               >
                 <path
                   d="M6.32813 4.92187C6.32813 4.73645 6.38311 4.5552 6.48612 4.40103C6.58914 4.24686 6.73556 4.12669 6.90686 4.05574C7.07817 3.98478 7.26667 3.96621 7.44852 4.00239C7.63038 4.03856 7.79743 4.12785 7.92854 4.25896C8.05965 4.39007 8.14894 4.55712 8.18511 4.73898C8.22129 4.92083 8.20272 5.10933 8.13176 5.28064C8.06081 5.45195 7.94065 5.59836 7.78647 5.70138C7.6323 5.80439 7.45105 5.85937 7.26563 5.85937C7.01699 5.85937 6.77853 5.7606 6.60272 5.58479C6.4269 5.40897 6.32813 5.17052 6.32813 4.92187ZM13.8281 7.5C13.8281 8.75158 13.457 9.97506 12.7616 11.0157C12.0663 12.0564 11.078 12.8675 9.92167 13.3464C8.76536 13.8254 7.49298 13.9507 6.26545 13.7065C5.03791 13.4624 3.91035 12.8597 3.02534 11.9747C2.14034 11.0897 1.53764 9.96209 1.29347 8.73456C1.0493 7.50702 1.17462 6.23464 1.65358 5.07833C2.13254 3.92202 2.94363 2.9337 3.98428 2.23836C5.02494 1.54301 6.24842 1.17188 7.5 1.17188C9.17775 1.17374 10.7863 1.84104 11.9726 3.0274C13.159 4.21375 13.8263 5.82225 13.8281 7.5ZM12.4219 7.5C12.4219 6.52654 12.1332 5.57495 11.5924 4.76555C11.0516 3.95615 10.2829 3.32531 9.38352 2.95278C8.48417 2.58026 7.49454 2.48279 6.53979 2.6727C5.58504 2.86261 4.70805 3.33137 4.01971 4.01971C3.33137 4.70805 2.86261 5.58504 2.6727 6.53979C2.48279 7.49454 2.58026 8.48416 2.95278 9.38352C3.32531 10.2829 3.95616 11.0516 4.76556 11.5924C5.57495 12.1332 6.52655 12.4219 7.5 12.4219C8.80494 12.4205 10.056 11.9015 10.9788 10.9787C11.9015 10.056 12.4205 8.80493 12.4219 7.5ZM8.20313 9.64922V7.73437C8.20313 7.42357 8.07966 7.1255 7.85989 6.90573C7.64012 6.68596 7.34205 6.5625 7.03125 6.5625C6.8652 6.56225 6.70442 6.62078 6.57739 6.72772C6.45036 6.83465 6.36527 6.9831 6.3372 7.14676C6.30913 7.31041 6.33988 7.47873 6.42402 7.62189C6.50815 7.76504 6.64024 7.8738 6.79688 7.92891V9.84375C6.79688 10.1545 6.92034 10.4526 7.14011 10.6724C7.35988 10.8922 7.65795 11.0156 7.96875 11.0156C8.1348 11.0159 8.29558 10.9573 8.42261 10.8504C8.54964 10.7435 8.63473 10.595 8.6628 10.4314C8.69088 10.2677 8.66012 10.0994 8.57599 9.95624C8.49185 9.81308 8.35977 9.70432 8.20313 9.64922Z"
+                  fill="#545454"
+                />
+              </svg>
+            </button>
+            {/* Tambah data*/}
+            <button
+              onClick={async () => {
+                await getLansiaEdit(bumil);
+                document.getElementById(`modal_tambah_lansia`).showModal();
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22.5"
+                height="22.5"
+                viewBox="0 0 15 15"
+                fill="none"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M3.5999 1.6001C3.28164 1.6001 2.97642 1.72653 2.75137 1.95157C2.52633 2.17661 2.3999 2.48184 2.3999 2.8001V13.2001C2.3999 13.5184 2.52633 13.8236 2.75137 14.0486C2.97642 14.2737 3.28164 14.4001 3.5999 14.4001H12.3999C12.7182 14.4001 13.0234 14.2737 13.2484 14.0486C13.4735 13.8236 13.5999 13.5184 13.5999 13.2001V6.0969C13.5996 5.77875 13.473 5.47373 13.2479 5.2489L9.9519 1.9513C9.84032 1.83979 9.70785 1.75137 9.56207 1.69111C9.41628 1.63085 9.26005 1.59992 9.1023 1.6001H3.5999ZM7.9999 6.4001C8.15903 6.4001 8.31164 6.46331 8.42417 6.57583C8.53669 6.68836 8.5999 6.84097 8.5999 7.0001V8.2001H9.7999C9.95903 8.2001 10.1116 8.26331 10.2242 8.37583C10.3367 8.48836 10.3999 8.64097 10.3999 8.8001C10.3999 8.95923 10.3367 9.11184 10.2242 9.22436C10.1116 9.33688 9.95903 9.4001 9.7999 9.4001H8.5999V10.6001C8.5999 10.7592 8.53669 10.9118 8.42417 11.0244C8.31164 11.1369 8.15903 11.2001 7.9999 11.2001C7.84077 11.2001 7.68816 11.1369 7.57564 11.0244C7.46312 10.9118 7.3999 10.7592 7.3999 10.6001V9.4001H6.1999C6.04077 9.4001 5.88816 9.33688 5.77564 9.22436C5.66312 9.11184 5.5999 8.95923 5.5999 8.8001C5.5999 8.64097 5.66312 8.48836 5.77564 8.37583C5.88816 8.26331 6.04077 8.2001 6.1999 8.2001H7.3999V7.0001C7.3999 6.84097 7.46312 6.68836 7.57564 6.57583C7.68816 6.46331 7.84077 6.4001 7.9999 6.4001Z"
                   fill="#545454"
                 />
               </svg>
@@ -322,9 +406,7 @@ const DataLansia = () => {
                     htmlFor=""
                   >
                     Kehadiran
-                    <span className="text-red-500 absolute mt-[-6px]">
-                      *
-                    </span>
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <select
                     defaultValue={"hadir"}
@@ -600,6 +682,302 @@ const DataLansia = () => {
               </form>
             </div>
           </dialog>
+
+          {/* modal tambah lansia*/}
+          <dialog id="modal_tambah_lansia" className="modal">
+            <div className="modal-box xl:max-w-7xl">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              <form
+                onSubmit={tambahLansia}
+                className="flex flex-col gap-[7px] text-[12px] xl:text-base mt-6 xl:mt-6 whitespace-normal"
+              >
+                <div className="flex gap-6 items-center my-4">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Kehadiran
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <select
+                    defaultValue={"hadir"}
+                    value={inputs.hadir}
+                    name="hadir"
+                    onChange={handleInputs}
+                  >
+                    <option value="hadir">Hadir</option>
+                    <option value="tidak">Tidak</option>
+                  </select>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium"
+                    htmlFor=""
+                  >
+                    Tanggal Kunjungan
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="date"
+                    name="kunjung"
+                    id="kunjung"
+                    value={inputs.kunjung}
+                    onChange={handleInputs}
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium"
+                    htmlFor=""
+                  >
+                    NIK
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="nik"
+                    id="nik"
+                    value={edits.nik}
+                    onChange={handleEdits}
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium"
+                    htmlFor=""
+                  >
+                    No KK
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="kk"
+                    id="kk"
+                    value={edits.kk}
+                    onChange={handleEdits}
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Nama Lengkap{" "}
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="nama"
+                    id="nama"
+                    value={edits.nama}
+                    onChange={handleEdits}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Tanggal Lahir{" "}
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2 px-2"
+                    type="date"
+                    name="tanggalLahir"
+                    id="tanggalLahir"
+                    value={changeDateEdit(edits.tanggalLahir)}
+                    onChange={handleEdits}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-6 items-center my-4">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Jenis Kelamin
+                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <select
+                    defaultValue={"edits.jenisKelamin"}
+                    value={edits.jenisKelamin}
+                    name="jenisKelamin"
+                    onChange={handleEdits}
+                  >
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Alamat{" "}
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <textarea
+                    className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
+                    name="alamat"
+                    id="alamat"
+                    rows="3"
+                    value={edits.alamat}
+                    onChange={handleEdits}
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Alamat Domisili KK
+                    <span className="text-red-500 absolute mt-[-35px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <textarea
+                    className="w-[77%] xl:w-[82%] border-[1.5px] border-[#D5D8DE] rounded-sm p-2 resize-none"
+                    name="alamatKK"
+                    id="alamatKK"
+                    rows="3"
+                    value={edits.alamatKK}
+                    onChange={handleEdits}
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    BB (kg)
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="bb"
+                    id="bb"
+                    value={inputs.bb}
+                    onChange={handleInputs}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    TB (cm)
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="number"
+                    name="tb"
+                    id="tb"
+                    value={inputs.tb}
+                    onChange={handleInputs}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Tensi Darah (mmHg)
+                    <span className="text-red-500 absolute mt-[-35px] xl:mt-[-6px]">
+                      *
+                    </span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="tensi"
+                    id="tensi"
+                    value={inputs.tensi}
+                    onChange={handleInputs}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    No. BPJS
+                    <span className="text-red-500 absolute mt-[-6px]">*</span>
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="bpjs"
+                    id="bpjs"
+                    value={edits.bpjs}
+                    onChange={handleEdits}
+                    required
+                  />
+                </div>
+
+                <div className="flex gap-3 xl:gap-4 items-center">
+                  <label
+                    className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
+                    htmlFor=""
+                  >
+                    Keterangan
+                  </label>
+                  <input
+                    className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
+                    type="text"
+                    name="keterangan"
+                    id="keterangan"
+                    value={inputs.keterangan}
+                    onChange={handleInputs}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-[#FF5757;] w-[150px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[12px] xl:text-sm pr-1 flex items-center justify-center gap-1"
+                >
+                  <img
+                    className="w-[20px] xl:w-[35px] mb-1"
+                    src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg"
+                    alt="saveform"
+                  />
+                  Tambah Data
+                </button>
+              </form>
+            </div>
+          </dialog>
         </tr>
       );
     });
@@ -635,7 +1013,7 @@ const DataLansia = () => {
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
-      <div className="xl:hidden dropdown dropdown-bottom">
+        <div className="xl:hidden dropdown dropdown-bottom">
           <label tabIndex={0}>
             <img className="ml-3" src="/header/search.svg"></img>
           </label>
@@ -644,9 +1022,7 @@ const DataLansia = () => {
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <form
-                onSubmit={handleSearch}
-              >
+              <form onSubmit={handleSearch}>
                 <input
                   className="focus:outline-none placeholder:text-center placeholder:text-neutral-600 placeholder:text-sm ml-[5px] w-[200px]"
                   placeholder="Pencarian"
