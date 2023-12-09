@@ -2,6 +2,8 @@ import prisma from "@/utils/prisma";
 
 export async function GET(req) {
   let where = {};
+  
+  const { searchParams } = new URL(req.url);
 
   const search = searchParams.get("query") || "";
   where.kegiatan = { contains:search};

@@ -1,11 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axiosConfig from "../../../utils/axios";
 
 const ActivityScreen = () => {
     const [activity, setActivity] = useState([]);
     const router = useRouter();
+    const [search, setSearch] = useState("");
 
     const [edits, setEdits] = useState({
         tanggal: "",
@@ -18,22 +19,22 @@ const ActivityScreen = () => {
         setEdits((values) => ({ ...values, [name]: value }));
       };
     
-    const getActivity = async () => {
-    try {
-        const response = await axiosConfig.get(
-        "http://localhost:3000/api/activity",
-        { params: { month: bulan } }
-        );
-        if (response.data.status !== 400) {
-        } else {
-        alert(response.data.message);
+      const getActivity = async () => {
+        try {
+          const response = await axiosConfig.get(
+            "api/activity",
+            
+          );
+          if (response.data.status !== 400) {
+          } else {
+            alert(response.data.message);
+          }
+          setActivity(response.data.data);
+        } catch (error) {
+          // alert(error.data.message);
+          console.log(error);
         }
-        setActivity(response.data.data);
-    } catch (error) {
-        // alert(error.data.message);
-        console.log(error);
-    }
-    };
+      };
     
     const delActivityHapus = async (activity) => {
         try {
@@ -72,6 +73,20 @@ const ActivityScreen = () => {
         return formattedDate;
     };
 
+    const changeDateEdit = (date) => {
+      date = new Date(date);
+  
+      // Get the individual components
+      let month = ("0" + (date.getMonth() + 1)).slice(-2);
+      let day = ("0" + date.getDate()).slice(-2);
+      let year = date.getFullYear().toString();
+  
+      // Format into a string in "DD/MM/YY" format
+      let formattedDate = year + "-" + month + "-" + day;
+  
+      return formattedDate;
+    };
+
     const getActivityEdit = async (activity) => {
         try {
           const response = await axiosConfig.get(
@@ -107,7 +122,7 @@ const ActivityScreen = () => {
           .patch(`http://localhost:3000/api/activity/${edits.id}`, data)
           .then(function (response) {
             if (response.data.status != 400) {
-              alert("Berhasil mengedit data lansia!");
+              alert("Berhasil mengedit data Activity!");
             } else {
               alert(response.data.message);
             }
@@ -120,12 +135,13 @@ const ActivityScreen = () => {
         window.location.reload();
     };
 
+
     const renderTable = () => {
         return activity.map((activity) => {
           return (
             <tr key={activity.id}>
                 <td>{activity.id+1}</td>
-                <td>{activity.tanggal}</td>
+                <td>{changeDateTable(activity.tanggal)}</td>
                 <td>{activity.kegiatan}</td>
                 <td className="whitespace-nowrap border-0">
                 <button
@@ -169,7 +185,7 @@ const ActivityScreen = () => {
                                     type="date" 
                                     name="tanggal" 
                                     id="tanggal"
-                                    value={edits.tanggal}
+                                    value={changeDateEdit(edits.tanggal)  }
                                     onChange={handleEdits}
                                     required/>
                             </div>
@@ -222,6 +238,10 @@ const ActivityScreen = () => {
           );
         });
     };
+
+    useEffect(() => {
+      getActivity();
+    }, []);
 
     return (
         <main className="flex">

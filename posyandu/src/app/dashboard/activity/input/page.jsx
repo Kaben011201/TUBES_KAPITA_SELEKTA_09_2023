@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import axiosConfig from "../../../../utils/axios";
-//import Activity from "../component/Activity";
 import { useRouter } from "next/navigation";
 
 const InputScreen = () => {
@@ -22,7 +21,7 @@ const InputScreen = () => {
         e.preventDefault();
     
         const data = {
-          tanggal: inputs.tanggal,
+          tanggal: new Date (inputs.tanggal),
           kegiatan: inputs.kegiatan,
         };
         axiosConfig
@@ -39,7 +38,6 @@ const InputScreen = () => {
             console.log(error);
         });
 
-        window.location.reload();
     };
 
     return (
