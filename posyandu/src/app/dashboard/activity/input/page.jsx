@@ -2,13 +2,15 @@
 import React, { useState } from "react";
 import axiosConfig from "../../../../utils/axios";
 //import Activity from "../component/Activity";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const InputScreen = () => {
     const [inputs, setInputs] = useState({
-        tglkegiatan: "",
+        tanggal: "",
         kegiatan:"",
     });
+
+    const router = useRouter();
 
     const handleInput = (e) =>{
         const name = e.target.name;
@@ -20,11 +22,11 @@ const InputScreen = () => {
         e.preventDefault();
     
         const data = {
-          tglkegiatan: inputs.tglkegiatan,
+          tanggal: inputs.tanggal,
           kegiatan: inputs.kegiatan,
         };
         axiosConfig
-        .post("http://localhost:3000/api/kegiatan", data)
+        .post("http://localhost:3000/api/activity", data)
         .then(function (response) {
             if (response.data.status != 400) {
             alert("Berhasil menambahkan kegiatan!");
@@ -53,9 +55,9 @@ const InputScreen = () => {
                         <input 
                             className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2" 
                             type="date" 
-                            name="tglkegiatan" 
-                            id="tglkegiatan"
-                            value={inputs.tglkegiatan}
+                            name="tanggal" 
+                            id="tanggal"
+                            value={inputs.tanggal}
                             onChange={handleInput}
                             required
                         />
