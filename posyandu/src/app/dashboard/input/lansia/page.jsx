@@ -32,7 +32,7 @@ const LansiaScreen = () => {
     e.preventDefault();
 
     const data = {
-      hadir: inputs.kunjung,
+      hadir: inputs.hadir,
       kunjung: inputs.kunjung,
       nama: inputs.nama,
       nik: inputs.nik,
