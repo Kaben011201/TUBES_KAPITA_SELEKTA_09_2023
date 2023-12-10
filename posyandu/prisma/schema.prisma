@@ -28,20 +28,20 @@ model Admin {
 
 model Lansia {
   id           Int      @unique @default(sequence())
-  hadir        String
-  kunjung      String
-  nama         String
-  nik          String
-  kk           String
-  jenisKelamin String
-  tanggalLahir DateTime @db.Date
-  umur         Int
-  alamat       String
-  alamatKK     String
-  bb           Float
-  tb           Float
-  tensi        String
-  bpjs         String
+  hadir        String?
+  kunjung      String?
+  nama         String?
+  nik          String?
+  kk           String?
+  jenisKelamin String?
+  tanggalLahir DateTime? @db.Date
+  umur         Int?
+  alamat       String?
+  alamatKK     String?
+  bb           Float?
+  tb           Float?
+  tensi        String?
+  bpjs         String?
   keterangan   String?
 
   Posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
@@ -50,31 +50,31 @@ model Lansia {
 
 model Bumil {
   id                Int      @unique @default(sequence())
-  hadir             String
-  kunjung           String
-  nama              String
-  nik               String
-  kk                String
-  tanggalLahir      DateTime @db.Date
-  umur              Int
-  alamat            String
-  alamatKK          String
-  bb                Float
-  tb                Float
-  usiaHamil         Float
-  lingkarLengan     Float
-  bpjs              String
-  g                 Int
-  p                 Int
-  a                 Int
-  hpht              DateTime @db.Date
-  tp                DateTime @db.Date
-  hb                String
-  namaSuami         String
-  nikSuami          String
-  tanggalLahirSuami DateTime @db.Date
-  noHp              String
-  keterangan       String?
+  hadir             String?
+  kunjung           String?
+  nama              String?
+  nik               String?
+  kk                String?
+  tanggalLahir      DateTime? @db.Date
+  umur              Int?
+  alamat            String?
+  alamatKK          String?
+  bb                Float?
+  tb                Float?
+  usiaHamil         Float?
+  lingkarLengan     Float?
+  bpjs              String?
+  g                 Int?
+  p                 Int?
+  a                 Int?
+  hpht              DateTime? @db.Date
+  tp                DateTime? @db.Date
+  hb                String?
+  namaSuami         String?
+  nikSuami          String?
+  tanggalLahirSuami DateTime? @db.Date
+  noHp              String?
+  keterangan        String?
 
   Posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
   posyanduId Int?
@@ -82,26 +82,26 @@ model Bumil {
 
 model Bayi {
   id               Int       @unique @default(sequence())
-  hadir            String
-  kunjung          String
-  nama             String
-  nik              String
-  jenisKelamin     String
-  tanggalLahir     DateTime  @db.Date
-  ayah             String
-  nikAyah          String
-  ibu              String
-  nikIbu           String
-  noHp             String
-  alamat           String
-  alamatKK         String
-  kia              String
-  bb               Float
-  panjangLahir     Float
+  hadir            String?
+  kunjung          String?
+  nama             String?
+  nik              String?
+  jenisKelamin     String?
+  tanggalLahir     DateTime?  @db.Date
+  ayah             String?
+  nikAyah          String?
+  ibu              String?
+  nikIbu           String?
+  noHp             String?
+  alamat           String?
+  alamatKK         String?
+  kia              String?
+  bb               Float?
+  panjangLahir     Float?
   bb5              Float?
-  tb               Float
-  lk               Float
-  ll               Float
+  tb               Float?
+  lk               Float?
+  ll               Float?
   vit              String?
   neo1             String?
   neo2             String?
@@ -112,16 +112,16 @@ model Bayi {
   bulan88          String?
   vitA             String?
   obatCacing       String?
-  imunisasi        String
+  imunisasi        String?
   pelayananPra     String?
   tanggalMeninggal DateTime? @db.Date
   penyebab         String?
   keterangan       String?
-  type             String
+  type             String?
 }
 
 model Activity {
-  id  Int @unique @default(sequence())
-  tanggal     DateTime  @db.Date
-  kegiatan    String
+  id       Int      @unique @default(sequence())
+  tanggal  DateTime @db.Date
+  kegiatan String
 }

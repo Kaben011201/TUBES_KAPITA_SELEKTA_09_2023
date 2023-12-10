@@ -322,6 +322,7 @@ const DataBayi = () => {
     return bayi.map((bayi) => {
       return (
         <tr key={bayi.id}>
+          <td>{bayi.hadir}</td>
           <td>{changeDateTable(bayi.kunjung)}</td>
           <td>{bayi.nama}</td>
           <td>{bayi.nik}</td>
@@ -333,6 +334,7 @@ const DataBayi = () => {
           <td>{bayi.nikAyah}</td>
           <td>{bayi.noHp}</td>
           <td>{bayi.alamat}</td>
+          <td>{bayi.alamatK}</td>
           <td>{bayi.kia}</td>
           <td>{bayi.bb}</td>
           <td>{bayi.tb}</td>
@@ -343,8 +345,10 @@ const DataBayi = () => {
           <td>{bayi.neo1}</td>
           <td>{bayi.neo2}</td>
           <td>{bayi.neo3}</td>
+          <td>{bayi.panjangLahir}</td>
           <td>{bayi.vitA}</td>
           <td>{bayi.imunisasi}</td>
+          <td>{bayi.obatCacing}</td>
           <td>{changeDateTable(bayi.tanggalMeninggal)}</td>
           <td>{bayi.keterangan}</td>
           <td className="whitespace-nowrap">
@@ -1680,6 +1684,7 @@ const DataBayi = () => {
     return bayiFilter.map((bayi) => {
       return (
         <tr key={bayi.id}>
+          <td>{bayi.hadir}</td>
           <td>{changeDateTable(bayi.kunjung)}</td>
           <td>{bayi.nama}</td>
           <td>{bayi.nik}</td>
@@ -1691,6 +1696,7 @@ const DataBayi = () => {
           <td>{bayi.nikAyah}</td>
           <td>{bayi.noHp}</td>
           <td>{bayi.alamat}</td>
+          <td>{bayi.alamatKK}</td>
           <td>{bayi.kia}</td>
           <td>{bayi.bb}</td>
           <td>{bayi.tb}</td>
@@ -1701,8 +1707,10 @@ const DataBayi = () => {
           <td>{bayi.neo1}</td>
           <td>{bayi.neo2}</td>
           <td>{bayi.neo3}</td>
+          <td>{bayi.panjangLahir}</td>
           <td>{bayi.vitA}</td>
           <td>{bayi.imunisasi}</td>
+          <td>{bayi.obatCacing}</td>
           <td>{changeDateTable(bayi.tanggalMeninggal)}</td>
           <td>{bayi.keterangan}</td>
         </tr>
@@ -1767,6 +1775,7 @@ const DataBayi = () => {
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
+              <th rowSpan={2}>Kehadiran</th>
               <th rowSpan={2}>Tanggal Kunjungan</th>
               <th rowSpan={2}>Nama</th>
               <th rowSpan={2}>NIK</th>
@@ -1774,6 +1783,7 @@ const DataBayi = () => {
               <th rowSpan={2}>L/P</th>
               <th colSpan={5}>Data Orang Tua</th>
               <th rowSpan={2}>Alamat</th>
+              <th rowSpan={2}>Alamat KK</th>
               <th rowSpan={2}>
                 <p>K</p>
                 <p>I</p>
@@ -1789,8 +1799,10 @@ const DataBayi = () => {
                 <p>T</p>
               </th>
               <th colSpan={4}>Masa Neonatal</th>
+              <th rowSpan={2}>Panjang Lahir</th>
               <th rowSpan={2}>Vit. A 6 Bulan</th>
               <th rowSpan={2}>Imunisasi</th>
+              <th rowSpan={2}>Obat Cacing</th>
               <th rowSpan={2}>Kematian Post Natal</th>
               <th rowSpan={2}>Keterangan</th>
               <th rowSpan={2}>Aksi</th>
@@ -1861,6 +1873,7 @@ const DataBayi = () => {
           <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
             <tbody>
               <tr>
+                <th rowSpan={2}>Kehadiran</th>
                 <th rowSpan={2}>Tanggal Kunjungan</th>
                 <th rowSpan={2}>Nama</th>
                 <th rowSpan={2}>NIK</th>
@@ -1868,6 +1881,7 @@ const DataBayi = () => {
                 <th rowSpan={2}>L/P</th>
                 <th colSpan={5}>Data Orang Tua</th>
                 <th rowSpan={2}>Alamat</th>
+                <th rowSpan={2}>Alamat KK</th>
                 <th rowSpan={2}>
                   <p>K</p>
                   <p>I</p>
@@ -1883,8 +1897,10 @@ const DataBayi = () => {
                   <p>T</p>
                 </th>
                 <th colSpan={4}>Masa Neonatal</th>
+                <th rowSpan={2}>Panjang Lahir</th>
                 <th rowSpan={2}>Vit. A 6 Bulan</th>
                 <th rowSpan={2}>Imunisasi</th>
+                <th rowSpan={2}>Obat Cacing</th>
                 <th rowSpan={2}>Kematian Post Natal</th>
                 <th rowSpan={2}>Keterangan</th>
               </tr>

@@ -1437,6 +1437,7 @@ const DataIbuHamil = () => {
       );
     });
   };
+  
   const renderTableRiwayat = () => {
     return bumilFilter.map((bumil) => {
       return (

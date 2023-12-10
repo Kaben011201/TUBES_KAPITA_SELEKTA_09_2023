@@ -328,6 +328,7 @@ const DataBalita = () => {
     return balita.map((balita) => {
       return (
         <tr key={balita.id}>
+          <td>{balita.hadir}</td>
           <td>{changeDateTable(balita.kunjung)}</td>
           <td>{balita.nama}</td>
           <td>{balita.nik}</td>
@@ -339,6 +340,9 @@ const DataBalita = () => {
           <td>{balita.nikAyah}</td>
           <td>{balita.noHp}</td>
           <td>{balita.alamat}</td>
+          <td>{balita.alamatKK}</td>
+          <td>{balita.bb5}</td>
+          <td>{balita.panjangLahir}</td>
           <td>{balita.kia}</td>
           <td>{balita.bb}</td>
           <td>{balita.tb}</td>
@@ -346,6 +350,7 @@ const DataBalita = () => {
           <td>{balita.ll}</td>
           <td>{balita.vit}</td>
           <td>{balita.imunisasi}</td>
+          <td>{balita.obatCacing}</td>
           <td>{balita.bulan66}</td>
           <td>{balita.bulan78}</td>
           <td>{balita.bulan88}</td>
@@ -1646,6 +1651,7 @@ const DataBalita = () => {
     return balitaFilter.map((balita) => {
       return (
         <tr key={balita.id}>
+          <td>{balita.hadir}</td>
           <td>{changeDateTable(balita.kunjung)}</td>
           <td>{balita.nama}</td>
           <td>{balita.nik}</td>
@@ -1657,6 +1663,9 @@ const DataBalita = () => {
           <td>{balita.nikAyah}</td>
           <td>{balita.noHp}</td>
           <td>{balita.alamat}</td>
+          <td>{balita.alamatKK}</td>
+          <td>{balita.bb5}</td>
+          <td>{balita.panjangLahir}</td>
           <td>{balita.kia}</td>
           <td>{balita.bb}</td>
           <td>{balita.tb}</td>
@@ -1664,6 +1673,7 @@ const DataBalita = () => {
           <td>{balita.ll}</td>
           <td>{balita.vit}</td>
           <td>{balita.imunisasi}</td>
+          <td>{balita.obatCacing}</td>
           <td>{balita.bulan66}</td>
           <td>{balita.bulan78}</td>
           <td>{balita.bulan88}</td>
@@ -1732,6 +1742,7 @@ const DataBalita = () => {
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
+              <th rowSpan={2}>Kehadiran</th>
               <th rowSpan={2}>Tanggal Kunjungan</th>
               <th rowSpan={2}>Nama</th>
               <th rowSpan={2}>NIK</th>
@@ -1739,6 +1750,9 @@ const DataBalita = () => {
               <th rowSpan={2}>L/P</th>
               <th colSpan={5}>Data Orang Tua</th>
               <th rowSpan={2}>Alamat</th>
+              <th rowSpan={2}>Alamat KK</th>
+              <th rowSpan={2}>Berat Lahir s.d 5 jam</th>
+              <th rowSpan={2}>Panjang Lahir</th>
               <th rowSpan={2}>
                 <p>K</p>
                 <p>I</p>
@@ -1754,6 +1768,7 @@ const DataBalita = () => {
                 <p>T</p>
               </th>
               <th rowSpan={2}>Imunisasi Lanjut</th>
+              <th rowSpan={2}>Obat Cacing</th>
               <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
               <th colSpan={2}>Meninggal</th>
               <th rowSpan={2}>Keterangan</th>
@@ -1827,45 +1842,49 @@ const DataBalita = () => {
           <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
             <tbody>
               <tr>
-                <th rowSpan={2}>No.</th>
-                <th rowSpan={2}>Nama</th>
-                <th rowSpan={2}>NIK</th>
-                <th rowSpan={2}>TTL</th>
-                <th rowSpan={2}>L/P</th>
-                <th colSpan={5}>Data Orang Tua</th>
-                <th rowSpan={2}>Alamat</th>
-                <th rowSpan={2}>
-                  <p>K</p>
-                  <p>I</p>
-                  <p>A</p>
-                </th>
-                <th rowSpan={2}>BB</th>
-                <th rowSpan={2}>TB</th>
-                <th rowSpan={2}>LK</th>
-                <th rowSpan={2}>LL</th>
-                <th rowSpan={2}>
-                  <p>V</p>
-                  <p>I</p>
-                  <p>T</p>
-                </th>
-                <th rowSpan={2}>Imunisasi Lanjut</th>
-                <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
-                <th colSpan={2}>Meninggal</th>
-                <th rowSpan={2}>Keterangan</th>
-                <th rowSpan={2}>Aksi</th>
-              </tr>
-              <tr>
-                <th>Nama Ibu</th>
-                <th>NIK</th>
-                <th>Nama Ayah</th>
-                <th>NIK</th>
-                <th>No.HP</th>
-                <th>66 Bulan</th>
-                <th>78 Bulan</th>
-                <th>84 Bulan</th>
-                <th>Tanggal Pra Sekolah</th>
-                <th>Tanggal Meninggal</th>
-                <th>Sebab</th>
+              <th rowSpan={2}>Kehadiran</th>
+              <th rowSpan={2}>Tanggal Kunjungan</th>
+              <th rowSpan={2}>Nama</th>
+              <th rowSpan={2}>NIK</th>
+              <th rowSpan={2}>TTL</th>
+              <th rowSpan={2}>L/P</th>
+              <th colSpan={5}>Data Orang Tua</th>
+              <th rowSpan={2}>Alamat</th>
+              <th rowSpan={2}>Alamat KK</th>
+              <th rowSpan={2}>Berat Lahir s.d 5 jam</th>
+              <th rowSpan={2}>Panjang Lahir</th>
+              <th rowSpan={2}>
+                <p>K</p>
+                <p>I</p>
+                <p>A</p>
+              </th>
+              <th rowSpan={2}>BB</th>
+              <th rowSpan={2}>TB</th>
+              <th rowSpan={2}>LK</th>
+              <th rowSpan={2}>LL</th>
+              <th rowSpan={2}>
+                <p>V</p>
+                <p>I</p>
+                <p>T</p>
+              </th>
+              <th rowSpan={2}>Imunisasi Lanjut</th>
+              <th rowSpan={2}>Obat Cacing</th>
+              <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
+              <th colSpan={2}>Meninggal</th>
+              <th rowSpan={2}>Keterangan</th>
+            </tr>
+            <tr>
+              <th>Nama Ibu</th>
+              <th>NIK</th>
+              <th>Nama Ayah</th>
+              <th>NIK</th>
+              <th>No.HP</th>
+              <th>66 Bulan</th>
+              <th>78 Bulan</th>
+              <th>84 Bulan</th>
+              <th>Tanggal Pra Sekolah</th>
+              <th>Tanggal Meninggal</th>
+              <th>Sebab</th>
               </tr>
               {renderTableRiwayat()}
             </tbody>
