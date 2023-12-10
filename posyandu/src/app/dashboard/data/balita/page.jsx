@@ -135,6 +135,13 @@ const DataBalita = () => {
     }
   };
 
+  const deleteData = async (balita) => {
+    let text = "Apakah mau hapus?";
+    if (confirm(text) == true) {
+        await delBalitaHapus(balita); // Wait for the asynchronous function to complete
+    } 
+}
+
   const delBalitaHapus = async (balita) => {
     try {
       const response = await axiosConfig.delete(`api/bayi/${balita.id}`);
@@ -429,7 +436,7 @@ const DataBalita = () => {
             {/* Hapus data */}
             <button
               onClick={() =>
-                document.getElementById(`modal_hapus_balita`).showModal()
+                deleteData(balita)
               }
             >
               <svg

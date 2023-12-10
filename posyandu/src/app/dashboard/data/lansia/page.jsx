@@ -105,6 +105,13 @@ const DataLansia = () => {
     }
   };
 
+  const deleteData = async (lansia) => {
+    let text = "Apakah mau hapus?";
+    if (confirm(text) == true) {
+        await delLansiaHapus(lansia); // Wait for the asynchronous function to complete
+    } 
+}
+
   const delLansiaHapus = async (lansia) => {
     try {
       const response = await axiosConfig.delete(`api/lansia/${lansia.id}`);
@@ -344,7 +351,7 @@ const DataLansia = () => {
             {/* Hapus data */}
             <button
               onClick={() =>
-                document.getElementById(`modal_hapus_lansia`).showModal()
+                deleteData(lansia)
               }
             >
               <svg
@@ -361,29 +368,7 @@ const DataLansia = () => {
               </svg>
             </button>
           </td>
-          {/* 
-          <Aksi name="lansia" nik={lansia.nik} /> */}
-          {/* modal info lansia*/}
-          <dialog id="modal_hapus_lansia" className="modal">
-            <div className="modal-box xl:max-w-xl">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                  ✕
-                </button>
-              </form>
-              <h3 className="font-bold text-lg mb-4">Hapus Data</h3>
-              <p>Apakah anda yakin ingin menghapus data pasien ini?</p>
-              <button
-                className="btn btn-error mt-4 px-20"
-                onClick={async () => {
-                  await delLansiaHapus(lansia);
-                }}
-              >
-                Ya
-              </button>
-            </div>
-          </dialog>
+
           {/* modal edit lansia*/}
           <dialog id="modal_edit_lansia" className="modal">
             <div className="modal-box xl:max-w-7xl">

@@ -134,6 +134,13 @@ const DataBayi = () => {
     }
   };
 
+  const deleteData = async (bayi) => {
+    let text = "Apakah mau hapus?";
+    if (confirm(text) == true) {
+        await delBayiHapus(bayi); // Wait for the asynchronous function to complete
+    } 
+}
+
   const delBayiHapus = async (bayi) => {
     try {
       const response = await axiosConfig.delete(`api/bayi/${bayi.id}`);
@@ -416,7 +423,7 @@ const DataBayi = () => {
             {/* Hapus data */}
             <button
               onClick={() =>
-                document.getElementById(`modal_hapus_bayi`).showModal()
+                deleteData(bayi)
               }
             >
               <svg
@@ -433,27 +440,6 @@ const DataBayi = () => {
               </svg>
             </button>
           </td>
-          {/* modal hapus bayi*/}
-          <dialog id="modal_hapus_bayi" className="modal">
-            <div className="modal-box xl:max-w-xl">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                  ✕
-                </button>
-              </form>
-              <h3 className="font-bold text-lg mb-4">Hapus Data</h3>
-              <p>Apakah anda yakin ingin menghapus data pasien ini?</p>
-              <button
-                className="btn btn-error mt-4 px-20"
-                onClick={async () => {
-                  await delBayiHapus(bayi);
-                }}
-              >
-                Ya
-              </button>
-            </div>
-          </dialog>
 
           {/* modal edit bayi*/}
           <dialog id="modal_edit_bayi" className="modal">
