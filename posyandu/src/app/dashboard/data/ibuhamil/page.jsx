@@ -261,9 +261,9 @@ const DataIbuHamil = () => {
       tb: parseFloat(inputs.tb),
       usiaHamil: parseFloat(inputs.usiaHamil),
       lingkarLengan: parseFloat(inputs.lingkarLengan),
-      g: parseInt(inputs.g),
-      p: parseInt(inputs.p),
-      a: parseInt(inputs.a),
+      g: parseInt(edits.g),
+      p: parseInt(edits.p),
+      a: parseInt(edits.a),
       hpht: new Date(inputs.hpht),
       tp: new Date(inputs.tp),
       hb: inputs.hb,
@@ -304,6 +304,7 @@ const DataIbuHamil = () => {
     return bumil.map((bumil) => {
       return (
         <tr key={bumil.id}>
+          <td>{bumil.hadir}</td>
           <td>{changeDateTable(bumil.kunjung)}</td>
           <td>{bumil.nama}</td>
           <td>{bumil.nik}</td>
@@ -326,7 +327,6 @@ const DataIbuHamil = () => {
           <td>{bumil.bpjs}</td>
           <td>{bumil.noHp}</td>
           <td>{bumil.keterangan}</td>
-          <td>{bumil.hadir}</td>
           <td className="whitespace-nowrap">
             <button
               onClick={async () => {
@@ -1278,8 +1278,8 @@ const DataIbuHamil = () => {
                         type="number"
                         name="g"
                         id="g"
-                        onChange={handleInputs}
-                        value={inputs.g}
+                        onChange={handleEdits}
+                        value={edits.g}
                       />
                     </div>
 
@@ -1292,8 +1292,8 @@ const DataIbuHamil = () => {
                         type="number"
                         name="p"
                         id="p"
-                        onChange={handleInputs}
-                        value={inputs.p}
+                        onChange={handleEdits}
+                        value={edits.p}
                       />
                     </div>
 
@@ -1306,8 +1306,8 @@ const DataIbuHamil = () => {
                         type="number"
                         name="a"
                         id="a"
-                        onChange={handleInputs}
-                        value={inputs.a}
+                        onChange={handleEdits}
+                        value={edits.a}
                       />
                     </div>
                   </div>
@@ -1437,11 +1437,12 @@ const DataIbuHamil = () => {
       );
     });
   };
-  
+
   const renderTableRiwayat = () => {
     return bumilFilter.map((bumil) => {
       return (
         <tr key={bumil.id}>
+          <td>{bumil.hadir}</td>
           <td>{changeDateTable(bumil.kunjung)}</td>
           <td>{bumil.nama}</td>
           <td>{bumil.nik}</td>
@@ -1464,7 +1465,6 @@ const DataIbuHamil = () => {
           <td>{bumil.bpjs}</td>
           <td>{bumil.noHp}</td>
           <td>{bumil.keterangan}</td>
-          <td>{bumil.hadir}</td>
         </tr>
       );
     });
@@ -1526,6 +1526,7 @@ const DataIbuHamil = () => {
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
+              <th rowSpan={2}>Kehadiran</th>
               <th rowSpan={2}>Tanggal Kunjungan</th>
               <th rowSpan={2}>Nama</th>
               <th rowSpan={2}>NIK</th>
@@ -1555,7 +1556,6 @@ const DataIbuHamil = () => {
               <th rowSpan={2}>No. BPJS</th>
               <th rowSpan={2}>No. HP</th>
               <th rowSpan={2}>Keterangan</th>
-              <th rowSpan={2}>Kehadiran</th>
               <th rowSpan={2}>Aksi</th>
             </tr>
             <tr>
@@ -1617,7 +1617,8 @@ const DataIbuHamil = () => {
           <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
             <tbody>
               <tr>
-                <th rowSpan={2}>No.</th>
+                <th rowSpan={2}>Kehadiran</th>
+                <th rowSpan={2}>Tanggal Kunjungan</th>
                 <th rowSpan={2}>Nama</th>
                 <th rowSpan={2}>NIK</th>
                 <th rowSpan={2}>No. KK</th>
@@ -1646,7 +1647,6 @@ const DataIbuHamil = () => {
                 <th rowSpan={2}>No. BPJS</th>
                 <th rowSpan={2}>No. HP</th>
                 <th rowSpan={2}>Keterangan</th>
-                <th rowSpan={2}>Kehadiran</th>
               </tr>
               <tr>
                 <th>Nama</th>

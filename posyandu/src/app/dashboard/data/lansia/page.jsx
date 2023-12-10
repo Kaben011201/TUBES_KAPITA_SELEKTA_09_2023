@@ -265,6 +265,7 @@ const DataLansia = () => {
     return lansia.map((lansia) => {
       return (
         <tr key={lansia.id}>
+          <td>{lansia.hadir}</td>
           <td>{changeDateTable(lansia.kunjung)}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
@@ -279,7 +280,6 @@ const DataLansia = () => {
           <td>{lansia.tensi}</td>
           <td>{lansia.bpjs}</td>
           <td>{lansia.keterangan}</td>
-          <td>{lansia.hadir}</td>
           <td className="whitespace-nowrap">
             <button
               onClick={async () => {
@@ -975,6 +975,7 @@ const DataLansia = () => {
     return lansiaFilter.map((lansia) => {
       return (
         <tr key={lansia.id}>
+          <td>{lansia.hadir}</td>
           <td>{changeDateTable(lansia.kunjung)}</td>
           <td>{lansia.nama}</td>
           <td>{lansia.nik}</td>
@@ -989,7 +990,6 @@ const DataLansia = () => {
           <td>{lansia.tensi}</td>
           <td>{lansia.bpjs}</td>
           <td>{lansia.keterangan}</td>
-          <td>{lansia.hadir}</td>
         </tr>
       );
     });
@@ -1051,6 +1051,7 @@ const DataLansia = () => {
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
+              <th>Kehadiran</th>
               <th>Tanggal Kunjungan</th>
               <th>Nama</th>
               <th>NIK</th>
@@ -1065,7 +1066,6 @@ const DataLansia = () => {
               <th>Tensi Darah</th>
               <th>No. BPJS</th>
               <th>Keterangan</th>
-              <th>Kehadiran</th>
               <th>Aksi</th>
             </tr>
             {renderTable()}
@@ -1123,6 +1123,7 @@ const DataLansia = () => {
           <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
             <tbody>
               <tr>
+                <th>Kehadiran</th>
                 <th>Tanggal Kunjungan</th>
                 <th>Nama</th>
                 <th>NIK</th>
@@ -1137,7 +1138,6 @@ const DataLansia = () => {
                 <th>Tensi Darah</th>
                 <th>No. BPJS</th>
                 <th>Keterangan</th>
-                <th>Kehadiran</th>
               </tr>
               {renderTableRiwayat()}
             </tbody>
