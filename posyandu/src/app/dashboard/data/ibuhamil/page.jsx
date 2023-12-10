@@ -19,7 +19,7 @@ const DataIbuHamil = () => {
   };
 
   const [edits, setEdits] = useState({
-    hadir: "",
+    hadir: "hadir",
     kunjung: "",
     nama: "",
     nik: "",
@@ -124,6 +124,13 @@ const DataIbuHamil = () => {
       }
     }
   };
+
+  const deleteData = async (bumil) => {
+    let text = "Apakah mau hapus?";
+    if (confirm(text) == true) {
+        await delBumilHapus(bumil); // Wait for the asynchronous function to complete
+    } 
+}
 
   const delBumilHapus = async (bumil) => {
     try {
@@ -350,6 +357,7 @@ const DataIbuHamil = () => {
             {/* Tambah data*/}
             <button
               onClick={async () => {
+                console.log(bumil);
                 await getBumilEdit(bumil);
                 document.getElementById(`modal_tambah_bumil`).showModal();
               }}
@@ -390,9 +398,9 @@ const DataIbuHamil = () => {
             </button>
             {/* Hapus data */}
             <button
-              onClick={() =>
-                document.getElementById(`modal_hapus_bumil`).showModal()
-              }
+              onClick={() => {
+                deleteData(bumil);
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -408,29 +416,6 @@ const DataIbuHamil = () => {
               </svg>
             </button>
           </td>
-          {/* 
-          <Aksi name="bumil" nik={bumil.nik} /> */}
-          {/* modal info bumil*/}
-          <dialog id="modal_hapus_bumil" className="modal">
-            <div className="modal-box xl:max-w-xl">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                  ✕
-                </button>
-              </form>
-              <h3 className="font-bold text-lg mb-4">Hapus Data</h3>
-              <p>Apakah anda yakin ingin menghapus data pasien ini?</p>
-              <button
-                className="btn btn-error mt-4 px-20"
-                onClick={async () => {
-                  await delBumilHapus(bumil);
-                }}
-              >
-                Ya
-              </button>
-            </div>
-          </dialog>
 
           {/* modal edit bumil*/}
           <dialog id="modal_edit_bumil" className="modal">
@@ -1437,7 +1422,7 @@ const DataIbuHamil = () => {
       );
     });
   };
-  
+
   const renderTableRiwayat = () => {
     return bumilFilter.map((bumil) => {
       return (
