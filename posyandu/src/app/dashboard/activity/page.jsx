@@ -140,7 +140,6 @@ const ActivityScreen = () => {
         return activity.map((activity) => {
           return (
             <tr key={activity.id}>
-                <td>{activity.id+1}</td>
                 <td>{changeDateTable(activity.tanggal)}</td>
                 <td>{activity.kegiatan}</td>
                 <td className="whitespace-nowrap border-0">
@@ -150,22 +149,37 @@ const ActivityScreen = () => {
                         document.getElementById(`modal_edit_activity`).showModal();
                     }}
                 >
-                    <svg className="xl:w-6 xl:h-6" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 17 17" fill="none">
-                        <path d="M4.49595 13.8383L4.49597 13.8383L4.5221 13.8318L4.52211 13.8318L5.98342 13.4664C5.99961 13.4624 6.01576 13.4584 6.03187 13.4544C6.25064 13.4 6.46094 13.3478 6.65239 13.2394C6.84384 13.131 6.99686 12.9775 7.15603 12.8179C7.16775 12.8061 7.1795 12.7944 7.1913 12.7825L12.1121 7.86176L12.1252 7.84866C12.2796 7.69428 12.4163 7.55762 12.5222 7.43603C12.6348 7.30691 12.7422 7.16254 12.8156 6.98427C12.9763 6.59399 12.9763 6.15601 12.8156 5.76573C12.7422 5.58746 12.6348 5.44309 12.5222 5.31397C12.4163 5.19237 12.2796 5.05571 12.1252 4.90133L12.1121 4.88824L12.099 4.8751C11.9446 4.72072 11.8079 4.58406 11.6864 4.47809C11.5572 4.36554 11.4129 4.25817 11.2346 4.18476L11.0105 4.729L11.2346 4.18476C10.8443 4.02403 10.4063 4.02403 10.0161 4.18476C9.83779 4.25817 9.69342 4.36554 9.5643 4.47809C9.44271 4.58407 9.30605 4.72073 9.15167 4.87512L9.13856 4.88823L4.21778 9.80902C4.20597 9.82082 4.19419 9.83258 4.18244 9.84429C4.02281 10.0035 3.86937 10.1565 3.76097 10.3479L4.28309 10.6436L3.76097 10.3479C3.65257 10.5394 3.60031 10.7497 3.54595 10.9685C3.54195 10.9846 3.53793 11.0007 3.53388 11.0169L3.16202 12.5044C3.15961 12.514 3.15717 12.5237 3.15471 12.5335C3.1161 12.6876 3.07243 12.8619 3.05793 13.0101C3.04177 13.1753 3.04326 13.4745 3.28454 13.7158C3.52583 13.9571 3.82506 13.9586 3.99018 13.9424C4.13845 13.9279 4.31271 13.8842 4.46678 13.8456C4.47659 13.8432 4.48632 13.8407 4.49595 13.8383Z" stroke="#624DE3" stroke-width="1.2"/>
-                        <path d="M8.85449 5.3125L11.6878 8.14583" stroke="#624DE3" stroke-width="1.2"/>
-                    </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="21"
+                    height="21"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                  >
+                    <path
+                      d="M2 10.9125V12.8125C2 12.9875 2.14667 13.125 2.33333 13.125H4.36C4.44667 13.125 4.53333 13.0938 4.59333 13.0313L11.8733 6.2125L9.37333 3.86875L2.1 10.6875C2.03333 10.75 2 10.825 2 10.9125ZM13.8067 4.4C13.8685 4.34218 13.9175 4.2735 13.951 4.19789C13.9844 4.12228 14.0016 4.04123 14.0016 3.95938C14.0016 3.87752 13.9844 3.79647 13.951 3.72086C13.9175 3.64525 13.8685 3.57657 13.8067 3.51875L12.2467 2.05625C12.185 1.99831 12.1117 1.95234 12.0311 1.92098C11.9504 1.88962 11.864 1.87347 11.7767 1.87347C11.6894 1.87347 11.6029 1.88962 11.5223 1.92098C11.4416 1.95234 11.3683 1.99831 11.3067 2.05625L10.0867 3.2L12.5867 5.54375L13.8067 4.4Z"
+                      fill="#545454"
+                    />
+                  </svg>
+        
                 </button>
                 <button
                     onClick={() =>
                         document.getElementById(`modal_hapus_activity`).showModal()
                     }
                 >
-                    <svg className="xl:w-6 xl:h-6" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 17 17" fill="none">
-                        <path d="M6.72949 10.271L6.72949 8.146" stroke="#A30D11" stroke-linecap="round"/>
-                        <path d="M10.2705 10.271L10.2705 8.146" stroke="#A30D11" stroke-linecap="round"/>
-                        <path d="M2.125 4.604H14.875V4.604C14.4297 4.604 14.2071 4.604 14.0217 4.63931C13.2154 4.79286 12.5847 5.42352 12.4311 6.22988C12.3958 6.41528 12.3958 6.63791 12.3958 7.08317V9.9165C12.3958 11.701 12.3958 12.5932 11.8667 13.1675C11.8297 13.2077 11.7911 13.2462 11.751 13.2832C11.1767 13.8123 10.2845 13.8123 8.5 13.8123V13.8123C6.71551 13.8123 5.82327 13.8123 5.24897 13.2832C5.20885 13.2462 5.17026 13.2077 5.1333 13.1675C4.60417 12.5932 4.60417 11.701 4.60417 9.9165V7.08317C4.60417 6.63791 4.60417 6.41528 4.56886 6.22988C4.41532 5.42352 3.78465 4.79286 2.97829 4.63931C2.79289 4.604 2.57026 4.604 2.125 4.604V4.604Z" stroke="#A30D11" stroke-linecap="round"/>
-                        <path d="M6.72884 2.4795C6.72884 2.4795 7.08301 1.771 8.49967 1.771C9.91634 1.771 10.2705 2.47933 10.2705 2.47933" stroke="#A30D11" stroke-linecap="round"/>
-                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22.5"
+                      height="22.5"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                    >
+                      <path
+                        d="M11.875 2.5H9.6875L9.0625 1.875H5.9375L5.3125 2.5H3.125V3.75H11.875M3.75 11.875C3.75 12.2065 3.8817 12.5245 4.11612 12.7589C4.35054 12.9933 4.66848 13.125 5 13.125H10C10.3315 13.125 10.6495 12.9933 10.8839 12.7589C11.1183 12.5245 11.25 12.2065 11.25 11.875V4.375H3.75V11.875Z"
+                        fill="#545454"
+                      />
+                  </svg>
                 </button>
 
                 {/* Display Modal */}
@@ -233,7 +247,7 @@ const ActivityScreen = () => {
                     </button>
                     </div>
                 </dialog>
-              </td>
+                </td>
             </tr>
           );
         });
@@ -248,13 +262,6 @@ const ActivityScreen = () => {
             <section className="mt-[56px] xl:mt-[100px] w-full xl:w-[85%] xl:mx-auto xl:border-2 xl:px-7 xl:py-5 xl:rounded-xl">
                 <div className="grid grid-cols-dua items-center p-[15px] text-xs xl:text-base">
                     <div className="flex items-center gap-2 xl:gap-5">
-                        <p className="font-medium">Tampilkan</p>
-                        <select className="bg-[#E0E0E0] rounded-[5px] h-[23px] xl:h-[35px] font-semibold" name="jumlah" id="jumlah">
-                            <option>20</option>
-                            <option>10</option>
-                            <option>8</option>
-                            <option>5</option>
-                        </select>
                         <div className="xl:flex item-center mr-[6px] hidden">
                             <img className="xl:hidden" src="/header/search.svg"></img>
                             <div className="hidden xl:flex items-center w-[260px] h-[40px] border-[2px] border-gray-400 rounded-[50px] shadow-md">
@@ -275,7 +282,6 @@ const ActivityScreen = () => {
                 <div className="overflow-x-auto">
                     <table className="w-full text-xs xl:mt-2 xl:text-base table table-zebra text-center">
                         <tr className="">
-                            <th className="">No</th>
                             <th className="">Tanggal</th>
                             <th className="">Kegiatan/Keterangan</th>
                             <th className="">Aksi</th>
