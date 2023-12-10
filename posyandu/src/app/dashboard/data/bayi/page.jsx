@@ -235,6 +235,7 @@ const DataBayi = () => {
       neo3: edits.neo3,
       vitA: edits.vitA,
       imunisasi: edits.imunisasi,
+      obatCacing: edits.obatCacing,
       tanggalMeninggal: new Date(edits.tanggalMeninggal),
       penyebab: edits.penyebab,
       keterangan: edits.keterangan,
@@ -769,7 +770,6 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     BB (kg)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -778,7 +778,6 @@ const DataBayi = () => {
                     id="bb"
                     value={edits.bb}
                     onChange={handleEdits}
-                    required
                   />
                 </div>
 
@@ -788,7 +787,6 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     TB (cm)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -797,7 +795,6 @@ const DataBayi = () => {
                     id="tb"
                     value={edits.tb}
                     onChange={handleEdits}
-                    required
                   />
                 </div>
 
@@ -807,9 +804,6 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Lingkar Kepala (cm)
-                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -818,7 +812,6 @@ const DataBayi = () => {
                     id="lk"
                     value={edits.lk}
                     onChange={handleEdits}
-                    required
                   />
                 </div>
 
@@ -828,9 +821,6 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Lingkar Lengan (cm)
-                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -839,7 +829,6 @@ const DataBayi = () => {
                     id="ll"
                     value={edits.ll}
                     onChange={handleEdits}
-                    required
                   />
                 </div>
 
@@ -1389,7 +1378,6 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     BB (kg)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1398,7 +1386,6 @@ const DataBayi = () => {
                     id="bb"
                     value={inputs.bb}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
@@ -1408,7 +1395,6 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     TB (cm)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1417,7 +1403,6 @@ const DataBayi = () => {
                     id="tb"
                     value={inputs.tb}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
@@ -1427,9 +1412,6 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Lingkar Kepala (cm)
-                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1438,7 +1420,6 @@ const DataBayi = () => {
                     id="lk"
                     value={inputs.lk}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
@@ -1448,9 +1429,6 @@ const DataBayi = () => {
                     htmlFor=""
                   >
                     Lingkar Lengan (cm)
-                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1459,7 +1437,6 @@ const DataBayi = () => {
                     id="ll"
                     value={inputs.ll}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
