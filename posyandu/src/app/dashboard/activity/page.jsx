@@ -1,12 +1,23 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Bulan from "../component/Bulan";
 import axiosConfig from "../../../utils/axios";
 
 const ActivityScreen = () => {
     const [activity, setActivity] = useState([]);
     const router = useRouter();
     const [search, setSearch] = useState("");
+    const [keyword, setKeyword] = useState("");
+
+    const handleKeyword = (e) => {
+      setKeyword(e.target.value);
+    };
+
+    const handleSearch = (e) => {
+      e.preventDefault();
+      setSearch(keyword);
+    };
 
     const [edits, setEdits] = useState({
         tanggal: "",
@@ -22,9 +33,8 @@ const ActivityScreen = () => {
       const getActivity = async () => {
         try {
           const response = await axiosConfig.get(
-            "api/activity",
-            
-          );
+            "api/activity", {params : {month: bulan, query : search},
+          });
           if (response.data.status !== 400) {
           } else {
             alert(response.data.message);
@@ -253,26 +263,57 @@ const ActivityScreen = () => {
         });
     };
 
+    const [bulan, setBulan] = useState(0);
+
     useEffect(() => {
       getActivity();
-    }, []);
+    }, [bulan, search]);
 
     return (
-        <main className="flex">
-            <section className="mt-[56px] xl:mt-[100px] w-full xl:w-[85%] xl:mx-auto xl:border-2 xl:px-7 xl:py-5 xl:rounded-xl">
+        <main className="flex flex-col">
+            <div className="flex items-center mx-auto justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[85%] h-9 xl:h-12 text-[#545454]">
+              <div className="xl:hidden dropdown dropdown-bottom">
+                <label tabIndex={0}>
+                  <img className="ml-3" src="/header/search.svg"></img>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <form onSubmit={handleSearch}>
+                      <input
+                        className="focus:outline-none placeholder:text-center placeholder:text-neutral-600 placeholder:text-sm ml-[5px] w-[200px]"
+                        placeholder="Pencarian"
+                        type="text"
+                        value={keyword}
+                        onChange={handleKeyword}
+                      ></input>
+                      <button type="submit"></button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+
+              <form
+                onSubmit={handleSearch}
+                className="hidden xl:flex items-center w-[260px] border-[2px] border-gray-400 rounded-[50px] shadow-md ml-2 bg-white scale-90"
+              >
+                <img className="ml-[8px]" src="/header/search.svg"></img>
+                <input
+                  className="focus:outline-none placeholder:text-center placeholder:text-neutral-600 placeholder:text-sm ml-[5px] w-[200px]"
+                  placeholder="Pencarian"
+                  type="text"
+                  value={keyword}
+                  onChange={handleKeyword}
+                ></input>
+                <button type="submit"></button>
+              </form>
+              <h3 className="ml-10">Data Kegiatan</h3>
+              <Bulan setBulan={setBulan} />
+            </div>
+            <section className="mt-[20px] xl:mt-[20px] w-full xl:w-[85%] xl:mx-auto xl:border-2 xl:px-7 xl:py-5 xl:rounded-xl">
                 <div className="grid grid-cols-dua items-center p-[15px] text-xs xl:text-base">
-                    <div className="flex items-center gap-2 xl:gap-5">
-                        <div className="xl:flex item-center mr-[6px] hidden">
-                            <img className="xl:hidden" src="/header/search.svg"></img>
-                            <div className="hidden xl:flex items-center w-[260px] h-[40px] border-[2px] border-gray-400 rounded-[50px] shadow-md">
-                                <img className="ml-[8px]" src="/header/search.svg"></img>
-                                <input
-                                    className="focus:outline-none placeholder:text-center placeholder:text-neutral-600 placeholder:text-sm ml-[5px] w-[200px]"
-                                    placeholder="Pencarian" type="text">
-                                </input>
-                            </div>
-                        </div>
-                    </div>
                     <button onClick={() => {
                     router.push("./activity/input");
                     }} id="inputKegiatan" className="bg-[#FF5757;] w-fit xl:h-[50px] h-[25px] rounded-[5px] xl:rounded-[15px] text-white font-semibold text-sans xl:text-base p-2 xl:p-5 flex items-center gap-1 xl:gap-3 justify-self-end">

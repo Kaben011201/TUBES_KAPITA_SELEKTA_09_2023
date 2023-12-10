@@ -122,6 +122,6 @@ model Bayi {
 
 model Activity {
   id       Int      @unique @default(sequence())
-  tanggal  DateTime @db.Date
+  tanggal  String?
   kegiatan String
 }

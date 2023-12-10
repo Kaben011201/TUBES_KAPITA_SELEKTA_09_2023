@@ -21,7 +21,7 @@ const InputScreen = () => {
         e.preventDefault();
     
         const data = {
-          tanggal: new Date (inputs.tanggal),
+          tanggal: inputs.tanggal,
           kegiatan: inputs.kegiatan,
         };
         axiosConfig
