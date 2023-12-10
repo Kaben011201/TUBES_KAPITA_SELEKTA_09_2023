@@ -35,13 +35,12 @@ const DashboardScreen = () => {
       getLansiaGrafik();
     }
   };
-  
+
   const getBumilGrafik = async () => {
     try {
-      const response = await axiosConfig.get(
-        "http://localhost:3000/api/grafik/bumil",
-        { params: { year: tahun } }
-      );
+      const response = await axiosConfig.get("api/grafik/bumil", {
+        params: { year: tahun },
+      });
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
@@ -89,7 +88,6 @@ const DashboardScreen = () => {
       });
 
       console.log(dataTahun);
-
     } catch (error) {
       // alert(error.data.message);
       console.log(error);
@@ -97,10 +95,9 @@ const DashboardScreen = () => {
   };
   const getLansiaGrafik = async () => {
     try {
-      const response = await axiosConfig.get(
-        "http://localhost:3000/api/grafik/lansia",
-        { params: { year: tahun } }
-      );
+      const response = await axiosConfig.get("api/grafik/lansia", {
+        params: { year: tahun },
+      });
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
@@ -152,10 +149,9 @@ const DashboardScreen = () => {
   };
   const getBayiGrafik = async () => {
     try {
-      const response = await axiosConfig.get(
-        "http://localhost:3000/api/grafik/bayi",
-        { params: { year: tahun, type: "bayi" } }
-      );
+      const response = await axiosConfig.get("api/grafik/bayi", {
+        params: { year: tahun, type: "bayi" },
+      });
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
@@ -207,10 +203,9 @@ const DashboardScreen = () => {
   };
   const getBalitaGrafik = async () => {
     try {
-      const response = await axiosConfig.get(
-        "http://localhost:3000/api/grafik/bayi",
-        { params: { year: tahun, type: "balita" } }
-      );
+      const response = await axiosConfig.get("api/grafik/bayi", {
+        params: { year: tahun, type: "balita" },
+      });
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
@@ -304,7 +299,6 @@ const DashboardScreen = () => {
     getBumilGrafik();
   }, [tahun]);
 
-  
   return (
     <div>
       <div className="flex flex-col items-center">
