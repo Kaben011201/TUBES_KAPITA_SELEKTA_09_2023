@@ -88,17 +88,15 @@ const DataIbuHamil = () => {
 
   const getBumil = async () => {
     try {
-      const response = await axiosConfig.get(
-        "api/bumil",
-        { params: { month: bulan, query: search } }
-      );
+      const response = await axiosConfig.get("api/bumil", {
+        params: { month: bulan, query: search },
+      });
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
       }
       setBumil(response.data.data);
     } catch (error) {
-      // alert(error.data.message);
       console.log(error);
     }
   };
@@ -129,10 +127,9 @@ const DataIbuHamil = () => {
 
   const delBumilHapus = async (bumil) => {
     try {
-      const response = await axiosConfig.delete(
-        `api/bumil/${bumil.id}`
-      );
+      const response = await axiosConfig.delete(`api/bumil/${bumil.id}`);
       if (response.data.status !== 400) {
+        alert("Berhasil menghapus data bumil!");
         window.location.reload();
       } else {
         alert(response.data.message);
@@ -180,9 +177,7 @@ const DataIbuHamil = () => {
 
   const getBumilEdit = async (bumil) => {
     try {
-      const response = await axiosConfig.get(
-        `api/bumil/${bumil.id}`
-      );
+      const response = await axiosConfig.get(`api/bumil/${bumil.id}`);
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
@@ -284,7 +279,7 @@ const DataIbuHamil = () => {
       .post(`http://localhost:3000/api/bumil/`, data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("Berhasil mengedit data bumil!");
+          alert("Berhasil menambahkan data bumil!");
         } else {
           alert(response.data.message);
         }
@@ -298,7 +293,6 @@ const DataIbuHamil = () => {
   };
 
   const PrintData = () => {
-    //console.log('print');
     let printContents = document.getElementById("printablediv").innerHTML;
     let originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;

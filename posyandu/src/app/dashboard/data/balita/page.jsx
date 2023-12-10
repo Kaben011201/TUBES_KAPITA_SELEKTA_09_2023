@@ -114,16 +114,12 @@ const DataBalita = () => {
 
   const getBalitaFilter = async (balita) => {
     try {
-      const response = await axiosConfig.get(
-        `api/riwayat/bayi/${balita.nik}`
-      );
+      const response = await axiosConfig.get(`api/riwayat/bayi/${balita.nik}`);
 
       if (response.data.status !== 400) {
-        console.log("Berhasil menampilkan riwayat pasien");
       } else {
         alert(response.data.message);
       }
-
       console.log(response.data);
       setBalitaFilter(response.data.data);
     } catch (error) {
@@ -141,11 +137,9 @@ const DataBalita = () => {
 
   const delBalitaHapus = async (balita) => {
     try {
-      const response = await axiosConfig.delete(
-        `api/bayi/${balita.id}`
-      );
+      const response = await axiosConfig.delete(`api/bayi/${balita.id}`);
       if (response.data.status !== 400) {
-        console.log("Berhasil mengambil id pasien");
+        alert("Berhasil menghapus data balita!");
         window.location.reload();
       } else {
         alert(response.data.message);
@@ -194,11 +188,8 @@ const DataBalita = () => {
 
   const getBalitaEdit = async (balita) => {
     try {
-      const response = await axiosConfig.get(
-        `api/bayi/${balita.id}`
-      );
+      const response = await axiosConfig.get(`api/bayi/${balita.id}`);
       if (response.data.status !== 400) {
-        console.log("Berhasil mengambil id pasien");
       } else {
         alert(response.data.message);
       }
@@ -256,7 +247,7 @@ const DataBalita = () => {
       .patch(`api/bayi/${edits.id}`, data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("Berhasil mengedit data!");
+          alert("Berhasil mengedit data balita!");
         } else {
           alert(response.data.message);
         }
@@ -310,7 +301,7 @@ const DataBalita = () => {
       .post(`http://localhost:3000/api/bayi/`, data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("Berhasil menambahkan data!");
+          alert("Berhasil menambahkan data balita!");
         } else {
           alert(response.data.message);
         }

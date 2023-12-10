@@ -2,7 +2,7 @@ import prisma from "@/utils/prisma";
 
 export async function GET(req) {
   try {
-    const nik = req.url.split("/bumil/")[1];
+    const nik = req.url.split("/ibu-hamil/")[1];
 
     const riwayat = await prisma.bumil.findMany({
       where: {

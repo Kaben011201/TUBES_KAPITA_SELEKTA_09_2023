@@ -68,17 +68,15 @@ const DataLansia = () => {
 
   const getLansia = async () => {
     try {
-      const response = await axiosConfig.get(
-        "api/lansia",
-        { params: { month: bulan, query: search } }
-      );
+      const response = await axiosConfig.get("api/lansia", {
+        params: { month: bulan, query: search },
+      });
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
       }
       setLansia(response.data.data);
     } catch (error) {
-      // alert(error.data.message);
       console.log(error);
     }
   };
@@ -109,10 +107,9 @@ const DataLansia = () => {
 
   const delLansiaHapus = async (lansia) => {
     try {
-      const response = await axiosConfig.delete(
-        `api/lansia/${lansia.id}`
-      );
+      const response = await axiosConfig.delete(`api/lansia/${lansia.id}`);
       if (response.data.status !== 400) {
+        alert("Berhasil menghapus data lansia!");
         window.location.reload();
       } else {
         alert(response.data.message);
@@ -160,9 +157,7 @@ const DataLansia = () => {
 
   const getLansiaEdit = async (lansia) => {
     try {
-      const response = await axiosConfig.get(
-        `api/lansia/${lansia.id}`
-      );
+      const response = await axiosConfig.get(`api/lansia/${lansia.id}`);
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
@@ -244,7 +239,7 @@ const DataLansia = () => {
       .post(`http://localhost:3000/api/lansia/`, data)
       .then(function (response) {
         if (response.data.status != 400) {
-          alert("Berhasil mengedit data lansia!");
+          alert("Berhasil menambahkan data lansia!");
         } else {
           alert(response.data.message);
         }

@@ -106,7 +106,6 @@ const DataBayi = () => {
         alert(response.data.message);
       }
       setBayi(response.data.data);
-      console.log(search);
     } catch (error) {
       // alert(error.data.message);
       console.log(error);
@@ -115,9 +114,7 @@ const DataBayi = () => {
 
   const getBayiFilter = async (bayi) => {
     try {
-      const response = await axiosConfig.get(
-        `api/riwayat/bayi/${bayi.nik}`
-      );
+      const response = await axiosConfig.get(`api/riwayat/bayi/${bayi.nik}`);
 
       if (response.data.status !== 400) {
       } else {
@@ -139,10 +136,9 @@ const DataBayi = () => {
 
   const delBayiHapus = async (bayi) => {
     try {
-      const response = await axiosConfig.delete(
-        `api/bayi/${bayi.id}`
-      );
+      const response = await axiosConfig.delete(`api/bayi/${bayi.id}`);
       if (response.data.status !== 400) {
+        alert("Berhasil menghapus data bayi!");
         window.location.reload();
       } else {
         alert(response.data.message);
@@ -190,9 +186,7 @@ const DataBayi = () => {
 
   const getBayiEdit = async (bayi) => {
     try {
-      const response = await axiosConfig.get(
-        `api/bayi/${bayi.id}`
-      );
+      const response = await axiosConfig.get(`api/bayi/${bayi.id}`);
       if (response.data.status !== 400) {
       } else {
         alert(response.data.message);
@@ -317,7 +311,6 @@ const DataBayi = () => {
   };
 
   const PrintData = () => {
-    //console.log('print');
     let printContents = document.getElementById("printablediv").innerHTML;
     let originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
@@ -1721,7 +1714,6 @@ const DataBayi = () => {
 
   useEffect(() => {
     getBayi();
-    console.log(bulan);
   }, [bulan, search]);
 
   return (
