@@ -278,6 +278,8 @@ const DataLansia = () => {
           <td>{lansia.tb}</td>
           <td>{lansia.tensi}</td>
           <td>{lansia.bpjs}</td>
+          <td>{lansia.keterangan}</td>
+          <td>{lansia.hadir}</td>
           <td className="whitespace-nowrap">
             <button
               onClick={async () => {
@@ -301,7 +303,7 @@ const DataLansia = () => {
             {/* Tambah data*/}
             <button
               onClick={async () => {
-                await getLansiaEdit(bumil);
+                await getLansiaEdit(lansia);
                 document.getElementById(`modal_tambah_lansia`).showModal();
               }}
             >
@@ -870,7 +872,6 @@ const DataLansia = () => {
                     htmlFor=""
                   >
                     BB (kg)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -879,7 +880,6 @@ const DataLansia = () => {
                     id="bb"
                     value={inputs.bb}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
@@ -889,7 +889,6 @@ const DataLansia = () => {
                     htmlFor=""
                   >
                     TB (cm)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -898,7 +897,6 @@ const DataLansia = () => {
                     id="tb"
                     value={inputs.tb}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
@@ -908,9 +906,6 @@ const DataLansia = () => {
                     htmlFor=""
                   >
                     Tensi Darah (mmHg)
-                    <span className="text-red-500 absolute mt-[-35px] xl:mt-[-6px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -919,7 +914,6 @@ const DataLansia = () => {
                     id="tensi"
                     value={inputs.tensi}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
@@ -994,6 +988,8 @@ const DataLansia = () => {
           <td>{lansia.tb}</td>
           <td>{lansia.tensi}</td>
           <td>{lansia.bpjs}</td>
+          <td>{lansia.keterangan}</td>
+          <td>{lansia.hadir}</td>
         </tr>
       );
     });
@@ -1068,6 +1064,8 @@ const DataLansia = () => {
               <th>TB</th>
               <th>Tensi Darah</th>
               <th>No. BPJS</th>
+              <th>Keterangan</th>
+              <th>Kehadiran</th>
               <th>Aksi</th>
             </tr>
             {renderTable()}
@@ -1138,6 +1136,8 @@ const DataLansia = () => {
                 <th>TB</th>
                 <th>Tensi Darah</th>
                 <th>No. BPJS</th>
+                <th>Keterangan</th>
+                <th>Kehadiran</th>
               </tr>
               {renderTableRiwayat()}
             </tbody>

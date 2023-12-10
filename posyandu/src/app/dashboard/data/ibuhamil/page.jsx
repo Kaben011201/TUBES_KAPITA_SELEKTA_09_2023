@@ -325,6 +325,8 @@ const DataIbuHamil = () => {
           <td>{bumil.hb}</td>
           <td>{bumil.bpjs}</td>
           <td>{bumil.noHp}</td>
+          <td>{bumil.keterangan}</td>
+          <td>{bumil.hadir}</td>
           <td className="whitespace-nowrap">
             <button
               onClick={async () => {
@@ -840,7 +842,7 @@ const DataIbuHamil = () => {
                     className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                     htmlFor=""
                   >
-                    TP<span className="text-red-500 absolute mt-[-6px]">*</span>
+                    TP
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -849,7 +851,6 @@ const DataIbuHamil = () => {
                     id="tp"
                     onChange={handleEdits}
                     value={changeDateEdit(edits.tp)}
-                    required
                   />
                 </div>
 
@@ -1198,7 +1199,6 @@ const DataIbuHamil = () => {
                     htmlFor=""
                   >
                     BB (kg)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1207,7 +1207,6 @@ const DataIbuHamil = () => {
                     id="bb"
                     onChange={handleInputs}
                     value={inputs.bb}
-                    required
                   />
                 </div>
 
@@ -1217,7 +1216,6 @@ const DataIbuHamil = () => {
                     htmlFor=""
                   >
                     TB (cm)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1226,7 +1224,6 @@ const DataIbuHamil = () => {
                     id="tb"
                     onChange={handleInputs}
                     value={inputs.tb}
-                    required
                   />
                 </div>
 
@@ -1236,9 +1233,6 @@ const DataIbuHamil = () => {
                     htmlFor=""
                   >
                     Usia Kehamilan (bulan)
-                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1247,7 +1241,6 @@ const DataIbuHamil = () => {
                     id="usiaHamil"
                     onChange={handleInputs}
                     value={inputs.usiaHamil}
-                    required
                   />
                 </div>
 
@@ -1257,9 +1250,6 @@ const DataIbuHamil = () => {
                     htmlFor=""
                   >
                     Lingkar Lengan (cm)
-                    <span className="text-red-500 absolute mt-[-20px] xl:mt-[-6px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1268,7 +1258,6 @@ const DataIbuHamil = () => {
                     id="lingkarLengan"
                     onChange={handleInputs}
                     value={inputs.lingkarLengan}
-                    required
                   />
                 </div>
 
@@ -1278,7 +1267,6 @@ const DataIbuHamil = () => {
                     htmlFor=""
                   >
                     GPA{" "}
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <div className="w-[77%] xl:w-[82%] flex flex-col gap-[7px] text-medium xl:text-base xl:font-medium">
                     <div className="flex xl:gap-4 items-center">
@@ -1292,7 +1280,6 @@ const DataIbuHamil = () => {
                         id="g"
                         onChange={handleInputs}
                         value={inputs.g}
-                        required
                       />
                     </div>
 
@@ -1307,7 +1294,6 @@ const DataIbuHamil = () => {
                         id="p"
                         onChange={handleInputs}
                         value={inputs.p}
-                        required
                       />
                     </div>
 
@@ -1322,7 +1308,6 @@ const DataIbuHamil = () => {
                         id="a"
                         onChange={handleInputs}
                         value={inputs.a}
-                        required
                       />
                     </div>
                   </div>
@@ -1334,7 +1319,6 @@ const DataIbuHamil = () => {
                     htmlFor=""
                   >
                     HPHT
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1343,7 +1327,6 @@ const DataIbuHamil = () => {
                     id="hpht"
                     onChange={handleInputs}
                     value={changeDateEdit(inputs.hpht)}
-                    required
                   />
                 </div>
 
@@ -1352,7 +1335,7 @@ const DataIbuHamil = () => {
                     className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
                     htmlFor=""
                   >
-                    TP<span className="text-red-500 absolute mt-[-6px]">*</span>
+                    TP
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1361,7 +1344,6 @@ const DataIbuHamil = () => {
                     id="tp"
                     onChange={handleInputs}
                     value={changeDateEdit(inputs.tp)}
-                    required
                   />
                 </div>
 
@@ -1371,7 +1353,6 @@ const DataIbuHamil = () => {
                     htmlFor=""
                   >
                     HB (g/dL)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1380,7 +1361,6 @@ const DataIbuHamil = () => {
                     id="hb"
                     onChange={handleInputs}
                     value={inputs.hb}
-                    required
                   />
                 </div>
 
@@ -1482,6 +1462,8 @@ const DataIbuHamil = () => {
           <td>{bumil.hb}</td>
           <td>{bumil.bpjs}</td>
           <td>{bumil.noHp}</td>
+          <td>{bumil.keterangan}</td>
+          <td>{bumil.hadir}</td>
         </tr>
       );
     });
@@ -1571,6 +1553,8 @@ const DataIbuHamil = () => {
               <th rowSpan={2}>HB</th>
               <th rowSpan={2}>No. BPJS</th>
               <th rowSpan={2}>No. HP</th>
+              <th rowSpan={2}>Keterangan</th>
+              <th rowSpan={2}>Kehadiran</th>
               <th rowSpan={2}>Aksi</th>
             </tr>
             <tr>
@@ -1660,6 +1644,8 @@ const DataIbuHamil = () => {
                 <th rowSpan={2}>HB</th>
                 <th rowSpan={2}>No. BPJS</th>
                 <th rowSpan={2}>No. HP</th>
+                <th rowSpan={2}>Keterangan</th>
+                <th rowSpan={2}>Kehadiran</th>
               </tr>
               <tr>
                 <th>Nama</th>

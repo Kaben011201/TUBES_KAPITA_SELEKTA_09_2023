@@ -496,7 +496,7 @@ const IbuScreen = () => {
               className="w-[23%] xl:w-[18%] text-end font-medium leading-[1.2]"
               htmlFor=""
             >
-              TP<span className="text-red-500 absolute mt-[-6px]">*</span>
+              TP
             </label>
             <input
               className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -505,7 +505,6 @@ const IbuScreen = () => {
               id="tp"
               onChange={handleInput}
               value={inputs.tp}
-              required
             />
           </div>
 
