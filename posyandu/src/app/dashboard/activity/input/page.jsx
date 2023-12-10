@@ -38,6 +38,7 @@ const InputScreen = () => {
             console.log(error);
         });
 
+        window.location.reload();
     };
 
     return (

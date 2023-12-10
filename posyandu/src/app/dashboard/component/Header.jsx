@@ -272,7 +272,9 @@ const Header = () => {
         </p>
       </div>
 
-      <div className="flex item-center mr-[6px]">
+      <div className="flex item-center mr-[6px] gap-2">
+        <p className=" text-white font-semibold xl:text-neutral-700 text-[12px] xl:text-[16px] transition ease-in-out self-center"
+        >Admin</p>
         
         <div className="dropdown dropdown-end">
           <label tabIndex={0}>
@@ -289,13 +291,6 @@ const Header = () => {
             tabIndex={0}
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li
-              onClick={() => {
-                router.push("/dashboard/setting");
-              }}
-            >
-              <a>Settings</a>
-            </li>
             <li
               onClick={() => {
                 router.push("/login");

@@ -238,6 +238,7 @@ const DataBalita = () => {
       bulan88: edits.bulan88,
       tanggalPra: new Date(edits.tanggalPra),
       imunisasi: edits.imunisasi,
+      obatCacing: edits.obatCacing,
       tanggalMeninggal: new Date(edits.tanggalMeninggal),
       penyebab: edits.penyebab,
       keterangan: edits.keterangan,
@@ -292,6 +293,7 @@ const DataBalita = () => {
       bulan88: inputs.bulan88,
       tanggalPra: new Date(inputs.tanggalPra),
       imunisasi: inputs.imunisasi,
+      obatCacing: inputs.obatCacing,
       tanggalMeninggal: new Date(inputs.tanggalMeninggal),
       penyebab: inputs.penyebab,
       keterangan: inputs.keterangan,
@@ -731,7 +733,6 @@ const DataBalita = () => {
                     id="bb5"
                     value={edits.bb5}
                     onChange={handleEdits}
-                    required
                   />
                 </div>
 
@@ -783,7 +784,6 @@ const DataBalita = () => {
                     htmlFor=""
                   >
                     BB (kg)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -792,7 +792,6 @@ const DataBalita = () => {
                     id="bb"
                     value={edits.bb}
                     onChange={handleEdits}
-                    required
                   />
                 </div>
 
@@ -802,7 +801,6 @@ const DataBalita = () => {
                     htmlFor=""
                   >
                     TB (cm)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -811,7 +809,6 @@ const DataBalita = () => {
                     id="tb"
                     value={edits.tb}
                     onChange={handleEdits}
-                    required
                   />
                 </div>
 
@@ -821,9 +818,6 @@ const DataBalita = () => {
                     htmlFor=""
                   >
                     Lingkar Kepala (cm)
-                    <span className="text-red-500 absolute mt-[-19px] xl:mt-[-8px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -832,7 +826,6 @@ const DataBalita = () => {
                     id="lk"
                     value={edits.lk}
                     onChange={handleEdits}
-                    required
                   />
                 </div>
 
@@ -842,9 +835,6 @@ const DataBalita = () => {
                     htmlFor=""
                   >
                     Lingkar Lengan (cm)
-                    <span className="text-red-500 absolute mt-[-19px] xl:mt-[-8px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -853,7 +843,6 @@ const DataBalita = () => {
                     id="ll"
                     value={edits.ll}
                     onChange={handleEdits}
-                    required
                   />
                 </div>
 
@@ -1371,7 +1360,6 @@ const DataBalita = () => {
                     htmlFor=""
                   >
                     BB (kg)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1380,7 +1368,6 @@ const DataBalita = () => {
                     id="bb"
                     value={inputs.bb}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
@@ -1390,7 +1377,6 @@ const DataBalita = () => {
                     htmlFor=""
                   >
                     TB (cm)
-                    <span className="text-red-500 absolute mt-[-6px]">*</span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1399,7 +1385,6 @@ const DataBalita = () => {
                     id="tb"
                     value={inputs.tb}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
@@ -1409,9 +1394,6 @@ const DataBalita = () => {
                     htmlFor=""
                   >
                     Lingkar Kepala (cm)
-                    <span className="text-red-500 absolute mt-[-19px] xl:mt-[-8px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1420,7 +1402,6 @@ const DataBalita = () => {
                     id="lk"
                     value={inputs.lk}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
@@ -1430,9 +1411,6 @@ const DataBalita = () => {
                     htmlFor=""
                   >
                     Lingkar Lengan (cm)
-                    <span className="text-red-500 absolute mt-[-19px] xl:mt-[-8px]">
-                      *
-                    </span>
                   </label>
                   <input
                     className="w-[77%] xl:w-[82%] h-9 xl:h-11 border-[1.5px] border-[#D5D8DE] rounded-sm p-2"
@@ -1441,7 +1419,6 @@ const DataBalita = () => {
                     id="ll"
                     value={inputs.ll}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
 
