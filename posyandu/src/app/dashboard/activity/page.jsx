@@ -49,7 +49,7 @@ const ActivityScreen = () => {
     const delActivityHapus = async (activity) => {
         try {
           const response = await axiosConfig.delete(
-            `http://localhost:3000/api/activity/${activity.id}`
+            `api/activity/${activity.id}`
           );
           if (response.data.status !== 400) {
             window.location.reload();
@@ -100,7 +100,7 @@ const ActivityScreen = () => {
     const getActivityEdit = async (activity) => {
         try {
           const response = await axiosConfig.get(
-            `http://localhost:3000/api/activity/${activity.id}`
+            `api/activity/${activity.id}`
           );
           if (response.data.status !== 400) {
           } else {
@@ -129,7 +129,7 @@ const ActivityScreen = () => {
         };
     
         axiosConfig
-          .patch(`http://localhost:3000/api/activity/${edits.id}`, data)
+          .patch(`api/activity/${edits.id}`, data)
           .then(function (response) {
             if (response.data.status != 400) {
               alert("Berhasil mengedit data Activity!");

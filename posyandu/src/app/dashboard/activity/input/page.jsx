@@ -25,7 +25,7 @@ const InputScreen = () => {
           kegiatan: inputs.kegiatan,
         };
         axiosConfig
-        .post("http://localhost:3000/api/activity", data)
+        .post("api/activity", data)
         .then(function (response) {
             if (response.data.status != 400) {
             alert("Berhasil menambahkan kegiatan!");
