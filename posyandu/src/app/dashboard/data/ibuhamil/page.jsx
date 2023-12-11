@@ -1501,12 +1501,12 @@ const DataIbuHamil = () => {
           ></input>
           <button type="submit"></button>
         </form>
-        <h3 className="ml-10">Data Ibu Hamil</h3>
+        <p className="ml-10 text-xs xl:text-xl">Data Ibu Hamil</p>
         <Bulan setBulan={setBulan} />
       </div>
       <div
         id="printablediv"
-        className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
+        className="mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
       >
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>

@@ -271,7 +271,7 @@ const ActivityScreen = () => {
 
     return (
         <main className="flex flex-col">
-            <div className="flex items-center mx-auto justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[85%] h-9 xl:h-12 text-[#545454]">
+            <div className="flex items-center mx-auto justify-between mt-[70px] xl:mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[85%] h-9 xl:h-12 text-[#545454]">
               <div className="xl:hidden dropdown dropdown-bottom">
                 <label tabIndex={0}>
                   <img className="ml-3" src="/header/search.svg"></img>
@@ -309,14 +309,14 @@ const ActivityScreen = () => {
                 ></input>
                 <button type="submit"></button>
               </form>
-              <h3 className="ml-10">Data Kegiatan</h3>
+              <p className="ml-10 text-xs xl:text-xl">Data Kegiatan</p>
               <Bulan setBulan={setBulan} />
             </div>
-            <section className="mt-[20px] xl:mt-[20px] w-full xl:w-[85%] xl:mx-auto xl:border-2 xl:px-7 xl:py-5 xl:rounded-xl">
-                <div className="grid grid-cols-dua items-center p-[15px] text-xs xl:text-base">
+            <section className="mt-[10px] xl:mt-[20px] w-[85%] mx-auto xl:border-2 xl:px-7 xl:py-5 xl:rounded-xl">
+                <div className="flex items-center p-[15px] text-xs xl:text-base justify-end">
                     <button onClick={() => {
                     router.push("./activity/input");
-                    }} id="inputKegiatan" className="bg-[#FF5757;] w-fit xl:h-[50px] h-[25px] rounded-[5px] xl:rounded-[15px] text-white font-semibold text-sans xl:text-base p-2 xl:p-5 flex items-center gap-1 xl:gap-3 justify-self-end">
+                    }} id="inputKegiatan" className="bg-[#FF5757;] w-fit xl:h-[50px] h-[25px] rounded-[5px] xl:rounded-[15px] text-white font-semibold text-sans xl:text-base p-2 xl:p-5 flex items-center gap-1 xl:gap-3">
                         + Input Data Kegiatan
                     </button>
                 </div>
