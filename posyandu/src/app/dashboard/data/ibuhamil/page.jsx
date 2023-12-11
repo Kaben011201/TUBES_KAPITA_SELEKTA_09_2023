@@ -1463,7 +1463,7 @@ const DataIbuHamil = () => {
 
   return (
     <main className="flex flex-col justify-center items-center">
-      <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
+      <div className="flex items-center justify-between mt-[70px] xl:mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <div className="xl:hidden dropdown dropdown-bottom">
           <label tabIndex={0}>
             <img className="ml-3" src="/header/search.svg"></img>
