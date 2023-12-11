@@ -1630,7 +1630,7 @@ const DataBayi = () => {
                   className="bg-[#FF5757;] w-[100px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[16px] xl:text-xl pr-1 xl:pr-6 flex items-center justify-center gap-4"
                 >
                   <img
-                    className="w-[22px] xl:w-[35px] mb-1"
+                    className="w-[20px] xl:w-[35px] mb-1"
                     src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg"
                     alt="saveform"
                   />
