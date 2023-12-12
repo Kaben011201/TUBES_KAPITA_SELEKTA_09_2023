@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axiosConfig from "../../../utils/axios";
+import Cookies from "js-cookie";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -36,17 +37,20 @@ const LoginForm = () => {
     };
 
     axiosConfig
-      .post("http://localhost:3000/api/login", data)
+      .post("api/login", data)
       .then(function (response) {
+        
+        
         if (response.data.status != 400) {
+          Cookies.set('token', response.data.token, { expires: 1 })
           router.push("/dashboard");
         } else {
           alert(response.data.message);
         }
       })
       .catch(function (error) {
-        alert(error.data.message);
         console.log(error);
+        alert(error.data.message);
       });
   };
 

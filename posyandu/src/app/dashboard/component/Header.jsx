@@ -3,6 +3,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const Header = () => {
   const [isActive, setisActive] = useState();
@@ -249,6 +250,7 @@ const Header = () => {
                 className="absolute bottom-10 xl:w-[250px] cursor-pointer hover:opacity-80 transition ease-in-out"
                 src="/header/logout.svg"
                 onClick={() => {
+                  Cookies.remove('token');
                   router.push("/login");
                 }}
               ></img>
@@ -293,6 +295,7 @@ const Header = () => {
           >
             <li
               onClick={() => {
+                Cookies.remove('token');
                 router.push("/login");
               }}
             >

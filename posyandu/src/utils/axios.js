@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 const instance = axios.create({
   baseURL: "https://posyandu-mawar-1.vercel.app",
-  //   baseURL: "https://development-toko-gloria.vercel.app",
+  // baseURL: "http://localhost:3000",
 });
 
 // Where you would set stuff like your 'Authorization' header, etc ...
