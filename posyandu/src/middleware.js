@@ -18,11 +18,11 @@ export default async function middleware(req) {
       // console.log("Verified Token:", verifiedToken);
     } catch (error) {
       console.error("Verification failed:", error);
-      return NextResponse.redirect(`${developUrl}/login`);
+      return NextResponse.redirect(`${deployUrl}/login`);
     }
   } else {
     console.log("No Token Found");
-    return NextResponse.redirect(`${developUrl}/login`);
+    return NextResponse.redirect(`${deployUrl}/login`);
   }
 }
 
