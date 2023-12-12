@@ -988,7 +988,7 @@ const DataLansia = () => {
 
   return (
     <main className="flex flex-col justify-center items-center">
-      <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
+      <div className="flex items-center justify-between mt-[70px] xl:mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <div className="xl:hidden dropdown dropdown-bottom">
           <label tabIndex={0}>
             <img className="ml-3" src="/header/search.svg"></img>
@@ -1026,12 +1026,12 @@ const DataLansia = () => {
           ></input>
           <button type="submit"></button>
         </form>
-        <h3 className="ml-10">Data Lansia</h3>
+        <h3 className="ml-10 text-xs xl:text-xl">Data Lansia</h3>
         <Bulan setBulan={setBulan} />
       </div>
       <div
         id="printablediv"
-        className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
+        className="mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
       >
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>

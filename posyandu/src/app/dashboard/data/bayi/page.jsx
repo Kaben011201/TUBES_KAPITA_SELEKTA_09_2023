@@ -1627,10 +1627,10 @@ const DataBayi = () => {
 
                 <button
                   type="submit"
-                  className="bg-[#FF5757;] w-[100px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[16px] xl:text-xl pr-1 xl:pr-6 flex items-center justify-center gap-4"
+                  className="bg-[#FF5757;] w-[150px] xl:w-[180px] xl:h-[50px] h-[35px] self-end mt-3 rounded-[20px] xl:rounded-[15px] text-white font-semibold text-sans text-[16px] xl:text-xl pr-1 xl:pr-6 flex items-center justify-center gap-4"
                 >
                   <img
-                    className="w-[22px] xl:w-[35px] mb-1"
+                    className="w-[20px] xl:w-[35px] mb-1"
                     src="/dashboard/input/Pos_Layanan_Terpadu__3_-removebg-preview 1.svg"
                     alt="saveform"
                   />
@@ -1689,7 +1689,7 @@ const DataBayi = () => {
 
   return (
     <main className="flex flex-col justify-center items-center">
-      <div className="flex items-center justify-between mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
+      <div className="flex items-center justify-between mt-[70px] xl:mt-[110px] rounded-md bg-[#FFF4F4] font-semibold text-lg text-center w-[80%] h-9 xl:h-12 text-[#545454]">
         <div className="xl:hidden dropdown dropdown-bottom">
           <label tabIndex={0}>
             <img className="ml-3" src="/header/search.svg"></img>
@@ -1728,12 +1728,12 @@ const DataBayi = () => {
           <button type="submit"></button>
         </form>
 
-        <h3 className="ml-10">Data Bayi</h3>
+        <p className="ml-10 text-xs xl:text-xl">Data Bayi</p>
         <Bulan setBulan={setBulan} />
       </div>
       <div
         id="printablediv"
-        className="mt-10 bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
+        className="mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
       >
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
