@@ -139,8 +139,6 @@ const DashboardScreen = () => {
             </p>
           </div>
 
-          {/* <img className="xl:hidden" src="dashboard/graph.svg"></img>
-          <img className="hidden xl:block" src="dashboard/graph-desktop.svg"></img> */}
           <div>
             <select
               onChange={debouncedHandleChange}
