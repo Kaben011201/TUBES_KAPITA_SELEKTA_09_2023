@@ -126,7 +126,7 @@ const DashboardScreen = () => {
 
   useEffect(() => {
     getGrafikData("bumil");
-  }, [tahun, loading]);
+  }, [loading]);
 
   return (
     <div>
