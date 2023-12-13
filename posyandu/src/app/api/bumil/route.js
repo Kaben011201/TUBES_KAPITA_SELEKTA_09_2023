@@ -7,7 +7,7 @@ export async function GET(req) {
   let month = parseInt(searchParams.get("month")) || 0;
 
   const search = searchParams.get("query") || "";
-  where.nama = { contains:search};
+  where.nama = { contains: search };
 
   // IF THERE IS FILTER BY MONTH
   if (month != 0) {
