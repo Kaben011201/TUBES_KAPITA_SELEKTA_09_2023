@@ -155,7 +155,7 @@ const ActivityScreen = () => {
                 <td className="whitespace-nowrap border-0">
 
                 <div className="tooltip" data-tip="Edit">
-                  <button
+                  <button className="mr-1"
                       onClick={async () => {
                           await getActivityEdit(activity);
                           document.getElementById(`modal_edit_activity`).showModal();
@@ -163,8 +163,8 @@ const ActivityScreen = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="21"
-                      height="21"
+                      width="30"
+                      height="30"
                       viewBox="0 0 15 15"
                       fill="none"
                     >
@@ -185,8 +185,8 @@ const ActivityScreen = () => {
                   >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="22.5"
-                        height="22.5"
+                        width="30"
+                        height="30"
                         viewBox="0 0 15 15"
                         fill="none"
                       >
