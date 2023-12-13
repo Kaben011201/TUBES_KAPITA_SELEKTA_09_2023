@@ -50,13 +50,12 @@ const DashboardScreen = () => {
       }
     } catch (error) {
       console.error(error);
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
 
-  const debouncedHandleChange = _debounce(handleChange, 300); // Adjust the delay as needed
+  const debouncedHandleChange = _debounce(handleChange, 200); // Adjust the delay as needed
 
   const getGrafikData = async (category, type) => {
     try {
@@ -127,7 +126,7 @@ const DashboardScreen = () => {
 
   useEffect(() => {
     getGrafikData("bumil");
-  }, [tahun]);
+  }, [tahun, loading]);
 
   return (
     <div>
