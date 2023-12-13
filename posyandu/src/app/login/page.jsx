@@ -11,7 +11,7 @@ const Login = () => {
     <main>
       <div className="h-screen w-screen bg-white flex flex-col xl:flex-row">
         <div className="w-screen h-[80%] xl:h-screen login bg-cover bg-[#FF5757] xl:bg-white rounded-b-[40px] xl:rounded-none flex flex-col xl:hidden justify-center items-center shadow-[0_4px_4px_0px_#B9B9B9]">
-          <img width={135} height={135} src="login/LOGOPUTIH.png" alt="" />
+          <img width={135} height={135} src="login/LOGOPOSYANDU.png" alt="" />
           <p className="text-[20px] text-white font-semibold tracking-wide">
             Selamat Datang!
           </p>
