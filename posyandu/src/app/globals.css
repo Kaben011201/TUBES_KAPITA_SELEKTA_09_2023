@@ -13,7 +13,6 @@
 table,
 th {
   @apply border-[1px] border-black border-collapse;
-  @apply w-2;
 }
 
 tr th {
