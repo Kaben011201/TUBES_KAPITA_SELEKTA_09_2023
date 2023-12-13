@@ -14,14 +14,14 @@ export default async function middleware(req) {
   if (token) {
     try {
       const verifiedToken = await jose.jwtVerify(token, secret);
-      console.log("Verification successful");
+      console.log("Verifikasi berhasil");
       // console.log("Verified Token:", verifiedToken);
     } catch (error) {
-      console.error("Verification failed:", error);
+      console.error("Verifikasi gagal:", error);
       return NextResponse.redirect(`${deployUrl}/login`);
     }
   } else {
-    console.log("No Token Found");
+    console.log("Token tidak ditemukan");
     return NextResponse.redirect(`${deployUrl}/login`);
   }
 }
