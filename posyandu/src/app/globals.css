@@ -13,6 +13,7 @@
 table,
 th {
   @apply border-[1px] border-black border-collapse;
+  @apply w-2;
 }
 
 tr th {
@@ -21,12 +22,12 @@ tr th {
 
 tr:nth-child(odd) td {
   @apply bg-white !important;
-  @apply border-[1px] border-black
+  @apply border-[1px] border-black;
 }
 
 tr:nth-child(even) td {
   @apply bg-[#FFAEB2] bg-opacity-50;
-  @apply border-[1px] border-black
+  @apply border-[1px] border-black;
 }
 
 .sidebar-items {
