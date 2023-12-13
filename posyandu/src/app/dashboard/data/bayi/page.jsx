@@ -137,9 +137,9 @@ const DataBayi = () => {
   const deleteData = async (bayi) => {
     let text = "Apakah mau hapus?";
     if (confirm(text) == true) {
-        await delBayiHapus(bayi); // Wait for the asynchronous function to complete
-    } 
-}
+      await delBayiHapus(bayi); // Wait for the asynchronous function to complete
+    }
+  };
 
   const delBayiHapus = async (bayi) => {
     try {
@@ -432,26 +432,24 @@ const DataBayi = () => {
             </div>
 
             {/* Hapus data */}
-            <div className="tooltip" data-tip="Hapus">
-              <button
-                onClick={() =>
-                  deleteData(lansia)
-                }
+            <button
+              onClick={() =>
+                deleteData(bayi)
+              }
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22.5"
+                height="22.5"
+                viewBox="0 0 15 15"
+                fill="none"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="30"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                >
-                  <path
-                    d="M11.875 2.5H9.6875L9.0625 1.875H5.9375L5.3125 2.5H3.125V3.75H11.875M3.75 11.875C3.75 12.2065 3.8817 12.5245 4.11612 12.7589C4.35054 12.9933 4.66848 13.125 5 13.125H10C10.3315 13.125 10.6495 12.9933 10.8839 12.7589C11.1183 12.5245 11.25 12.2065 11.25 11.875V4.375H3.75V11.875Z"
-                    fill="#545454"
-                  />
-                </svg>
-              </button>
-            </div>
+                <path
+                  d="M11.875 2.5H9.6875L9.0625 1.875H5.9375L5.3125 2.5H3.125V3.75H11.875M3.75 11.875C3.75 12.2065 3.8817 12.5245 4.11612 12.7589C4.35054 12.9933 4.66848 13.125 5 13.125H10C10.3315 13.125 10.6495 12.9933 10.8839 12.7589C11.1183 12.5245 11.25 12.2065 11.25 11.875V4.375H3.75V11.875Z"
+                  fill="#545454"
+                />
+              </svg>
+            </button>
           </td>
 
           {/* modal edit bayi*/}
@@ -1656,6 +1654,45 @@ const DataBayi = () => {
       );
     });
   };
+
+  const renderTablePrint = () => {
+    return bayi.map((bayi) => {
+      return (
+        <tr key={bayi.id}>
+          <td>{bayi.hadir}</td>
+          <td>{changeDateTable(bayi.kunjung)}</td>
+          <td>{bayi.nama}</td>
+          <td>{bayi.nik}</td>
+          <td>{changeDateTable(bayi.tanggalLahir)}</td>
+          <td>{bayi.jenisKelamin}</td>
+          <td>{bayi.ibu}</td>
+          <td>{bayi.nikIbu}</td>
+          <td>{bayi.ayah}</td>
+          <td>{bayi.nikAyah}</td>
+          <td>{bayi.noHp}</td>
+          <td>{bayi.alamat}</td>
+          <td>{bayi.alamatKK}</td>
+          <td>{bayi.kia}</td>
+          <td>{bayi.bb}</td>
+          <td>{bayi.tb}</td>
+          <td>{bayi.lk}</td>
+          <td>{bayi.ll}</td>
+          <td>{bayi.vit}</td>
+          <td>{bayi.bb5}</td>
+          <td>{bayi.neo1}</td>
+          <td>{bayi.neo2}</td>
+          <td>{bayi.neo3}</td>
+          <td>{bayi.panjangLahir}</td>
+          <td>{bayi.vitA}</td>
+          <td>{bayi.imunisasi}</td>
+          <td>{bayi.obatCacing}</td>
+          <td>{changeDateTable(bayi.tanggalMeninggal)}</td>
+          <td>{bayi.keterangan}</td>
+        </tr>
+      );
+    });
+  };
+
   const renderTableRiwayat = () => {
     return bayiFilter.map((bayi) => {
       return (
@@ -1744,10 +1781,7 @@ const DataBayi = () => {
         <p className="ml-10 text-xs xl:text-xl">Data Bayi</p>
         <Bulan setBulan={setBulan} />
       </div>
-      <div
-        id="printablediv"
-        className="mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
-      >
+      <div className="mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3">
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
@@ -1795,6 +1829,60 @@ const DataBayi = () => {
               <th>Ketiga hari ke-8 s.d ke-28</th>
             </tr>
             {renderTable()}
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        id="printablediv"
+        className="hidden mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
+      >
+        <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
+          <tbody>
+            <tr>
+              <th rowSpan={2}>Kehadiran</th>
+              <th rowSpan={2}>Tanggal Kunjungan</th>
+              <th rowSpan={2}>Nama</th>
+              <th rowSpan={2}>NIK</th>
+              <th rowSpan={2}>Tanggal Lahir</th>
+              <th rowSpan={2}>L/P</th>
+              <th colSpan={5}>Data Orang Tua</th>
+              <th rowSpan={2}>Alamat</th>
+              <th rowSpan={2}>Alamat KK</th>
+              <th rowSpan={2}>
+                <p>K</p>
+                <p>I</p>
+                <p>A</p>
+              </th>
+              <th rowSpan={2}>BB</th>
+              <th rowSpan={2}>TB</th>
+              <th rowSpan={2}>LK</th>
+              <th rowSpan={2}>LL</th>
+              <th rowSpan={2}>
+                <p>V</p>
+                <p>I</p>
+                <p>T</p>
+              </th>
+              <th colSpan={4}>Masa Neonatal</th>
+              <th rowSpan={2}>Panjang Lahir</th>
+              <th rowSpan={2}>Vit. A 6 Bulan</th>
+              <th rowSpan={2}>Imunisasi</th>
+              <th rowSpan={2}>Obat Cacing</th>
+              <th rowSpan={2}>Kematian Post Natal</th>
+              <th rowSpan={2}>Keterangan</th>
+            </tr>
+            <tr>
+              <th>Nama Ibu</th>
+              <th>NIK</th>
+              <th>Nama Ayah</th>
+              <th>NIK</th>
+              <th>No.HP</th>
+              <th>Saat Lahir s.d 5 jam</th>
+              <th>Pertama 6 s.d 48 jam</th>
+              <th>Kedua hari ke-3 s.d ke-28</th>
+              <th>Ketiga hari ke-8 s.d ke-28</th>
+            </tr>
+            {renderTablePrint()}
           </tbody>
         </table>
       </div>

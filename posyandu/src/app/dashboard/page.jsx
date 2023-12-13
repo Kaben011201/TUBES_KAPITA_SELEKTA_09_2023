@@ -5,10 +5,11 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axiosConfig from "../../utils/axios";
 import BarChart from "./component/Chart";
+import _debounce from "lodash/debounce";
 
 const DashboardScreen = () => {
   const [kategori, setKategori] = useState("bumil");
-  const [tahun, setTahun] = useState(0);
+  const [tahun, setTahun] = useState(2023); 
   const [dataTahun, setdataTahun] = useState({
     january: 0,
     february: 0,
@@ -23,281 +24,109 @@ const DashboardScreen = () => {
     november: 0,
     december: 0,
   });
-  const handleChange = (e) => {
-    setTahun(e.target.value);
-    if (kategori === "bumil") {
-      getBumilGrafik();
-    } else if (kategori === "bayi") {
-      getBayiGrafik();
-    } else if (kategori === "balita") {
-      getBalitaGrafik();
-    } else if (kategori === "lansia") {
-      getLansiaGrafik();
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = async (e) => {
+    const selectedTahun = e.target.value;
+    setTahun(selectedTahun);
+
+    try {
+      setLoading(true);
+      switch (kategori) {
+        case "bumil":
+          await getGrafikData("bumil");
+          break;
+        case "bayi":
+          await getGrafikData("bayi", "bayi");
+          break;
+        case "balita":
+          await getGrafikData("bayi", "balita");
+          break;
+        case "lansia":
+          await getGrafikData("lansia");
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const getBumilGrafik = async () => {
+  const debouncedHandleChange = _debounce(handleChange, 200); // Adjust the delay as needed
+
+  const getGrafikData = async (category, type) => {
     try {
-      const response = await axiosConfig.get("api/grafik/bumil", {
-        params: { year: tahun },
+      const response = await axiosConfig.get(`api/grafik/${category}`, {
+        params: { year: tahun, type },
       });
+
       if (response.data.status !== 400) {
+        setdataTahun(response.data.data);
       } else {
         alert(response.data.message);
       }
-      setdataTahun(response.data.data);
-
-      setOptions({
-        labels: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "Mei",
-          "Jun",
-          "Jul",
-          "Ags",
-          "Sep",
-          "Okt",
-          "Nov",
-          "Des",
-        ],
-
-        datasets: [
-          {
-            label: "Ibu Hamil",
-            data: [
-              dataTahun.january,
-              dataTahun.february,
-              dataTahun.march,
-              dataTahun.april,
-              dataTahun.may,
-              dataTahun.june,
-              dataTahun.july,
-              dataTahun.august,
-              dataTahun.september,
-              dataTahun.october,
-              dataTahun.november,
-              dataTahun.december,
-            ],
-            backgroundColor: ["rgba(255, 99, 132, 0.7)"],
-            borderColor: ["rgba(255, 99, 132, 1)"],
-            borderWidth: 1,
-          },
-        ],
-      });
-
-      console.log(dataTahun);
     } catch (error) {
-      // alert(error.data.message);
-      console.log(error);
+      console.error(error);
     }
   };
-  const getLansiaGrafik = async () => {
-    try {
-      const response = await axiosConfig.get("api/grafik/lansia", {
-        params: { year: tahun },
-      });
-      if (response.data.status !== 400) {
-      } else {
-        alert(response.data.message);
-      }
-      setdataTahun(response.data.data);
-      setOptions({
-        labels: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "Mei",
-          "Jun",
-          "Jul",
-          "Ags",
-          "Sep",
-          "Okt",
-          "Nov",
-          "Des",
-        ],
 
-        datasets: [
-          {
-            label: "Lansia",
-            data: [
-              dataTahun.january,
-              dataTahun.february,
-              dataTahun.march,
-              dataTahun.april,
-              dataTahun.may,
-              dataTahun.june,
-              dataTahun.july,
-              dataTahun.august,
-              dataTahun.september,
-              dataTahun.october,
-              dataTahun.november,
-              dataTahun.december,
-            ],
-            backgroundColor: ["rgba(255, 99, 132, 0.7)"],
-            borderColor: ["rgba(255, 99, 132, 1)"],
-            borderWidth: 1,
-          },
-        ],
-      });
-    } catch (error) {
-      // alert(error.data.message);
-      console.log(error);
-    }
+  const renderChart = () => {
+    console.log(dataTahun);
+    return {
+      labels: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Ags",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des",
+      ],
+      datasets: [
+        {
+          label:
+            kategori === "bumil"
+              ? "Ibu Hamil"
+              : kategori === "lansia"
+              ? "Lansia"
+              : kategori === "bayi"
+              ? "Bayi"
+              : kategori === "balita"
+              ? "Balita"
+              : kategori,
+          data: [
+            dataTahun.january,
+            dataTahun.february,
+            dataTahun.march,
+            dataTahun.april,
+            dataTahun.may,
+            dataTahun.june,
+            dataTahun.july,
+            dataTahun.august,
+            dataTahun.september,
+            dataTahun.october,
+            dataTahun.november,
+            dataTahun.december,
+          ],
+          backgroundColor: ["rgba(255, 99, 132, 0.7)"],
+          borderColor: ["rgba(255, 99, 132, 1)"],
+          borderWidth: 1,
+        },
+      ],
+    };
   };
-  const getBayiGrafik = async () => {
-    try {
-      const response = await axiosConfig.get("api/grafik/bayi", {
-        params: { year: tahun, type: "bayi" },
-      });
-      if (response.data.status !== 400) {
-      } else {
-        alert(response.data.message);
-      }
-      setdataTahun(response.data.data);
-      setOptions({
-        labels: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "Mei",
-          "Jun",
-          "Jul",
-          "Ags",
-          "Sep",
-          "Okt",
-          "Nov",
-          "Des",
-        ],
-
-        datasets: [
-          {
-            label: "Bayi",
-            data: [
-              dataTahun.january,
-              dataTahun.february,
-              dataTahun.march,
-              dataTahun.april,
-              dataTahun.may,
-              dataTahun.june,
-              dataTahun.july,
-              dataTahun.august,
-              dataTahun.september,
-              dataTahun.october,
-              dataTahun.november,
-              dataTahun.december,
-            ],
-            backgroundColor: ["rgba(255, 99, 132, 0.7)"],
-            borderColor: ["rgba(255, 99, 132, 1)"],
-            borderWidth: 1,
-          },
-        ],
-      });
-    } catch (error) {
-      // alert(error.data.message);
-      console.log(error);
-    }
-  };
-  const getBalitaGrafik = async () => {
-    try {
-      const response = await axiosConfig.get("api/grafik/bayi", {
-        params: { year: tahun, type: "balita" },
-      });
-      if (response.data.status !== 400) {
-      } else {
-        alert(response.data.message);
-      }
-      setdataTahun(response.data.data);
-      setOptions({
-        labels: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "Mei",
-          "Jun",
-          "Jul",
-          "Ags",
-          "Sep",
-          "Okt",
-          "Nov",
-          "Des",
-        ],
-
-        datasets: [
-          {
-            label: "Balita",
-            data: [
-              dataTahun.january,
-              dataTahun.february,
-              dataTahun.march,
-              dataTahun.april,
-              dataTahun.may,
-              dataTahun.june,
-              dataTahun.july,
-              dataTahun.august,
-              dataTahun.september,
-              dataTahun.october,
-              dataTahun.november,
-              dataTahun.december,
-            ],
-            backgroundColor: ["rgba(255, 99, 132, 0.7)"],
-            borderColor: ["rgba(255, 99, 132, 1)"],
-            borderWidth: 1,
-          },
-        ],
-      });
-    } catch (error) {
-      // alert(error.data.message);
-      console.log(error);
-    }
-  };
-  const [options, setOptions] = useState({
-    labels: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "Mei",
-      "Jun",
-      "Jul",
-      "Ags",
-      "Sep",
-      "Okt",
-      "Nov",
-      "Des",
-    ],
-
-    datasets: [
-      {
-        label: "Ibu Hamil",
-        data: [
-          dataTahun.january,
-          dataTahun.february,
-          dataTahun.march,
-          dataTahun.april,
-          dataTahun.may,
-          dataTahun.june,
-          dataTahun.july,
-          dataTahun.august,
-          dataTahun.september,
-          dataTahun.october,
-          dataTahun.november,
-          dataTahun.december,
-        ],
-        backgroundColor: ["rgba(255, 99, 132, 0.7)"],
-        borderColor: ["rgba(255, 99, 132, 1)"],
-        borderWidth: 1,
-      },
-    ],
-  });
 
   useEffect(() => {
-    getBumilGrafik();
-  }, [tahun]);
+    getGrafikData("bumil");
+  }, [loading]);
 
   return (
     <div>
@@ -310,11 +139,9 @@ const DashboardScreen = () => {
             </p>
           </div>
 
-          {/* <img className="xl:hidden" src="dashboard/graph.svg"></img>
-          <img className="hidden xl:block" src="dashboard/graph-desktop.svg"></img> */}
           <div>
             <select
-              onChange={handleChange}
+              onChange={debouncedHandleChange}
               className="select select-bordered select-xs xl:select-sm mb-4 w-full max-w-xs"
             >
               <option value={2024}>2024</option>
@@ -323,15 +150,16 @@ const DashboardScreen = () => {
               </option>
               <option value={2022}>2022</option>
             </select>
-            <BarChart data={options} />
+            {loading && <p>Loading...</p>}
+            <BarChart data={renderChart()} />
           </div>
         </div>
 
         <div className="flex justify-between mt-9 w-[275px] xl:w-[500px] xl:mb-[80px]">
           <button
             onClick={() => {
-              getBumilGrafik();
               setKategori("bumil");
+              getGrafikData("bumil");
             }}
             className="dashboard-content"
           >
@@ -347,8 +175,8 @@ const DashboardScreen = () => {
           </button>
           <button
             onClick={() => {
-              getBayiGrafik();
               setKategori("bayi");
+              getGrafikData("bayi", "bayi");
             }}
             className="dashboard-content"
           >
@@ -364,8 +192,8 @@ const DashboardScreen = () => {
           </button>
           <button
             onClick={() => {
-              getBalitaGrafik();
               setKategori("balita");
+              getGrafikData("bayi", "balita");
             }}
             className="dashboard-content"
           >
@@ -381,8 +209,8 @@ const DashboardScreen = () => {
           </button>
           <button
             onClick={() => {
-              getLansiaGrafik();
               setKategori("lansia");
+              getGrafikData("lansia");
             }}
             className="dashboard-content"
           >

@@ -117,9 +117,9 @@ const DataLansia = () => {
   const deleteData = async (lansia) => {
     let text = "Apakah mau hapus?";
     if (confirm(text) == true) {
-        await delLansiaHapus(lansia); // Wait for the asynchronous function to complete
-    } 
-}
+      await delLansiaHapus(lansia); // Wait for the asynchronous function to complete
+    }
+  };
 
   const delLansiaHapus = async (lansia) => {
     try {
@@ -369,26 +369,24 @@ const DataLansia = () => {
             </div>
 
             {/* Hapus data */}
-            <div className="tooltip" data-tip="Hapus">
-              <button
-                onClick={() =>
-                  deleteData(lansia)
-                }
+            <button
+              onClick={() =>
+                deleteData(lansia)
+              }
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22.5"
+                height="22.5"
+                viewBox="0 0 15 15"
+                fill="none"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="30"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                >
-                  <path
-                    d="M11.875 2.5H9.6875L9.0625 1.875H5.9375L5.3125 2.5H3.125V3.75H11.875M3.75 11.875C3.75 12.2065 3.8817 12.5245 4.11612 12.7589C4.35054 12.9933 4.66848 13.125 5 13.125H10C10.3315 13.125 10.6495 12.9933 10.8839 12.7589C11.1183 12.5245 11.25 12.2065 11.25 11.875V4.375H3.75V11.875Z"
-                    fill="#545454"
-                  />
-                </svg>
-              </button>
-            </div>
+                <path
+                  d="M11.875 2.5H9.6875L9.0625 1.875H5.9375L5.3125 2.5H3.125V3.75H11.875M3.75 11.875C3.75 12.2065 3.8817 12.5245 4.11612 12.7589C4.35054 12.9933 4.66848 13.125 5 13.125H10C10.3315 13.125 10.6495 12.9933 10.8839 12.7589C11.1183 12.5245 11.25 12.2065 11.25 11.875V4.375H3.75V11.875Z"
+                  fill="#545454"
+                />
+              </svg>
+            </button>
           </td>
 
           {/* modal edit lansia*/}
@@ -978,6 +976,29 @@ const DataLansia = () => {
       );
     });
   };
+  const renderTablePrint = () => {
+    return lansia.map((lansia) => {
+      return (
+        <tr key={lansia.id}>
+          <td>{lansia.hadir}</td>
+          <td>{changeDateTable(lansia.kunjung)}</td>
+          <td>{lansia.nama}</td>
+          <td>{lansia.nik}</td>
+          <td>{lansia.kk}</td>
+          <td>{changeDateTable(lansia.tanggalLahir)}</td>
+          <td>{lansia.jenisKelamin}</td>
+          <td>{lansia.umur}</td>
+          <td>{lansia.alamat}</td>
+          <td>{lansia.alamatKK}</td>
+          <td>{lansia.bb}</td>
+          <td>{lansia.tb}</td>
+          <td>{lansia.tensi}</td>
+          <td>{lansia.bpjs}</td>
+          <td>{lansia.keterangan}</td>
+        </tr>
+      );
+    });
+  };
   const renderTableRiwayat = () => {
     return lansiaFilter.map((lansia) => {
       return (
@@ -1051,10 +1072,7 @@ const DataLansia = () => {
         <h3 className="ml-10 text-xs xl:text-xl">Data Lansia</h3>
         <Bulan setBulan={setBulan} />
       </div>
-      <div
-        id="printablediv"
-        className="mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
-      >
+      <div className="mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3">
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
@@ -1076,6 +1094,34 @@ const DataLansia = () => {
               <th>Aksi</th>
             </tr>
             {renderTable()}
+          </tbody>
+        </table>
+      </div>
+      {/* renderprint */}
+      <div
+        id="printablediv"
+        className="hidden mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
+      >
+        <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
+          <tbody>
+            <tr>
+              <th>Kehadiran</th>
+              <th>Tanggal Kunjungan</th>
+              <th>Nama</th>
+              <th>NIK</th>
+              <th>No. KK</th>
+              <th>Tanggal Lahir</th>
+              <th>Jenis Kelamin</th>
+              <th>Umur</th>
+              <th>Alamat</th>
+              <th>Alamat KK</th>
+              <th>BB</th>
+              <th>TB</th>
+              <th>Tensi Darah</th>
+              <th>No. BPJS</th>
+              <th>Keterangan</th>
+            </tr>
+            {renderTablePrint()}
           </tbody>
         </table>
       </div>

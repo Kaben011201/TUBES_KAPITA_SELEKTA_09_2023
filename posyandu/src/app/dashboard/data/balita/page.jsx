@@ -138,9 +138,9 @@ const DataBalita = () => {
   const deleteData = async (balita) => {
     let text = "Apakah mau hapus?";
     if (confirm(text) == true) {
-        await delBalitaHapus(balita); // Wait for the asynchronous function to complete
-    } 
-}
+      await delBalitaHapus(balita); // Wait for the asynchronous function to complete
+    }
+  };
 
   const delBalitaHapus = async (balita) => {
     try {
@@ -440,26 +440,24 @@ const DataBalita = () => {
             </div>
 
             {/* Hapus data */}
-            <div className="tooltip" data-tip="Hapus">
-              <button
-                onClick={() =>
-                  deleteData(lansia)
-                }
+            <button
+              onClick={() =>
+                deleteData(balita)
+              }
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22.5"
+                height="22.5"
+                viewBox="0 0 15 15"
+                fill="none"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="30"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                >
-                  <path
-                    d="M11.875 2.5H9.6875L9.0625 1.875H5.9375L5.3125 2.5H3.125V3.75H11.875M3.75 11.875C3.75 12.2065 3.8817 12.5245 4.11612 12.7589C4.35054 12.9933 4.66848 13.125 5 13.125H10C10.3315 13.125 10.6495 12.9933 10.8839 12.7589C11.1183 12.5245 11.25 12.2065 11.25 11.875V4.375H3.75V11.875Z"
-                    fill="#545454"
-                  />
-                </svg>
-              </button>
-            </div>
+                <path
+                  d="M11.875 2.5H9.6875L9.0625 1.875H5.9375L5.3125 2.5H3.125V3.75H11.875M3.75 11.875C3.75 12.2065 3.8817 12.5245 4.11612 12.7589C4.35054 12.9933 4.66848 13.125 5 13.125H10C10.3315 13.125 10.6495 12.9933 10.8839 12.7589C11.1183 12.5245 11.25 12.2065 11.25 11.875V4.375H3.75V11.875Z"
+                  fill="#545454"
+                />
+              </svg>
+            </button>
           </td>
 
           {/* modal hapus balita*/}
@@ -1639,6 +1637,45 @@ const DataBalita = () => {
     });
   };
 
+  const renderTablePrint = () => {
+    return balita.map((balita) => {
+      return (
+        <tr key={balita.id}>
+          <td>{balita.hadir}</td>
+          <td>{changeDateTable(balita.kunjung)}</td>
+          <td>{balita.nama}</td>
+          <td>{balita.nik}</td>
+          <td>{changeDateTable(balita.tanggalLahir)}</td>
+          <td>{balita.jenisKelamin}</td>
+          <td>{balita.ibu}</td>
+          <td>{balita.nikIbu}</td>
+          <td>{balita.ayah}</td>
+          <td>{balita.nikAyah}</td>
+          <td>{balita.noHp}</td>
+          <td>{balita.alamat}</td>
+          <td>{balita.alamatKK}</td>
+          <td>{balita.bb5}</td>
+          <td>{balita.panjangLahir}</td>
+          <td>{balita.kia}</td>
+          <td>{balita.bb}</td>
+          <td>{balita.tb}</td>
+          <td>{balita.lk}</td>
+          <td>{balita.ll}</td>
+          <td>{balita.vit}</td>
+          <td>{balita.imunisasi}</td>
+          <td>{balita.obatCacing}</td>
+          <td>{balita.bulan66}</td>
+          <td>{balita.bulan78}</td>
+          <td>{balita.bulan88}</td>
+          <td>{changeDateTable(balita.tanggalPra)}</td>
+          <td>{changeDateTable(balita.tanggalMeninggal)}</td>
+          <td>{balita.penyebab}</td>
+          <td>{balita.keterangan}</td>
+        </tr>
+      );
+    });
+  };
+
   const renderTableRiwayat = () => {
     return balitaFilter.map((balita) => {
       return (
@@ -1727,10 +1764,7 @@ const DataBalita = () => {
         <p className="ml-10 text-xs xl:text-xl">Data Balita</p>
         <Bulan setBulan={setBulan} />
       </div>
-      <div
-        id="printablediv"
-        className="mt-[10px] xl:mt[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
-      >
+      <div className="mt-[10px] xl:mt[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3">
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
@@ -1780,6 +1814,62 @@ const DataBalita = () => {
               <th>Sebab</th>
             </tr>
             {renderTable()}
+          </tbody>
+        </table>
+      </div>
+      {/* renderprint */}
+      <div
+        id="printablediv"
+        className="hidden mt-[10px] xl:mt[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
+      >
+        <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
+          <tbody>
+            <tr>
+              <th rowSpan={2}>Kehadiran</th>
+              <th rowSpan={2}>Tanggal Kunjungan</th>
+              <th rowSpan={2}>Nama</th>
+              <th rowSpan={2}>NIK</th>
+              <th rowSpan={2}>TTL</th>
+              <th rowSpan={2}>L/P</th>
+              <th colSpan={5}>Data Orang Tua</th>
+              <th rowSpan={2}>Alamat</th>
+              <th rowSpan={2}>Alamat KK</th>
+              <th rowSpan={2}>Berat Lahir s.d 5 jam</th>
+              <th rowSpan={2}>Panjang Lahir</th>
+              <th rowSpan={2}>
+                <p>K</p>
+                <p>I</p>
+                <p>A</p>
+              </th>
+              <th rowSpan={2}>BB</th>
+              <th rowSpan={2}>TB</th>
+              <th rowSpan={2}>LK</th>
+              <th rowSpan={2}>LL</th>
+              <th rowSpan={2}>
+                <p>V</p>
+                <p>I</p>
+                <p>T</p>
+              </th>
+              <th rowSpan={2}>Imunisasi Lanjut</th>
+              <th rowSpan={2}>Obat Cacing</th>
+              <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
+              <th colSpan={2}>Meninggal</th>
+              <th rowSpan={2}>Keterangan</th>
+            </tr>
+            <tr>
+              <th>Nama Ibu</th>
+              <th>NIK</th>
+              <th>Nama Ayah</th>
+              <th>NIK</th>
+              <th>No.HP</th>
+              <th>66 Bulan</th>
+              <th>78 Bulan</th>
+              <th>84 Bulan</th>
+              <th>Tanggal Pra Sekolah</th>
+              <th>Tanggal Meninggal</th>
+              <th>Sebab</th>
+            </tr>
+            {renderTablePrint()}
           </tbody>
         </table>
       </div>
@@ -1834,49 +1924,49 @@ const DataBalita = () => {
           <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
             <tbody>
               <tr>
-              <th rowSpan={2}>Kehadiran</th>
-              <th rowSpan={2}>Tanggal Kunjungan</th>
-              <th rowSpan={2}>Nama</th>
-              <th rowSpan={2}>NIK</th>
-              <th rowSpan={2}>TTL</th>
-              <th rowSpan={2}>L/P</th>
-              <th colSpan={5}>Data Orang Tua</th>
-              <th rowSpan={2}>Alamat</th>
-              <th rowSpan={2}>Alamat KK</th>
-              <th rowSpan={2}>Berat Lahir s.d 5 jam</th>
-              <th rowSpan={2}>Panjang Lahir</th>
-              <th rowSpan={2}>
-                <p>K</p>
-                <p>I</p>
-                <p>A</p>
-              </th>
-              <th rowSpan={2}>BB</th>
-              <th rowSpan={2}>TB</th>
-              <th rowSpan={2}>LK</th>
-              <th rowSpan={2}>LL</th>
-              <th rowSpan={2}>
-                <p>V</p>
-                <p>I</p>
-                <p>T</p>
-              </th>
-              <th rowSpan={2}>Imunisasi Lanjut</th>
-              <th rowSpan={2}>Obat Cacing</th>
-              <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
-              <th colSpan={2}>Meninggal</th>
-              <th rowSpan={2}>Keterangan</th>
-            </tr>
-            <tr>
-              <th>Nama Ibu</th>
-              <th>NIK</th>
-              <th>Nama Ayah</th>
-              <th>NIK</th>
-              <th>No.HP</th>
-              <th>66 Bulan</th>
-              <th>78 Bulan</th>
-              <th>84 Bulan</th>
-              <th>Tanggal Pra Sekolah</th>
-              <th>Tanggal Meninggal</th>
-              <th>Sebab</th>
+                <th rowSpan={2}>Kehadiran</th>
+                <th rowSpan={2}>Tanggal Kunjungan</th>
+                <th rowSpan={2}>Nama</th>
+                <th rowSpan={2}>NIK</th>
+                <th rowSpan={2}>TTL</th>
+                <th rowSpan={2}>L/P</th>
+                <th colSpan={5}>Data Orang Tua</th>
+                <th rowSpan={2}>Alamat</th>
+                <th rowSpan={2}>Alamat KK</th>
+                <th rowSpan={2}>Berat Lahir s.d 5 jam</th>
+                <th rowSpan={2}>Panjang Lahir</th>
+                <th rowSpan={2}>
+                  <p>K</p>
+                  <p>I</p>
+                  <p>A</p>
+                </th>
+                <th rowSpan={2}>BB</th>
+                <th rowSpan={2}>TB</th>
+                <th rowSpan={2}>LK</th>
+                <th rowSpan={2}>LL</th>
+                <th rowSpan={2}>
+                  <p>V</p>
+                  <p>I</p>
+                  <p>T</p>
+                </th>
+                <th rowSpan={2}>Imunisasi Lanjut</th>
+                <th rowSpan={2}>Obat Cacing</th>
+                <th colSpan={4}>Pelayanan Anak Pra Sekolah</th>
+                <th colSpan={2}>Meninggal</th>
+                <th rowSpan={2}>Keterangan</th>
+              </tr>
+              <tr>
+                <th>Nama Ibu</th>
+                <th>NIK</th>
+                <th>Nama Ayah</th>
+                <th>NIK</th>
+                <th>No.HP</th>
+                <th>66 Bulan</th>
+                <th>78 Bulan</th>
+                <th>84 Bulan</th>
+                <th>Tanggal Pra Sekolah</th>
+                <th>Tanggal Meninggal</th>
+                <th>Sebab</th>
               </tr>
               {renderTableRiwayat()}
             </tbody>
