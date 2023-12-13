@@ -7,8 +7,8 @@ export default async function middleware(req) {
   // GET TOKEN
   const token = req.cookies.get("token")?.value;
   const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-  const developUrl= "http://localhost:3000";
-  const deployUrl="https://posyandu-mawar-1.vercel.app";
+  const url= "http://localhost:3000";
+  // const url="https://posyandu-mawar-1.vercel.app";
 
   // VERIFY TOKEN
   if (token) {
@@ -18,11 +18,11 @@ export default async function middleware(req) {
       // console.log("Verified Token:", verifiedToken);
     } catch (error) {
       console.error("Verifikasi gagal:", error);
-      return NextResponse.redirect(`${deployUrl}/login`);
+      return NextResponse.redirect(`${url}/login`);
     }
   } else {
     console.log("Token tidak ditemukan");
-    return NextResponse.redirect(`${deployUrl}/login`);
+    return NextResponse.redirect(`${url}/login`);
   }
 }
 
