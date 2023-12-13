@@ -334,14 +334,13 @@ const DataIbuHamil = () => {
           <td>{bumil.bpjs}</td>
           <td>{bumil.noHp}</td>
           <td>{bumil.keterangan}</td>
-          <td className="whitespace-nowrap">            
+          <td className="whitespace-nowrap">
             <div className="tooltip" data-tip="Riwayat">
               <button
                 onClick={async () => {
-                  await getLansiaFilter(lansia);
-                  document.getElementById(`modal_info_lansia`).showModal();
+                  await getBumilFilter(bumil);
+                  document.getElementById(`modal_info_bumil`).showModal();
                 }}
-            
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -362,8 +361,8 @@ const DataIbuHamil = () => {
             <div className="tooltip" data-tip="Tambah">
               <button
                 onClick={async () => {
-                  await getLansiaEdit(lansia);
-                  document.getElementById(`modal_tambah_lansia`).showModal();
+                  await getBumilEdit(bumil);
+                  document.getElementById(`modal_tambah_bumil`).showModal();
                 }}
               >
                 <svg
@@ -387,8 +386,8 @@ const DataIbuHamil = () => {
             <div className="tooltip" data-tip="Edit">
               <button
                 onClick={async () => {
-                  await getLansiaEdit(lansia);
-                  document.getElementById(`modal_edit_lansia`).showModal();
+                  await getBumilEdit(bumil);
+                  document.getElementById(`modal_edit_bumil`).showModal();
                 }}
               >
                 <svg
@@ -408,11 +407,7 @@ const DataIbuHamil = () => {
 
             {/* Hapus data */}
             <div className="tooltip" data-tip="Hapus">
-              <button
-                onClick={() =>
-                  deleteData(lansia)
-                }
-              >
+              <button onClick={() => deleteData(bumil)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
