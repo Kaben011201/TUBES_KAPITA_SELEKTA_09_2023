@@ -128,9 +128,9 @@ const DataIbuHamil = () => {
   const deleteData = async (bumil) => {
     let text = "Apakah mau hapus?";
     if (confirm(text) == true) {
-        await delBumilHapus(bumil); // Wait for the asynchronous function to complete
-    } 
-}
+      await delBumilHapus(bumil); // Wait for the asynchronous function to complete
+    }
+  };
 
   const delBumilHapus = async (bumil) => {
     try {
@@ -1423,6 +1423,38 @@ const DataIbuHamil = () => {
     });
   };
 
+  const renderTablePrint = () => {
+    return bumil.map((bumil) => {
+      return (
+        <tr key={bumil.id}>
+          <td>{bumil.hadir}</td>
+          <td>{changeDateTable(bumil.kunjung)}</td>
+          <td>{bumil.nama}</td>
+          <td>{bumil.nik}</td>
+          <td>{bumil.kk}</td>
+          <td>{changeDateTable(bumil.tanggalLahir)}</td>
+          <td>{bumil.umur}</td>
+          <td>{bumil.namaSuami}</td>
+          <td>{bumil.nikSuami}</td>
+          <td>{changeDateTable(bumil.tanggalLahirSuami)}</td>
+          <td>{bumil.alamat}</td>
+          <td>{bumil.alamatKK}</td>
+          <td>{bumil.bb}</td>
+          <td>{bumil.tb}</td>
+          <td>{bumil.usiaHamil}</td>
+          <td>{bumil.lingkarLengan}</td>
+          <td>{`G:${bumil.g} P:${bumil.p} A:${bumil.a}`}</td>
+          <td>{changeDateTable(bumil.hpht)}</td>
+          <td>{changeDateTable(bumil.tp)}</td>
+          <td>{bumil.hb}</td>
+          <td>{bumil.bpjs}</td>
+          <td>{bumil.noHp}</td>
+          <td>{bumil.keterangan}</td>
+        </tr>
+      );
+    });
+  };
+
   const renderTableRiwayat = () => {
     return bumilFilter.map((bumil) => {
       return (
@@ -1504,10 +1536,7 @@ const DataIbuHamil = () => {
         <p className="ml-10 text-xs xl:text-xl">Data Ibu Hamil</p>
         <Bulan setBulan={setBulan} />
       </div>
-      <div
-        id="printablediv"
-        className="mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
-      >
+      <div className="mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3">
         <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
           <tbody>
             <tr>
@@ -1549,6 +1578,54 @@ const DataIbuHamil = () => {
               <th>Tanggal Lahir</th>
             </tr>
             {renderTable()}
+          </tbody>
+        </table>
+      </div>
+      {/* renderprint */}
+      <div
+        id="printablediv"
+        className="hidden mt-[10px] xl:mt-[20px] bg-[#FFF4F4] rounded-md w-[80%] overflow-auto h-fit max-h-fit py-4 px-3"
+      >
+        <table className="text-center table table-zebra border-collapse border border-black text-[#545454]">
+          <tbody>
+            <tr>
+              <th rowSpan={2}>Kehadiran</th>
+              <th rowSpan={2}>Tanggal Kunjungan</th>
+              <th rowSpan={2}>Nama</th>
+              <th rowSpan={2}>NIK</th>
+              <th rowSpan={2}>No. KK</th>
+              <th rowSpan={2}>Tanggal Lahir</th>
+              <th rowSpan={2}>Umur</th>
+              <th colSpan={3}>Data Suami</th>
+              <th rowSpan={2}>Alamat</th>
+              <th rowSpan={2}>Alamat KK</th>
+              <th rowSpan={2}>BB</th>
+              <th rowSpan={2}>TB</th>
+              <th rowSpan={2}>UK</th>
+              <th rowSpan={2}>LL</th>
+              <th rowSpan={2}>
+                <p>G</p>
+                <p>P</p>
+                <p>A</p>
+              </th>
+              <th rowSpan={2}>
+                <p>H</p>
+                <p>P</p>
+                <p>H</p>
+                <p>T</p>
+              </th>
+              <th rowSpan={2}>TP</th>
+              <th rowSpan={2}>HB</th>
+              <th rowSpan={2}>No. BPJS</th>
+              <th rowSpan={2}>No. HP</th>
+              <th rowSpan={2}>Keterangan</th>
+            </tr>
+            <tr>
+              <th>Nama</th>
+              <th>NIK</th>
+              <th>Tanggal Lahir</th>
+            </tr>
+            {renderTablePrint()}
           </tbody>
         </table>
       </div>
