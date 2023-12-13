@@ -9,7 +9,7 @@ import _debounce from "lodash/debounce";
 
 const DashboardScreen = () => {
   const [kategori, setKategori] = useState("bumil");
-  const [tahun, setTahun] = useState(2023); // Default value set to 2023
+  const [tahun, setTahun] = useState(2023); 
   const [dataTahun, setdataTahun] = useState({
     january: 0,
     february: 0,
