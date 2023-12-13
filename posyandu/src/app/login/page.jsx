@@ -18,7 +18,7 @@ const Login = () => {
         </div>
         <div className="hidden xl:flex flex-col w-screen h-screen login bg-cover bg-[#FF5757] xl:bg-white rounded-b-[40px] xl:rounded-none justify-between items-center shadow-[0_4px_4px_0px_#B9B9B9]">
           <div className="flex self-start justify-center items-center ml-3 mt-3">
-            <img width={76} height={76} src="login/logo.png" alt="" />
+            <img width={76} height={76} src="login/LOGOPOSYANDU.png" alt="" />
             <h3 className="text-base font-semibold text-[#FF5757]">
               Pos Pelayanan Terpadu
             </h3>
