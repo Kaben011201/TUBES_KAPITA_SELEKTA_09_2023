@@ -371,8 +371,8 @@ const DataBalita = () => {
             <div className="tooltip" data-tip="Riwayat">
               <button
                 onClick={async () => {
-                  await getLansiaFilter(lansia);
-                  document.getElementById(`modal_info_lansia`).showModal();
+                  await getBalitaFilter(balita);
+                  document.getElementById(`modal_info_balita`).showModal();
                 }}
             
               >
@@ -395,8 +395,8 @@ const DataBalita = () => {
             <div className="tooltip" data-tip="Tambah">
               <button
                 onClick={async () => {
-                  await getLansiaEdit(lansia);
-                  document.getElementById(`modal_tambah_lansia`).showModal();
+                  await getBalitaEdit(balita);
+                  document.getElementById(`modal_tambah_balita`).showModal();
                 }}
               >
                 <svg
@@ -420,8 +420,8 @@ const DataBalita = () => {
             <div className="tooltip" data-tip="Edit">
               <button
                 onClick={async () => {
-                  await getLansiaEdit(lansia);
-                  document.getElementById(`modal_edit_lansia`).showModal();
+                  await getBalitaEdit(balita);
+                  document.getElementById(`modal_edit_balita`).showModal();
                 }}
               >
                 <svg

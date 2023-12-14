@@ -363,8 +363,8 @@ const DataBayi = () => {
             <div className="tooltip" data-tip="Riwayat">
               <button
                 onClick={async () => {
-                  await getLansiaFilter(lansia);
-                  document.getElementById(`modal_info_lansia`).showModal();
+                  await getBayiFilter(bayi);
+                  document.getElementById(`modal_info_bayi`).showModal();
                 }}
             
               >
@@ -387,8 +387,8 @@ const DataBayi = () => {
             <div className="tooltip" data-tip="Tambah">
               <button
                 onClick={async () => {
-                  await getLansiaEdit(lansia);
-                  document.getElementById(`modal_tambah_lansia`).showModal();
+                  await getBayiEdit(bayi);
+                  document.getElementById(`modal_tambah_bayi`).showModal();
                 }}
               >
                 <svg
@@ -412,8 +412,8 @@ const DataBayi = () => {
             <div className="tooltip" data-tip="Edit">
               <button
                 onClick={async () => {
-                  await getLansiaEdit(lansia);
-                  document.getElementById(`modal_edit_lansia`).showModal();
+                  await getBayiEdit(bayi);
+                  document.getElementById(`modal_edit_bayi`).showModal();
                 }}
               >
                 <svg
