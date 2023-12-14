@@ -28,7 +28,7 @@ const DataLansia = () => {
   };
 
   const [edits, setEdits] = useState({
-    hadir: "",
+    hadir: "hadir",
     kunjung: "",
     nama: "",
     nik: "",
@@ -46,7 +46,7 @@ const DataLansia = () => {
   });
 
   const [inputs, setInputs] = useState({
-    hadir: "",
+    hadir: "hadir",
     kunjung: "",
     nama: "",
     nik: "",
