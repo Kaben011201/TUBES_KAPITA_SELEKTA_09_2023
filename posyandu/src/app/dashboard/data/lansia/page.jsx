@@ -46,7 +46,7 @@ const DataLansia = () => {
   });
 
   const [inputs, setInputs] = useState({
-    hadir: "",
+    hadir: "hadir",
     kunjung: "",
     nama: "",
     nik: "",
